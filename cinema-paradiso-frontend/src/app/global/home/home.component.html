@@ -1,0 +1,178 @@
+<html lang="en">
+
+<body>
+
+<main>
+  <article>
+    <div class="l-hero">
+      <ngb-carousel>
+        <ng-template ngbSlide *ngFor="let carouselSlide of carousel">
+          <img [src]=carouselSlide.photos[0] alt="slide" class="l-hero__img" >
+          <div class="l-hero__text-wrapper">
+            <div class="l-hero__text">
+
+              <a routerLink="/{{carouselSlide.imdbId}}" (click)="setImdbId(carouselSlide.imdbId)">
+
+                <div class="c-title">
+                  <span class="c-title__category"><strong>{{carouselSlide.awards}}</strong> </span>
+                  <span class="c-title__name">{{carouselSlide.title}} <br></span>
+                  <div class="absolute">
+                    <div class="flex">
+                      <i class="fa fa-star "></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <p>{{carouselSlide.rating}}/5.0</p>
+                      <p>{{carouselSlide.rated}}</p>
+                    </div><!--flex end-->
+                  </div>
+                </div>
+              </a>
+
+              <p class="c-plot">{{carouselSlide.plot}}</p>
+
+              <!--@TODO: casts not shown-->
+              <p *ngIf="carouselSlide.cast.length != 0">
+                Starring
+                <span *ngFor="let cast of carouselSlide.cast">
+                  {{cast.name}},
+                </span>
+              </p>
+
+              <p *ngIf="carouselSlide.cast.length == 0">
+                Starring
+                <span>
+                  Daniel Kaluuya, Allison Williams, Catherine Keener, Caleb Landry Jones
+                </span>
+              </p>
+
+              <p>
+                Director <span>{{carouselSlide.director.name}}</span>
+              </p>
+              <p>
+                Genres <span class="c-genres" style="text-transform: lowercase">{{carouselSlide.genres}}</span>
+              </p>
+              <div class="l-hero__buttons">
+                <button class="o-button o-button--gray">+ Watchlist</button>
+                <button class="o-button">+ Wishlist</button>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+
+      </ngb-carousel>
+    </div>
+
+    <!-- 	1st section	 -->
+    <section class="l-cards">
+      <div class="l-cards__title-wrap">
+        <h2 class="l-cards__title">Now Playing</h2>
+        <a class="l-cards__nav-left" href="#"><i class="fa fa-angle-right"></i></a><a class="l-cards__nav-right" href="#">
+        <i class="fa fa-angle-left"></i></a>
+      </div>
+
+      <ul class="l-cards__list">
+        <li class="l-cards__item" *ngFor="let movie of moviesPlaying">
+          <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(carouselSlide.imdbId)" routerLinkActive="active" class="l-cards__image fill">
+            <img [src]="movie.poster" [alt]="movie.title">
+          </a>
+          <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(carouselSlide.imdbId)" routerLinkActive="active"  class="l-cards__text">
+            {{movie.title}}
+            <p>{{movie.rating}}/5.0</p>
+          </a>
+        </li>
+      </ul>
+    </section>
+    <!-- 	end 1st section	 -->
+
+    <section class="l-cards">
+      <div class="l-cards__title-wrap">
+        <h2 class="l-cards__title">Movies Trending Now</h2>
+        <a class="l-cards__nav-left" href="#"><i class="fa fa-angle-right"></i></a><a class="l-cards__nav-right" href="#"><i class="fa fa-angle-left"></i></a>
+      </div>
+      <ul class="l-cards__list">
+
+        <li class="l-cards__item" *ngFor="let movie of moviesPlaying">
+          <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(carouselSlide.imdbId)" routerLinkActive="active" class="l-cards__image fill">
+            <img [src]="movie.poster" [alt]="movie.title">
+          </a>
+          <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(carouselSlide.imdbId)" routerLinkActive="active"  class="l-cards__text">
+            {{movie.title}}
+            <p>{{movie.rating}}/5.0</p>
+          </a>
+        </li>
+
+      </ul>
+    </section>
+    <!-- end 2nd section -->
+
+    <section class="l-cards">
+      <div class="l-cards__title-wrap">
+        <h2 class="l-cards__title">TV Trending Now</h2>
+        <a class="l-cards__nav-left" href="#"><i class="fa fa-angle-right"></i></a><a class="l-cards__nav-right" href="#"><i class="fa fa-angle-left"></i></a>
+      </div>
+      <ul class="l-cards__list">
+
+        <li class="l-cards__item" *ngFor="let movie of moviesPlaying">
+          <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(carouselSlide.imdbId)" routerLinkActive="active" class="l-cards__image fill">
+            <img [src]="movie.poster" [alt]="movie.title">
+          </a>
+          <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(carouselSlide.imdbId)" routerLinkActive="active"  class="l-cards__text">
+            {{movie.title}}
+            <p>{{movie.rating}}/5.0</p>
+          </a>
+        </li>
+
+      </ul>
+    </section>
+    <!-- end -->
+
+    <section class="l-cards">
+      <div class="l-cards__title-wrap">
+        <h2 class="l-cards__title">Top Box Office</h2>
+        <a class="l-cards__nav-left" href="#"><i class="fa fa-angle-right"></i></a><a class="l-cards__nav-right" href="#"><i class="fa fa-angle-left"></i></a>
+      </div>
+      <ul class="l-cards__list">
+
+        <li class="l-cards__item" *ngFor="let movie of moviesPlaying">
+          <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(carouselSlide.imdbId)" routerLinkActive="active" class="l-cards__image fill">
+            <img [src]="movie.poster" [alt]="movie.title">
+          </a>
+          <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(carouselSlide.imdbId)" routerLinkActive="active"  class="l-cards__text">
+            {{movie.title}}
+            <p>{{movie.rating}}/5.0</p>
+          </a>
+        </li>
+
+      </ul>
+    </section>
+
+
+    <section class="l-cards">
+      <div class="l-cards__title-wrap">
+      <h2 class="l-cards__title">Recommended For You</h2>
+      <a class="l-cards__nav-left" href="#"><i class="fa fa-angle-right"></i></a><a class="l-cards__nav-right" href="#"><i class="fa fa-angle-left"></i></a>
+      </div>
+        <ul class="l-cards__list">
+
+          <li class="l-cards__item" *ngFor="let movie of moviesPlaying">
+            <a routerLink="/movie/{{movie.imdbId}}" routerLinkActive="active" class="l-cards__image fill">
+              <img [src]="movie.poster" [alt]="movie.title">
+            </a>
+            <a routerLink="/movie/{{movie.imdbId}}" routerLinkActive="active"  class="l-cards__text">
+              {{movie.title}}
+              <p>{{movie.rating}}/5.0</p>
+            </a>
+          </li>
+
+      </ul>
+    </section>
+
+
+  </article>
+</main>
+
+</body>
+
+</html>
