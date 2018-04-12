@@ -53,8 +53,10 @@ public class RegUserController {
     private static final Logger logger = LogManager.getLogger(RegUserController.class);
 
     @PostMapping(value = "/login")
+
     public ResponseEntity<JwtUser> userLogin(@RequestParam(value = "email", required = true) String email,
                                              @RequestParam(value = "password", required = true) String password) {
+
         User user = userService.login(email, password).orElseThrow(() ->
                 new ResponseStatusException(BAD_REQUEST, "USER NOT FOUND"));
         JwtUser jwtUser = new JwtUser(user.getUsername(), generator.generate(user), user.getUserID(), user.getRole());
@@ -68,6 +70,7 @@ public class RegUserController {
 
     @PostMapping(value = "/signup")
     public ResponseEntity<JwtUser> userSignup(@RequestBody User user) {
+        System.out.println(user.getUsername());
         User optionalUser = userService.signup(user).orElseThrow(() ->
                 new ResponseStatusException(BAD_REQUEST, "USER ALREADY EXISTS"));
         JwtUser jwtUser = new JwtUser(optionalUser.getUsername(),
