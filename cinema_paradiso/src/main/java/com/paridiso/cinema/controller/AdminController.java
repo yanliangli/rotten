@@ -65,7 +65,7 @@ public class AdminController {
 
     @PostMapping(value = "/verify/critic")
     public ResponseEntity<Boolean> verifyCritic(@RequestBody CriticApplication application) {
-        return null;
+        userService.makeUserCritic(application.getUserId());
+        return ResponseEntity.ok(true);
     }
-
 }

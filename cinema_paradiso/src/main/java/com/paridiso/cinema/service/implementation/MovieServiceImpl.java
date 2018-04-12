@@ -38,9 +38,7 @@ public class MovieServiceImpl implements FilmService {
     @Transactional
     @Override
     public List<Movie> getMovies() {
-
         return movieRepository.findAll();
-
     }
 
     // TODO: movies
@@ -50,7 +48,6 @@ public class MovieServiceImpl implements FilmService {
         Movie movie1 = (Movie) this.getFilm("tt2380307");
         Movie movie2 = (Movie) this.getFilm("tt5052448");
         Movie movie3 = (Movie) this.getFilm("tt1856101");
-
         movieList.addAll(Arrays.asList(movie1, movie2, movie3));
         return movieList;
     }
@@ -82,28 +79,39 @@ public class MovieServiceImpl implements FilmService {
     }
 
     @Override
-    public List<Trailer> getTrailers(Long filmId) {
-        return null;
+    public Set<Trailer> getTrailers(String filmId) {
+        return this.getFilm(filmId).getTrailers();
     }
 
     @Override
-    public boolean updateTrailer(Long filmId, Integer trailerId) {
+    public boolean updateTrailer(String filmId, Integer trailerId) {
         return false;
     }
 
     @Override
-    public List<Film> getFilmInRage(Date startDate, Date endDate) {
+    public String getPoster(String filmId) {
+        return this.getFilm(filmId).getPoster();
+    }
+
+    @Override
+    public boolean updatePoster(String filmId, String poster) {
+        this.getFilm(filmId).setPoster(poster);
+        return true;
+    }
+
+    @Override
+    public List<Movie> getMoviesInRage(Date startDate, Date endDate) {
         return null;
     }
 
     @Override
-    public List<Film> getSimilarFilm(Long filmId) {
+    public List<Movie> getSimilarMovies(String filmId) {
         return null;
     }
 
     @Override
-    public List<Film> getTrending() {
-        return null;
+    public List<Movie> getTrending() {
+        return this.getMoviesPlaying();
     }
 
     // TODO: find proper movies
@@ -122,8 +130,8 @@ public class MovieServiceImpl implements FilmService {
     }
 
     @Override
-    public List<Film> getTopRating() {
-        return null;
+    public List<Movie> getTopRating() {
+        return this.getMoviesPlaying();
     }
 
     @Transactional
@@ -134,8 +142,9 @@ public class MovieServiceImpl implements FilmService {
         return movieRepository.save(movie);
     }
 
+    @Override
     public List<Movie> getTopBoxOffice() {
-        return null;
+        return this.getMoviesPlaying();
     }
 
 }
