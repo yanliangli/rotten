@@ -85,14 +85,7 @@ public class RegUserServiceImpl extends UserService {
         return userProfileRepository.save(profile);
     }
 
-    @Transactional
-    UserProfile makeUserCritic(Integer id) {
-        UserProfile profile = userProfileRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("CANNOT FIND PROFILE " + id));
 
-        profile.setCritic(true);
-        return userProfileRepository.save(profile);
-    }
 
     @Transactional
     public boolean makeSummaryPrivate(String jwtToken) {

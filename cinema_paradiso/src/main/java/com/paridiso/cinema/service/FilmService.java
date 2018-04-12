@@ -7,6 +7,7 @@ import com.paridiso.cinema.entity.Trailer;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 public interface FilmService {
 
@@ -17,25 +18,33 @@ public interface FilmService {
 
     List<Movie> getMovies();
 
+    Movie updateMovie(Movie movie);
+
     List<Movie> getCarouselMovies();
 
     void deleteFilm(String filmId);
 
     void rateFilm(String filmId, Double rating);
 
-    List<Trailer> getTrailers(Long filmId);
+    Set<Trailer> getTrailers(String filmId);
 
-    boolean updateTrailer(Long filmId, Integer trailerId);
+    boolean updateTrailer(String filmId, Integer trailerId);
 
-    List<Film> getFilmInRage(Date startDate, Date endDate);
+    String getPoster(String filmId);
 
-    List<Film> getSimilarFilm(Long filmId);
+    boolean updatePoster(String filmId, String poster);
 
-    List<Film> getTrending();
+    List<Movie> getMoviesInRage(Date startDate, Date endDate);
+
+    List<Movie> getSimilarMovies(String filmId);
+
+    List<Movie> getTrending();
 
     List<Movie> getMoviesPlaying();
 
-    List<Film> getTopRating();
+    List<Movie> getTopRating();
 
-    Movie updateMovie(Movie movie);
+    List<Movie> getTopBoxOffice();
+
+
 }

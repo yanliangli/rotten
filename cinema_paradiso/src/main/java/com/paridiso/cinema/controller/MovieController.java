@@ -14,6 +14,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.locks.ReentrantLock;
 
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
@@ -75,7 +76,6 @@ public class MovieController {
     public ResponseEntity<Boolean> rateMovie(@RequestHeader(value = "Authorization") String jwtToken,
                                              @PathVariable String filmId,
                                              @PathVariable Double rating) {
-
         System.out.println(jwtToken);
         System.out.println(filmId);
         System.out.println(rating);
@@ -86,7 +86,6 @@ public class MovieController {
 
         // add to film
         filmService.rateFilm(filmId, rating);
-
         return ResponseEntity.ok(true);
     }
 
@@ -98,23 +97,25 @@ public class MovieController {
 
     // TODO how to represent image ?
     @RequestMapping(value = "/{id}/update_poster", method = POST)
-    public ResponseEntity<Boolean> updatePoster(@PathVariable Integer id, @RequestBody String poster) {
-        return null;
+    public ResponseEntity<Boolean> updatePoster(@PathVariable String id, @RequestBody String poster) {
+        filmService.updatePoster(id, poster);
+        return  ResponseEntity.ok(true);
     }
 
     @RequestMapping(value = "/{id}/update_trailer", method = POST)
-    public ResponseEntity<Boolean> updateTrailer(@PathVariable Integer id, @RequestBody String trailer) {
-        return null;
+    public ResponseEntity<Boolean> updateTrailer(@PathVariable String id, @RequestBody Integer trailer) {
+        filmService.updateTrailer(id, trailer);
+        return  ResponseEntity.ok(true);
     }
 
     @RequestMapping(value = "/{id}/trailer", method = GET)
-    public ResponseEntity<Boolean> getTrailers(@PathVariable Integer id) {
-        return null;
+    public ResponseEntity<Set> getTrailers(@PathVariable String id) {
+        return new ResponseEntity<>(filmService.getTrailers(id), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/trending", method = GET)
     public ResponseEntity<List> getMoviesTrending() {
-        return null;
+        return new ResponseEntity<>(filmService.getTrending(), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/playing", method = GET)
@@ -124,18 +125,21 @@ public class MovieController {
 
     @RequestMapping(value = "/top_boxoffice", method = GET)
     public ResponseEntity<List> getTopBoxOffice() {
-        return null;
+        return new ResponseEntity<>(filmService.getTopBoxOffice(), HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/top_rating", method = GET)
+    public ResponseEntity<List> getTopRating() {
+        return new ResponseEntity<>(filmService.getTopRating(), HttpStatus.OK);
+    }
 
     @RequestMapping(value = "/{id}/similar", method = GET)
-    public ResponseEntity<List> getSimilarMovies(@PathVariable Integer id) {
-        return null;
+    public ResponseEntity<List> getSimilarMovies(@PathVariable String id) {
+        return new ResponseEntity<>(filmService.getSimilarMovies(id), HttpStatus.OK);
     }
-
     @RequestMapping(value = "/range", method = GET)
     public ResponseEntity<List> getMoviesInRange(@RequestParam Date startDate, @RequestParam Date endDate) {
-        return null;
+        return new ResponseEntity<>(filmService.getMoviesInRage(startDate, endDate), HttpStatus.OK);
     }
 
 
