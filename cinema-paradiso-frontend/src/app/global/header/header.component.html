@@ -25,7 +25,7 @@
         </div>
 
         <ng-template #userBlock>
-          <a routerLink="user">{{user.username}}</a>
+          <a routerLink="user/{{user.id}}">{{user.username}}</a>
           <a class="trigger" (click)="logout()">LogOut</a>
         </ng-template>
     </ng-template>
