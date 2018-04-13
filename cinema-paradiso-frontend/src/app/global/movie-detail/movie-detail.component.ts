@@ -77,11 +77,13 @@ export class MovieDetailComponent implements OnInit {
   addWishlist() {
     this.movieDetailService.addToWishlist(this.selectedMovieId).subscribe(result => {
       console.log(result);
+      location.reload(true);
     });
   }
   addWatchlist() {
     this.movieDetailService.addToWatchlist(this.selectedMovieId).subscribe(result => {
       console.log(result);
+      location.reload(true);
     });
   }
 
