@@ -16,6 +16,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RequestMapping("/tv")
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class TVController {
 
 //    @Autowired

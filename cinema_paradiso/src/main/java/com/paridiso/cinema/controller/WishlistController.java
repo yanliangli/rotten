@@ -27,6 +27,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RequestMapping("/wishlist")
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class WishlistController {
 
     @Autowired
@@ -36,16 +37,28 @@ public class WishlistController {
     @Autowired
     JwtTokenService jwtTokenService;
 
-    @RequestMapping(value = "/", method = GET)
+    @Autowired
+    private ObjectMapper objectMapper;
+
+    @RequestMapping(value = "/get/wishlist", method = GET)
     public ResponseEntity<WatchList> getWishList(@RequestHeader(value = "Authorization") String jwtToke) {
         return null;
     }
-
+    @GetMapping(value = "/check/{filmId}")
+    public ResponseEntity<Boolean> checkWishlist(@RequestHeader(value = "Authorization") String jwtToken, @PathVariable String filmId) {
+        System.out.println(filmId+"           cqiwehbfviqbuvbqeli");
+        Boolean result = listService.checkList(jwtTokenService.getUserIdFromToken(jwtToken), filmId);
+        System.out.println(result+"           cqiwehbfviqbuvbqeli");
+        if (result)
+            return ResponseEntity.ok(true);
+        return ResponseEntity.ok(false);
+    }
     // http://localhost:8080/wishlist?filmId=1
-    @RequestMapping(value = "", method = POST)
+    @RequestMapping(value = "/addWishlist", method = POST)
     public ResponseEntity<Boolean> addToWishList(@RequestHeader(value = "Authorization") String jwtToken, @RequestParam("filmId") String filmId) {
 
         Boolean result = listService.addToList(jwtTokenService.getUserIdFromToken(jwtToken), filmId);
+
         if (result)
             return ResponseEntity.ok(true);
         return ResponseEntity.ok(false);

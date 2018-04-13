@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Entity
-@Table(name = "WatchList")
+@Table(name = "WatchList", uniqueConstraints = @UniqueConstraint(columnNames = {"watchlistId"}))
 public class WatchList extends LinkedList {
 
     @Id

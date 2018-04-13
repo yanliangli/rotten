@@ -23,6 +23,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RequestMapping("/admin")
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class AdminController {
 
     @Autowired

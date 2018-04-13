@@ -3,6 +3,7 @@ package com.paridiso.cinema.service.implementation;
 import com.paridiso.cinema.entity.Film;
 import com.paridiso.cinema.entity.Movie;
 import com.paridiso.cinema.entity.User;
+import com.paridiso.cinema.entity.UserProfile;
 import com.paridiso.cinema.persistence.*;
 import com.paridiso.cinema.service.ListService;
 import com.paridiso.cinema.service.UtilityService;
@@ -57,7 +58,7 @@ public class WatchlistServiceImpl implements ListService {
         // add to list
         movies.add(movie);
         user.getUserProfile().getWatchList().setMovies(movies);
-
+        System.out.println("watch list id: " + user.getUserProfile().getWatchList().getWatchListId());
         watchListRepository.save(user.getUserProfile().getWatchList());
         return true;
     }
@@ -69,6 +70,24 @@ public class WatchlistServiceImpl implements ListService {
 
     @Override
     public boolean removeFromList(Long filmId) {
+        return false;
+    }
+
+    @Override
+    public boolean checkList(Integer userId, String filmImdbId){
+        // find movie
+        Movie movie = movieRepository.findMovieByImdbId(filmImdbId);
+
+        // find user
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResponseStatusException(INTERNAL_SERVER_ERROR, "USER NOT FOUND"));
+
+        // check movie existence
+        List<Movie> movies = user.getUserProfile().getWatchList().getMovies();
+
+
+        if (utilityService.containsMovie(movies, filmImdbId))
+            return true;
         return false;
     }
 

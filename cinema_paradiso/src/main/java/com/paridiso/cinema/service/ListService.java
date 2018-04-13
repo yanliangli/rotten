@@ -15,4 +15,5 @@ public interface ListService {
 
     boolean removeFromList(Long filmId);
 
+    boolean checkList(Integer userIdFromToken, String filmId);
 }

@@ -100,7 +100,7 @@ public class UserProfile {
     }
 
     public WatchList getWatchList() {
-        return watchList;
+        return (watchList != null) ? watchList : new WatchList();
     }
 
     public void setWatchList(WatchList watchList) {

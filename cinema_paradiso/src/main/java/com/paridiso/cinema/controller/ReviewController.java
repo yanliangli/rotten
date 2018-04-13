@@ -19,6 +19,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
 @RestController
 @RequestMapping("movie/")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ReviewController {
 
     @Autowired

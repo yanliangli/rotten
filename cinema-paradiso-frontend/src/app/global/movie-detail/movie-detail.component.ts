@@ -5,6 +5,8 @@ import {MovieDetailService} from './movie-detail.service';
 import {MovieService} from '../movie/movie.service';
 import {ActivatedRoute} from '@angular/router';
 import {LoginStatusService} from '../login/login.status.service';
+import {Token} from '../login/token.model';
+import {RegUserService} from '../../user/reg-user/reg-user.service';
 
 
 @Component({
@@ -15,6 +17,10 @@ import {LoginStatusService} from '../login/login.status.service';
 })
 export class MovieDetailComponent implements OnInit {
 
+  status: boolean;
+  inWatchlist: boolean;
+  inWishlist: boolean;
+  user: Token;
   movie: Movie;
   sub: any;
   selectedMovieId: string;
@@ -29,7 +35,37 @@ export class MovieDetailComponent implements OnInit {
               route: ActivatedRoute) {
 
     this.selectedMovieId = route.snapshot.params['id'];
+    this.loginStatusService.currentStatus.subscribe(state => {
+      this.status = state;
+      console.log('current login state ', this.status);
 
+
+      if (this.status) {
+        $('.modal-wrapper').hide();
+        $('.page-wrapper').hide();
+        this.user = this.loginStatusService.getTokenDetails() as Token;
+        movieDetailService.checkInWatchlist(this.selectedMovieId).then(result => {
+            if (result === true) {
+              this.inWatchlist = true;
+              console.log(this.inWatchlist);
+            } else {
+              this.inWatchlist = false;
+              console.log(this.inWatchlist);
+            }
+          }
+        );
+        movieDetailService.checkInWishlist(this.selectedMovieId).then(result => {
+            if (result === true) {
+              this.inWishlist = true;
+              console.log(this.inWishlist);
+            } else {
+              this.inWishlist = false;
+              console.log(this.inWishlist);
+            }
+          }
+        );
+      }
+    });
     // customize default values carousel slider
     config.max = 5;
     config.readonly = true;
@@ -38,7 +74,24 @@ export class MovieDetailComponent implements OnInit {
   addReview() {
 
   }
+  addWishlist() {
+    this.movieDetailService.addToWishlist(this.selectedMovieId).subscribe(result => {
+      console.log(result);
+    });
+  }
+  addWatchlist() {
+    this.movieDetailService.addToWatchlist(this.selectedMovieId).subscribe(result => {
+      console.log(result);
+    });
+  }
 
+  removeFromWishList() {
+
+  }
+
+  removeFromWacthList() {
+
+  }
 
   rateMovie() {
     this.movieDetailService.rateMovie(this.hovered, this.selectedMovieId).subscribe(result => {

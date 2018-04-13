@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
+import {Movie} from '../models/movie.model';
 
 const MOVIE_SERVER = 'http://localhost:8080/movie/';
 
@@ -7,6 +8,22 @@ const MOVIE_SERVER = 'http://localhost:8080/movie/';
 export class MovieDetailService {
 
   constructor(private http: HttpClient) {
+  }
+  checkInWishlist(imdbId: string) {
+    return this.http.get('http://localhost:8080/wishlist/check/' + imdbId).toPromise();
+  }
+  checkInWatchlist(imdbId: string) {
+    return this.http.get('http://localhost:8080/watchlist/check/' + imdbId).toPromise();
+  }
+
+  addToWishlist(imdbId: string) {
+    const params = new HttpParams().set('filmId', imdbId);
+    return this.http.post('http://localhost:8080/wishlist/addWishlist', params);
+  }
+
+  addToWatchlist(imdbId: string) {
+    const params = new HttpParams().set('filmId', imdbId);
+    return this.http.post('http://localhost:8080/watchlist/addWatchlist', params);
   }
 
   getMovieDetails(imdbId: string): any {

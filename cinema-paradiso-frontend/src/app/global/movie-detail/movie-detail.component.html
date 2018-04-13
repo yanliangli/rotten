@@ -259,8 +259,27 @@
               src="https://user-images.githubusercontent.com/20979257/36620069-64e71fbe-18bf-11e8-87e8-565e2fc4d6da.jpeg"
               alt="user"/>
             <div class="col-add-ratings">
-              <button class="o-button o-button--gray">+ Watchlist</button>
-              <button class="o-button">+ Wishlist</button>
+              <div *ngIf="!status; else elseBlock">
+                <button routerLinkActive="active" class="o-button o-button--gray trigger"  href="javascript:;">+ Watchlist</button>
+                <button routerLinkActive="active" class="o-button trigger" href="javascript:;">+ Wishlist</button>
+
+              </div>
+              <ng-template #elseBlock>
+                <div *ngIf ="inWatchlist; else addToWatchlist">
+                  <button class="o-button o-button--blue" (click)= "removeFromWacthList()">- Watchlist</button>
+                </div>
+                <ng-template #addToWatchlist>
+                  <button class="o-button o-button--gray" (click)= "addWatchlist()">+ Watchlist</button>
+                </ng-template>
+
+                <div *ngIf ="inWishlist; else addToWishlist">
+                  <button class="o-button" (click)= "removeFromWishList()">- Wishlist</button>
+                </div>
+
+                <ng-template #addToWishlist>
+                  <button class="o-button" (click)= "addWishlist()">+ Wishlist</button>
+                </ng-template>
+              </ng-template>
               <ngb-rating [(rate)]="selected" (hover)="hovered=$event" (leave)="hovered=0" [readonly]="readonly" (click)="rateMovie()">
                 <span class="star"></span>
               </ngb-rating>
@@ -503,6 +522,9 @@
       </div> <!-- ./end right panel -->
     </div> <!-- ./row -->
   </div> <!-- ./container-fluid -->
+
 </main>
 </body>
 </html>
+
+<app-login></app-login>

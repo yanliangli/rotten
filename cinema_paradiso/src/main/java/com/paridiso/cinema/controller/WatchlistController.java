@@ -21,6 +21,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.*;
 
 @RequestMapping("/watchlist")
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 public class WatchlistController {
 
     @Autowired
@@ -35,9 +36,19 @@ public class WatchlistController {
         return null;
     }
 
-    @RequestMapping(value = "", method = POST)
-    public ResponseEntity<Boolean> addToWishList(@RequestHeader(value = "Authorization") String jwtToken, @RequestParam("filmId") String filmId) {
+    @GetMapping(value = "/check/{filmId}")
+    public ResponseEntity<Boolean> checkWatchlist(@RequestHeader(value = "Authorization") String jwtToken, @PathVariable String filmId) {
+        System.out.println(filmId+"           qwdfqwfqefq");
+        Boolean result = listService.checkList(jwtTokenService.getUserIdFromToken(jwtToken), filmId);
+        System.out.println(result+"           qwdfqwfqefq");
+        if (result)
+            return ResponseEntity.ok(true);
+        return ResponseEntity.ok(false);
+    }
+    @RequestMapping(value = "/addWatchlist", method = POST)
+    public ResponseEntity<Boolean> addToWatchlist(@RequestHeader(value = "Authorization") String jwtToken, @RequestParam("filmId") String filmId) {
         Boolean result = listService.addToList(jwtTokenService.getUserIdFromToken(jwtToken), filmId);
+        System.out.println(result+"           qwdfqwfqefq");
         if (result)
             return ResponseEntity.ok(true);
         return ResponseEntity.ok(false);
@@ -46,5 +57,6 @@ public class WatchlistController {
     public ResponseEntity<Boolean> removeFromWatchList(@PathVariable Integer filmId) {
         return null;
     }
+
 
 }
