@@ -27,4 +27,10 @@ export class RegUserService {
     const params = new HttpParams().set('old_password', oldPassword).set('new_password', newPassword);
     return this.http.post('http://localhost:8080/user/change/password', params);
   }
+  getWishlist() {
+    return this.http.get('http://localhost:8080/wishlist/get/wishlist');
+  }
+  getWatchlist() {
+    return this.http.get('http://localhost:8080/watchlist/get/watchlist');
+  }
 }

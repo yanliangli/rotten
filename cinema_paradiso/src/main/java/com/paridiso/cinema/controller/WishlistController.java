@@ -11,10 +11,13 @@ import com.paridiso.cinema.service.ListService;
 import com.paridiso.cinema.service.UtilityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.paridiso.cinema.service.WishlistService;
 import org.springframework.core.env.Environment;
+
+import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -41,8 +44,8 @@ public class WishlistController {
     private ObjectMapper objectMapper;
 
     @RequestMapping(value = "/get/wishlist", method = GET)
-    public ResponseEntity<WatchList> getWishList(@RequestHeader(value = "Authorization") String jwtToke) {
-        return null;
+    public ResponseEntity<List> getWishlist(@RequestHeader(value = "Authorization") String jwtToken) {
+        return new ResponseEntity<>(listService.getList(jwtTokenService.getUserIdFromToken(jwtToken)), HttpStatus.OK);
     }
     @GetMapping(value = "/check/{filmId}")
     public ResponseEntity<Boolean> checkWishlist(@RequestHeader(value = "Authorization") String jwtToken, @PathVariable String filmId) {

@@ -11,7 +11,7 @@ public interface ListService {
 
     boolean addToList(Integer userId, String filmId);
 
-    List<?> getList();
+    List<Movie> getList(Integer userId);
 
     boolean removeFromList(Long filmId);
 

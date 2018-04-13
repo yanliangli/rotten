@@ -9,6 +9,8 @@ import {NgForm} from '@angular/forms';
 import {LoginService} from '../../global/login/login.service';
 
 import {Router} from '@angular/router';
+import {Movie} from '../../global/models/movie.model';
+import {MovieService} from '../../global/movie/movie.service';
 
 class Profile {
   name: string;
@@ -36,8 +38,15 @@ export class RegUserComponent implements OnInit {
   newPassword: string;
   changePasswordSuccess: boolean;
   changePasswordFailure: boolean;
-
-  constructor(private router: Router, private loginService: LoginService, private modalService: NgbModal, private regUserService: RegUserService, private loginStatusService: LoginStatusService, private toastr: ToastrService) {
+  whishlist: Movie[];
+  watchlist: Movie[];
+  constructor(private router: Router,
+              private movieService: MovieService,
+              private loginService: LoginService,
+              private modalService: NgbModal,
+              private regUserService: RegUserService,
+              private loginStatusService: LoginStatusService,
+              private toastr: ToastrService) {
   }
 
   showDiv(index) {
@@ -50,9 +59,10 @@ export class RegUserComponent implements OnInit {
 
     if (this.loginStatusService.getTokenDetails() !== null) {
       this.loginStatusService.changeStatus(true);
+      this.getWishlist();
+      this.getWatchlist();
       this.regUserService.getProfile().subscribe(profileDetails => {
         console.log(profileDetails);
-
         this.profile = profileDetails as Profile;
         const decodedToken = this.tokenHelper.decodeToken(localStorage.getItem('token'));
         this.profile.email = decodedToken['email'];
@@ -68,7 +78,30 @@ export class RegUserComponent implements OnInit {
       });
     }
   }
+  setImdbId(imdbId: string) {
+    this.movieService.setSelectedMovieId(imdbId);
+  }
 
+  getWishlist(): any {
+    this.regUserService.getWishlist()
+      .subscribe(
+        data => {
+          this.whishlist = data as Movie[];
+          console.log(this.whishlist);
+        },
+        error => console.log('Failed to fetch movies playing')
+      );
+  }
+  getWatchlist(): any {
+    this.regUserService.getWatchlist()
+      .subscribe(
+        data => {
+          this.watchlist = data as Movie[];
+          console.log(this.watchlist);
+        },
+        error => console.log('Failed to fetch movies playing')
+      );
+  }
   updateProfile() {
     this.regUserService.update(this.profile).subscribe(data => {
       this.toastr.success('Success');
@@ -129,7 +162,6 @@ export class RegUserComponent implements OnInit {
       }
     });
   }
-
   loadPosters(): void {
     let movieNames = ['Blade Runner 2049', 'Coco', 'Call Me By Your Name', 'Lady Bird', 'Get Out', 'Dunkirk', 'In the Fade', 'Phantom Thread'];
 

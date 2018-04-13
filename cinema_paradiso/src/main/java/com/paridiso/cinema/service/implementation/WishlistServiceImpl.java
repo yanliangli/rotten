@@ -16,6 +16,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
@@ -71,8 +72,13 @@ public class WishlistServiceImpl implements ListService, WishlistService {
     }
 
     @Override
-    public List<?> getList() {
-        return null;
+    public List<Movie> getList(Integer userId) {
+        // find user
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResponseStatusException(INTERNAL_SERVER_ERROR, "USER NOT FOUND"));
+
+        List<Movie> movies = user.getUserProfile().getWishList().getMovies();
+        return movies;
     }
 
     @Override

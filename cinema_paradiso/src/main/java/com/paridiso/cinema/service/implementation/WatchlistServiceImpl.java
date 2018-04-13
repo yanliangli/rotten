@@ -64,8 +64,13 @@ public class WatchlistServiceImpl implements ListService {
     }
 
     @Override
-    public List<?> getList() {
-        return null;
+    public List<Movie> getList(Integer userId) {
+        // find user
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResponseStatusException(INTERNAL_SERVER_ERROR, "USER NOT FOUND"));
+
+        List<Movie> movies = user.getUserProfile().getWatchList().getMovies();
+        return movies;
     }
 
     @Override

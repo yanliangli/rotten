@@ -10,8 +10,11 @@ import com.paridiso.cinema.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.env.Environment;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 
@@ -31,9 +34,9 @@ public class WatchlistController {
     @Autowired
     JwtTokenService jwtTokenService;
 
-    @RequestMapping(value = "/", method = GET)
-    public ResponseEntity<WatchList> getWatchlist() {
-        return null;
+    @RequestMapping(value = "/get/watchlist", method = GET)
+    public ResponseEntity<List> getWatchlist(@RequestHeader(value = "Authorization") String jwtToken) {
+        return new ResponseEntity<>(listService.getList(jwtTokenService.getUserIdFromToken(jwtToken)), HttpStatus.OK);
     }
 
     @GetMapping(value = "/check/{filmId}")
