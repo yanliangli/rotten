@@ -70,8 +70,13 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public Optional<Review> getReview(Long reviewId) {
-        return reviewRepository.findById(reviewId);
+    public List<Review> getAllReviews() {
+        return reviewRepository.findAll();
+    }
+
+    @Override
+    public Review getReview(Long reviewId) {
+        return reviewRepository.findReviewByReviewId(reviewId);
     }
 
     @Override
@@ -79,11 +84,8 @@ public class ReviewServiceImpl implements ReviewService {
         // find user
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResponseStatusException(INTERNAL_SERVER_ERROR, "USER NOT FOUND"));
-
         // find review and remove
-        Review reviewToBeRemoved = reviewRepository.findReviewByReviewId(reviewId)
-                .orElseThrow(() -> new ResponseStatusException(INTERNAL_SERVER_ERROR, "REVIEW NOT FOUND"));
-
+        Review reviewToBeRemoved = reviewRepository.findReviewByReviewId(reviewId);
         List<Review> reviews = user.getUserProfile().getReviews();
         // if id equal, remove review
         for (Review review: reviews) {
@@ -92,10 +94,8 @@ public class ReviewServiceImpl implements ReviewService {
                 break;
             }
         }
-
         user.getUserProfile().setReviews(reviews);
         userProfileRepository.save(user.getUserProfile());
-
         return reviewToBeRemoved;
     }
 

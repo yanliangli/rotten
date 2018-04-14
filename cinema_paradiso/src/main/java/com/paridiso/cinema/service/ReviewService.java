@@ -13,7 +13,9 @@ public interface ReviewService {
 
     void addReview(Integer userId, String movieId, Review review);
 
-    Optional<Review> getReview(Long reviewId);
+    List<Review> getAllReviews();
+
+    Review getReview(Long reviewId);
 
     Review removeReview(Integer userId, String filmId, Long reviewId);
 

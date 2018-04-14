@@ -100,7 +100,7 @@ public class MovieServiceImpl implements FilmService {
     }
 
     @Override
-    public List<Movie> getMoviesInRage(Date startDate, Date endDate) {
+    public List<Movie> getMoviesInRage(String startDate, String endDate) {
         return null;
     }
 

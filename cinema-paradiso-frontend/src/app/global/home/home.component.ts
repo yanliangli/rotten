@@ -25,6 +25,9 @@ export class HomeComponent implements OnInit {
   // TODO:should create Slide[]
   carousel: Movie[];
   moviesPlaying: Movie[];
+  moviesTrending: Movie[];
+  moviesTopBoxOffice: Movie[];
+  moviesTopRating: Movie[];
   selectedMovieId: string;
 
   constructor(private loginStatusService: LoginStatusService,
@@ -42,11 +45,13 @@ export class HomeComponent implements OnInit {
 
     // load movies playing
     this.getMoviesPlaying();
+    this.getMoviesTrending();
+    this.getMoviesTopBoxOffice();
+
 
     if (this.loginStatusService.getTokenDetails() !== null) {
       this.loginStatusService.changeStatus(true);
     }
-
     this.movieService.movieIdObservable.subscribe(observable => this.selectedMovieId = observable);
   }
 
@@ -73,6 +78,38 @@ export class HomeComponent implements OnInit {
       );
   }
 
+  getMoviesTrending(): any {
+    this.homeService.getMoviesTrending()
+      .subscribe(
+        data => {
+          this.moviesTrending = data as Movie[];
+          console.log(this.moviesTrending);
+        },
+        error => console.log('Failed to fetch movies playing')
+      );
+  }
+
+  getMoviesTopBoxOffice(): any {
+    this.homeService.getMoviesTopBoxOffice()
+      .subscribe(
+        data => {
+          this.moviesTopBoxOffice = data as Movie[];
+          console.log(this.moviesTopBoxOffice);
+        },
+        error => console.log('Failed to fetch movies playing')
+      );
+  }
+
+  getMoviesTopRating(): any {
+    this.homeService.getMoviesTopRating()
+      .subscribe(
+        data => {
+          this.moviesTopRating = data as Movie[];
+          console.log(this.moviesTopRating);
+        },
+        error => console.log('Failed to fetch movies playing')
+      );
+  }
   // pass the selected movie id to movie detail page for rendering
   setImdbId(imdbId: string) {
     this.movieService.setSelectedMovieId(imdbId);

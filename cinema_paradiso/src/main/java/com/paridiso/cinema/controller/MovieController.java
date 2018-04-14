@@ -37,14 +37,13 @@ public class MovieController {
     RegUserServiceImpl userService;
 
     @RequestMapping(value = "/all", method = GET)
-    public ResponseEntity<List> getAllMovies() {
+    public ResponseEntity<List<Movie>> getAllMovies() {
         return ResponseEntity.ok(filmService.getMovies());
     }
 
     @RequestMapping(value = "/carousel", method = GET)
     public ResponseEntity<List<Movie>> getCarousel() {
         System.out.println("Movie Controller: Get carousel ... ");
-
         return ResponseEntity.ok(filmService.getCarouselMovies());
     }
 
@@ -65,8 +64,9 @@ public class MovieController {
     }
 
 
-    @RequestMapping(value = "/{filmId}", method = DELETE)
+    @RequestMapping(value = "/delete/{filmId}", method = DELETE)
     public ResponseEntity<Boolean> deleteMovie(@PathVariable String filmId) {
+        System.out.println("************* Starting deletion");
         filmService.deleteFilm(filmId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -96,19 +96,19 @@ public class MovieController {
     }
 
     // TODO how to represent image ?
-    @RequestMapping(value = "/{id}/update_poster", method = POST)
+    @RequestMapping(value = "/update_poster/{id}", method = POST)
     public ResponseEntity<Boolean> updatePoster(@PathVariable String id, @RequestBody String poster) {
         filmService.updatePoster(id, poster);
         return  ResponseEntity.ok(true);
     }
 
-    @RequestMapping(value = "/{id}/update_trailer", method = POST)
+    @RequestMapping(value = "/update_trailer/{id}", method = POST)
     public ResponseEntity<Boolean> updateTrailer(@PathVariable String id, @RequestBody Integer trailer) {
         filmService.updateTrailer(id, trailer);
         return  ResponseEntity.ok(true);
     }
 
-    @RequestMapping(value = "/{id}/trailer", method = GET)
+    @RequestMapping(value = "/trailer/{id}", method = GET)
     public ResponseEntity<Set> getTrailers(@PathVariable String id) {
         return new ResponseEntity<>(filmService.getTrailers(id), HttpStatus.OK);
     }
@@ -123,7 +123,7 @@ public class MovieController {
         return new ResponseEntity<>(filmService.getMoviesPlaying(), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/top_boxoffice", method = GET)
+    @RequestMapping(value = "/top_box_office", method = GET)
     public ResponseEntity<List> getTopBoxOffice() {
         return new ResponseEntity<>(filmService.getTopBoxOffice(), HttpStatus.OK);
     }
@@ -133,12 +133,13 @@ public class MovieController {
         return new ResponseEntity<>(filmService.getTopRating(), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/{id}/similar", method = GET)
+    @RequestMapping(value = "/similar/{id}", method = GET)
     public ResponseEntity<List> getSimilarMovies(@PathVariable String id) {
         return new ResponseEntity<>(filmService.getSimilarMovies(id), HttpStatus.OK);
     }
-    @RequestMapping(value = "/range", method = GET)
-    public ResponseEntity<List> getMoviesInRange(@RequestParam Date startDate, @RequestParam Date endDate) {
+
+    @RequestMapping(value = "/in_range", method = GET)
+    public ResponseEntity<List> getMoviesInRange(@RequestParam String startDate, @RequestParam String endDate) {
         return new ResponseEntity<>(filmService.getMoviesInRage(startDate, endDate), HttpStatus.OK);
     }
 

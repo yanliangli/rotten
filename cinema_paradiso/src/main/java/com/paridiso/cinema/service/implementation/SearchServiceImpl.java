@@ -22,10 +22,8 @@ public class SearchServiceImpl implements SearchService{
         LinkedHashSet<Movie> movieSet = new LinkedHashSet<>();
         movieSet.addAll(getExactMatch(keyword));
         movieSet.addAll(getPhraseMatch(keyword));
-
         List<Movie> movieList = new ArrayList<>(new LinkedHashSet<Movie>());
         movieList.addAll(movieSet);
-
         return movieList;
     }
 

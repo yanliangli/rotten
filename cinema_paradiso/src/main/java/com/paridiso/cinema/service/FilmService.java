@@ -34,7 +34,7 @@ public interface FilmService {
 
     boolean updatePoster(String filmId, String poster);
 
-    List<Movie> getMoviesInRage(Date startDate, Date endDate);
+    List<Movie> getMoviesInRage(String startDate, String endDate);
 
     List<Movie> getSimilarMovies(String filmId);
 

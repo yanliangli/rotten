@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.paridiso.cinema.entity.CriticApplication;
 import com.paridiso.cinema.security.JwtTokenGenerator;
+import com.paridiso.cinema.security.JwtTokenValidator;
 import com.paridiso.cinema.security.JwtUser;
 import com.paridiso.cinema.entity.User;
 import com.paridiso.cinema.service.implementation.AdminServiceImpl;
@@ -33,6 +34,9 @@ public class AdminController {
     private JwtTokenGenerator generator;
 
     @Autowired
+    private JwtTokenValidator validator;
+
+    @Autowired
     private ObjectMapper objectMapper;
 
     @RequestMapping(value = "/login", method = POST)
@@ -41,7 +45,6 @@ public class AdminController {
         User user = userService.login(email, password).orElseThrow(() ->
                 new ResponseStatusException(BAD_REQUEST, "USER NOT FOUND"));
         JwtUser jwtUser = new JwtUser(user.getUsername(), generator.generate(user), user.getUserID(), user.getRole());
-
         return ResponseEntity.ok(jwtUser);
     }
 
@@ -59,9 +62,14 @@ public class AdminController {
     }
 
     //    @PreAuthorize("hasRole('ADMIN')")
-    @GetMapping(value = "/get/users")
+    @GetMapping(value = "/all_users")
     public ResponseEntity<List> getUsers() {
         return ResponseEntity.ok(userService.getAllUsers());
+    }
+
+    @GetMapping(value = "/all_applications")
+    public ResponseEntity<List> getApplications() {
+        return ResponseEntity.ok(userService.getAllApplications());
     }
 
     @PostMapping(value = "/verify/critic")

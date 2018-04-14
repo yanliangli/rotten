@@ -24,6 +24,27 @@ export class HomeService {
     return this.http.get('http://localhost:8080/movie/playing');
   }
 
+  getMoviesTrending() {
+    return this.http.get('http://localhost:8080/movie/trending');
+  }
+
+  getMoviesTopBoxOffice() {
+    return this.http.get('http://localhost:8080/movie/top_box_office');
+  }
+
+  getMoviesTopRating() {
+    return this.http.get('http://localhost:8080/movie/top_rating');
+  }
+
+  getMoviesSimilar(movieId:String) {
+    return this.http.get('http://localhost:8080/similar/'+movieId);
+  }
+
+  getMoviesInRange(start:String, end:String) {
+    return this.http.get('http://localhost:8080/movie/in_range/'+start+"/"+end);
+  }
+
+
   parseImdbId(imdbId: string) {
     return this.selectedImdbId = imdbId;
   }

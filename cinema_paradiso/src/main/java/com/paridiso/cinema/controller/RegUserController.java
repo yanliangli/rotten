@@ -1,9 +1,7 @@
 package com.paridiso.cinema.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.paridiso.cinema.entity.Movie;
 import com.paridiso.cinema.entity.User;
 import com.paridiso.cinema.entity.UserProfile;
 import com.paridiso.cinema.security.JwtTokenGenerator;
@@ -30,10 +28,8 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
 
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
-import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @RequestMapping("/user")
 @RestController
@@ -138,12 +134,12 @@ public class RegUserController {
 
         objectNode.put("biography", profile.getBiography());
         objectNode.put("isCritic", profile.getCritic());
+
         System.out.println(objectNode);
 
         return ResponseEntity.ok(objectNode);
 
     }
-
 
 
     @GetMapping(value = "/avatar/{fileName}", produces = MediaType.IMAGE_JPEG_VALUE)

@@ -231,3 +231,23 @@ a:hover {
   }
 }
 
+.mp-movies{
+  .col-movies-title{
+    width:69%;
+  }
+}
+
+.movie_detail, .movie_poster, .create_new_movie{
+  padding-top:10px;
+  padding-bottom: 10px;
+  textarea{
+    width:100%;
+    min-height:100px;
+  }
+  input[type="text"]{
+    width:100%;
+  }
+  width:100%;
+}
+
+

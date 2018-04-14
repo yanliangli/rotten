@@ -37,125 +37,145 @@
         <div class="col-main-panel main-panel">
           <div class="title">
             <h2>Dashboard</h2>
-            <a href="javascript:void(0);">Hello Melanie !</a>
+            <a href="javascript:void(0);">Hi, {{profile.username}}</a>
           </div>
 
-          <div class="container mp-users">
-
-            <div class="row mp-users__item">
-              <h3 class="col-users-title">User 1 </h3>
+          <ul class="container mp-users">
+            <p>Id Email Username</p>
+            <li class="row mp-users__item" *ngFor="let user of allUsers let i = index" [attr.data-index]="i">
+              <h3 class="col-users-title">{{i+1}} {{user.email}} {{user.username}}</h3>
               <button class="col-users-item">Suspend</button>
-            </div>
+            </li>
 
-            <div class="row mp-users__item">
-              <h3 class="col-users-title">User 2 </h3>
-              <button class="col-users-item">Suspend</button>
-            </div>
-            <div class="row mp-users__item">
-              <h3 class="col-users-title">User 3 </h3>
-              <button class="col-users-item">Suspend</button>
-            </div>
-          </div>
+          </ul>
 
-          <div class="container mp-movies">
+          <ul class="container mp-movies">
+            <button class="" (click)="showAddNewMovieForm()">Create New</button>
+            <div class="create_new_movie">
+              <form>
+                IMDb Id<br>
+                <input type="text" name="imdbId" >
+                <br>Title:<br>
+                <input type="text" name="title" >
+                <br>Year:<br>
+                <input type="text" name="year">
+                <br>Rated:<br>
+                <input type="text" name="rated">
+                <br>Release Date:<br>
+                <input type="date" name="releaseDate">
+                <br>Box Office:<br>
+                <input type="text" name="box_office">
+                <br>Genre:<br>
+                <input type="text" name="genres">
+                <br>Award:<br>
+                <input type="text" name="awards">
+                <br>Photos:<br>
+                <input type="text" name="photos">
+                <br>Language:<br>
+                <input type="text" name="language" >
+                <br>Country:<br>
+                <input type="text" name="country" >
+                <br>Plot:<br>
+                <textarea type="text" name="plot" ></textarea>
+                <br>Production:<br>
+                <input type="text" name="production">
+                <br>Director:<br>
+                <input type="text" name="director">
+                <br>Cast:<br>
+                <input type="text" name="cast">
+                <br>Run Time(minutes):<br>
+                <input type="text" name="runTime" >
+                <br>Poster:<br>
+                <input type="text" name="poster">
+                <br>Trailer:<br>
+                <input type="text" name="trailer">
+                <br>Reviews:<br>
+                <input type="text" name="reviews">
+                <br>Official Website:<br>
+                <input type="text" name="official_website">
+                <br><br>
+                <input type="submit" value="Submit"> <input type="button" value="Cancel" (click)="cancel_add_movie()">
+              </form>
+            </div>
+            <p>Id&nbsp;ImdbID&nbsp;&nbsp;&nbsp;Title</p>
+            <li class="row mp-movies__item" *ngFor="let movie of allMovies let i = index" [attr.data-index]="i" >
+              <h3 class="col-movies-title">&nbsp;&nbsp;{{i+1}}&nbsp;&nbsp;{{movie.imdbId}}&nbsp;&nbsp;{{movie.title}}<span class="entypo-down-open"></span></h3>
+              <button class="col-movies-item" (click)="showMovieDetail(movie,i)">Update</button>
+              <button class="col-movies-item" (click)="showPoster(movie,i)">Change Poster</button>
+              <button class="col-movies-item" (click)="deleteMovie(movie)">Delete</button>
+              <div class="movie_detail" [attr.data-index]="i">
+                <form>
+                  Title:<br>
+                  <input type="text" name="title" placeholder="{{movie.title}}">
+                  <br>Genre:<br>
+                  <input type="text" name="genre" placeholder="{{movie.genres}}">
+                  <br>Language:<br>
+                  <input type="text" name="language" placeholder="{{movie.language}}">
+                  <br>Plot:<br>
+                  <textarea type="text" name="plot" placeholder="{{movie.plot}}"></textarea>
+                  <br>Production:<br>
+                  <input type="text" name="production" placeholder="{{movie.production}}">
+                  <br>Director:<br>
+                  <input type="text" name="director" placeholder="{{movie.director.name}}">
+                  <br>Cast:<br>
+                  <input type="text" name="cast" placeholder="{{movie.cast}}">
+                  <br>Run Time(minutes):<br>
+                  <input type="text" name="runTime" placeholder="{{movie.runTime}}">
+                  <br>Year:<br>
+                  <input type="text" name="year" placeholder="{{movie.year}}">
+                  <br>Release Date:<br>
+                  <input type="date" name="releaseDate">
+                  <br><br>
+                  <input type="submit" value="Submit">
+                </form>
+              </div>
+
+              <div class="movie_poster" [attr.data-index]="i">
+                <img name="poster" src="{{movie.poster}}" style="height: 200px; width: 150px;"><br>
+                <input type="text" name="new_poster" placeholder="Please enter poster URL">
+                <br><br>
+                <input type="submit" value="Submit">
+              </div>
+            </li>
+          </ul>
+
+          <ul class="container mp-reviews">
+            <p>Id Title</p>
+            <li class="row mp-reviews__item" *ngFor="let review of allReviews let i = index" [attr.data-index]="i">
+              <h3 class="col-reviews-title">{{i+1}} {{review.title}}<span class="entypo-down-open"></span></h3>
+              <button class="col-reviews-item">Delete</button>
+            </li>
+          </ul>
+
+          <ul class="container mp-carousel">
+            <p>Id&nbsp;ImdbID&nbsp;&nbsp;&nbsp;Title</p>
+            <li class="row mp-carousel__item" *ngFor="let slides of carousel; let i = index" [attr.data-index]="i">
+              <h3 class="col-carousel-title">&nbsp;&nbsp;{{i+1}}&nbsp;&nbsp;{{slides.imdbId}}&nbsp;&nbsp;{{slides.title}}<span class="entypo-down-open"></span></h3>
+              <button class="col-carousel-item">Update</button>
+              <button class="col-carousel-item">Delete</button>
+
+
+            </li>
+          </ul>
+
+          <ul class="container mp-application" >
+            <p>Id UserId</p>
+            <li class="row mp-application__item" *ngFor="let applications of allApplications; let i = index" [attr.data-index]="i">
+              <h3 class="col-application-title">{{i+1}} {{applications.userId}}<span class="entypo-down-open"></span></h3>
+              <button class="col-application-item">Approve</button>
+              <button class="col-application-item">Decline</button>
+            </li>
+          </ul>
+
+          <ul class="container mp-celebrity">
             <button class="">Create New</button>
-            <div class="row mp-movies__item">
-              <h3 class="col-movies-title">Movie 1 <span class="entypo-down-open"></span></h3>
-              <button class="col-movies-item">Update</button>
-              <button class="col-movies-item">Delete</button>
-            </div>
-            <div class="row mp-movies__item">
-              <h3 class="col-movies-title">Movie 2 <span class="entypo-down-open"></span></h3>
-              <button class="col-movies-item">Update</button>
-              <button class="col-movies-item">Delete</button>
-            </div>
-            <div class="row mp-movies__item">
-              <h3 class="col-movies-title">Movie 3 <span class="entypo-down-open"></span></h3>
-              <button class="col-movies-item">Update</button>
-              <button class="col-movies-item">Delete</button>
-            </div>
-          </div>
-
-          <div class="container mp-reviews">
-            <div class="row mp-reviews__item">
-              <h3 class="col-reviews-title">Review 1 <span class="entypo-down-open"></span></h3>
-              <button class="col-reviews-item">Delete</button>
-            </div>
-            <div class="row mp-reviews__item">
-              <h3 class="col-reviews-title">Review 2 <span class="entypo-down-open"></span></h3>
-              <button class="col-reviews-item">Delete</button>
-            </div>
-            <div class="row mp-reviews__item">
-              <h3 class="col-reviews-title">Review 3 <span class="entypo-down-open"></span></h3>
-              <button class="col-reviews-item">Delete</button>
-            </div>
-          </div>
-
-          <div class="container mp-carousel">
-            <div class="row mp-carousel__item">
-              <h3 class="col-carousel-title">Slide 1 <span class="entypo-down-open"></span></h3>
-              <button class="col-carousel-item">Update</button>
-              <button class="col-carousel-item">Delete</button>
-            </div>
-            <div class="row mp-carousel__item">
-              <h3 class="col-carousel-title">Slide 2 <span class="entypo-down-open"></span></h3>
-              <button class="col-carousel-item">Update</button>
-              <button class="col-carousel-item">Delete</button>
-            </div>
-            <div class="row mp-carousel__item">
-              <h3 class="col-carousel-title">Slide 3 <span class="entypo-down-open"></span></h3>
-              <button class="col-carousel-item">Update</button>
-              <button class="col-carousel-item">Delete</button>
-            </div>
-            <div class="row mp-carousel__item">
-              <h3 class="col-carousel-title">Slide 4 <span class="entypo-down-open"></span></h3>
-              <button class="col-carousel-item">Update</button>
-              <button class="col-carousel-item">Delete</button>
-            </div>
-            <div class="row mp-carousel__item">
-              <h3 class="col-carousel-title">Slide 5 <span class="entypo-down-open"></span></h3>
-              <button class="col-carousel-item">Update</button>
-              <button class="col-carousel-item">Delete</button>
-            </div>
-          </div>
-
-          <div class="container mp-application">
-            <div class="row mp-application__item">
-              <h3 class="col-application-title">Application 1 <span class="entypo-down-open"></span></h3>
-              <button class="col-application-item">Approve</button>
-              <button class="col-application-item">Decline</button>
-            </div>
-            <div class="row mp-application__item">
-              <h3 class="col-application-title">Application 2 <span class="entypo-down-open"></span></h3>
-              <button class="col-application-item">Approve</button>
-              <button class="col-application-item">Decline</button>
-            </div>
-            <div class="row mp-application__item">
-              <h3 class="col-application-title">Application 3 <span class="entypo-down-open"></span></h3>
-              <button class="col-application-item">Approve</button>
-              <button class="col-application-item">Decline</button>
-            </div>
-
-          </div>
-
-          <div class="container mp-celebrity">
-            <button class="">Create New</button>
-            <div class="row mp-celebrity__item">
-              <h3 class="col-celebrity-title">Celebrity 1 <span class="entypo-down-open"></span></h3>
+            <p>Id Name</p>
+            <li class="row mp-celebrity__item" *ngFor="let celebrity of allCelebrities; let i = index" [attr.data-index]="i">
+              <h3 class="col-celebrity-title">{{i+1}} {{celebrity.name}}<span class="entypo-down-open"></span></h3>
               <button class="col-celebrity-item">Update</button>
               <button class="col-celebrity-item">Delete</button>
-            </div>
-            <div class="row mp-celebrity__item">
-              <h3 class="col-celebrity-title">Celebrity 2 <span class="entypo-down-open"></span></h3>
-              <button class="col-celebrity-item">Update</button>
-              <button class="col-celebrity-item">Delete</button>
-            </div>
-            <div class="row mp-celebrity__item">
-              <h3 class="col-celebrity-title">Celebrity 3 <span class="entypo-down-open"></span></h3>
-              <button class="col-celebrity-item">Update</button>
-              <button class="col-celebrity-item">Delete</button>
-            </div>
-          </div>
+            </li>
+          </ul>
         </div>
       </div>
       <!--./row-->
