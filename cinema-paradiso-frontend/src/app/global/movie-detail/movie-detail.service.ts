@@ -26,6 +26,14 @@ export class MovieDetailService {
     return this.http.post('http://localhost:8080/watchlist/addWatchlist', params);
   }
 
+  removeFromWishList(imdbId: string) {
+    return this.http.delete('http://localhost:8080/wishlist/' + imdbId);
+  }
+
+  removeFromWacthList(imdbId: string) {
+    return this.http.delete('http://localhost:8080/watchlist/' + imdbId);
+  }
+
   getMovieDetails(imdbId: string): any {
     return this.http.get(MOVIE_SERVER + imdbId);
   }

@@ -68,7 +68,10 @@ public class WishlistController {
     }
 
     @RequestMapping(value = "/{filmId}", method = DELETE)
-    public ResponseEntity<Boolean> removeFromWishList(@PathVariable Integer filmId) {
-        return null;
+    public ResponseEntity<Boolean> removeFromWishList(@RequestHeader(value = "Authorization") String jwtToken, @PathVariable String filmId) {
+        Boolean result = listService.removeFromList(jwtTokenService.getUserIdFromToken(jwtToken), filmId);
+        if (result)
+            return ResponseEntity.ok(true);
+        return ResponseEntity.ok(false);
     }
 }

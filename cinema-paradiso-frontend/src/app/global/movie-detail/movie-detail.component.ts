@@ -88,11 +88,17 @@ export class MovieDetailComponent implements OnInit {
   }
 
   removeFromWishList() {
-
+    this.movieDetailService.removeFromWishList(this.selectedMovieId).subscribe(result => {
+      console.log(result);
+      location.reload(true);
+    });
   }
 
   removeFromWacthList() {
-
+    this.movieDetailService.removeFromWacthList(this.selectedMovieId).subscribe(result => {
+      console.log(result);
+      location.reload(true);
+    });
   }
 
   rateMovie() {

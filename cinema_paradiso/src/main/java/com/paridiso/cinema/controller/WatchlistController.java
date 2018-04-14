@@ -57,8 +57,12 @@ public class WatchlistController {
         return ResponseEntity.ok(false);
     }
     @RequestMapping(value = "/{filmId}", method = DELETE)
-    public ResponseEntity<Boolean> removeFromWatchList(@PathVariable Integer filmId) {
-        return null;
+    public ResponseEntity<Boolean> removeFromWatchList(@RequestHeader(value = "Authorization") String jwtToken, @PathVariable String filmId) {
+        Boolean result = listService.removeFromList(jwtTokenService.getUserIdFromToken(jwtToken), filmId);
+        System.out.println(result+"           qwdfqwfqefq");
+        if (result)
+            return ResponseEntity.ok(true);
+        return ResponseEntity.ok(false);
     }
 
 
