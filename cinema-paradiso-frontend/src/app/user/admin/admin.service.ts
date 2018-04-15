@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams, HttpRequest} from '@angular/common/http';
+import {Http, Response, Headers, RequestOptions} from "@angular/http";
 import {Observable} from 'rxjs/Observable';
+import {Observable} from "rxjs/Rx";
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
@@ -24,30 +26,31 @@ export class AdminService {
   getApplications(){
     return this.http.get('http://localhost:8080/admin/all_applications');
   }
-
   suspendUser(id:any) {
     return this.http.post('http://localhost:8080/user/suspend/'+id, null);
   }
-
   vertify(application:any){
     return this.http.post('http://localhost:8080/user/vertify/critic', + application);
   }
-
   updateMovie(movie:any){
     return this.http.post('http://localhost:8080/movie/update', + movie);
   }
-
   updateSlide(id:any, slide:any){
     return this.http.post('http://localhost:8080/carsoul/slides/'+id, slide);
   }
-
   updateCelebrity(celebrity:any){
     return this.http.post('http://localhost:8080/celebrity/update', celebrity);
   }
-
   deleteMovie(movieId:String){
     return this.http.delete('http://localhost:8080/movie/delete/'+movieId);
   }
-
-
+  deleteUser(userId:any){
+    return this.http.delete('http://localhost:8080/user/delete/'+userId);
+  }
+  deleteCelebrity(celebrityId:String){
+    return this.http.delete('http://localhost:8080/celebrity/delete/'+celebrityId);
+  }
+  deleteReview(reviewId:any){
+    return this.http.delete('http://localhost:8080/review/delete/'+reviewId);
+  }
 }
