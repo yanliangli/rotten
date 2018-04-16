@@ -21,12 +21,21 @@ export class AdminService {
     let body = JSON.stringify(movie);
     return this.http.post('http://localhost:8080/movie/add', body, httpOptions)
   }
+<<<<<<< HEAD
 
   updateMovie(movie){
     let body = JSON.stringify(movie);
     return this.http.post('http://localhost:8080/movie/update', body, httpOptions)
   }
 
+=======
+  updateMovie(movie){
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    let body = JSON.stringify(movie);
+    return this.http.post('http://localhost:8080/movie/update', +body).map((res:Response)=> res.json());
+  }
+>>>>>>> refs/remotes/origin/master
   deleteMovie(movieId:String){
     return this.http.delete('http://localhost:8080/movie/delete/'+movieId);
   }
@@ -37,10 +46,17 @@ export class AdminService {
   }
   deleteUser(userId:any){
     return this.http.delete('http://localhost:8080/user/delete/'+userId);
+<<<<<<< HEAD
   }
   suspendUser(id:any) {
     return this.http.post('http://localhost:8080/user/suspend/'+id, null);
   }
+=======
+  }
+  suspendUser(id:any) {
+    return this.http.post('http://localhost:8080/user/suspend/'+id, null);
+  }
+>>>>>>> refs/remotes/origin/master
 
   // manage celebrities
   getCelebrities(){

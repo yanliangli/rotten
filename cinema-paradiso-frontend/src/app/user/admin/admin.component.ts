@@ -254,6 +254,10 @@ export class AdminComponent implements OnInit {
     else{$(".movie_detail").eq(i).show();}
 
     if ($(".create_new_movie").is(":visible")){$(".create_new_movie").hide();}
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/remotes/origin/master
     if ($(".movie_poster").eq(i).is(":visible")){$(".movie_poster").eq(i).hide();}
   }
   showPoster(m, i){
@@ -262,6 +266,7 @@ export class AdminComponent implements OnInit {
 
     if ($(".movie_poster").eq(i).is(":visible")){$(".movie_poster").eq(i).hide();}
     else{$(".movie_poster").eq(i).show();}
+<<<<<<< HEAD
   }
 
   addMovie(){
@@ -494,6 +499,8 @@ export class AdminComponent implements OnInit {
     $(".movie_poster").hide();
     $(".movie_detail").hide();
     $(".create_new_movie").hide();
+=======
+>>>>>>> refs/remotes/origin/master
   }
 
   deleteMovie(m){
