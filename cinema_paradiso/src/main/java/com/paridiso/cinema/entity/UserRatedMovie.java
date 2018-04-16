@@ -7,7 +7,7 @@ import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(name = "UserRatedMovies",  uniqueConstraints = @UniqueConstraint(columnNames = "imdbId"))
-public class UserRatedMovie extends Movie {
+public class UserRatedMovie extends Film {
 
     @Column(name = "userRate")
     private Integer userRate;
