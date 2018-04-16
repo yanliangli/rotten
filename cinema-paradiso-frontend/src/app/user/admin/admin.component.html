@@ -52,7 +52,7 @@
           <ul class="container mp-movies">
             <button class="" (click)="showAddNewMovieForm()">Create New</button>
             <div class="create_new_movie">
-              <form>
+              <form id="addMovieForm" (submit)="addMovie()">
                 IMDb Id<br>
                 <input type="text" name="imdbId" >
                 <br>Title:<br>
@@ -61,6 +61,10 @@
                 <input type="text" name="year">
                 <br>Rated:<br>
                 <input type="text" name="rated">
+                <br>Rating:<br>
+                <input type="text" name="rating">
+                <br>Number of Ratings:<br>
+                <input type="text" name="num_of_rating">
                 <br>Release Date:<br>
                 <input type="date" name="releaseDate">
                 <br>Box Office:<br>
