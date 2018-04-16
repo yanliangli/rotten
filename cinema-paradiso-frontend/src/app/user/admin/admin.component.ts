@@ -13,7 +13,6 @@ import {Celebrity} from '../../global/models/celebrity.model';
 import {User} from '../user/user.model';
 import {Review} from '../../global/models/review.model';
 import {Application} from '../../global/models/application.model';
-import {Observable} from "rxjs/Rx";
 
 class Profile {
   name: string;
@@ -45,15 +44,15 @@ export class AdminComponent implements OnInit {
     // load users
    // this.getUsers();
     // load movies
-    // this.getMovies();
-    // // load reviews
-    // this.getReviews();
-    // // load celebrities
-    // this.getCelebrities();
-    // // load carousel
-    // this.getCarousel();
-    // // load applications
-    // this.getApplications();
+    this.getMovies();
+    // load reviews
+    this.getReviews();
+    // load celebrities
+    this.getCelebrities();
+    // load carousel
+    this.getCarousel();
+    // load applications
+    this.getApplications();
 
     // load admin info
     if (this.loginStatusService.getTokenDetails() !== null) {
@@ -106,6 +105,9 @@ export class AdminComponent implements OnInit {
 
         $('.mp-users').hide();
         $('.mp-movies').show();
+        $('.create_new_movie').hide();
+        $('.movie_detail').hide();
+        $('.movie_poster').hide();
         $('.mp-application').hide();
         $('.mp-carousel').hide();
         $('.mp-reviews').hide();
@@ -186,7 +188,6 @@ export class AdminComponent implements OnInit {
         },
         error => console.log('Failed to fetch movie data')
       );
-    this.cancelAddMovie();
   }
 
   getCelebrities():any {
@@ -241,277 +242,68 @@ export class AdminComponent implements OnInit {
       );
   }
 
-  showAddNewMovieForm(){
-    if ($(".movie_poster").is(":visible")){$(".movie_poster").hide();}
-    if ($(".movie_detail").is(":visible")){$(".movie_detail").hide();}
 
-    if ($(".create_new_movie").is(":visible")){$(".create_new_movie").hide();}
-    else{$(".create_new_movie").show();}
+  showAddNewMovieForm(){
+    if ($(".movie_poster").is(":visible")){
+      $(".movie_poster").hide();
+    }
+    if ($(".movie_detail").is(":visible")){
+      $(".movie_detail").hide();
+    }
+    if ($(".create_new_movie").is(":visible")){
+      $(".create_new_movie").hide();
+    }
+    else{
+      $(".create_new_movie").show();
+    }
 
   }
   showMovieDetail(m, i){
-    if ($(".movie_detail").eq(i).is(":visible")){$(".movie_detail").eq(i).hide();}
-    else{$(".movie_detail").eq(i).show();}
-
-    if ($(".create_new_movie").is(":visible")){$(".create_new_movie").hide();}
-    if ($(".movie_poster").eq(i).is(":visible")){$(".movie_poster").eq(i).hide();}
-  }
-  showPoster(m, i){
-    if ($(".create_new_movie").is(":visible")){$(".create_new_movie").hide();}
-    if ($(".movie_detail").eq(i).is(":visible")){$(".movie_detail").eq(i).hide();}
-
-    if ($(".movie_poster").eq(i).is(":visible")){$(".movie_poster").eq(i).hide();}
-    else{$(".movie_poster").eq(i).show();}
-  }
-
-  addMovie(){
-    // var data = $('#add_movie_form').serializeArray().reduce(function(obj, item) {
-    //   obj[item.name] = item.value;
-    //   return obj;
-    // }, {});
-    // console.log("data: ");
-    // console.log(data);
-    // this.adminService.createMovie(data).subscribe(
-    //   data => {
-    //     // refresh the list
-    //     this.getMovies();
-    //     return true;
-    //   },
-    //   error => {
-    //     console.error("Error creating movie!");
-    //     return Observable.throw(error);
-    //   }
-    // );
-    let movie={
-      "imdbId": "tt999991499494999999999",
-        "title": "I Love CS",
-        "year": 2017,
-        "rated": "R",
-        "releaseDate": 20171121,
-        "genres": ["CRIME", "DRAMA"],
-        "awards": ["Nominated for 3 BAFTA Film Awards"],
-        "photos": ["https://images-na.ssl-images-amazon.com/images/M/MV5BNTA3ODgwNjc3NV5BMl5BanBnXkFtZTgwMTIyNTYxNDM@.jpg"],
-        "director": {
-        "PHOTO_LOCATION": "/tmp/celebrity",
-          "celebrityId": "nm0015359",
-          "name": "Fatih Akin",
-          "profileImage": null,
-          "biography": null,
-          "birthDate": null,
-          "birthCity": null,
-          "birthState": null,
-          "birthCountry": null,
-          "filmography": [],
-          "director": true,
-          "photo_LOCATION": "/tmp/celebrity",
-          "profileImageName": null
-      },
-      "trailers": [],
-        "reviews": [],
-        "plot": "Katja's life collapses after the death of her husband and son in a bomb attack. After a time of mourning and injustice, Katja seeks revenge.",
-        "language": "English",
-        "country": "USA",
-        "poster": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTE0MDQxODg2NTJeQTJeQWpwZ15BbWU4MDIwODkyMjQz._V1_SX300.jpg",
-        "rating": 4.7,
-        "production": "Alcon Entertainment",
-        "website": "",
-        "boxOffice": 191925612,
-        "runTime": 105,
-        "casts": [
-        {
-          "PHOTO_LOCATION": "/tmp/celebrity",
-          "celebrityId": "nm5645519",
-          "name": "Anthony Gonzalez",
-          "profileImage": null,
-          "biography": null,
-          "birthDate": null,
-          "birthCity": null,
-          "birthState": null,
-          "birthCountry": null,
-          "filmography": [],
-          "director": false,
-          "photo_LOCATION": "/tmp/celebrity",
-          "profileImageName": null
-        },
-        {
-          "PHOTO_LOCATION": "/tmp/celebrity",
-          "celebrityId": "nm0305558",
-          "name": "Gael García Bernal",
-          "profileImage": null,
-          "biography": null,
-          "birthDate": null,
-          "birthCity": null,
-          "birthState": null,
-          "birthCountry": null,
-          "filmography": [],
-          "director": false,
-          "photo_LOCATION": "/tmp/celebrity",
-          "profileImageName": null
-        },
-        {
-          "PHOTO_LOCATION": "/tmp/celebrity",
-          "celebrityId": "nm0000973",
-          "name": "Benjamin Bratt",
-          "profileImage": null,
-          "biography": null,
-          "birthDate": null,
-          "birthCity": null,
-          "birthState": null,
-          "birthCountry": null,
-          "filmography": [],
-          "director": false,
-          "photo_LOCATION": "/tmp/celebrity",
-          "profileImageName": null
-        }
-      ]
-    };
-    this.adminService.createMovie(movie).subscribe(
-      data => {
-        // refresh the list
-        this.getMovies();
-        return true;
-      },
-      error => {
-        console.error("Error creating movie!");
-        return Observable.throw(error);
-      }
-    );
-  }
-
-  updateMovie(){
-    let m = {
-      "imdbId": "tt5580390",
-      "title": "The Shape of Computer Science",
-      "year": 2017,
-      "rated": "R",
-      "releaseDate": 20171118,
-      "genres": ["ADVENTURE", "DRAMA", "FANTASY", "HORROR", "ROMANCE"],
-      "awards": ["academy awarded"],
-      "photos": ["../../../assets/images/carousel_img/2.jpg_)"],
-      "director": {
-        "PHOTO_LOCATION": "/tmp/celebrity",
-        "celebrityId": "nm0868219",
-        "name": "Guillermo del Toro",
-        "profileImage": null,
-        "biography": "Guillermo del Toro was born October 9, 1964 in Guadalajara Jalisco, Mexico. Raised by his Catholic grandmother, del Toro developed an interest in filmmaking in his early teens...",
-        "birthDate": null,
-        "birthCity": null,
-        "birthState": null,
-        "birthCountry": null,
-        "filmography": [],
-        "director": true,
-        "photo_LOCATION": "/tmp/celebrity",
-        "profileImageName": null
-      },
-      "trailers": [],
-      "reviews": [],
-      "plot": "At a top secret research facility in the 1960s, a lonely janitor forms a unique relationship with an amphibious creature that is being held in captivity.",
-      "language": "English",
-      "country": "USA",
-      "poster": null,
-      "rating": 4.3,
-      "production": "A24 Films",
-      "website": "http://moonlight.movie/",
-      "boxOffice": 19400000,
-      "runTime": 111,
-      "cast": [
-        {
-          "PHOTO_LOCATION": "/tmp/celebrity",
-          "celebrityId": "nm1020089",
-          "name": "Sally Hawkins",
-          "profileImage": null,
-          "biography": null,
-          "birthDate": null,
-          "birthCity": null,
-          "birthState": null,
-          "birthCountry": null,
-          "filmography": [],
-          "director": true,
-          "photo_LOCATION": "/tmp/celebrity",
-          "profileImageName": null
-        },
-        {
-          "PHOTO_LOCATION": "/tmp/celebrity",
-          "celebrityId": "nm0788335",
-          "name": "Michael Shannon",
-          "profileImage": null,
-          "biography": null,
-          "birthDate": null,
-          "birthCity": null,
-          "birthState": null,
-          "birthCountry": null,
-          "filmography": [],
-          "director": true,
-          "photo_LOCATION": "/tmp/celebrity",
-          "profileImageName": null
-        },
-        {
-          "PHOTO_LOCATION": "/tmp/celebrity",
-          "celebrityId": "nm0420955",
-          "name": "Richard Jenkins",
-          "profileImage": null,
-          "biography": null,
-          "birthDate": null,
-          "birthCity": null,
-          "birthState": null,
-          "birthCountry": null,
-          "filmography": [],
-          "director": true,
-          "photo_LOCATION": "/tmp/celebrity",
-          "profileImageName": null
-        },
-        {
-          "PHOTO_LOCATION": "/tmp/celebrity",
-          "celebrityId": "nm0818055",
-          "name": "Octavia Spencer",
-          "profileImage": null,
-          "biography": null,
-          "birthDate": null,
-          "birthCity": null,
-          "birthState": null,
-          "birthCountry": null,
-          "filmography": [],
-          "director": true,
-          "photo_LOCATION": "/tmp/celebrity",
-          "profileImageName": null
-        }
-      ]
+    if ($(".create_new_movie").is(":visible")){
+      $(".create_new_movie").hide();
     }
-    this.adminService.updateMovie(m).subscribe(
-      data => {
-        // refresh the list
-        this.getMovies();
-        return true;
-      },
-      error => {
-        console.error("Error updating "+m.title);
-        return Observable.throw(error);
-      }
-    );
+    if ($(".movie_poster").eq(i).is(":visible")){
+      $(".movie_poster").eq(i).hide();
+    }
+    if ($(".movie_detail").eq(i).is(":visible")){
+      $(".movie_detail").eq(i).hide();
+    }
+    else{
+      $(".movie_detail").eq(i).show();
+    }
   }
 
-  cancelAddMovie(){
-    $(".movie_poster").hide();
-    $(".movie_detail").hide();
-    $(".create_new_movie").hide();
+  showPoster(m, i){
+    if ($(".create_new_movie").is(":visible")){
+      $(".create_new_movie").hide();
+    }
+    if ($(".movie_detail").eq(i).is(":visible")){
+      $(".movie_detail").eq(i).hide();
+    }
+    if ($(".movie_poster").eq(i).is(":visible")){
+      $(".movie_poster").eq(i).hide();
+    }
+    else{
+      $(".movie_poster").eq(i).show();
+    }
   }
 
   deleteMovie(m){
-    if(confirm("Want to delete movie "+ m.title)){
+    var result = confirm("Want to delete movie "+ m.title);
+    if(result){
       console.log("deleting: "+m.imdbId);
-      this.adminService.deleteMovie(m.imdbId).subscribe(
-        data => {
-          // refresh the list
-          this.getMovies();
-          return true;
-        },
-        error => {
-          console.error("Error deleting movie!");
-          return Observable.throw(error);
-        }
-      );
+      this.adminService.deleteMovie(m.imdbId);
+      console.log("deleted")
     }
   }
 
-
+  cancel_add_movie(){
+    if ($(".movie_poster").is(":visible")){
+      $(".movie_poster").hide();
+    }
+    if ($(".movie_detail").is(":visible")){
+      $(".movie_detail").hide();
+    }
+    $(".create_new_movie").hide();
+  }
 }//end oninit
