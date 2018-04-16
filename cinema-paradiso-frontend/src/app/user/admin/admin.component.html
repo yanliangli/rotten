@@ -11,26 +11,26 @@
           <nav>
             <ul>
               <li>
-                <a href="javascript:void(0);" data-title="Users" id="manage-user">Manage Users</a>
+                <a href="javascript:void(0);" data-title="Users" id="manage-user" (click)="getUsers()">Manage Users</a>
               </li>
               <li>
-                <a href="javascript:void(0);" data-title="Movies" id="manage-movies">Manage Movies</a>
+                <a href="javascript:void(0);" data-title="Movies" id="manage-movies" (click)="getMovies()">Manage Movies</a>
               </li>
               <li>
-                <a href="javascript:void(0);" data-title="Reviews" id="manage-reviews">Manage Reviews</a>
+                <a href="javascript:void(0);" data-title="Reviews" id="manage-reviews" (click)="getReviews()">Manage Reviews</a>
               </li>
               <li>
-                <a href="javascript:void(0);" data-title="Carousel" id="manage-carousel">Manage Carousel</a>
+                <a href="javascript:void(0);" data-title="Carousel" id="manage-carousel" (click)="getCarousel()">Manage Carousel</a>
               </li>
               <li>
-                <a href="javascript:void(0);" data-title="Celebrities" id="manage-celebrities">Manage Celebrities</a>
+                <a href="javascript:void(0);" data-title="Celebrities" id="manage-celebrities" (click)="getCelebrities()">Manage Celebrities</a>
               </li>
               <li>
-                <a href="javascript:void(0);" data-title="Critic Application" id="manage-application">Critic Application</a>
+                <a href="javascript:void(0);" data-title="Critic Application" id="manage-application" (click)="getApplications()">Critic Application</a>
               </li>
-              <li>
-                <a href="javascript:void(0);" data-title="Settings">Settings</a>
-              </li>
+              <!--<li>-->
+                <!--<a href="javascript:void(0);" data-title="Settings">Settings</a>-->
+              <!--</li>-->
             </ul>
           </nav>
         </header>
@@ -52,7 +52,7 @@
           <ul class="container mp-movies">
             <button class="" (click)="showAddNewMovieForm()">Create New</button>
             <div class="create_new_movie">
-              <form id="addMovieForm" (submit)="addMovie()">
+              <form id="add_movie_form" (submit)="addMovie()" >
                 IMDb Id<br>
                 <input type="text" name="imdbId" >
                 <br>Title:<br>
@@ -61,10 +61,6 @@
                 <input type="text" name="year">
                 <br>Rated:<br>
                 <input type="text" name="rated">
-                <br>Rating:<br>
-                <input type="text" name="rating">
-                <br>Number of Ratings:<br>
-                <input type="text" name="num_of_rating">
                 <br>Release Date:<br>
                 <input type="date" name="releaseDate">
                 <br>Box Office:<br>
@@ -98,7 +94,7 @@
                 <br>Official Website:<br>
                 <input type="text" name="official_website">
                 <br><br>
-                <input type="submit" value="Submit"> <input type="button" value="Cancel" (click)="cancel_add_movie()">
+                <input type="submit" value="Submit"> <input type="button" value="Cancel" (click)="cancelAddMovie()">
               </form>
             </div>
             <p>Id&nbsp;ImdbID&nbsp;&nbsp;&nbsp;Title</p>
@@ -108,7 +104,7 @@
               <button class="col-movies-item" (click)="showPoster(movie,i)">Change Poster</button>
               <button class="col-movies-item" (click)="deleteMovie(movie)">Delete</button>
               <div class="movie_detail" [attr.data-index]="i">
-                <form>
+                <form id="update_movie_form" (submit)="updateMovie()">
                   Title:<br>
                   <input type="text" name="title" placeholder="{{movie.title}}">
                   <br>Genre:<br>
@@ -176,7 +172,7 @@
             <p>Id Name</p>
             <li class="row mp-celebrity__item" *ngFor="let celebrity of allCelebrities; let i = index" [attr.data-index]="i">
               <h3 class="col-celebrity-title">{{i+1}} {{celebrity.name}}<span class="entypo-down-open"></span></h3>
-              <button class="col-celebrity-item">Update</button>
+              <button class="col-celebrity-item"  (click)="deleteCelebrity(celebrity)">Update</button>
               <button class="col-celebrity-item">Delete</button>
             </li>
           </ul>
