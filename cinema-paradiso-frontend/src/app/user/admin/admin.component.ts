@@ -13,7 +13,6 @@ import {Celebrity} from '../../global/models/celebrity.model';
 import {User} from '../user/user.model';
 import {Review} from '../../global/models/review.model';
 import {Application} from '../../global/models/application.model';
-import {Observable} from "rxjs/Rx";
 
 class Profile {
   name: string;
@@ -241,12 +240,19 @@ export class AdminComponent implements OnInit {
       );
   }
 
-  showAddNewMovieForm(){
-    if ($(".movie_poster").is(":visible")){$(".movie_poster").hide();}
-    if ($(".movie_detail").is(":visible")){$(".movie_detail").hide();}
 
-    if ($(".create_new_movie").is(":visible")){$(".create_new_movie").hide();}
-    else{$(".create_new_movie").show();}
+  showAddNewMovieForm(){
+    if ($(".movie_poster").is(":visible")){
+      $(".movie_poster").hide();
+    }
+      $(".movie_detail").hide();
+    }
+    if ($(".create_new_movie").is(":visible")){
+      $(".create_new_movie").hide();
+    }
+    else{
+      $(".create_new_movie").show();
+    }
 
   }
   showMovieDetail(m, i){
@@ -255,13 +261,22 @@ export class AdminComponent implements OnInit {
 
     if ($(".create_new_movie").is(":visible")){$(".create_new_movie").hide();}
     if ($(".movie_poster").eq(i).is(":visible")){$(".movie_poster").eq(i).hide();}
-  }
-  showPoster(m, i){
-    if ($(".create_new_movie").is(":visible")){$(".create_new_movie").hide();}
-    if ($(".movie_detail").eq(i).is(":visible")){$(".movie_detail").eq(i).hide();}
 
-    if ($(".movie_poster").eq(i).is(":visible")){$(".movie_poster").eq(i).hide();}
-    else{$(".movie_poster").eq(i).show();}
+  }
+
+  showPoster(m, i){
+    if ($(".create_new_movie").is(":visible")){
+      $(".create_new_movie").hide();
+    }
+    if ($(".movie_detail").eq(i).is(":visible")){
+      $(".movie_detail").eq(i).hide();
+    }
+    if ($(".movie_poster").eq(i).is(":visible")){
+      $(".movie_poster").eq(i).hide();
+    }
+    else{
+      $(".movie_poster").eq(i).show();
+    }
   }
 
   addMovie(){
@@ -497,19 +512,11 @@ export class AdminComponent implements OnInit {
   }
 
   deleteMovie(m){
-    if(confirm("Want to delete movie "+ m.title)){
+    var result = confirm("Want to delete movie "+ m.title);
+    if(result){
       console.log("deleting: "+m.imdbId);
-      this.adminService.deleteMovie(m.imdbId).subscribe(
-        data => {
-          // refresh the list
-          this.getMovies();
-          return true;
-        },
-        error => {
-          console.error("Error deleting movie!");
-          return Observable.throw(error);
-        }
-      );
+      this.adminService.deleteMovie(m.imdbId);
+      console.log("deleted")
     }
   }
 

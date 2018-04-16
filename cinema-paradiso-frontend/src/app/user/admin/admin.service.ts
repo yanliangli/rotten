@@ -1,14 +1,9 @@
 import { Injectable } from '@angular/core';
-import {Http, Response, Headers, RequestOptions} from "@angular/http";
-import {HttpClient, HttpParams, HttpRequest, HttpHeaders, HttpResponse} from '@angular/common/http';
+import {HttpClient, HttpParams, HttpRequest} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
-import {Observable} from "rxjs/Rx";
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
 @Injectable()
 export class AdminService {
 
@@ -21,7 +16,6 @@ export class AdminService {
     let body = JSON.stringify(movie);
     return this.http.post('http://localhost:8080/movie/add', body, httpOptions)
   }
-
   updateMovie(movie){
     let body = JSON.stringify(movie);
     return this.http.post('http://localhost:8080/movie/update', body, httpOptions)
@@ -31,52 +25,45 @@ export class AdminService {
     return this.http.delete('http://localhost:8080/movie/delete/'+movieId);
   }
 
-  // manage users
-  getUsers(){
+  getUsers() {
     return this.http.get('http://localhost:8080/admin/all_users');
   }
-  deleteUser(userId:any){
-    return this.http.delete('http://localhost:8080/user/delete/'+userId);
+  getMovies() {
+    return this.http.get('http://localhost:8080/movie/all');
   }
-  suspendUser(id:any) {
+  getCelebrities() {
+    return this.http.get('http://localhost:8080/celebrity/all_celebrities');
+  }
+  getReviews() {
+    return this.http.get('http://localhost:8080/review/all_reviews');
+  }
+  getApplications() {
+    return this.http.get('http://localhost:8080/admin/all_applications');
+  }
+
+  suspendUser(id: any) {
     return this.http.post('http://localhost:8080/user/suspend/'+id, null);
   }
 
-  // manage celebrities
-  getCelebrities(){
-    return this.http.get('http://localhost:8080/celebrity/all_celebrities');
-  }
-  updateCelebrity(celebrity:any){
-    return this.http.post('http://localhost:8080/celebrity/update', celebrity);
-  }
-  deleteCelebrity(celebrityId:String){
-    return this.http.delete('http://localhost:8080/celebrity/delete/'+celebrityId);
-  }
-
-  //manage applications
-  getApplications(){
-    return this.http.get('http://localhost:8080/admin/all_applications');
-  }
-  vertify(application:any){
+  vertify(application: any) {
     return this.http.post('http://localhost:8080/user/vertify/critic', + application);
   }
 
-  //manage reviews
-  getReviews(){
-    return this.http.get('http://localhost:8080/review/all_reviews');
-  }
-  deleteReview(reviewId:any){
-    return this.http.delete('http://localhost:8080/review/delete/'+reviewId);
+  updateMovie(movie: any) {
+    return this.http.post('http://localhost:8080/movie/update', + movie);
   }
 
-
-  //manage carousels
-  updateSlide(id:any, slide:any){
-    return this.http.post('http://localhost:8080/carousel/slides/'+id, slide);
+  updateSlide(id: any, slide: any) {
+    return this.http.post('http://localhost:8080/carsoul/slides/'+id, slide);
   }
 
+  updateCelebrity(celebrity: any) {
+    return this.http.post('http://localhost:8080/celebrity/update', celebrity);
+  }
 
-
+  deleteMovie(movieId: String) {
+    return this.http.delete('http://localhost:8080/movie/delete/'+movieId);
+  }
 
 
 }
