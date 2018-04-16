@@ -9,43 +9,43 @@ export class AdminService {
 
   constructor(private http: HttpClient) { }
 
-  getUsers(){
+  getUsers() {
     return this.http.get('http://localhost:8080/admin/all_users');
   }
-  getMovies(){
+  getMovies() {
     return this.http.get('http://localhost:8080/movie/all');
   }
-  getCelebrities(){
+  getCelebrities() {
     return this.http.get('http://localhost:8080/celebrity/all_celebrities');
   }
-  getReviews(){
+  getReviews() {
     return this.http.get('http://localhost:8080/review/all_reviews');
   }
-  getApplications(){
+  getApplications() {
     return this.http.get('http://localhost:8080/admin/all_applications');
   }
 
-  suspendUser(id:any) {
+  suspendUser(id: any) {
     return this.http.post('http://localhost:8080/user/suspend/'+id, null);
   }
 
-  vertify(application:any){
+  vertify(application: any) {
     return this.http.post('http://localhost:8080/user/vertify/critic', + application);
   }
 
-  updateMovie(movie:any){
+  updateMovie(movie: any) {
     return this.http.post('http://localhost:8080/movie/update', + movie);
   }
 
-  updateSlide(id:any, slide:any){
+  updateSlide(id: any, slide: any) {
     return this.http.post('http://localhost:8080/carsoul/slides/'+id, slide);
   }
 
-  updateCelebrity(celebrity:any){
+  updateCelebrity(celebrity: any) {
     return this.http.post('http://localhost:8080/celebrity/update', celebrity);
   }
 
-  deleteMovie(movieId:String){
+  deleteMovie(movieId: String) {
     return this.http.delete('http://localhost:8080/movie/delete/'+movieId);
   }
 
