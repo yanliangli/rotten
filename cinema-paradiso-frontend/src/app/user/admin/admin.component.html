@@ -172,7 +172,7 @@
             <p>Id Name</p>
             <li class="row mp-celebrity__item" *ngFor="let celebrity of allCelebrities; let i = index" [attr.data-index]="i">
               <h3 class="col-celebrity-title">{{i+1}} {{celebrity.name}}<span class="entypo-down-open"></span></h3>
-              <button class="col-celebrity-item">Update</button>
+              <button class="col-celebrity-item"  (click)="deleteCelebrity(celebrity)">Update</button>
               <button class="col-celebrity-item">Delete</button>
             </li>
           </ul>

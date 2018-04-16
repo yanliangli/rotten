@@ -12,7 +12,8 @@ import {Movie} from '../../global/models/movie.model';
 import {Celebrity} from '../../global/models/celebrity.model';
 import {User} from '../user/user.model';
 import {Review} from '../../global/models/review.model';
-import {Application} from '../../global/models/application.model';
+import {CriticApplication} from '../../global/models/criticApplication.model';
+import {Observable} from 'rxjs/Observable';
 
 class Profile {
   name: string;
@@ -35,7 +36,7 @@ export class AdminComponent implements OnInit {
   allCelebrities: Celebrity[];
   allUsers: User[];
   allReviews: Review[];
-  allApplications: Application[];
+  allApplications: CriticApplication[];
   currentAdIndex: number = -1;
   constructor(private router: Router, private loginService: LoginService, private modalService: NgbModal, private regUserService: RegUserService, private adminService: AdminService, private homeService: HomeService, private loginStatusService: LoginStatusService, private toastr: ToastrService) {
   }
@@ -232,7 +233,7 @@ export class AdminComponent implements OnInit {
       .subscribe(
         data => {
           // console.log(data);
-          this.allApplications = data as Application[];
+          this.allApplications = data as CriticApplication[];
           console.log("applications: ");
           console.log(this.allApplications);
         },
@@ -245,6 +246,7 @@ export class AdminComponent implements OnInit {
     if ($(".movie_poster").is(":visible")){
       $(".movie_poster").hide();
     }
+    if ($(".movie_detail").is(":visible")){
       $(".movie_detail").hide();
     }
     if ($(".create_new_movie").is(":visible")){
@@ -259,9 +261,8 @@ export class AdminComponent implements OnInit {
     if ($(".movie_detail").eq(i).is(":visible")){$(".movie_detail").eq(i).hide();}
     else{$(".movie_detail").eq(i).show();}
 
-    if ($(".create_new_movie").is(":visible")){$(".create_new_movie").hide();}
     if ($(".movie_poster").eq(i).is(":visible")){$(".movie_poster").eq(i).hide();}
-
+    if ($(".create_new_movie").is(":visible")){$(".create_new_movie").hide();}
   }
 
   showPoster(m, i){
@@ -516,6 +517,15 @@ export class AdminComponent implements OnInit {
     if(result){
       console.log("deleting: "+m.imdbId);
       this.adminService.deleteMovie(m.imdbId);
+      console.log("deleted")
+    }
+  }
+
+  deleteCelebrity(c:Celebrity){
+    var result = confirm("Want to delete "+ c.name);
+    if(result){
+      console.log("deleting: "+c.name);
+      this.adminService.deleteCelebrity(c.celebrityId);
       console.log("deleted")
     }
   }
