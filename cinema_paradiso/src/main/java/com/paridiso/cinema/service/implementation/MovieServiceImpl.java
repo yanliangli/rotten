@@ -73,7 +73,7 @@ public class MovieServiceImpl implements FilmService {
         } else {
             movie.setNumberOfRatings(movie.getNumberOfRatings() + 1);
         }
-        Double newRatings = (movie.getRating() + rating) / movie.getNumberOfRatings();
+        Double newRatings = (double)Math.round(((movie.getRating()*(movie.getNumberOfRatings()-1) + rating) / movie.getNumberOfRatings())*100)/100;
         movie.setRating(newRatings);
         movieRepository.save(movie);
     }
