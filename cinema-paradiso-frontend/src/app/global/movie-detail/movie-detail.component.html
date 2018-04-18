@@ -104,8 +104,11 @@
       <div class="col-right content-wrap">
         <!-- poster -->
         <div class="r_poster">
-          <img [src]="movie.photos[0]" [alt]="movie.title" >
-          <a href="#" class="r_poster--play"><i class="fa fa-play fa-2x"></i></a>
+          <img id="detail_poster" [src]="movie.photos[0]" [alt]="movie.title" >
+          <a class="r_poster--play" onclick="$('#detail_poster').hide(); $(this).hide(); $('#poster_trailer').show();"><i class="fa fa-play fa-2x"></i></a>
+          <div id="poster_trailer">
+            <iframe src="https://www.imdb.com/videoembed/vi3581589785" allowfullscreen width="687" height="288"></iframe>
+          </div>
         </div>
         <!-- ratings -->
         <div class="container">
@@ -122,62 +125,68 @@
                     <span><i class=" fa fa-star icon-star "></i></span>
                   </div>
                   <div class="rating-users">
-                    <i class="icon-user"></i> 9,004 Total
+                    <i class="icon-user"></i> {{movie.numberOfRatings}}Total
                   </div>
                 </div>
 
                 <div class="histo">
                   <div class="five histo-rate">
-        <span class="histo-star ">
-          <i class="active  icon-star"></i> 5           </span>
+                    <span class="histo-star ">
+                      <i class="active  icon-star"></i> 5
+                    </span>
                     <span class="bar-block">
-          <span id="bar-five" class="bar">
-            <span>6,784</span>&nbsp;
-          </span>
-        </span>
+                      <span id="bar-five" class="bar">
+                        <span>5000</span>&nbsp;
+                      </span>
+                    </span>
                   </div>
 
                   <div class="four histo-rate">
-        <span class="histo-star">
-          <i class="active   icon-star"></i> 4           </span>
+                    <span class="histo-star">
+                      <i class="active   icon-star"></i> 4
+                    </span>
                     <span class="bar-block">
-          <span id="bar-four" class="bar">
-            <span>1298</span>&nbsp;
-          </span>
-        </span>
+                      <span id="bar-four" class="bar">
+                        <span>1298</span>&nbsp;
+                      </span>
+                    </span>
                   </div>
 
                   <div class="three histo-rate">
-        <span class="histo-star">
-          <i class="active  icon-star"></i> 3           </span>
+                    <span class="histo-star">
+                      <i class="active  icon-star"></i> 3
+                    </span>
                     <span class="bar-block">
-          <span id="bar-three" class="bar">
-            <span>940</span>&nbsp;
-          </span>
-        </span>
+                      <span id="bar-three" class="bar">
+                        <span>940</span>&nbsp;
+                      </span>
+                    </span>
                   </div>
 
                   <div class="two histo-rate">
-        <span class="histo-star">
-          <i class="active  icon-star"></i> 2           </span>
+                    <span class="histo-star">
+                      <i class="active  icon-star"></i> 2
+                    </span>
                     <span class="bar-block">
-          <span id="bar-two" class="bar">
-            <span>525</span>&nbsp;
-          </span>
-        </span>
+                      <span id="bar-two" class="bar">
+                        <span>525</span>&nbsp;
+                      </span>
+                    </span>
                   </div>
 
                   <div class="one histo-rate">
-        <span class="histo-star">
-          <i class="active icon-star"></i> 1          </span>
+                    <span class="histo-star">
+                      <i class="active icon-star"></i> 1
+                    </span>
                     <span class="bar-block">
-          <span id="bar-one" class="bar">
-            <span>57</span>&nbsp;
-          </span>
-        </span>
+                      <span id="bar-one" class="bar">
+                        <span>57</span>&nbsp;
+                      </span>
+                    </span>
                   </div>
                 </div>
               </div>
+              <!--end normal user review-->
             </div>
             <div class="col-ratings rating-container">
               <div class="rating-inner">
@@ -197,66 +206,71 @@
 
                 <div class="histo">
                   <div class="five histo-rate">
-        <span class="histo-star ">
-          <i class="active  icon-star"></i> 5           </span>
+                    <span class="histo-star ">
+                      <i class="active  icon-star"></i> 5
+                    </span>
                     <span class="bar-block">
-          <span id="bar-ten" class="bar">
-            <span>6,784</span>&nbsp;
-          </span>
-        </span>
+                      <span id="bar-ten" class="bar">
+                        <span>6,784</span>&nbsp;
+                      </span>
+                    </span>
                   </div>
 
                   <div class="four histo-rate">
-        <span class="histo-star">
-          <i class="active   icon-star"></i> 4           </span>
+                    <span class="histo-star">
+                      <i class="active   icon-star"></i> 4
+                    </span>
                     <span class="bar-block">
-          <span id="bar-nine" class="bar">
-            <span>1298</span>&nbsp;
-          </span>
-        </span>
+                      <span id="bar-nine" class="bar">
+                        <span>1298</span>&nbsp;
+                      </span>
+                    </span>
                   </div>
 
                   <div class="three histo-rate">
-        <span class="histo-star">
-          <i class="active  icon-star"></i> 3           </span>
+                    <span class="histo-star">
+                      <i class="active  icon-star"></i> 3
+                    </span>
                     <span class="bar-block">
-          <span id="bar-eight" class="bar">
-            <span>940</span>&nbsp;
-          </span>
-        </span>
+                      <span id="bar-eight" class="bar">
+                        <span>940</span>&nbsp;
+                      </span>
+                    </span>
                   </div>
 
                   <div class="two histo-rate">
-        <span class="histo-star">
-          <i class="active  icon-star"></i> 2           </span>
+                    <span class="histo-star">
+                      <i class="active  icon-star"></i> 2
+                    </span>
                     <span class="bar-block">
-          <span id="bar-seven" class="bar">
-            <span>525</span>&nbsp;
-          </span>
-        </span>
+                      <span id="bar-seven" class="bar">
+                        <span>525</span>&nbsp;
+                      </span>
+                    </span>
                   </div>
 
                   <div class="one histo-rate">
-        <span class="histo-star">
-          <i class="active icon-star"></i> 1          </span>
+                    <span class="histo-star">
+                      <i class="active icon-star"></i> 1
+                    </span>
                     <span class="bar-block">
-          <span id="bar-six" class="bar">
-            <span>57</span>&nbsp;
-          </span>
-        </span>
+                        <span id="bar-six" class="bar">
+                          <span>57</span>&nbsp;
+                        </span>
+                      </span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
+          <!--end critic rating histogram-->
         </div>
         <!-- add ratings -->
         <div class="container ratings-add">
           <p class="ratings-header">Add Your Rating</p>
           <div class="row">
             <img class="col-profile-img"
-              src="https://user-images.githubusercontent.com/20979257/36620069-64e71fbe-18bf-11e8-87e8-565e2fc4d6da.jpeg"
+              src="{{profile_url}}"
               alt="user"/>
             <div class="col-add-ratings">
               <div *ngIf="!status; else elseBlock">
@@ -271,16 +285,16 @@
                 <div *ngIf ="inWatchlist; else addToWatchlist">
                   <button class="o-button o-button--blue" (click)= "removeFromWacthList()">- Watchlist</button>
                 </div>
-                <ng-template #addToWatchlist>
+                <ng-template #addToWatchlist >
                   <button class="o-button o-button--gray" (click)= "addWatchlist()">+ Watchlist</button>
                 </ng-template>
 
                 <div *ngIf ="inWishlist; else addToWishlist">
-                  <button class="o-button" (click)= "removeFromWishList()">- Wishlist</button>
+                  <button class="o-button o-button--blue" (click)= "removeFromWishList()">- Wishlist</button>
                 </div>
 
                 <ng-template #addToWishlist>
-                  <button class="o-button" (click)= "addWishlist()">+ Wishlist</button>
+                  <button class="o-button o-button--gray" (click)= "addWishlist()">+ Wishlist</button>
                 </ng-template>
                 <div *ngIf ="inRatedMovieList; else rateMovieBlock">
                   <ngb-rating [(rate)]="movie.rating" (hover)="hovered=$event" (leave)="hovered=0" [readonly]="readonly" (click)="rateMovie()">
@@ -309,18 +323,18 @@
           <p class="md-plot">{{movie.plot}}</p>
 
           <p>
-            Director <span> <a href="people.html">{{movie.director.name}}</a></span>
+            Director <span> <a routerLink="/celebrity">{{movie.director.name}}</a></span>
           </p>
           <p>
             Starring
             <span *ngFor="let cast of movie.cast">
-              <a href="">{{cast.name}},</a>
+              <a routerLink="/celebrity">{{cast.name}},</a>
             </span>
           </p>
           <p>
             Genre
             <span *ngFor="let genre of movie.genres" style="text-transform: lowercase">
-              <a href="">{{genre}}</a>
+              <a href="">{{genre}},</a>
             </span>
           </p>
 
@@ -355,22 +369,11 @@
           <!--<a class="l-cards__more" href="#">more <i class="fa fa-angle-double-right"></i></a>-->
           <ul class="container md-list__photos">
             <!--<li class="row md-list__item" *ngFor="let photo of movie.photos">-->
-            <li class="row md-list__item">
-              <a class="col-photos item__detail" href="">
-                <img [src]="movie.photos[0]" [alt]="movie.title">
+            <li class="row md-list__item" >
+              <a class="col-photos item__detail" href="" *ngFor="let photos of movie.photos">
+                <img src="{{photos}}" [alt]="movie.title">
               </a>
-              <a class="col-photos item__detail" href="">
-                <img [src]="movie.photos[0]" [alt]="movie.title">
-              </a>
-              <a class="col-photos item__detail" href="">
-                <img [src]="movie.photos[0]" [alt]="movie.title">
-              </a>
-              <a class="col-photos item__detail" href="">
-                <img [src]="movie.photos[0]" [alt]="movie.title">
-              </a>
-
             </li>
-
           </ul>
         </section>
         <!-- end 2nd section -->
@@ -381,152 +384,103 @@
           <!--<a class="l-cards__more" href="#">more <i class="fa fa-angle-double-right"></i></a>-->
           <ul class="container md-list__casts">
             <li class="row md-list__item">
-              <a class="col-casts item__detail" routerLink="/celebrity"><img src="../../../assets/images/cast/SALLY_HAWKINS.PNG"><span>SALLY HAWKINS</span></a>
-
-              <a  class="col-casts item__detail" href="people.html"><img src="../../../assets/images/cast/RICHARD_JENKINS.PNG"><span>RICHARD JENKINSS</span></a>
-
-              <a  class="col-casts item__detail" href="people.html"><img src="../../../assets/images/cast/DOUG-JONES.PNG"><span>DOUG JONES</span></a>
-
-              <a  class="col-casts item__detail" href="people.html"><img src="../../../assets/images/cast/MICHAEL_STUHLBARG.PNG"><span>MICHAEL STUHLBARG</span></a>
-
-              <!--<a  class="col-casts item__detail" href="people.html"><img src="../../../assets/images/cast/OCTAVIA_SPENCER.PNG"><span>OCTAVIA SPENCER</span></a>-->
-
-              <!--<a  class="col-casts item__detail" href="people.html"><img src="../../../assets/images/cast/LAUREN_LEE_SMITH.PNG"><span>LAUREN LEE SMITH</span></a>-->
-
-              <!--<a  class="col-casts item__detail" href="people.html"><img src="../../../assets/images/cast/LAUREN_LEE_SMITH.PNG"><span>LAUREN LEE SMITH</span></a>-->
+              <a class="col-casts item__detail" routerLink="/celebrity" *ngFor="let casts of movie.cast">
+                <img src="{{casts.profileImage}}" ><span>{{casts.name}}</span>
+              </a>
             </li>
 
           </ul>
         </section>
         <!-- end 3rd section -->
 
-        <!-- 	4th section	critic reviews -->
+        <!--CAUTION: all reviews are mixed together, just specify user role span-->
+
+        <!-- 	4th section	all reviews -->
         <section class="md_wrap">
-          <h2 class="md-title"><span>CRITIC REVIEWS</span></h2>
+          <h2 class="md-title"><span>REVIEWS</span></h2>
           <a class="md-more" href="#">more <i class="fa fa-angle-double-right"></i></a>
           <div class="container">
             <div class="row">
               <!--<div class="col-md-12">-->
               <!--<div id="testimonial-slider" class="owl-carousel">-->
-              <div class="col-testimonial testimonial">
+              <div class="col-testimonial testimonial" *ngFor="let reviews of movie.reviews">
                 <div class="testimonial-content">
                   <div class="testimonial-icon">
                     <i class="fa fa-quote-left"></i>
                   </div>
                   <p class="t_description">
-                    The movie's worldview is as easy to like as the protagonist and her
-                    friends, but del Toro lays it on so thick that there's no room for
+                    {{reviews}}
                   </p>
                 </div>
                 <h3 class="title">John</h3>
-                <span class="post">Top Critics</span>
-              </div>
-
-              <div class="col-testimonial testimonial">
-                <div class="testimonial-content">
-                  <div class="testimonial-icon">
-                    <i class="fa fa-quote-left"></i>
-                  </div>
-                  <p class="t_description">
-                    "The Shape of Water" is director Guillermo del Toro's finest film, a
-                    lovely, empathetic tribute to Old Hollywood
-
-                  </p>
+                <div *ngIf="!isCritic; else notCriticBlock">
+                  <span class="post">Top Critics</span>
                 </div>
-                <h3 class="title">Kelle</h3>
-                <span class="post">Top Critics</span>
-              </div>
-
-              <div class="col-testimonial testimonial">
-                <div class="testimonial-content">
-                  <div class="testimonial-icon">
-                    <i class="fa fa-quote-left"></i>
-                  </div>
-                  <p class="t_description">
-                    The more I try to find some kind of justifiable meaning and
-                    relevance, the more I find The Shape of Water a loopy
-                  </p>
+                <div #notCriticBlock>
+                  <span class="post">Super Reviewer</span>
                 </div>
-                <h3 class="title">Steven</h3>
-                <span class="post">Top Critics</span>
               </div>
-
-              <!--<div class="col-testimonial testimonial">-->
-              <!--<div class="testimonial-content">-->
-              <!--<div class="testimonial-icon">-->
-              <!--<i class="fa fa-quote-left"></i>-->
-              <!--</div>-->
-              <!--<div class="l_description">-->
-              <!--<p class="description">-->
-              <!--The visual stylist spins an adult fairy tale that takes elements-->
-              <!--from "Beauty and the Beast" and recasts them in an alternative-->
-              <!--universe that's a wonderfully rendered twist on our own.-->
-              <!--</p>-->
-              <!--</div>-->
-              <!--</div>-->
-              <!--<h3 class="title">Peter</h3>-->
-              <!--<span class="post">Top Critics</span>-->
-              <!--</div>-->
             </div>
           </div>
           <!--</div>-->
           <!--</div>-->
 
         </section>
+
 
         <!-- 	4th section	audience reviews -->
-        <section class="md_wrap">
-          <h2 class="md-title"><span>AUDIENCE REVIEWS</span></h2>
-          <a class="md-more" href="#">more <i class="fa fa-angle-double-right"></i></a>
-          <div class="container">
-            <div class="row">
-              <!--<div class="col-md-12">-->
-              <!--<div id="testimonial-slider2" class="owl-carousel">-->
-              <div class="col-testimonial testimonial">
-                <div class="testimonial-content">
-                  <div class="testimonial-icon">
-                    <i class="fa fa-quote-left"></i>
-                  </div>
-                  <p class="t_description">
-                    The Shape of Water is an ingenious fantasy romance that utilizes
-                    cold war era elements to the advantage of its premise while subtly
+        <!--<section class="md_wrap">-->
+          <!--<h2 class="md-title"><span>AUDIENCE REVIEWS</span></h2>-->
+          <!--<a class="md-more" href="#">more <i class="fa fa-angle-double-right"></i></a>-->
+          <!--<div class="container">-->
+            <!--<div class="row">-->
+              <!--&lt;!&ndash;<div class="col-md-12">&ndash;&gt;-->
+              <!--&lt;!&ndash;<div id="testimonial-slider2" class="owl-carousel">&ndash;&gt;-->
+              <!--<div class="col-testimonial testimonial">-->
+                <!--<div class="testimonial-content">-->
+                  <!--<div class="testimonial-icon">-->
+                    <!--<i class="fa fa-quote-left"></i>-->
+                  <!--</div>-->
+                  <!--<p class="t_description">-->
+                    <!--The Shape of Water is an ingenious fantasy romance that utilizes-->
+                    <!--cold war era elements to the advantage of its premise while subtly-->
 
-                  </p>
-                </div>
-                <h3 class="title">Drake Tsui</h3>
-                <span class="post">Super Reviewer</span>
-              </div>
-              <div class="col-testimonial testimonial">
-                <div class="testimonial-content">
-                  <div class="testimonial-icon">
-                    <i class="fa fa-quote-left"></i>
-                  </div>
-                  <p class="t_description">
-                    Guillermo del Toro has found himself to be quite the respected
-                    filmmaker over the years but, if I had to be brutally honest, I'd
+                  <!--</p>-->
+                <!--</div>-->
+                <!--<h3 class="title">Drake Tsui</h3>-->
+                <!--<span class="post">Super Reviewer</span>-->
+              <!--</div>-->
+              <!--<div class="col-testimonial testimonial">-->
+                <!--<div class="testimonial-content">-->
+                  <!--<div class="testimonial-icon">-->
+                    <!--<i class="fa fa-quote-left"></i>-->
+                  <!--</div>-->
+                  <!--<p class="t_description">-->
+                    <!--Guillermo del Toro has found himself to be quite the respected-->
+                    <!--filmmaker over the years but, if I had to be brutally honest, I'd-->
 
-                  </p>
-                </div>
-                <h3 class="title">Mark Walker</h3>
-                <span class="post">Super Reviewer</span>
-              </div>
-              <div class="col-testimonial testimonial">
-                <div class="testimonial-content">
-                  <div class="testimonial-icon">
-                    <i class="fa fa-quote-left"></i>
-                  </div>
-                  <p class="t_description">
-                    Like many of Del Toro's movies, I just couldn't buy into it. I found
-                    myself not caring about the monster and I didn't buy the
-                  </p>
-                </div>
-                <h3 class="title">Sanjay Rema</h3>
-                <span class="post">Super Reviewer</span>
-              </div>
+                  <!--</p>-->
+                <!--</div>-->
+                <!--<h3 class="title">Mark Walker</h3>-->
+                <!--<span class="post">Super Reviewer</span>-->
+              <!--</div>-->
+              <!--<div class="col-testimonial testimonial">-->
+                <!--<div class="testimonial-content">-->
+                  <!--<div class="testimonial-icon">-->
+                    <!--<i class="fa fa-quote-left"></i>-->
+                  <!--</div>-->
+                  <!--<p class="t_description">-->
+                    <!--Like many of Del Toro's movies, I just couldn't buy into it. I found-->
+                    <!--myself not caring about the monster and I didn't buy the-->
+                  <!--</p>-->
+                <!--</div>-->
+                <!--<h3 class="title">Sanjay Rema</h3>-->
+                <!--<span class="post">Super Reviewer</span>-->
+              <!--</div>-->
 
-            </div>
-          </div>
-        </section>
+            <!--</div>-->
+          <!--</div>-->
+        <!--</section>-->
         <!-- end -->
 
       </div> <!-- ./end right panel -->

@@ -7,13 +7,23 @@ import {ActivatedRoute} from '@angular/router';
 import {LoginStatusService} from '../login/login.status.service';
 import {Token} from '../login/token.model';
 import {RegUserService} from '../../user/reg-user/reg-user.service';
+import {JwtHelperService} from '@auth0/angular-jwt';
 
+class Profile {
+  name: string;
+  id: number;
+  profileImage: string;
+  biography: string;
+  isCritic: boolean;
+  username: string;
+  email: string;
+}
 
 @Component({
   selector: 'app-movie-detail',
   templateUrl: './movie-detail.component.html',
   styleUrls: ['./movie-detail.component.scss'],
-  providers: [MovieDetailService]
+  providers: [MovieDetailService, RegUserService]
 })
 export class MovieDetailComponent implements OnInit {
 
@@ -29,11 +39,16 @@ export class MovieDetailComponent implements OnInit {
   selected = 0;
   hovered = 0;
   review: string;
+  profile = new Profile();
+  tokenHelper = new JwtHelperService();
+  profile_url: string;
+  isCritic: boolean;
 
   constructor(config: NgbRatingConfig,
               private movieService: MovieService,
               private movieDetailService: MovieDetailService,
               private loginStatusService: LoginStatusService,
+              private regUserService: RegUserService,
               route: ActivatedRoute) {
 
     this.selectedMovieId = route.snapshot.params['id'];
@@ -75,6 +90,21 @@ export class MovieDetailComponent implements OnInit {
               console.log(this.inRatedMovieList);
             }
       }
+      this.regUserService.getProfile().subscribe(profileDetails => {
+        console.log(profileDetails);
+        this.profile = profileDetails as Profile;
+        const decodedToken = this.tokenHelper.decodeToken(localStorage.getItem('token'));
+        this.profile.email = decodedToken['email'];
+        this.profile.id = decodedToken['profileId'];
+        this.profile.username = decodedToken['username'];
+        this.profile.profileImage = profileDetails['profileImage'];
+        this.isCritic = this.profile.isCritic;
+        if (this.profile.profileImage === undefined) {
+          this.profile_url = 'http://localhost:8080/user/avatar/default.jpeg';
+        } else {
+          this.profile_url = 'http://localhost:8080/user/avatar/' + profileDetails['profileImage'];
+        }
+      });
     });
     // customize default values carousel slider
     config.max = 5;

@@ -24,6 +24,7 @@ export class Movie {
   website: string;
   boxOffice: number;
   runTime: number;
+  numberOfRatings: number;
 
   constructor(values: Object = {}) {
     Object.assign(this, values);

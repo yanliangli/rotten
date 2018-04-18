@@ -248,6 +248,10 @@ main{
   //height: 200px;
   //overflow: scroll;
 }
+.col-testimonial[_ngcontent-c4]{
+  width: 50%;
+}
+
 .testimonial .testimonial-content{
   padding: 20px;
   margin-bottom: 35px;
@@ -499,4 +503,10 @@ a {
 }
 ngb-rating{
   color: #fff;
+}
+
+.col-profile-img{
+  margin-top: 0.8%;
+  width: 22%;
+  height: 30%;
 }
