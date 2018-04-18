@@ -54,6 +54,14 @@ public class MovieServiceImpl implements FilmService {
 
     @Transactional
     @Override
+    public Movie updateMovie(Movie movie) {
+        if (movieRepository.findMovieByImdbId(movie.getImdbId()) == null)
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "MOVIE DOES NOT EXIST");
+        return movieRepository.save(movie);
+    }
+
+    @Transactional
+    @Override
     public void deleteFilm(String filmId) {
         if (movieRepository.findMovieByImdbId(filmId) == null)
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "MOVIE DOES NOT EXIST");
@@ -109,10 +117,7 @@ public class MovieServiceImpl implements FilmService {
         return null;
     }
 
-    @Override
-    public List<Movie> getTrending() {
-        return this.getMoviesPlaying();
-    }
+
 
     // TODO: find proper movies
     @Transactional
@@ -131,20 +136,17 @@ public class MovieServiceImpl implements FilmService {
 
     @Override
     public List<Movie> getTopRating() {
-        return this.getMoviesPlaying();
-    }
-
-    @Transactional
-    @Override
-    public Movie updateMovie(Movie movie) {
-        if (movieRepository.findMovieByImdbId(movie.getImdbId()) == null)
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "MOVIE DOES NOT EXIST");
-        return movieRepository.save(movie);
+        return movieRepository.findTop10ByOrderByRatingDesc();
     }
 
     @Override
     public List<Movie> getTopBoxOffice() {
-        return this.getMoviesPlaying();
+        return movieRepository.findTop10ByOrderByBoxOfficeDesc();
+    }
+
+    @Override
+    public List<Movie> getTrending() {
+        return movieRepository.findTop10ByOrderByNumberOfRatingsDesc();
     }
 
 }
