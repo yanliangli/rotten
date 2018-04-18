@@ -15,7 +15,7 @@ const appRoutes: Routes = [
   {path: 'movies', component: CategoriesComponent},
   // {path: ':id', component: MovieDetailComponent, data: {imdb_id: this.}},
   {path: 'celebrity', component: CelebrityComponent},
-  {path: 'user', component: RegUserComponent},
+  // {path: 'user', component: RegUserComponent},
   {path: 'search', component: SearchComponent},
   {path: 'admin', component: AdminComponent},
   {path: 'star', component: StarsComponent},

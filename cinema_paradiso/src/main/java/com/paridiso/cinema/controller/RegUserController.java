@@ -2,11 +2,13 @@ package com.paridiso.cinema.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.paridiso.cinema.entity.Movie;
 import com.paridiso.cinema.entity.User;
 import com.paridiso.cinema.entity.UserProfile;
 import com.paridiso.cinema.security.JwtTokenGenerator;
 import com.paridiso.cinema.security.JwtTokenValidator;
 import com.paridiso.cinema.security.JwtUser;
+import com.paridiso.cinema.service.JwtTokenService;
 import com.paridiso.cinema.service.implementation.RegUserServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -28,8 +30,10 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @RequestMapping("/user")
 @RestController
@@ -49,6 +53,9 @@ public class RegUserController {
 
     @Autowired
     private ObjectMapper objectMapper;
+
+    @Autowired
+    JwtTokenService jwtTokenService;
 
     private static final Logger logger = LogManager.getLogger(RegUserController.class);
 
@@ -116,6 +123,13 @@ public class RegUserController {
 //        // Now you can get the user information with the data.
 //        return ResponseEntity.ok(true);
 //    }
+
+    @RequestMapping(value = "/getRatedMovie/{filmId}", method = GET)
+    public ResponseEntity<Movie> getRatedMovie(@RequestHeader(value = "Authorization") String jwtToken, @PathVariable String filmId)  {
+        System.out.println("User Controller: Get RatedMovie ... ");
+        return ResponseEntity.ok(userService.getRatedMovie(jwtTokenService.getUserIdFromToken(jwtToken), filmId));
+    }
+
 
     @GetMapping(value = "/get/profile")
     public ResponseEntity<?> getProfile(@RequestHeader(value = "Authorization") String jwtToken) {

@@ -41,4 +41,8 @@ export class MovieDetailService {
   rateMovie(hovered: number, imdbId: string) {
     return this.http.post(MOVIE_SERVER + imdbId + '/' + hovered, null);
   }
+
+  getRatedMovie(imdbId: string) {
+    return this.http.get('http://localhost:8080/user/getRatedMovie/' + imdbId);
+  }
 }

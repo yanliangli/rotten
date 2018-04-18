@@ -262,7 +262,10 @@
               <div *ngIf="!status; else elseBlock">
                 <button routerLinkActive="active" class="o-button o-button--gray trigger"  href="javascript:;">+ Watchlist</button>
                 <button routerLinkActive="active" class="o-button trigger" href="javascript:;">+ Wishlist</button>
-
+                <ngb-rating [(rate)]="selected" (hover)="hovered=$event" (leave)="hovered=0" [readonly]="readonly" >
+                  <span class="star"></span>
+                </ngb-rating>
+                <app-login></app-login>
               </div>
               <ng-template #elseBlock>
                 <div *ngIf ="inWatchlist; else addToWatchlist">
@@ -279,10 +282,17 @@
                 <ng-template #addToWishlist>
                   <button class="o-button" (click)= "addWishlist()">+ Wishlist</button>
                 </ng-template>
+                <div *ngIf ="inRatedMovieList; else rateMovieBlock">
+                  <ngb-rating [(rate)]="movie.rating" (hover)="hovered=$event" (leave)="hovered=0" [readonly]="readonly" (click)="rateMovie()">
+                    <span class="star"></span>
+                  </ngb-rating>
+                </div>
+                <ng-template #rateMovieBlock>
+                  <ngb-rating [(rate)]="selected" (hover)="hovered=$event" (leave)="hovered=0" [readonly]="readonly" (click)="rateMovie()">
+                    <span class="star"></span>
+                  </ngb-rating>
+                </ng-template>
               </ng-template>
-              <ngb-rating [(rate)]="selected" (hover)="hovered=$event" (leave)="hovered=0" [readonly]="readonly" (click)="rateMovie()">
-                <span class="star"></span>
-              </ngb-rating>
 
 
               <textarea placeholder="Add a review..."></textarea>
@@ -527,4 +537,3 @@
 </body>
 </html>
 
-<app-login></app-login>

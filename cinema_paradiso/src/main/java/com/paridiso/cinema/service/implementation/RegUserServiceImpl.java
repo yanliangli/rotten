@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static jdk.nashorn.internal.objects.NativeFunction.function;
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 
 @Service
@@ -52,6 +53,8 @@ public class RegUserServiceImpl extends UserService {
 
     @Autowired
     MovieRepository movieRepository;
+
+    private Integer counter;
 
     @Transactional
     public Optional<User> signup(User user) {
@@ -148,26 +151,49 @@ public class RegUserServiceImpl extends UserService {
     public boolean checkEmailTaken(String email) {
         return userRepository.findUserByEmail(email) != null ? true : false;
     }
+    @Transactional
+    public Movie getRatedMovie(Integer userId, String filmImdbId) {
+        // find user
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResponseStatusException(INTERNAL_SERVER_ERROR, "USER NOT FOUND"));
+
+        // check movie existence
+        List<Movie> movies = user.getUserProfile().getRatedMovies();
+        System.out.println("coming01");
+        if (utilityService.containsMovie(movies, filmImdbId)){
+            counter = 0;
+            while (movies.get(counter)!=null){
+                if(movies.get(counter).getImdbId().equals(filmImdbId)){
+                    System.out.println("coming02" + counter);
+                    return movies.get(counter);
+                }
+                else counter++;
+            }
+        }
+        // RatedMovie not exist
+        System.out.println("coming03" + counter);
+        return null;
+    }
 
     // @TODO: Map<Movie, Double>
     @Transactional
     public boolean rateMovie(Integer userId, String filmId, Double rating) {
         // get user
-//        User user = userRepository.findById(userId)
-//                .orElseThrow(() -> new ResponseStatusException(INTERNAL_SERVER_ERROR, "USER NOT FOUND"));
-//
-//        Movie newRatedMovie = movieRepository.findMovieByImdbId(filmId);
-//        newRatedMovie.setRating(rating);
-//        // check existence
-//        List<Movie> movieList = user.getUserProfile().getRatedMovies();
-//
-//        if (utilityService.containsMovie(movieList, filmId))
-//            return false;
-//
-//        // add to rated movie list
-//        movieList.add(newRatedMovie);
-//        user.getUserProfile().setRatedMovies(movieList);
-//        userProfileRepository.save(user.getUserProfile());
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResponseStatusException(INTERNAL_SERVER_ERROR, "USER NOT FOUND"));
+
+        Movie newRatedMovie = movieRepository.findMovieByImdbId(filmId);
+        newRatedMovie.setRating(rating);
+        // check existence
+        List<Movie> movieList = user.getUserProfile().getRatedMovies();
+
+        if (utilityService.containsMovie(movieList, filmId))
+            return false;
+
+        // add to rated movie list
+        movieList.add(newRatedMovie);
+        user.getUserProfile().setRatedMovies(movieList);
+        userProfileRepository.save(user.getUserProfile());
         return true;
     }
 
