@@ -32,34 +32,21 @@ public class CelebrityServiceImpl implements CelebrityService {
     @Override
     public void deleteCelebrity(String celebrityId) {
         if (celebrityRepository.findCelebrityByCelebrityId(celebrityId) == null)
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "MOVIE DOES NOT EXISTS");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Celebrity DOES NOT EXISTS");
         celebrityRepository.deleteById(celebrityId);
     }
 
     @Override
     public Optional<Celebrity>  updateCelebrity(Celebrity celebrity) {
-        Celebrity celebrity1 = celebrityRepository.findById(celebrity.getCelebrityId())
-                .orElseThrow(() -> new RuntimeException("CANNOT FIND Celebrity " +celebrity.getCelebrityId()));
-        celebrity1.setBiography(celebrity.getBiography());
-        celebrity1.setBirthCity(celebrity.getBirthCity());
-        celebrity1.setBirthState(celebrity.getBirthState());
-        celebrity1.setBirthCountry(celebrity.getBirthCountry());
-        celebrity1.setBirthDate(celebrity.getBirthDate());
-        celebrity1.setDirector(celebrity.isDirector());
-        celebrity1.setFilmography(celebrity.getFilmography());
-        celebrity1.setName(celebrity.getName());
-        celebrity1.setPHOTO_LOCATION(celebrity.getPHOTO_LOCATION());
-        celebrity1.setPhotos(celebrity.getPhotos());
-        celebrity1.setProfileImage(celebrity.getProfileImage());
-        celebrity1.setProfileImageName(celebrity1.getProfileImageName());
-
-        return Optional.ofNullable(celebrityRepository.save(celebrity1));
+        if (celebrityRepository.findCelebrityByCelebrityId(celebrity.getCelebrityId()) == null)
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Celebrity DOES NOT EXIST");
+        return Optional.ofNullable(celebrityRepository.save(celebrity));
     }
 
     @Override
     public Optional<Celebrity> addCelebrity(Celebrity celebrity) {
         if (celebrityRepository.findCelebrityByCelebrityId(celebrity.getCelebrityId()) != null)
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "MOVIE EXISTS");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Celebrity already EXISTS");
         return Optional.ofNullable(celebrityRepository.save(celebrity));
     }
 }
