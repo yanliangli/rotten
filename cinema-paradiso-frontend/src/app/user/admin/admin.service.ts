@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpParams, HttpRequest, HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs/Observable';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-const httpOptions = {   headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
+const httpOptions = {headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
 @Injectable()
 export class AdminService {
   constructor(private http: HttpClient) { }
@@ -20,10 +19,9 @@ export class AdminService {
     let body = JSON.stringify(movie);
     return this.http.post('http://localhost:8080/movie/update', body, httpOptions)
   }
-  deleteMovie(movieId:String){
+  deleteMovie(movieId){
     return this.http.delete('http://localhost:8080/movie/delete/'+movieId);
   }
-
   // manage users
   getUsers() {
     return this.http.get('http://localhost:8080/admin/all_users');
@@ -55,7 +53,6 @@ export class AdminService {
   vertify(application: any) {
     return this.http.post('http://localhost:8080/user/vertify/critic', + application);
   }
-
 
   // manage carousels
   updateSlide(id: any, slide: any) {

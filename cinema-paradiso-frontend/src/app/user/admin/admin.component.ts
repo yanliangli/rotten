@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {LoginService} from '../../global/login/login.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {AdminService} from '../admin/admin.service';
+import {AdminService} from 'admin.service';
 import {RegUserService} from '../reg-user/reg-user.service';
 import {HomeService} from '../../global/home/home.service';
 import {LoginStatusService} from '../../global/login/login.status.service';
@@ -42,19 +42,6 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit() {
-    // load users
-   // this.getUsers();
-    // load movies
-    // this.getMovies();
-    // // load reviews
-    // this.getReviews();
-    // // load celebrities
-    // this.getCelebrities();
-    // // load carousel
-    // this.getCarousel();
-    // // load applications
-    // this.getApplications();
-
     // load admin info
     if (this.loginStatusService.getTokenDetails() !== null) {
       this.loginStatusService.changeStatus(true);
@@ -513,17 +500,25 @@ export class AdminComponent implements OnInit {
   }
 
   deleteMovie(m){
-    var result = confirm("Want to delete movie "+ m.title);
-    if(result){
+    if(confirm("Want to delete movie "+ m.title)){
       console.log("deleting: "+m.imdbId);
-      this.adminService.deleteMovie(m.imdbId);
+      this.adminService.deleteMovie(m.imdbId).subscribe(
+        data => {
+          // refresh the list
+          this.getMovies();
+          return true;
+        },
+        error => {
+          console.error("Error deleting "+m.title);
+          return Observable.throw(error);
+        }
+      );
       console.log("deleted")
     }
   }
 
   deleteCelebrity(c:Celebrity){
-    var result = confirm("Want to delete "+ c.name);
-    if(result){
+    if(confirm("Want to delete "+ c.name)){
       console.log("deleting: "+c.name);
       this.adminService.deleteCelebrity(c.celebrityId);
       console.log("deleted")
