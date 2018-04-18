@@ -47,6 +47,7 @@ export class HomeComponent implements OnInit {
     this.getMoviesPlaying();
     this.getMoviesTrending();
     this.getMoviesTopBoxOffice();
+    this.getMoviesTopRating();
 
 
     if (this.loginStatusService.getTokenDetails() !== null) {
@@ -85,7 +86,7 @@ export class HomeComponent implements OnInit {
           this.moviesTrending = data as Movie[];
           console.log(this.moviesTrending);
         },
-        error => console.log('Failed to fetch movies playing')
+        error => console.log('Failed to fetch movies trending')
       );
   }
 
@@ -96,7 +97,7 @@ export class HomeComponent implements OnInit {
           this.moviesTopBoxOffice = data as Movie[];
           console.log(this.moviesTopBoxOffice);
         },
-        error => console.log('Failed to fetch movies playing')
+        error => console.log('Failed to fetch movies top office')
       );
   }
 
@@ -107,7 +108,7 @@ export class HomeComponent implements OnInit {
           this.moviesTopRating = data as Movie[];
           console.log(this.moviesTopRating);
         },
-        error => console.log('Failed to fetch movies playing')
+        error => console.log('Failed to fetch movies top rated')
       );
   }
   // pass the selected movie id to movie detail page for rendering

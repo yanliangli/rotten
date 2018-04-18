@@ -86,7 +86,7 @@
       </div>
       <ul class="l-cards__list">
 
-        <li class="l-cards__item" *ngFor="let movie of moviesPlaying">
+        <li class="l-cards__item" *ngFor="let movie of moviesTrending">
           <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active" class="l-cards__image fill">
             <img [src]="movie.poster" [alt]="movie.title">
           </a>
@@ -102,12 +102,12 @@
 
     <section class="l-cards">
       <div class="l-cards__title-wrap">
-        <h2 class="l-cards__title">TV Trending Now</h2>
+        <h2 class="l-cards__title">Movies Top Rated</h2>
         <a class="l-cards__nav-left" href="#"><i class="fa fa-angle-right"></i></a><a class="l-cards__nav-right" href="#"><i class="fa fa-angle-left"></i></a>
       </div>
       <ul class="l-cards__list">
 
-        <li class="l-cards__item" *ngFor="let movie of moviesPlaying">
+        <li class="l-cards__item" *ngFor="let movie of moviesTopRating">
           <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active" class="l-cards__image fill">
             <img [src]="movie.poster" [alt]="movie.title">
           </a>
@@ -128,7 +128,7 @@
       </div>
       <ul class="l-cards__list">
 
-        <li class="l-cards__item" *ngFor="let movie of moviesPlaying">
+        <li class="l-cards__item" *ngFor="let movie of moviesTopBoxOffice">
           <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active" class="l-cards__image fill">
             <img [src]="movie.poster" [alt]="movie.title">
           </a>
