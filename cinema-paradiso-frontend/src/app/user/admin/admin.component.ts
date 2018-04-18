@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {LoginService} from '../../global/login/login.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {AdminService} from 'admin.service';
+import {AdminService} from './admin.service';
 import {RegUserService} from '../reg-user/reg-user.service';
 import {HomeService} from '../../global/home/home.service';
 import {LoginStatusService} from '../../global/login/login.status.service';
