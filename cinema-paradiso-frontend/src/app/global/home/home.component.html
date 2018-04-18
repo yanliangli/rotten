@@ -7,7 +7,7 @@
     <div class="l-hero">
       <ngb-carousel>
         <ng-template ngbSlide *ngFor="let carouselSlide of carousel">
-          <img [src]=carouselSlide.photos[0] alt="slide" class="l-hero__img" >
+          <a routerLink="{{carouselSlide.imdbId}}"><img [src]=carouselSlide.photos[0] alt="slide" class="l-hero__img"  ></a>
           <div class="l-hero__text-wrapper">
             <div class="l-hero__text">
 
@@ -33,17 +33,10 @@
               <p class="c-plot">{{carouselSlide.plot}}</p>
 
               <!--@TODO: casts not shown-->
-              <p *ngIf="carouselSlide.cast.length != 0">
+              <p clss="c-starring">
                 Starring
                 <span *ngFor="let cast of carouselSlide.cast">
-                  {{cast.name}},
-                </span>
-              </p>
-
-              <p *ngIf="carouselSlide.cast.length == 0">
-                Starring
-                <span>
-                  Daniel Kaluuya, Allison Williams, Catherine Keener, Caleb Landry Jones
+                    {{cast.name}},
                 </span>
               </p>
 
@@ -53,10 +46,10 @@
               <p>
                 Genres <span class="c-genres" style="text-transform: lowercase">{{carouselSlide.genres}}</span>
               </p>
-              <div class="l-hero__buttons">
-                <button class="o-button o-button--gray">+ Watchlist</button>
-                <button class="o-button">+ Wishlist</button>
-              </div>
+              <!--<div class="l-hero__buttons">-->
+                <!--<button class="o-button o-button&#45;&#45;gray">+ Watchlist</button>-->
+                <!--<button class="o-button">+ Wishlist</button>-->
+              <!--</div>-->
             </div>
           </div>
         </ng-template>
