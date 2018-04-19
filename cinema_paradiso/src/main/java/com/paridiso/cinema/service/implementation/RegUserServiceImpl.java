@@ -175,6 +175,19 @@ public class RegUserServiceImpl extends UserService {
         return null;
     }
 
+
+    @Transactional
+    public List<Movie> getRatedMovies(Integer userId) {
+        // find user
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResponseStatusException(INTERNAL_SERVER_ERROR, "USER NOT FOUND"));
+
+        // get RatedMovieList and return
+        List<Movie> movies = user.getUserProfile().getRatedMovies();
+        System.out.println("coming01");
+        return movies;
+    }
+
     // @TODO: Map<Movie, Double>
     @Transactional
     public boolean rateMovie(Integer userId, String filmId, Double rating) {

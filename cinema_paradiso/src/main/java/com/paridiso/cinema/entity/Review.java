@@ -11,13 +11,12 @@ public class Review {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long reviewId;
 
-    @ManyToOne(cascade = {CascadeType.MERGE},fetch= FetchType.LAZY)
-    @JoinColumn(name = "userProfileId", nullable = false)
-    private UserProfile userProfile;
 
     @ManyToOne(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
     @JoinColumn(name = "imdbId", nullable = false)
     private Movie movie;
+
+    private Integer userId;
 
     private String title;
 
@@ -72,12 +71,12 @@ public class Review {
         this.movie = movie;
     }
 
-    public UserProfile getUserProfile() {
-        return userProfile;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setUserProfile(UserProfile userProfile) {
-        this.userProfile = userProfile;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getTitle() {

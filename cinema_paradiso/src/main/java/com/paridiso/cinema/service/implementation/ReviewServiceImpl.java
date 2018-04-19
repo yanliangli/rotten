@@ -56,7 +56,8 @@ public class ReviewServiceImpl implements ReviewService {
 
         //setMovie to review
         review.setMovie(movie);
-
+        //setUserId to review
+        review.setUserId(userId);
         // add to user's review list
         List<Review> reviews = user.getUserProfile().getReviews();
         if (reviews == null)

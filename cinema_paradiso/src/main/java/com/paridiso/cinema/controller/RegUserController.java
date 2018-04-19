@@ -125,9 +125,21 @@ public class RegUserController {
 //    }
 
     @RequestMapping(value = "/getRatedMovie/{filmId}", method = GET)
-    public ResponseEntity<Movie> getRatedMovie(@RequestHeader(value = "Authorization") String jwtToken, @PathVariable String filmId)  {
+    public ResponseEntity<Double> getRatedMovie(@RequestHeader(value = "Authorization") String jwtToken, @PathVariable String filmId)  {
         System.out.println("User Controller: Get RatedMovie ... ");
-        return ResponseEntity.ok(userService.getRatedMovie(jwtTokenService.getUserIdFromToken(jwtToken), filmId));
+        Movie movie = userService.getRatedMovie(jwtTokenService.getUserIdFromToken(jwtToken), filmId);
+        Double rating = 0.0;
+        if(movie != null)
+        rating = movie.getRating();
+        System.out.println("ratedMovie Rating is :   " + rating);
+        return ResponseEntity.ok(rating);
+    }
+
+    @RequestMapping(value = "/getRatedMovies", method = GET)
+    public ResponseEntity<List<Movie>> getRatedMovies(@RequestHeader(value = "Authorization") String jwtToken)  {
+        System.out.println("User Controller: Get RatedMovies ... ");
+        List<Movie> movies = userService.getRatedMovies(jwtTokenService.getUserIdFromToken(jwtToken));
+        return ResponseEntity.ok(movies);
     }
 
 

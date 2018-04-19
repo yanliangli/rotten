@@ -50,7 +50,7 @@ public class ReviewController {
 //    }
 //
 //
-/*
+
     @RequestMapping(value = "/{filmId}/review", method = DELETE, params = "reviewId")
     public ResponseEntity<Review> deleteReview(@RequestHeader(value = "Authorization") String jwtToken,
                                                 @PathVariable String filmId,
@@ -60,7 +60,7 @@ public class ReviewController {
             return new ResponseEntity<>(reviewToBeRemovoed, HttpStatus.OK);
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
-*/
+
     @RequestMapping(value = "/all_reviews", method = GET)
     public ResponseEntity<List> getAllReviews() {
         return new ResponseEntity<>(reviewService.getAllReviews(), HttpStatus.OK);

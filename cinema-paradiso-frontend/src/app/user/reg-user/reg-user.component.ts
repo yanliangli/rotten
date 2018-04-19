@@ -40,6 +40,7 @@ export class RegUserComponent implements OnInit {
   changePasswordFailure: boolean;
   whishlist: Movie[];
   watchlist: Movie[];
+  ratedMovieList: Movie[];
   constructor(private router: Router,
               private movieService: MovieService,
               private loginService: LoginService,
@@ -61,6 +62,7 @@ export class RegUserComponent implements OnInit {
       this.loginStatusService.changeStatus(true);
       this.getWishlist();
       this.getWatchlist();
+      this.getRatedMovieList();
       this.regUserService.getProfile().subscribe(profileDetails => {
         console.log(profileDetails);
         this.profile = profileDetails as Profile;
@@ -81,7 +83,16 @@ export class RegUserComponent implements OnInit {
   setImdbId(imdbId: string) {
     this.movieService.setSelectedMovieId(imdbId);
   }
-
+  getRatedMovieList(): any {
+    this.regUserService.getRatedMovieList()
+      .subscribe(
+        data => {
+          this.ratedMovieList = data as Movie[];
+          console.log(this.ratedMovieList);
+        },
+        error => console.log('Failed to fetch movies playing')
+      );
+  }
   getWishlist(): any {
     this.regUserService.getWishlist()
       .subscribe(

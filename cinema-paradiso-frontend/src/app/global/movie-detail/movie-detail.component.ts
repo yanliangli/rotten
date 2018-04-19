@@ -33,7 +33,6 @@ export class MovieDetailComponent implements OnInit {
   inRatedMovieList: boolean;
   user: Token;
   movie: Movie;
-  ratedMovie: Movie;
   sub: any;
   selectedMovieId: string;
   selected = 0;
@@ -82,7 +81,7 @@ export class MovieDetailComponent implements OnInit {
           }
         );
         this.getRatedMovie();
-            if (this.ratedMovie !== null) {
+            if (this.selected !== 0) {
               this.inRatedMovieList = true;
               console.log(this.inRatedMovieList);
             } else {
@@ -152,8 +151,8 @@ export class MovieDetailComponent implements OnInit {
       .subscribe(
         data => {
           // console.log(data);
-          this.ratedMovie = data as Movie;
-          console.log(this.ratedMovie);
+            this.selected = data as number;
+          console.log(this.selected);
         },
         error => console.log('Failed to fetch carousel data')
       );

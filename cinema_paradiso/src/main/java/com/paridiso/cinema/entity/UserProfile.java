@@ -33,10 +33,10 @@ public class UserProfile {
     @Column(name = "isPrivate")
     private Boolean isPrivate;
 
-    @OneToMany(cascade = {CascadeType.MERGE}, fetch = FetchType.LAZY, mappedBy = "userProfile")
+    @OneToMany(cascade = {CascadeType.MERGE}, fetch = FetchType.LAZY)
     private List<Review> reviews;
 
-    @OneToMany(cascade = {CascadeType.MERGE}, fetch= FetchType.LAZY, mappedBy = "userProfile")
+    @OneToMany(cascade = {CascadeType.MERGE}, fetch= FetchType.LAZY)
     private List<Review> likedReviews;
 
     @ManyToMany(cascade = {CascadeType.MERGE}, fetch = FetchType.LAZY)
