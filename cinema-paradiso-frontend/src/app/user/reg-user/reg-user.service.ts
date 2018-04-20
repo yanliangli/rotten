@@ -37,4 +37,8 @@ export class RegUserService {
   getRatedMovieList() {
     return this.http.get('http://localhost:8080/user/getRatedMovies');
   }
+
+  getReviews() {
+    return this.http.get('http://localhost:8080/review/user/reviews');
+  }
 }

@@ -61,7 +61,7 @@ public class Film {
     @OneToMany(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER, mappedBy = "movie")
     private Set<Trailer> trailers;
 
-    @OneToMany(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER, mappedBy = "movie")
+    @OneToMany(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
     private List<Review> reviews;
 
     @Column(name = "plot")

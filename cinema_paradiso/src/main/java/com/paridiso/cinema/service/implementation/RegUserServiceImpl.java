@@ -61,7 +61,6 @@ public class RegUserServiceImpl extends UserService {
         user.setRole(Role.ROLE_USER);
         user.setAccountSuspended(false);
         user.setPassword(utilityService.getHashedPassword(user.getPassword(), salt));
-
         if (userRepository.findUserByEmail(user.getEmail()) != null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "USER EXISTS");
         }

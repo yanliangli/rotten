@@ -280,7 +280,7 @@
                   <span class="star"></span>
                 </ngb-rating>
                 <textarea placeholder="Add a review..."></textarea>
-                <button id="post-btn" routerLinkActive="active" class="trigger" href="javascript:;">Post</button>
+                <button  routerLinkActive="active" class="trigger" href="javascript:;">Post</button>
                 <app-login></app-login>
               </div>
               <ng-template #elseBlock>
@@ -298,6 +298,7 @@
                 <ng-template #addToWishlist>
                   <button class="o-button o-button" (click)= "addWishlist()">+ Wishlist</button>
                 </ng-template>
+
                 <div *ngIf ="inRatedMovieList; else rateMovieBlock">
                   <ngb-rating [(rate)]="selected" (hover)="hovered=$event" (leave)="hovered=0" [readonly]="readonly" (click)="rateMovie()">
                     <span class="star"></span>
@@ -309,10 +310,8 @@
                   </ngb-rating>
                 </ng-template>
               </ng-template>
-
-
-              <textarea placeholder="Add a review..."></textarea>
-              <button id="post-btn1">Post</button>
+                <textarea placeholder="Add a review..." [(ngModel)]="review.reviewContent" required></textarea>
+                <button id="post-btn" (click)="addReview()">Post</button>
             </div>
           </div>
         </div>

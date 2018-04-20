@@ -8,6 +8,7 @@ import {LoginStatusService} from '../login/login.status.service';
 import {Token} from '../login/token.model';
 import {RegUserService} from '../../user/reg-user/reg-user.service';
 import {JwtHelperService} from '@auth0/angular-jwt';
+import {Review} from '../models/review.model';
 
 class Profile {
   name: string;
@@ -37,12 +38,12 @@ export class MovieDetailComponent implements OnInit {
   selectedMovieId: string;
   selected = 0;
   hovered = 0;
-  review: string;
+  textValue: string;
   profile = new Profile();
   tokenHelper = new JwtHelperService();
   profile_url: string;
   isCritic: boolean;
-
+  review = new Review();
   constructor(config: NgbRatingConfig,
               private movieService: MovieService,
               private movieDetailService: MovieDetailService,
@@ -111,6 +112,13 @@ export class MovieDetailComponent implements OnInit {
   }
 
   addReview() {
+    // this.review.reviewContent = this.textValue;
+    this.movieDetailService.addReview(this.selectedMovieId, this.review).subscribe(result => {
+      console.log(result);
+      location.reload(true);
+    });
+  }
+  getReview() {
 
   }
   addWishlist() {

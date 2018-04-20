@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Movie} from '../models/movie.model';
 
+import {Review} from '../models/review.model';
+
 const MOVIE_SERVER = 'http://localhost:8080/movie/';
 
 @Injectable()
@@ -44,5 +46,9 @@ export class MovieDetailService {
 
   getRatedMovie(imdbId: string) {
     return this.http.get('http://localhost:8080/user/getRatedMovie/' + imdbId);
+  }
+
+  addReview(imdbId: string, review: Review) {
+    return this.http.post('http://localhost:8080/review/addReview/' + imdbId , review);
   }
 }

@@ -7,7 +7,7 @@ export class Review {
   reviewContent: string;
   title: string;
   imdbId: string;
-  userProfileId: number;
+  userId: number;
 
   constructor(values: Object = {}) {
     Object.assign(this, values);

@@ -170,21 +170,15 @@
         <h2 class="l-cards__title">Rated Movies</h2>
         <a class="l-cards__more w3-margin-right" href="#">more <i class="fa fa-angle-double-right"></i></a>
         <ul class="l-cards__list">
-          <li class="l-cards__item">
-            <a href="#" class="l-cards__image fill"></a>
-            <a href="#" class="l-cards__text"></a>
+          <li class="l-cards__item"*ngFor="let movie of ratedMovieList">
+            <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active" class="l-cards__image fill">
+              <img [src]="movie.poster" [alt]="movie.title">
+            </a>
+            <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active"  class="l-cards__text">
+              {{movie.title}}
+              <p>{{movie.rating}}/5.0</p>
+            </a>
           </li>
-          <li class="l-cards__item"><a href="#" class="l-cards__image fill"></a>
-            <a href="#" class="l-cards__text"></a></li>
-          <li class="l-cards__item"><a href="#" class="l-cards__image fill"></a>
-            <a href="#" class="l-cards__text"></a></li>
-
-          <li class="l-cards__item"><a href="#" class="l-cards__image fill"></a>
-            <a href="#" class="l-cards__text"></a></li>
-
-          <li class="l-cards__item"><a href="#" class="l-cards__image fill"></a>
-            <a href="#" class="l-cards__text"></a></li>
-
         </ul>
       </section>
     </div>
@@ -227,69 +221,14 @@
     <div class="container My_Critics_results" *ngIf="currentIndex === 5">
       <div class="w3-container w3-padding-large w3-black">
 
-        <div class="testimonial">
+        <div class="testimonial" *ngFor="let review of reviews">
           <div class="testimonial-content">
             <div class="testimonial-icon">
               <i class="fa fa-quote-left"></i>
             </div>
             <div class="l_description">
-              <p class="description">
-                The Shape of Water is an ingenious fantasy romance that utilizes cold war era elements to
-                the advantage of its premise while subtly challenging our preconceived notions of
-                established archetypes. Del Toro has an innate understanding of portraying beauty of purity
-                in all it's forms while simultaneously showing us the grotesque underbelly and brutality of
-                what it is to be human. These skills help him build a boy meets girl (or girl meets creature
-                xP) fairytale with a believable yet dynamic supporting cast. The story is equal parts
-                gripping as it is touching, overcoming it's formulaic approach by using unlikely
-                characterization and story elements that come seamlessly together. Adding the films success
-                to his repertoire definitely showcases Del Toro's ability to adapt and excel in multiple
-                genres.
-              </p>
-            </div>
-          </div>
-          <h3 class="title">{{profile.username}}</h3>
-          <span class="post">Critics</span>
-        </div>
-        <div class="testimonial">
-          <div class="testimonial-content">
-            <div class="testimonial-icon">
-              <i class="fa fa-quote-left"></i>
-            </div>
-            <div class="l_description">
-              <p class="description">
-                The Shape of Water is an ingenious fantasy romance that utilizes cold war era elements to
-                the advantage of its premise while subtly challenging our preconceived notions of
-                established archetypes. Del Toro has an innate understanding of portraying beauty of purity
-                in all it's forms while simultaneously showing us the grotesque underbelly and brutality of
-                what it is to be human. These skills help him build a boy meets girl (or girl meets creature
-                xP) fairytale with a believable yet dynamic supporting cast. The story is equal parts
-                gripping as it is touching, overcoming it's formulaic approach by using unlikely
-                characterization and story elements that come seamlessly together. Adding the films success
-                to his repertoire definitely showcases Del Toro's ability to adapt and excel in multiple
-                genres.
-              </p>
-            </div>
-          </div>
-          <h3 class="title">{{profile.username}}</h3>
-          <span class="post">Critics</span>
-        </div>
-        <div class="testimonial">
-          <div class="testimonial-content">
-            <div class="testimonial-icon">
-              <i class="fa fa-quote-left"></i>
-            </div>
-            <div class="l_description">
-              <p class="description">
-                The Shape of Water is an ingenious fantasy romance that utilizes cold war era elements to
-                the advantage of its premise while subtly challenging our preconceived notions of
-                established archetypes. Del Toro has an innate understanding of portraying beauty of purity
-                in all it's forms while simultaneously showing us the grotesque underbelly and brutality of
-                what it is to be human. These skills help him build a boy meets girl (or girl meets creature
-                xP) fairytale with a believable yet dynamic supporting cast. The story is equal parts
-                gripping as it is touching, overcoming it's formulaic approach by using unlikely
-                characterization and story elements that come seamlessly together. Adding the films success
-                to his repertoire definitely showcases Del Toro's ability to adapt and excel in multiple
-                genres.
+              <h3 class="title">{{review.reviewId}}</h3>
+              <p class="description">{{review.reviewContent}}
               </p>
             </div>
           </div>

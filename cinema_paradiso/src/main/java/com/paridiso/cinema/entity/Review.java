@@ -12,9 +12,8 @@ public class Review {
     private Long reviewId;
 
 
-    @ManyToOne(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
     @JoinColumn(name = "imdbId", nullable = false)
-    private Movie movie;
+    private String imdbId;
 
     private Integer userId;
 
@@ -63,12 +62,12 @@ public class Review {
         this.reviewContent = reviewContent;
     }
 
-    public Movie getMovie() {
-        return movie;
+    public String getImdbId() {
+        return imdbId;
     }
 
-    public void setMovie(Movie movie) {
-        this.movie = movie;
+    public void setImdbId(String imdbId) {
+        this.imdbId = imdbId;
     }
 
     public Integer getUserId() {

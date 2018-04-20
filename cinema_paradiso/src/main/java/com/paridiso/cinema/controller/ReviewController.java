@@ -30,11 +30,11 @@ public class ReviewController {
     @Autowired
     JwtTokenService jwtTokenService;
 
-    @RequestMapping(value = "/{filmId}/review", method = POST)
+    @RequestMapping(value = "/addReview/{filmId}", method = POST)
     public ResponseEntity addReview(@RequestHeader(value = "Authorization") String jwtToken,
                                              @PathVariable String filmId,
                                              @RequestBody Review review) {
-        System.out.println("qwdqwdqwd");
+        System.out.println("reviewId:  " + review.getReviewId() + "\n" + review.getReviewContent());
         reviewService.addReview(jwtTokenService.getUserIdFromToken(jwtToken), filmId, review);
         return new ResponseEntity(HttpStatus.OK);
     }
@@ -74,14 +74,14 @@ public class ReviewController {
     }
 
     //@TODO reviews
-    @RequestMapping(value = "movie/{movieId}/reviews", method = GET)
-    public ResponseEntity<List> getMovieReviews(@PathVariable String movieId) {
-        return null;
+    @RequestMapping(value = "/movie/reviews/{movieId}", method = GET)
+    public ResponseEntity<List<Review>> getMovieReviews(@PathVariable String movieId) {
+        return new ResponseEntity<>(reviewService.getAllReviews(), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "user/{userId}/reviews", method = GET)
-    public ResponseEntity<List> getUserReviews(@PathVariable Integer userId) {
-        return null;
+    @RequestMapping(value = "/user/reviews", method = GET)
+    public ResponseEntity<List<Review>> getUserReviews(@RequestHeader(value = "Authorization") String jwtToken) {
+        return ResponseEntity.ok(reviewService.getUserReviews(jwtTokenService.getUserIdFromToken(jwtToken)));
     }
 
 

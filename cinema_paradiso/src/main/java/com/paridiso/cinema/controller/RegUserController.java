@@ -78,8 +78,10 @@ public class RegUserController {
     @PostMapping(value = "/signup")
     public ResponseEntity<JwtUser> userSignup(@RequestBody User user) {
         System.out.println(user.getUsername());
+        System.out.println(user.getUserID());
         User optionalUser = userService.signup(user).orElseThrow(() ->
                 new ResponseStatusException(BAD_REQUEST, "USER ALREADY EXISTS"));
+        System.out.println(optionalUser.getUserID());
         JwtUser jwtUser = new JwtUser(optionalUser.getUsername(),
                 generator.generate(optionalUser), optionalUser.getUserID(), optionalUser.getRole());
         return ResponseEntity.ok(jwtUser);

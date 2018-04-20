@@ -54,8 +54,8 @@ public class ReviewServiceImpl implements ReviewService {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResponseStatusException(INTERNAL_SERVER_ERROR, "USER NOT FOUND"));
 
-        //setMovie to review
-        review.setMovie(movie);
+        //setMovieId to review
+        review.setImdbId(movieId);
         //setUserId to review
         review.setUserId(userId);
         // add to user's review list
@@ -63,11 +63,19 @@ public class ReviewServiceImpl implements ReviewService {
         if (reviews == null)
             reviews = new ArrayList<>();
         reviews.add(review);
-
         user.getUserProfile().setReviews(reviews);
+        // add to movie's review list
+        reviews = movie.getReviews();
+        if (reviews == null)
+            reviews = new ArrayList<>();
+        reviews.add(review);
+        movie.setReviews(reviews);
 
-        reviewRepository.save(review);
+
+
+        Optional.ofNullable(reviewRepository.save(review));
         userProfileRepository.save(user.getUserProfile());
+        movieRepository.save(movie);
     }
 
     @Override
@@ -113,5 +121,14 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     public boolean detectBadReview(Review review) {
         return false;
+    }
+
+    public List<Review> getUserReviews(Integer userId) {
+        // find user
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResponseStatusException(INTERNAL_SERVER_ERROR, "USER NOT FOUND"));
+        List<Review> reviews = user.getUserProfile().getReviews();
+        return reviews;
+
     }
 }

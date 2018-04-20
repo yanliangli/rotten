@@ -61,8 +61,8 @@ public class TestMovieAndReviews {
         reviews.add(r1);
         reviews.add(r2);
 
-        r1.setMovie(m1);
-        r2.setMovie(m1);
+        r1.setImdbId(m1.getImdbId());
+        r2.setImdbId(m1.getImdbId());
         r1.setUserId(up1.getId());
         r2.setUserId(up1.getId());
 

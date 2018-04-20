@@ -11,6 +11,7 @@ import {LoginService} from '../../global/login/login.service';
 import {Router} from '@angular/router';
 import {Movie} from '../../global/models/movie.model';
 import {MovieService} from '../../global/movie/movie.service';
+import {Review} from '../../global/models/review.model';
 
 class Profile {
   name: string;
@@ -41,6 +42,7 @@ export class RegUserComponent implements OnInit {
   whishlist: Movie[];
   watchlist: Movie[];
   ratedMovieList: Movie[];
+  reviews: Review[];
   constructor(private router: Router,
               private movieService: MovieService,
               private loginService: LoginService,
@@ -63,6 +65,7 @@ export class RegUserComponent implements OnInit {
       this.getWishlist();
       this.getWatchlist();
       this.getRatedMovieList();
+      this.getReviews();
       this.regUserService.getProfile().subscribe(profileDetails => {
         console.log(profileDetails);
         this.profile = profileDetails as Profile;
@@ -82,6 +85,16 @@ export class RegUserComponent implements OnInit {
   }
   setImdbId(imdbId: string) {
     this.movieService.setSelectedMovieId(imdbId);
+  }
+  getReviews(): any {
+    this.regUserService.getReviews()
+      .subscribe(
+        data => {
+          this.reviews = data as Review[];
+          console.log(this.reviews);
+        },
+        error => console.log('Failed to fetch movies playing')
+      );
   }
   getRatedMovieList(): any {
     this.regUserService.getRatedMovieList()

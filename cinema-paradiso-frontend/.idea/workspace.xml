@@ -3,25 +3,26 @@
   <component name="ChangeListManager">
     <list default="true" id="88d67834-73db-4f83-b126-1694d195863a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/global/models/review.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/global/models/review.model.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/global/movie-detail/movie-detail.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/global/movie-detail/movie-detail.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/global/movie-detail/movie-detail.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/global/movie-detail/movie-detail.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/global/movie-detail/movie-detail.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/global/movie-detail/movie-detail.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/user/reg-user/reg-user.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/user/reg-user/reg-user.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/user/reg-user/reg-user.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/user/reg-user/reg-user.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/user/reg-user/reg-user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/user/reg-user/reg-user.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../cinema_paradiso/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema_paradiso/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../cinema_paradiso/src/main/java/com/paridiso/cinema/controller/RegUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema_paradiso/src/main/java/com/paridiso/cinema/controller/RegUserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../cinema_paradiso/src/main/java/com/paridiso/cinema/controller/ReviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema_paradiso/src/main/java/com/paridiso/cinema/controller/ReviewController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cinema_paradiso/src/main/java/com/paridiso/cinema/entity/Film.java" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema_paradiso/src/main/java/com/paridiso/cinema/entity/Film.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../cinema_paradiso/src/main/java/com/paridiso/cinema/entity/Review.java" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema_paradiso/src/main/java/com/paridiso/cinema/entity/Review.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema_paradiso/src/main/java/com/paridiso/cinema/entity/UserProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema_paradiso/src/main/java/com/paridiso/cinema/entity/UserProfile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../cinema_paradiso/src/main/java/com/paridiso/cinema/service/implementation/RegUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema_paradiso/src/main/java/com/paridiso/cinema/service/implementation/RegUserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../cinema_paradiso/src/main/java/com/paridiso/cinema/service/implementation/ReviewServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema_paradiso/src/main/java/com/paridiso/cinema/service/implementation/ReviewServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../cinema_paradiso/src/test/java/com/paridiso/cinema/TestMovieAndReviews.java" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema_paradiso/src/test/java/com/paridiso/cinema/TestMovieAndReviews.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../cinema_paradiso/target/classes/com/paridiso/cinema/controller/RegUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema_paradiso/target/classes/com/paridiso/cinema/controller/RegUserController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../cinema_paradiso/target/classes/com/paridiso/cinema/controller/ReviewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema_paradiso/target/classes/com/paridiso/cinema/controller/ReviewController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cinema_paradiso/target/classes/com/paridiso/cinema/entity/Film.class" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema_paradiso/target/classes/com/paridiso/cinema/entity/Film.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../cinema_paradiso/target/classes/com/paridiso/cinema/entity/Review.class" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema_paradiso/target/classes/com/paridiso/cinema/entity/Review.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema_paradiso/target/classes/com/paridiso/cinema/persistence/MovieRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema_paradiso/target/classes/com/paridiso/cinema/persistence/MovieRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema_paradiso/target/classes/com/paridiso/cinema/service/implementation/CelebrityServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema_paradiso/target/classes/com/paridiso/cinema/service/implementation/CelebrityServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema_paradiso/target/classes/com/paridiso/cinema/service/implementation/MovieServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema_paradiso/target/classes/com/paridiso/cinema/service/implementation/MovieServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cinema_paradiso/target/classes/com/paridiso/cinema/entity/UserProfile.class" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema_paradiso/target/classes/com/paridiso/cinema/entity/UserProfile.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../cinema_paradiso/target/classes/com/paridiso/cinema/service/implementation/RegUserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema_paradiso/target/classes/com/paridiso/cinema/service/implementation/RegUserServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../cinema_paradiso/target/classes/com/paridiso/cinema/service/implementation/ReviewServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema_paradiso/target/classes/com/paridiso/cinema/service/implementation/ReviewServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../cinema_paradiso/target/test-classes/com/paridiso/cinema/TestMovieAndReviews.class" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema_paradiso/target/test-classes/com/paridiso/cinema/TestMovieAndReviews.class" afterDir="false" />
@@ -37,11 +38,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="reg-user.component.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="reg-user.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app/user/reg-user/reg-user.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="127" column="29" lean-forward="true" selection-start-line="127" selection-start-column="29" selection-end-line="127" selection-end-column="29" />
+            <state relative-caret-position="210">
+              <caret line="229" column="56" lean-forward="true" selection-start-line="229" selection-start-column="56" selection-end-line="229" selection-end-column="56" />
             </state>
           </provider>
         </entry>
@@ -50,7 +51,7 @@
         <entry file="file://$PROJECT_DIR$/src/app/global/movie-detail/movie-detail.component.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="315">
-              <caret line="153" column="43" lean-forward="true" selection-start-line="153" selection-start-column="43" selection-end-line="153" selection-end-column="43" />
+              <caret line="114" column="7" selection-start-line="114" selection-start-column="7" selection-end-line="114" selection-end-column="7" />
               <folding>
                 <element signature="e#0#55#0" expanded="true" />
               </folding>
@@ -61,46 +62,8 @@
       <file leaf-file-name="reg-user.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/user/reg-user/reg-user.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="557">
-              <caret line="93" column="8" lean-forward="true" selection-start-line="93" selection-start-column="8" selection-end-line="93" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="reg-user.service.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/user/reg-user/reg-user.service.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="37" column="70" lean-forward="true" selection-start-line="37" selection-start-column="70" selection-end-line="37" selection-end-column="70" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="movie-detail.component.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/app/global/movie-detail/movie-detail.component.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="313">
-              <caret line="280" column="29" selection-start-line="280" selection-start-column="29" selection-end-line="280" selection-end-column="29" />
-              <folding>
-                <element signature="n#style#0;n#span#0;n#p#3;n#div#3;n#div#1;n#div#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="admin.service.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/user/admin/admin.service.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-546">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="admin.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/user/admin/admin.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-10269">
+            <state relative-caret-position="579">
+              <caret line="93" column="36" lean-forward="true" selection-start-line="93" selection-start-column="36" selection-end-line="93" selection-end-column="36" />
               <folding>
                 <element signature="e#0#48#0" expanded="true" />
               </folding>
@@ -108,20 +71,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.component.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/global/login/login.component.html">
+      <file leaf-file-name="reg-user.service.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/user/reg-user/reg-user.service.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
-              <caret line="38" column="101" lean-forward="true" selection-start-line="38" selection-start-column="101" selection-end-line="38" selection-end-column="101" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="home.service.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/global/home/home.service.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="14" column="45" lean-forward="true" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
+            <state relative-caret-position="498">
+              <caret line="41" column="67" selection-start-line="41" selection-start-column="67" selection-end-line="41" selection-end-column="67" />
             </state>
           </provider>
         </entry>
@@ -130,10 +84,57 @@
         <entry file="file://$PROJECT_DIR$/src/app/global/movie-detail/movie-detail.service.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="351">
-              <caret line="45" column="67" selection-start-line="45" selection-start-column="67" selection-end-line="45" selection-end-column="67" />
+              <caret line="51" column="66" lean-forward="true" selection-start-line="51" selection-start-column="66" selection-end-line="51" selection-end-column="66" />
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="movie-detail.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/global/movie-detail/movie-detail.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="312" column="65" selection-start-line="312" selection-start-column="58" selection-end-line="312" selection-end-column="65" />
+              <folding>
+                <element signature="n#style#0;n#span#0;n#p#3;n#div#3;n#div#1;n#div#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/global/login/login.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-105">
+              <caret line="38" column="101" lean-forward="true" selection-start-line="38" selection-start-column="101" selection-end-line="38" selection-end-column="101" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/global/login/login.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="42">
+              <caret line="17" column="6" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="6" />
+              <folding>
+                <element signature="e#0#48#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user.model.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/user/user/user.model.ts">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="login.service.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/global/login/login.service.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="294">
+              <caret line="17" column="16" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -146,6 +147,7 @@
       <find>email</find>
       <find>button</find>
       <find>movie</find>
+      <find>cr</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -159,13 +161,14 @@
         <option value="$PROJECT_DIR$/src/app/global/login/login.service.ts" />
         <option value="$PROJECT_DIR$/src/app/global/movie-detail/movie-detail.component.scss" />
         <option value="$PROJECT_DIR$/src/app/global/home/home.component.html" />
-        <option value="$PROJECT_DIR$/src/app/global/movie-detail/movie-detail.service.ts" />
         <option value="$PROJECT_DIR$/src/app/app.routing.ts" />
-        <option value="$PROJECT_DIR$/src/app/global/movie-detail/movie-detail.component.ts" />
         <option value="$PROJECT_DIR$/src/app/user/reg-user/reg-user.component.ts" />
         <option value="$PROJECT_DIR$/src/app/user/reg-user/reg-user.service.ts" />
-        <option value="$PROJECT_DIR$/src/app/user/reg-user/reg-user.component.html" />
+        <option value="$PROJECT_DIR$/src/app/global/models/review.model.ts" />
+        <option value="$PROJECT_DIR$/src/app/global/movie-detail/movie-detail.service.ts" />
         <option value="$PROJECT_DIR$/src/app/global/movie-detail/movie-detail.component.html" />
+        <option value="$PROJECT_DIR$/src/app/global/movie-detail/movie-detail.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/user/reg-user/reg-user.component.html" />
       </list>
     </option>
   </component>
@@ -229,30 +232,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="global" type="462c0819:PsiDirectoryNode" />
-              <item name="categories" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cinema-paradiso-frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cinema-paradiso-frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="global" type="462c0819:PsiDirectoryNode" />
-              <item name="celebrity" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cinema-paradiso-frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cinema-paradiso-frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="global" type="462c0819:PsiDirectoryNode" />
-              <item name="footer" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="cinema-paradiso-frontend" type="b2602c69:ProjectViewProjectNode" />
-              <item name="cinema-paradiso-frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="global" type="462c0819:PsiDirectoryNode" />
               <item name="header" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -270,6 +249,14 @@
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="global" type="462c0819:PsiDirectoryNode" />
               <item name="login" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cinema-paradiso-frontend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cinema-paradiso-frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="global" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="cinema-paradiso-frontend" type="b2602c69:ProjectViewProjectNode" />
@@ -556,7 +543,7 @@
       <workItem from="1523371257492" duration="342000" />
       <workItem from="1523371611454" duration="2560000" />
       <workItem from="1523551106275" duration="32774000" />
-      <workItem from="1524006346791" duration="12124000" />
+      <workItem from="1524006346791" duration="26826000" />
     </task>
     <task id="LOCAL-00001" summary="userPage, adminPage and so on router fixed">
       <created>1523570324883</created>
@@ -576,7 +563,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53473000" />
+    <option name="totallyTimeSpent" value="68175000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -589,7 +576,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3293348" />
@@ -599,9 +585,9 @@
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50053304" side_tool="true" weight="0.32606325" />
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="7" visible="true" weight="0.3293348" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3293348" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49946696" weight="0.32606325" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49946696" visible="true" weight="0.32606325" />
       <window_info id="Capture Tool" order="2" />
       <window_info anchor="bottom" id="TypeScript" order="8" />
       <window_info id="Designer" order="2" />
@@ -633,57 +619,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="rating system done" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/app/user/reg-user/reg-user.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4809">
-          <caret line="229" column="13" selection-start-line="229" selection-start-column="13" selection-end-line="229" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/user/reg-user/reg-user.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="945">
-          <caret line="57" column="9" selection-start-line="57" selection-start-column="9" selection-end-line="57" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/global/movie-detail/movie-detail.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2142">
-          <caret line="102" selection-start-line="102" selection-end-line="102" />
-          <folding>
-            <element signature="e#0#55#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/global/movie-detail/movie-detail.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="34" column="3" selection-start-line="33" selection-start-column="73" selection-end-line="40" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/global/header/header.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="966">
-          <caret line="46" column="30" selection-start-line="46" selection-start-column="26" selection-end-line="46" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#48#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2100">
-          <caret line="100" column="16" selection-start-line="100" selection-start-column="16" selection-end-line="100" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/global/movie-detail/movie-detail.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5607">
@@ -821,30 +756,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/global/login/login.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="89" column="6" lean-forward="true" selection-start-line="81" selection-start-column="51" selection-end-line="89" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/global/header/header.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="36" column="17" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/global/header/header.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="966">
-          <caret line="46" column="30" selection-start-line="46" selection-start-column="26" selection-end-line="46" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#48#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/global/login/login.service.spec.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -863,15 +774,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/global/movie-detail/movie-detail.component.spec.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#73#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -896,13 +798,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/global/login/login.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="17" column="16" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/app.routing.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -924,13 +819,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/global/login/login.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="38" column="101" lean-forward="true" selection-start-line="38" selection-start-column="101" selection-end-line="38" selection-end-column="101" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/global/home/home.service.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -938,70 +826,171 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/global/movie-detail/movie-detail.service.ts">
+    <entry file="file://$PROJECT_DIR$/src/app/global/movie-detail/movie-detail.component.spec.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="45" column="67" selection-start-line="45" selection-start-column="67" selection-end-line="45" selection-end-column="67" />
+        <state>
           <folding>
-            <element signature="e#0#41#0" expanded="true" />
+            <element signature="e#0#73#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/user/admin/admin.service.ts">
+    <entry file="file://$PROJECT_DIR$/src/app/global/login/login.component.spec.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-546">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        <state>
+          <folding>
+            <element signature="e#0#73#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/global/login/login.component.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8735" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/user/admin/admin.service.spec.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#56#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/user/admin/admin.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-10269">
+        <state relative-caret-position="-7623">
           <folding>
             <element signature="e#0#48#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/user/reg-user/reg-user.service.ts">
+    <entry file="file://$PROJECT_DIR$/src/app/user/admin/admin.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="37" column="70" lean-forward="true" selection-start-line="37" selection-start-column="70" selection-end-line="37" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/user/reg-user/reg-user.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="557">
-          <caret line="93" column="8" lean-forward="true" selection-start-line="93" selection-start-column="8" selection-end-line="93" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/user/reg-user/reg-user.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="127" column="29" lean-forward="true" selection-start-line="127" selection-start-column="29" selection-end-line="127" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/global/movie-detail/movie-detail.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="153" column="43" lean-forward="true" selection-start-line="153" selection-start-column="43" selection-end-line="153" selection-end-column="43" />
+        <state relative-caret-position="399">
+          <caret line="19" column="82" lean-forward="true" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="82" />
           <folding>
-            <element signature="e#0#55#0" expanded="true" />
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/global/models/trailer.model.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/global/models/movie.model.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#44#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/global/models/review.model.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/global/header/header.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="36" column="17" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/global/header/header.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="46" column="30" selection-start-line="46" selection-start-column="26" selection-end-line="46" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/global/login/login.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-105">
+          <caret line="38" column="101" lean-forward="true" selection-start-line="38" selection-start-column="101" selection-end-line="38" selection-end-column="101" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/global/login/login.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="17" column="16" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/global/movie-detail/movie-detail.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="51" column="66" lean-forward="true" selection-start-line="51" selection-start-column="66" selection-end-line="51" selection-end-column="66" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/global/movie-detail/movie-detail.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="313">
-          <caret line="280" column="29" selection-start-line="280" selection-start-column="29" selection-end-line="280" selection-end-column="29" />
+        <state relative-caret-position="378">
+          <caret line="312" column="65" selection-start-line="312" selection-start-column="58" selection-end-line="312" selection-end-column="65" />
           <folding>
             <element signature="n#style#0;n#span#0;n#p#3;n#div#3;n#div#1;n#div#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/global/login/login.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="17" column="6" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/user/user/user.model.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/global/movie-detail/movie-detail.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="114" column="7" selection-start-line="114" selection-start-column="7" selection-end-line="114" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#55#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/user/reg-user/reg-user.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="498">
+          <caret line="41" column="67" selection-start-line="41" selection-start-column="67" selection-end-line="41" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/user/reg-user/reg-user.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="579">
+          <caret line="93" column="36" lean-forward="true" selection-start-line="93" selection-start-column="36" selection-end-line="93" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/user/reg-user/reg-user.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="229" column="56" lean-forward="true" selection-start-line="229" selection-start-column="56" selection-end-line="229" selection-end-column="56" />
         </state>
       </provider>
     </entry>
