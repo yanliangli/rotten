@@ -39,6 +39,15 @@ public class AdminController {
     @Autowired
     private ObjectMapper objectMapper;
 
+    @PostMapping(value = "/signup")
+    public ResponseEntity<JwtUser> adminSignUp(@RequestBody User user) {
+        User optionalUser = userService.signup(user).orElseThrow(() ->
+                new ResponseStatusException(BAD_REQUEST, "Admin ALREADY EXISTS"));
+        JwtUser jwtUser = new JwtUser(optionalUser.getUsername(),
+                generator.generate(optionalUser), optionalUser.getUserID(), optionalUser.getRole());
+        return ResponseEntity.ok(jwtUser);
+    }
+
     @RequestMapping(value = "/login", method = POST)
     public ResponseEntity<JwtUser> adminLogin(@RequestParam(value = "email", required = true) String email,
                                               @RequestParam(value = "password", required = true) String password) {
