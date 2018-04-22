@@ -9,7 +9,7 @@ const httpOptions = {headers: new HttpHeaders({ 'Content-Type': 'application/jso
 export class SearchService{
   constructor(private http: HttpClient) { }
 
-  searchMovies(keyword:String){
+  searchMovies(keyword){
     let params = new HttpParams({
       fromObject:{
         table: 'movie',
@@ -21,9 +21,12 @@ export class SearchService{
   }
 
   searchCelebrities(keyword){
-    let params = new HttpParams();
-    params.append('table', 'celebrity');
-    params.append('keyword', keyword)
+    let params = new HttpParams({
+      fromObject:{
+        table: 'celebrity',
+        keyword: keyword,
+      }
+    });
     return this.http.get('http://localhost:8080/search',{params:params});
   }
 }
