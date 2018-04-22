@@ -15,6 +15,8 @@ public class Review {
     @JoinColumn(name = "imdbId", nullable = false)
     private String imdbId;
 
+    private String movieTitle;
+
     private Integer userId;
 
     private String title;
@@ -101,4 +103,8 @@ public class Review {
     public void setPostedDate(Calendar postedDate) {
         this.postedDate = postedDate;
     }
+
+    public String getMovieTitle(){return movieTitle;}
+
+    public void setMovieTitle(String movieTitle){this.movieTitle = movieTitle;}
 }

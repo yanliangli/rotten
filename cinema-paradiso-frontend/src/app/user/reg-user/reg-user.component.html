@@ -227,7 +227,7 @@
               <i class="fa fa-quote-left"></i>
             </div>
             <div class="l_description">
-              <h3 class="title">{{review.reviewId}}</h3>
+              <a routerLink="/movie/{{review.imdbId}}" (click)="setImdbId(review.imdbId)" routerLinkActive="active">{{review.movieTitle}}</a>
               <p class="description">{{review.reviewContent}}
               </p>
             </div>

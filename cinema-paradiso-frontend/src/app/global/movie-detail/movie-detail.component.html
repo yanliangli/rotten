@@ -410,10 +410,10 @@
                     <i class="fa fa-quote-left"></i>
                   </div>
                   <p class="t_description">
-                    {{reviews}}
+                    {{reviews.reviewContent}}
                   </p>
                 </div>
-                <h3 class="title">John</h3>
+                <h3 class="title">{{reviews.author}}</h3>
                 <div *ngIf="!isCritic; else notCriticBlock">
                   <span class="post">Top Critics</span>
                 </div>

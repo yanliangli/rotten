@@ -8,6 +8,7 @@ export class Review {
   title: string;
   imdbId: string;
   userId: number;
+  movieTitle: string;
 
   constructor(values: Object = {}) {
     Object.assign(this, values);
