@@ -49,13 +49,24 @@ export class LoginComponent implements OnInit {
   signup() {
     // check password is the same
     if (!this.emailTaken && !this.userNameTaken && this.user !== undefined) {
-      this.loginService.singup(this.user).subscribe(data => {
-        localStorage.setItem('credential', JSON.stringify(data));
-        localStorage.setItem('token', JSON.stringify(data['token']));
+      if(this.email.includes("admin")){
+        this.loginService.adminSingup(this.user).subscribe(data => {
+          localStorage.setItem('credential', JSON.stringify(data));
+          localStorage.setItem('token', JSON.stringify(data['token']));
 
-        // Set user loggedIn status to global. So header can subscribe to the event.
-        this.loginStatusService.changeStatus(true);
-      });
+          // Set user loggedIn status to global. So header can subscribe to the event.
+          this.loginStatusService.changeStatus(true);
+        });
+      }
+      else {
+        this.loginService.singup(this.user).subscribe(data => {
+          localStorage.setItem('credential', JSON.stringify(data));
+          localStorage.setItem('token', JSON.stringify(data['token']));
+
+          // Set user loggedIn status to global. So header can subscribe to the event.
+          this.loginStatusService.changeStatus(true);
+        });
+      }
     }
   }
 
@@ -92,13 +103,25 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (this.email !== null && this.password !== null) {
-      this.loginService.login(this.email, this.password).subscribe(data => {
-        localStorage.setItem('credential', JSON.stringify(data));
-        localStorage.setItem('token', JSON.stringify(data['token']));
-        // Set user loggedIn status to global. So header can subscribe to the event.
-        this.loginStatusService.changeStatus(true);
-      });
+      if(this.email.includes("admin")){
+        this.loginService.adminLogin(this.email, this.password).subscribe(data => {
+          localStorage.setItem('credential', JSON.stringify(data));
+          localStorage.setItem('token', JSON.stringify(data['token']));
+          // Set user loggedIn status to global. So header can subscribe to the event.
+          this.loginStatusService.changeStatus(true);
+        });
+      }
+      else{
+        this.loginService.login(this.email, this.password).subscribe(data => {
+          localStorage.setItem('credential', JSON.stringify(data));
+          localStorage.setItem('token', JSON.stringify(data['token']));
+          // Set user loggedIn status to global. So header can subscribe to the event.
+          this.loginStatusService.changeStatus(true);
+        });
+      }
     }
   }
+
+
 
 }
