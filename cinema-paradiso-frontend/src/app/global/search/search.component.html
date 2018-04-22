@@ -15,14 +15,13 @@
 <br>
 
 <div class="container movie_results">
-
-  <div class="row s-item">
+  <div class="row s-item" *ngFor="let movie of movieResults">
     <div class="col-4 s_img-wrap">
-      <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BNGNiNWQ5M2MtNGI0OC00MDA2LWI5NzEtMmZiYjVjMDEyOWYzXkEyXkFqcGdeQXVyMjM4NTM5NDY@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      <img src="{{movie.poster}}"
            alt="">
     </div>
     <div class="col-7">
-      <a routerLink="/movie-detail" class="s-item__title">The Shape of Water</a>
+      <a routerLink="/movie/{{movie.imdbId}}" class="s-item__title">{{movie.title}}</a>
 
       <div class="flex">
         <i class="fa fa-star"></i>
@@ -30,64 +29,29 @@
         <i class="fa fa-star"></i>
         <i class="fa fa-star"></i>
         <i class="fa fa-star"></i>
-        <p>5.0/5.0</p>
-        <p>R</p>
+        <p>{{movie.rating}}/5.0</p>
+        <p>{{movie.rated}}</p>
       </div>
 
-      <p class="s-plot">At a top secret research facility in the 1960s, a lonely janitor forms a unique
-        relationship with an amphibious
-        creature that is being held in captivity.</p>
+      <p class="s-plot">{{movie.plot}}</p>
       <p>
         Starring
-        <span> Sally Hawkins, Octavia Spencer, Michael Shannon</span>
+        <span *ngFor="let cast of movie.cast">
+          <a routerLink="/celebrity/{{cast.celebrityId}}">{{cast.name}},</a>
+        </span>
       </p>
       <p>
         Director
-        <span>Guillermo del Toro</span>
+        <a routerLink="/celebrity/{{movie.director.celebrityId}}">{{movie.director.name}}</a>
       </p>
       <p>
         Genres
-        <span>Adventure, Drama, Fantasy, Horror, Romance</span>
+        <span *ngFor="let genres of movie.genres">
+          <a routerLink="/search" [queryParams]="{table:'movie', search:genres}">{{genres}}</a>
+        </span>
       </p>
     </div>
   </div>
-
-  <div class="row s-item">
-    <div class="col-4 s_img-wrap">
-      <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BNGNiNWQ5M2MtNGI0OC00MDA2LWI5NzEtMmZiYjVjMDEyOWYzXkEyXkFqcGdeQXVyMjM4NTM5NDY@._V1_UX182_CR0,0,182,268_AL_.jpg"
-           alt="">
-    </div>
-    <div class="col-7">
-      <a routerLink="/movie-detail" class="s-item__title">The Shape of Water</a>
-
-      <div class="flex">
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <p>5.0/5.0</p>
-        <p>R</p>
-      </div>
-
-      <p class="s-plot">At a top secret research facility in the 1960s, a lonely janitor forms a unique
-        relationship with an amphibious
-        creature that is being held in captivity.</p>
-      <p>
-        Starring
-        <span> Sally Hawkins, Octavia Spencer, Michael Shannon</span>
-      </p>
-      <p>
-        Director
-        <span>Guillermo del Toro</span>
-      </p>
-      <p>
-        Genres
-        <span>Adventure, Drama, Fantasy, Horror, Romance</span>
-      </p>
-    </div>
-  </div>
-
 </div>
 
 

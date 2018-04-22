@@ -6,11 +6,12 @@
   </nav>
 
   <nav class="l-header__nav">
-    <a>
+
+    <div>
       <form>
-        <input type="search" placeholder="Search">
+        <input id="input_search" type="search" placeholder="search" (keypress)="gotoMovie($event)">
       </form>
-    </a>
+    </div>
     <a routerLink="/home" routerLinkActive="active">Home</a>
     <a routerLink="/movies" routerLinkActive="active">Movies</a>
     <a routerLink="/movies" routerLinkActive="active">TV Shows</a>

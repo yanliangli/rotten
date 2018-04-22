@@ -1,5 +1,6 @@
 package com.paridiso.cinema.service;
 
+import com.paridiso.cinema.entity.Celebrity;
 import com.paridiso.cinema.entity.Movie;
 
 import java.util.List;
@@ -8,4 +9,7 @@ import java.util.TreeSet;
 
 public interface SearchService {
     List<Movie> getMoviesFromKeyword(String keyword);
+    List<Celebrity> getCelebritiesFromKeyword(String keyword);
+    //List<Movie> getMoviesFromGenre(String genre);
+    //List<Movie> getMoviesFromCelebrityName(String celebrityName);
 }

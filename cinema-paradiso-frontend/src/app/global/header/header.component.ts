@@ -5,6 +5,7 @@ import {Token} from '../login/token.model';
 import {LoginService} from '../login/login.service';
 import {connectableObservableDescriptor} from 'rxjs/observable/ConnectableObservable';
 import {ToastrService} from 'ngx-toastr';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -17,7 +18,7 @@ export class HeaderComponent implements OnInit {
   user: Token;
   is_admin: boolean;
 
-  constructor(private loginStatusService: LoginStatusService, private loginService: LoginService, private toastrService: ToastrService) {
+  constructor(private loginStatusService: LoginStatusService, private loginService: LoginService, private toastrService: ToastrService, private router: Router, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -58,4 +59,10 @@ export class HeaderComponent implements OnInit {
     this.loginService.logout();
   }
 
+  gotoMovie(e) {
+    if(e.keyCode==13) {
+      // /search?table=movie&search=keyword
+      this.router.navigate(['/search'], {relativeTo: this.route,queryParams: {table:"movie",keyword: $('#input_search').val()}});
+    }
+  }
 }
