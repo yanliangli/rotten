@@ -62,7 +62,7 @@ export class HeaderComponent implements OnInit {
   gotoMovie(e) {
     if(e.keyCode==13) {
       // /search?table=movie&search=keyword
-      this.router.navigate(['/search'], {relativeTo: this.route,queryParams: {table:"movie",keyword: $('#input_search').val()}});
+      this.router.navigate(['/search'], {queryParams: {keyword: $('#input_search').val()}});
     }
   }
 }

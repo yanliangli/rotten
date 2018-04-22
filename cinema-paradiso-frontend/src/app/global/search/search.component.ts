@@ -12,19 +12,25 @@ import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 })
 export class SearchComponent implements OnInit {
   movieResults:Movie[];
-  tableParam: String;
+  movieCount: any;
   keywordParam: String;
   celebritiesResults: Celebrity[];
+  celebrityCount: any;
+  searchPeopleBoolean = false;
+  searchMovieBoolean = true;
 
   constructor(private route: ActivatedRoute, private searchService: SearchService, private router: Router) {
   }
 
   ngOnInit() {
     this.route.queryParamMap.subscribe((params: ParamMap)=>{
-      this.tableParam = params.get('table');
       this.keywordParam = params.get('keyword');
-      this.searchForMovies();
-      console.log(this.tableParam, this.keywordParam);
+      if(this.searchPeopleBoolean){
+        this.searchForCelebrities();
+      }
+      else if(this.searchMovieBoolean){
+        this.searchForMovies();
+      }
     });
 
     $('.show_movies').click(function (e) {
@@ -62,7 +68,7 @@ export class SearchComponent implements OnInit {
           data => {
             // console.log(data);
             this.movieResults = data as Movie[];
-            console.log(this.movieResults);
+            this.movieCount=this.movieResults.length;
           },
           error => console.log('Failed to fetch movie data')
         );
@@ -70,6 +76,38 @@ export class SearchComponent implements OnInit {
   }
 
   searchForCelebrities(){
-
+    if(!(this.keywordParam.trim()  == "")){
+      // search only if input is more than two letters
+      if(this.keywordParam.trim().length < 2){this.keywordParam =null;}
+      this.searchService.searchCelebrities(this.keywordParam)
+        .subscribe(
+          data => {
+            // console.log(data);
+            this.celebritiesResults = data as Celebrity[];
+            this.celebrityCount=this.celebritiesResults.length;
+          },
+          error => console.log('Failed to fetch celebrity data')
+        );
+    }
   }
+
+  setSearchPeopleTrue(){
+    this.searchPeopleBoolean = true;
+    this.searchMovieBoolean = false;
+    this.route.queryParamMap.subscribe((params: ParamMap)=>{
+      this.keywordParam = params.get('keyword');
+      this.searchForCelebrities();
+    });
+  }
+
+  setSearchMovieTrue(){
+    this.searchPeopleBoolean = false;
+    this.searchMovieBoolean = true;
+    this.route.queryParamMap.subscribe((params: ParamMap)=>{
+      this.keywordParam = params.get('keyword');
+      this.searchForMovies();
+    });
+  }
+
+  //TODO TV search
 }

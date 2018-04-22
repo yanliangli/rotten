@@ -16,7 +16,6 @@ export class SearchService{
         keyword: keyword,
       }
     });
-    console.log("http://localhost:8080/search?"+params.toString());
     return this.http.get('http://localhost:8080/search?',{params:params});
   }
 

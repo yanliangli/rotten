@@ -5,9 +5,9 @@
 <div class="search-tab">
 
   <ul>
-    <li><a class="show_movies" href=""><i class="fa fa-film"></i> Movies</a></li>
-    <li><a class="show_tv" href=""><i class="fa fa-tv"></i> TV-Series</a></li>
-    <li><a class="show_people" href=""><i class="fa fa-user"></i> People</a></li>
+    <li><a routerLinkActive="active" class="show_movies" href="" (click)="setSearchMovieTrue()" routerLink="/search" [queryParams]="{keyword:keywordParam}"><i class="fa fa-film"></i> Movies</a></li>
+    <li><a routerLinkActive="active" class="show_tv" href=""><i class="fa fa-tv"></i> TV-Series</a></li>
+    <li><a  routerLinkActive="active" class="show_people" href="" (click)="setSearchPeopleTrue()" routerLink="/search" [queryParams]="{keyword:keywordParam}"><i class="fa fa-user"></i> People</a></li>
   </ul>
 
 </div>
@@ -52,12 +52,14 @@
       </p>
     </div>
   </div>
+  <ngb-pagination [collectionSize]="movieCount" [(page)]="page" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true" class="pagination" ></ngb-pagination>
 </div>
 
 
-<div class="container tv_results" style="display:none">
 
-  <div class="row">
+  <div class="container tv_results" style="display:none">
+
+  <div class="row" >
     <div class="col-4 s_img-wrap">
       <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjE3NTQ1NDg1Ml5BMl5BanBnXkFtZTgwNzY2NDA0MjI@._V1_UX182_CR0,0,182,268_AL_.jpg"
            alt="">
@@ -96,26 +98,21 @@
 
 
 <div class="container people_results" style="display:none">
-  <div class="row">
+  <div class="row" *ngFor="let celebrity of celebritiesResults">
     <div class="col-4 s_img-wrap">
-      <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BODE4MDE0MDEzMl5BMl5BanBnXkFtZTgwNjI1NTU5MDE@._V1_UY317_CR14,0,214,317_AL_.jpg"
-           alt="">
+      <img src="{{celebrity.profileImage}}"
+           alt="" routerLink="/celebrity/{{celebrity.celebrityId}}">
     </div>
     <div class="col-7">
-      <p class="s-item__title">Sally Hawkins</p>
-      <p class="s-item__bio">Sally Cecilia Hawkins was born in 1976 in Lewisham hospital, London, England, to Jacqui
-        and Colin Hawkins,
-        authors and illustrators of children\s books. She is of English and Irish descent. Hawkins was brought
-        up in Greenwich, in southeast London. She attended James Allen\'s Girls\' School in Dulwich. She
-        graduated
-        from the Royal Academy of ...</p>
+      <a class="s-item__title" routerLink="/celebrity/{{celebrity.celebrityId}}">{{celebrity.name}}</a>
+      <p class="s-item__bio">{{celebrity.biography}}</p>
       <p class="s-item__birth">
         Born in:
-        <span class="actor_birth_date">April 27, 1976 in Dulwich, London, England, UK</span>
+        <span class="actor_birth_date">{{celebrity.birthDate}} in {{celebrity.birthCity}}, {{celebrity.birthState}}, {{celebrity.birthCountry}}</span>
       </p>
-
     </div>
   </div>
+  <ngb-pagination [collectionSize]="celebrityCount" [(page)]="page" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true" class="pagination" ></ngb-pagination>
 </div>
 
 </main>
