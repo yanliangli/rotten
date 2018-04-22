@@ -1,0 +1,119 @@
+$color-red: rgb(229, 9, 20);
+$padding-hrz: 2.5rem;
+$shadow: lighten(black, 10%);
+
+//@mixin box_shadow($top, $left, $blur, $color, $inset: false) {
+//  @if $inset {
+//    -webkit-box-shadow:inset $top $left $blur $color;
+//    -moz-box-shadow:inset $top $left $blur $color;
+//    box-shadow:inset $top $left $blur $color;
+//  } @else {
+//    -webkit-box-shadow: $top $left $blur $color;
+//    -moz-box-shadow: $top $left $blur $color;
+//    box-shadow: $top $left $blur $color;
+//  }
+//}
+
+@mixin border_radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+input {
+  outline: none;
+}
+input[type=search] {
+  -webkit-appearance: textfield;
+  -webkit-box-sizing: content-box;
+  font-family: inherit;
+}
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button {
+  display: none;
+}
+
+input[type=search] {
+  background: transparent url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+  border: solid 1px #ccc;
+  padding: 6px 10px 6px 32px;
+  width: 55px;
+  margin-top: -10px;
+  @include border_radius(5em);
+
+  -webkit-transition: all .5s;
+  -moz-transition: all .5s;
+  transition: all .5s;
+}
+input[type=search]:focus {
+  width: 200px;
+  background-color: transparent;
+  border-color: #ccc;
+
+}
+input:-moz-placeholder {
+  color: #999;
+}
+input::-webkit-input-placeholder {
+  color: #999;
+}
+
+
+.l-header{
+  font-size: 14px;
+  padding: 0 $padding-hrz;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  //@include box_shadow(0, 5px, 5px, $shadow);
+
+  > *{
+    padding-top: 10px;
+    padding-bottom: -15px;
+  }
+    //background-color: #1a1a1a;
+    //margin-top: 1.5em;
+    -moz-box-shadow: 0px 1px 5px 6px #1a1a1a;
+    -webkit-box-shadow: 0px 1px 5px 6px #1a1a1a;
+    box-shadow: 0px 1px 5px 6px #1a1a1a;
+
+}
+
+.l-header__logo{
+  width: 250px;
+}
+
+.l-header__browse{
+  color: $color-red;
+  font-weight: bold;
+  margin-right: auto;
+  margin-left: 40px;
+  padding-right: 40px;
+}
+.l-header__search{
+  width: 20rem;
+  height: 2rem;
+  border-radius: 5px;
+  border: none;
+  margin-top: -8px;
+  font-size: 0.8rem;
+}
+.l-header__nav{
+  display: flex;
+  color: white;
+  > * + *{
+    margin-left: 32px;
+  }
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  border-color: white;
+  border-width: 1px;
+}
+
+input[type=search][_ngcontent-c1]:focus {
+  width: 150px;
+}
