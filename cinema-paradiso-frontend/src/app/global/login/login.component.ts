@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
   signup() {
     // check password is the same
     if (!this.emailTaken && !this.userNameTaken && this.user !== undefined) {
-      if(this.email.includes("admin")){
+      if(this.user.email.includes("admin")){
         this.loginService.adminSingup(this.user).subscribe(data => {
           localStorage.setItem('credential', JSON.stringify(data));
           localStorage.setItem('token', JSON.stringify(data['token']));
