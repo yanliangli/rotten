@@ -12,6 +12,7 @@ import {Router} from '@angular/router';
 import {Movie} from '../../global/models/movie.model';
 import {MovieService} from '../../global/movie/movie.service';
 import {Review} from '../../global/models/review.model';
+import {Observable} from 'rxjs/Observable';
 
 class Profile {
   name: string;
@@ -85,6 +86,23 @@ export class RegUserComponent implements OnInit {
   }
   setImdbId(imdbId: string) {
     this.movieService.setSelectedMovieId(imdbId);
+  }
+  deleteReview(imbdId: string, review: Review) {
+    if(confirm("Want to delete review of "+ review.movieTitle)){
+      console.log("deleting: review of "+ review.movieTitle);
+      this.regUserService.deleteReview(imbdId, review.reviewId).subscribe(
+        data => {
+          // refresh the list
+          this.getReviews();
+          return true;
+        },
+        error => {
+          console.error("Error deleting review of "+ review.movieTitle);
+          return Observable.throw(error);
+        }
+      );
+      console.log("deleted")
+    }
   }
   getReviews(): any {
     this.regUserService.getReviews()

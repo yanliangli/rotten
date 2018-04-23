@@ -51,10 +51,10 @@ public class ReviewController {
 //
 //
 
-    @RequestMapping(value = "/{filmId}/review", method = DELETE, params = "reviewId")
+    @RequestMapping(value = "/deleteReview/{filmId}/{reviewId}", method = DELETE)
     public ResponseEntity<Review> deleteReview(@RequestHeader(value = "Authorization") String jwtToken,
                                                 @PathVariable String filmId,
-                                                @RequestParam Long reviewId) {
+                                               @PathVariable Long reviewId) {
         Review reviewToBeRemovoed = reviewService.removeReview(jwtTokenService.getUserIdFromToken(jwtToken),filmId, reviewId);
         if (reviewToBeRemovoed != null)
             return new ResponseEntity<>(reviewToBeRemovoed, HttpStatus.OK);
@@ -85,7 +85,7 @@ public class ReviewController {
     }
 
 
-    @RequestMapping(value = "user/update_review/{reviewIDd", method = POST)
+    @RequestMapping(value = "user/update_review/{reviewId}", method = POST)
     public ResponseEntity<Boolean> updateReview(@PathVariable Integer reviewId,
                                                 @RequestParam(value = "review_content", required = true) String reviewContent) {
         return null;

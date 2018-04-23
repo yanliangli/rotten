@@ -226,6 +226,10 @@
             <div class="testimonial-icon">
               <i class="fa fa-quote-left"></i>
             </div>
+            <div class="show_more w3-margin-right">
+              <a class="l-cards__more load_more_movies " (click)="deleteReview(review.imdbId, review)">Delete
+              </a>
+            </div>
             <div class="l_description">
               <a routerLink="/movie/{{review.imdbId}}" (click)="setImdbId(review.imdbId)" routerLinkActive="active">{{review.movieTitle}}</a>
               <p class="description">{{review.reviewContent}}
@@ -234,6 +238,7 @@
           </div>
           <h3 class="title">{{profile.username}}</h3>
           <span class="post">Critics</span>
+
         </div>
         <div class="show_more w3-margin-right">
           <a class="l-cards__more load_more_movies" href="javascript:void(0)">more
