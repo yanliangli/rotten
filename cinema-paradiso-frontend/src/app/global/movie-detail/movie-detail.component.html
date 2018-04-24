@@ -284,16 +284,16 @@
                 <app-login></app-login>
               </div>
               <ng-template #elseBlock>
-                <div *ngIf ="inWatchlist; else addToWatchlist">
+                <ng-container  *ngIf ="inWatchlist; else addToWatchlist">
                   <button class="o-button o-button--blue" (click)= "removeFromWacthList()">- Watchlist</button>
-                </div>
+                </ng-container >
                 <ng-template #addToWatchlist >
                   <button class="o-button o-button--gray" (click)= "addWatchlist()">+ Watchlist</button>
                 </ng-template>
 
-                <div *ngIf ="inWishlist; else addToWishlist">
+                <ng-container *ngIf ="inWishlist; else addToWishlist">
                   <button class="o-button o-button--blue1" (click)= "removeFromWishList()">- Wishlist</button>
-                </div>
+                </ng-container>
 
                 <ng-template #addToWishlist>
                   <button class="o-button o-button" (click)= "addWishlist()">+ Wishlist</button>
@@ -309,9 +309,9 @@
                     <span class="star"></span>
                   </ngb-rating>
                 </ng-template>
-              </ng-template>
                 <textarea placeholder="Add a review..." [(ngModel)]="review.reviewContent" required></textarea>
                 <button id="post-btn" (click)="addReview()">Post</button>
+              </ng-template>
             </div>
           </div>
         </div>

@@ -49,29 +49,16 @@ public class WishlistController {
     }
     @GetMapping(value = "/check/{filmId}")
     public ResponseEntity<Boolean> checkWishlist(@RequestHeader(value = "Authorization") String jwtToken, @PathVariable String filmId) {
-        System.out.println(filmId+"           cqiwehbfviqbuvbqeli");
-        Boolean result = listService.checkList(jwtTokenService.getUserIdFromToken(jwtToken), filmId);
-        System.out.println(result+"           cqiwehbfviqbuvbqeli");
-        if (result)
-            return ResponseEntity.ok(true);
-        return ResponseEntity.ok(false);
+        return ResponseEntity.ok(listService.checkList(jwtTokenService.getUserIdFromToken(jwtToken), filmId));
     }
     // http://localhost:8080/wishlist?filmId=1
     @RequestMapping(value = "/addWishlist", method = POST)
     public ResponseEntity<Boolean> addToWishList(@RequestHeader(value = "Authorization") String jwtToken, @RequestParam("filmId") String filmId) {
-
-        Boolean result = listService.addToList(jwtTokenService.getUserIdFromToken(jwtToken), filmId);
-
-        if (result)
-            return ResponseEntity.ok(true);
-        return ResponseEntity.ok(false);
+        return ResponseEntity.ok(listService.addToList(jwtTokenService.getUserIdFromToken(jwtToken), filmId));
     }
 
     @RequestMapping(value = "/{filmId}", method = DELETE)
     public ResponseEntity<Boolean> removeFromWishList(@RequestHeader(value = "Authorization") String jwtToken, @PathVariable String filmId) {
-        Boolean result = listService.removeFromList(jwtTokenService.getUserIdFromToken(jwtToken), filmId);
-        if (result)
-            return ResponseEntity.ok(true);
-        return ResponseEntity.ok(false);
+        return ResponseEntity.ok(listService.removeFromList(jwtTokenService.getUserIdFromToken(jwtToken), filmId));
     }
 }
