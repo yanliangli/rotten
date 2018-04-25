@@ -47,36 +47,23 @@ public class ReviewServiceImpl implements ReviewService {
     @Transactional
     @Override
     public void addReview(Integer userId, String movieId, Review review) {
-        // find movie
         Movie movie = movieRepository.findMovieByImdbId(movieId);
-
-        // find user
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResponseStatusException(INTERNAL_SERVER_ERROR, "USER NOT FOUND"));
-
-        //setMovieId to review
         review.setImdbId(movieId);
-        //setMovieTitle
         review.setMovieTitle((movie.getTitle()));
-        //setUserId to review
         review.setUserId(userId);
-        //setAuthor
         review.setAuthor(user.getUsername());
-        // add to user's review list
         List<Review> reviews = user.getUserProfile().getReviews();
         if (reviews == null)
             reviews = new ArrayList<>();
         reviews.add(review);
         user.getUserProfile().setReviews(reviews);
-        // add to movie's review list
         reviews = movie.getReviews();
         if (reviews == null)
             reviews = new ArrayList<>();
         reviews.add(review);
         movie.setReviews(reviews);
-
-
-
         Optional.ofNullable(reviewRepository.save(review));
         userProfileRepository.save(user.getUserProfile());
         movieRepository.save(movie);
@@ -94,15 +81,11 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     public Review removeReview(Integer userId, String filmId, Long reviewId) {
-        // find movie
         Movie movie = movieRepository.findMovieByImdbId(filmId);
-        // find user
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResponseStatusException(INTERNAL_SERVER_ERROR, "USER NOT FOUND"));
-        // find review and remove
         Review reviewToBeRemoved = reviewRepository.findReviewByReviewId(reviewId);
         List<Review> reviews = user.getUserProfile().getReviews();
-        // if id equal, remove review
         for (Review review: reviews) {
             if (review.getReviewId().equals(reviewToBeRemoved.getReviewId())) {
                 reviews.remove(reviewToBeRemoved);
@@ -111,9 +94,7 @@ public class ReviewServiceImpl implements ReviewService {
         }
         user.getUserProfile().setReviews(reviews);
         userProfileRepository.save(user.getUserProfile());
-        // find movieReviews and remove
         reviews = movie.getReviews();
-        // if id equal, remove review
         for (Review review: reviews) {
             if (review.getReviewId().equals(reviewToBeRemoved.getReviewId())) {
                 reviews.remove(reviewToBeRemoved);
@@ -141,7 +122,6 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     public List<Review> getUserReviews(Integer userId) {
-        // find user
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResponseStatusException(INTERNAL_SERVER_ERROR, "USER NOT FOUND"));
         List<Review> reviews = user.getUserProfile().getReviews();

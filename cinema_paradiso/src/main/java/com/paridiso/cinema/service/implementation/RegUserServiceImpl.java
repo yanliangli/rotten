@@ -64,12 +64,9 @@ public class RegUserServiceImpl extends UserService {
         if (userRepository.findUserByEmail(user.getEmail()) != null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "USER EXISTS");
         }
-
-        // first create a user_profile for the user;
         UserProfile userProfile = new UserProfile();
         userProfile.setName(user.getUsername());
         user.setUserProfile(userProfileRepository.save(userProfile));
-
         user.getUserProfile().setWishList(wishListRepository.save(new WishList()));
         user.getUserProfile().setWatchList(watchListRepository.save(new WatchList()));
         return Optional.ofNullable(userRepository.save(user));
@@ -79,7 +76,6 @@ public class RegUserServiceImpl extends UserService {
     public UserProfile updateProfile(UserProfile userProfile) {
         UserProfile profile = userProfileRepository.findById(userProfile.getId())
                 .orElseThrow(() -> new RuntimeException("CANNOT FIND PROFILE " + userProfile.getId()));
-
         profile.setBiography(userProfile.getBiography());
         profile.setWatchList(userProfile.getWatchList());
         profile.setWishList(userProfile.getWishList());
@@ -95,10 +91,8 @@ public class RegUserServiceImpl extends UserService {
     public boolean makeSummaryPrivate(String jwtToken) {
         int headerLength = environment.getProperty("token.type").length();
         User validatedUser = validator.validate(jwtToken.substring(headerLength));
-
         UserProfile profile = userProfileRepository.findById(validatedUser.getUserProfile().getId())
                 .orElseThrow(() -> new RuntimeException("CANNOT FIND PROFILE"));
-
         profile.setPrivate(true);
         return userProfileRepository.save(profile).getPrivate() == true ? true : false;
     }
@@ -131,7 +125,6 @@ public class RegUserServiceImpl extends UserService {
     public boolean updatePassword(Integer userId, String oldPassword, String newPassword) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResponseStatusException(INTERNAL_SERVER_ERROR, "USER NOT FOUND"));
-
         String hashedPassword = utilityService.getHashedPassword(oldPassword, salt);
         if (!hashedPassword.equals(user.getPassword())) {
             return false;

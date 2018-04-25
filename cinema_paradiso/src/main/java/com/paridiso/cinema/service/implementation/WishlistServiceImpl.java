@@ -51,11 +51,13 @@ public class WishlistServiceImpl implements ListService, WishlistService {
         Movie movie = movieRepository.findMovieByImdbId(filmId);
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResponseStatusException(INTERNAL_SERVER_ERROR, "USER NOT FOUND"));
-        List<Movie> movies = user.getUserProfile().getWishList().getMovies();
-        if (utilityService.containsMovie(movies, filmId) || movies.size() >= user.getUserProfile().getWishList().getSizeLimit())
+        List<Movie> movieList = user.getUserProfile().getWishList().getMovies();
+        if (utilityService.containsMovie(movieList, filmId) || movieList.size() >= user.getUserProfile().getWishList()
+                .getSizeLimit()){
             return false;
-        movies.add(movie);
-        user.getUserProfile().getWishList().setMovies(movies);
+        }
+        movieList.add(movie);
+        user.getUserProfile().getWishList().setMovies(movieList);
         wishListRepository.save(user.getUserProfile().getWishList());
         return true;
     }
@@ -64,8 +66,7 @@ public class WishlistServiceImpl implements ListService, WishlistService {
     public List<Movie> getList(Integer userId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResponseStatusException(INTERNAL_SERVER_ERROR, "USER NOT FOUND"));
-        List<Movie> movies = user.getUserProfile().getWishList().getMovies();
-        return movies;
+        return user.getUserProfile().getWishList().getMovies();
     }
 
     @Override

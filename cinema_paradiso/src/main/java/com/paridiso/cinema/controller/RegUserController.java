@@ -63,7 +63,6 @@ public class RegUserController {
 
     public ResponseEntity<JwtUser> userLogin(@RequestParam(value = "email", required = true) String email,
                                              @RequestParam(value = "password", required = true) String password) {
-
         User user = userService.login(email, password).orElseThrow(() ->
                 new ResponseStatusException(BAD_REQUEST, "USER NOT FOUND"));
         JwtUser jwtUser = new JwtUser(user.getUsername(), generator.generate(user), user.getUserID(), user.getRole());
@@ -128,18 +127,15 @@ public class RegUserController {
 
     @RequestMapping(value = "/getRatedMovie/{filmId}", method = GET)
     public ResponseEntity<Double> getRatedMovie(@RequestHeader(value = "Authorization") String jwtToken, @PathVariable String filmId)  {
-        System.out.println("User Controller: Get RatedMovie ... ");
         Movie movie = userService.getRatedMovie(jwtTokenService.getUserIdFromToken(jwtToken), filmId);
         Double rating = 0.0;
         if(movie != null)
         rating = movie.getRating();
-        System.out.println("ratedMovie Rating is :   " + rating);
         return ResponseEntity.ok(rating);
     }
 
     @RequestMapping(value = "/getRatedMovies", method = GET)
     public ResponseEntity<List<Movie>> getRatedMovies(@RequestHeader(value = "Authorization") String jwtToken)  {
-        System.out.println("User Controller: Get RatedMovies ... ");
         List<Movie> movies = userService.getRatedMovies(jwtTokenService.getUserIdFromToken(jwtToken));
         return ResponseEntity.ok(movies);
     }
@@ -147,26 +143,18 @@ public class RegUserController {
 
     @GetMapping(value = "/get/profile")
     public ResponseEntity<?> getProfile(@RequestHeader(value = "Authorization") String jwtToken) {
-
         UserProfile profile = userService.getProfile(jwtToken);
-
         ObjectNode objectNode = objectMapper.createObjectNode();
         objectNode.put("name", profile.getName());
         objectNode.put("id", profile.getId());
-
         if (profile.getProfileImage() == null) {
             objectNode.put("profileImage", "default.jpeg");
         } else {
             objectNode.put("profileImage", profile.getProfileImage());
         }
-
         objectNode.put("biography", profile.getBiography());
         objectNode.put("isCritic", profile.getCritic());
-
-        System.out.println(objectNode);
-
         return ResponseEntity.ok(objectNode);
-
     }
 
 

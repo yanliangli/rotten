@@ -18,7 +18,8 @@ export class HeaderComponent implements OnInit {
   user: Token;
   is_admin: boolean;
 
-  constructor(private loginStatusService: LoginStatusService, private loginService: LoginService, private toastrService: ToastrService, private router: Router, private route: ActivatedRoute) {
+  constructor(private loginStatusService: LoginStatusService, private loginService: LoginService, private toastrService: ToastrService,
+              private router: Router, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -41,10 +42,10 @@ export class HeaderComponent implements OnInit {
 
         if (this.user.role === 'ROLE_USER' || this.user.role === 'ROLE_CRITIC') {
           this.is_admin = false;
-          console.log("admin: is",this.is_admin);
+          console.log('admin: is', this.is_admin);
         } else {
           this.is_admin = true;
-          console.log("admin: is",this.is_admin);
+          console.log('admin: is', this.is_admin);
         }
       }
     }, error => {
@@ -58,7 +59,7 @@ export class HeaderComponent implements OnInit {
   }
 
   gotoMovie(e) {
-    if(e.keyCode==13) {
+    if (e.keyCode === 13) {
       // /search?table=movie&search=keyword
       this.router.navigate(['/search'], {queryParams: {keyword: $('#input_search').val()}});
     }

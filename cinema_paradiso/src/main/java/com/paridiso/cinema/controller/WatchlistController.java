@@ -40,15 +40,18 @@ public class WatchlistController {
     }
 
     @GetMapping(value = "/check/{filmId}")
-    public ResponseEntity<Boolean> checkWatchlist(@RequestHeader(value = "Authorization") String jwtToken, @PathVariable String filmId) {
+    public ResponseEntity<Boolean> checkWatchlist(@RequestHeader(value = "Authorization") String jwtToken,
+                                                  @PathVariable String filmId) {
         return ResponseEntity.ok(listService.checkList(jwtTokenService.getUserIdFromToken(jwtToken), filmId));
     }
     @RequestMapping(value = "/addWatchlist", method = POST)
-    public ResponseEntity<Boolean> addToWatchlist(@RequestHeader(value = "Authorization") String jwtToken, @RequestParam("filmId") String filmId) {
+    public ResponseEntity<Boolean> addToWatchlist(@RequestHeader(value = "Authorization") String jwtToken,
+                                                  @RequestParam("filmId") String filmId) {
         return ResponseEntity.ok(listService.addToList(jwtTokenService.getUserIdFromToken(jwtToken), filmId));
     }
     @RequestMapping(value = "/{filmId}", method = DELETE)
-    public ResponseEntity<Boolean> removeFromWatchList(@RequestHeader(value = "Authorization") String jwtToken, @PathVariable String filmId) {
+    public ResponseEntity<Boolean> removeFromWatchList(@RequestHeader(value = "Authorization") String jwtToken,
+                                                       @PathVariable String filmId) {
         return ResponseEntity.ok(listService.removeFromList(jwtTokenService.getUserIdFromToken(jwtToken), filmId));
     }
 

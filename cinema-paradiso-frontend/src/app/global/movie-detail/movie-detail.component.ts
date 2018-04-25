@@ -112,7 +112,6 @@ export class MovieDetailComponent implements OnInit {
   }
 
   addReview() {
-    // this.review.reviewContent = this.textValue;
     this.movieDetailService.addReview(this.selectedMovieId, this.review).subscribe(result => {
       console.log(result);
       location.reload(true);

@@ -34,7 +34,6 @@ public class ReviewController {
     public ResponseEntity addReview(@RequestHeader(value = "Authorization") String jwtToken,
                                              @PathVariable String filmId,
                                              @RequestBody Review review) {
-        System.out.println("reviewId:  " + review.getReviewId() + "\n" + review.getReviewContent());
         reviewService.addReview(jwtTokenService.getUserIdFromToken(jwtToken), filmId, review);
         return new ResponseEntity(HttpStatus.OK);
     }
@@ -53,9 +52,10 @@ public class ReviewController {
 
     @RequestMapping(value = "/deleteReview/{filmId}/{reviewId}", method = DELETE)
     public ResponseEntity<Review> deleteReview(@RequestHeader(value = "Authorization") String jwtToken,
-                                                @PathVariable String filmId,
+                                               @PathVariable String filmId,
                                                @PathVariable Long reviewId) {
-        Review reviewToBeRemovoed = reviewService.removeReview(jwtTokenService.getUserIdFromToken(jwtToken),filmId, reviewId);
+        Review reviewToBeRemovoed = reviewService.removeReview(jwtTokenService.getUserIdFromToken(jwtToken),
+                filmId, reviewId);
         if (reviewToBeRemovoed != null)
             return new ResponseEntity<>(reviewToBeRemovoed, HttpStatus.OK);
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
