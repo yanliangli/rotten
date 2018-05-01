@@ -4,10 +4,18 @@
 
 <div class="search-tab">
 
+
+  <div *ngIf="(movieCount+celebrityCount+tvCount)>0;else no_results_found">
+    <h4>SEARCH RESULTS FOR: "{{keywordParam}}"</h4>
+  </div>
+  <ng-template #no_results_found>
+    <h4>SORRY, NO RESULTS FOUND FOR "{{keywordParam}}"</h4>
+  </ng-template>
   <ul>
-    <li><a routerLinkActive="active" class="show_movies" href="" (click)="setSearchMovieTrue()" routerLink="/search" [queryParams]="{keyword:keywordParam}"><i class="fa fa-film"></i> Movies</a></li>
-    <li><a routerLinkActive="active" class="show_tv" href=""><i class="fa fa-tv"></i> TV-Series</a></li>
-    <li><a  routerLinkActive="active" class="show_people" href="" (click)="setSearchPeopleTrue()" routerLink="/search" [queryParams]="{keyword:keywordParam}"><i class="fa fa-user"></i> People</a></li>
+    <li><a routerLinkActive="active" class="show_all" href="" (click)="showAllResults()">All({{movieCount+celebrityCount+tvCount}})</a></li>
+    <li><a routerLinkActive="active" class="show_movies" href="" (click)="onlyShowMovieResults()" ><i class="fa fa-film"></i> Movies({{movieCount}})</a></li>
+    <li><a routerLinkActive="active" class="show_tv" href="" (click)="onlyShowTVResults()"><i class="fa fa-tv"></i> TV-Series({{tvCount}})</a></li>
+    <li><a routerLinkActive="active" class="show_people" href="" (click)="onlyShowPeopleResults()" ><i class="fa fa-user"></i> People({{celebrityCount}})</a></li>
   </ul>
 
 </div>
@@ -15,6 +23,7 @@
 <br>
 
 <div class="container movie_results">
+  <h4 class="bottom_divide" *ngIf="searchMovieBoolean&&movieCount>0">MOVIES</h4>
   <div class="row s-item" *ngFor="let movie of movieResults">
     <div class="col-4 s_img-wrap">
       <img src="{{movie.poster}}"
@@ -22,15 +31,91 @@
     </div>
     <div class="col-7">
       <a routerLink="/movie/{{movie.imdbId}}" class="s-item__title">{{movie.title}}</a>
-
       <div class="flex">
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <p>{{movie.rating}}/5.0</p>
-        <p>{{movie.rated}}</p>
+        <div *ngIf="movie.rating==0">
+          No Ratings
+          <p>{{movie.rated}}</p>
+        </div>
+
+        <div *ngIf="movie.rating>0&& movie.rating<1">
+          <i class="fa fa-star-half-o" aria-hidden="true"></i>
+          <p>{{movie.rating}}/5.0</p>
+          <p>{{movie.rated}}</p>
+        </div>
+
+        <div *ngIf="movie.rating==1">
+          <i class="fa fa-star" ></i>
+          <p>{{movie.rating}}/5.0</p>
+          <p>{{movie.rated}}</p>
+        </div>
+
+        <div *ngIf="movie.rating>1&& movie.rating<2">
+          <i class="fa fa-star" ></i>
+          <i class="fa fa-star-half-o" aria-hidden="true"></i>
+          <p>{{movie.rating}}/5.0</p>
+          <p>{{movie.rated}}</p>
+        </div>
+
+        <div *ngIf="movie.rating==2">
+          <i class="fa fa-star" ></i>
+          <i class="fa fa-star"></i>
+          <p>{{movie.rating}}/5.0</p>
+          <p>{{movie.rated}}</p>
+        </div>
+
+        <div *ngIf="movie.rating>2&& movie.rating<3">
+          <i class="fa fa-star" ></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star-half-o" aria-hidden="true"></i>
+          <p>{{movie.rating}}/5.0</p>
+          <p>{{movie.rated}}</p>
+        </div>
+
+        <div *ngIf="movie.rating==3">
+          <i class="fa fa-star" ></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <p>{{movie.rating}}/5.0</p>
+          <p>{{movie.rated}}</p>
+        </div>
+
+        <div *ngIf="movie.rating>3&& movie.rating<4">
+          <i class="fa fa-star" ></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star-half-o" aria-hidden="true"></i>
+          <p>{{movie.rating}}/5.0</p>
+          <p>{{movie.rated}}</p>
+        </div>
+
+        <div *ngIf="movie.rating==4">
+          <i class="fa fa-star" ></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <p>{{movie.rating}}/5.0</p>
+          <p>{{movie.rated}}</p>
+        </div>
+
+        <div *ngIf="movie.rating>4&& movie.rating<5">
+          <i class="fa fa-star" ></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star-half-o" aria-hidden="true"></i>
+          <p>{{movie.rating}}/5.0</p>
+          <p>{{movie.rated}}</p>
+        </div>
+
+        <div *ngIf="movie.rating==5">
+          <i class="fa fa-star" ></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <p>{{movie.rating}}/5.0</p>
+          <p>{{movie.rated}}</p>
+        </div>
       </div>
 
       <p class="s-plot">{{movie.plot}}</p>
@@ -52,52 +137,132 @@
       </p>
     </div>
   </div>
-  <ngb-pagination [collectionSize]="movieCount" [(page)]="page" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true" class="pagination" ></ngb-pagination>
+  <ngb-pagination *ngIf="searchMovieBoolean&&movieCount>0" [collectionSize]="movieCount" [(page)]="page" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true" class="pagination" ></ngb-pagination>
 </div>
-
 
 
   <div class="container tv_results" style="display:none">
-
-  <div class="row" >
+    <h4 class="bottom_divide" *ngIf="searchTVBoolean&&tvCount>0">TV</h4>
+  <div class="row"  *ngFor="let tv of tvResults">
     <div class="col-4 s_img-wrap">
-      <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjE3NTQ1NDg1Ml5BMl5BanBnXkFtZTgwNzY2NDA0MjI@._V1_UX182_CR0,0,182,268_AL_.jpg"
+      <img src="{{tv.poster}}"
            alt="">
     </div>
     <div class="col-7">
-      <p class="s-item__title">Game of Throne</p>
+      <p class="s-item__title">{{tv.title}}e</p>
 
       <div class="flex">
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <i class="fa fa-star"></i>
-        <p>5.0/5.0</p>
-        <p>RR</p>
+        <div *ngIf="tv.rating==0">
+          No Ratings
+          <p>{{tv.rated}}</p>
+        </div>
+
+        <div *ngIf="tv.rating>0&& tv.rating<1">
+          <i class="fa fa-star-half-o" aria-hidden="true"></i>
+          <p>{{tv.rating}}/5.0</p>
+          <p>{{tv.rated}}</p>
+        </div>
+
+        <div *ngIf="tv.rating==1">
+          <i class="fa fa-star" ></i>
+          <p>{{tv.rating}}/5.0</p>
+          <p>{{tv.rated}}</p>
+        </div>
+
+        <div *ngIf="tv.rating>1&& tv.rating<2">
+          <i class="fa fa-star" ></i>
+          <i class="fa fa-star-half-o" aria-hidden="true"></i>
+          <p>{{tv.rating}}/5.0</p>
+          <p>{{tv.rated}}</p>
+        </div>
+
+        <div *ngIf="tv.rating==2">
+          <i class="fa fa-star" ></i>
+          <i class="fa fa-star"></i>
+          <p>{{tv.rating}}/5.0</p>
+          <p>{{tv.rated}}</p>
+        </div>
+
+        <div *ngIf="tv.rating>2&& tv.rating<3">
+          <i class="fa fa-star" ></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star-half-o" aria-hidden="true"></i>
+          <p>{{tv.rating}}/5.0</p>
+          <p>{{tv.rated}}</p>
+        </div>
+
+        <div *ngIf="tv.rating==3">
+          <i class="fa fa-star" ></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <p>{{tv.rating}}/5.0</p>
+          <p>{{tv.rated}}</p>
+        </div>
+
+        <div *ngIf="tv.rating>3&& tv.rating<4">
+          <i class="fa fa-star" ></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star-half-o" aria-hidden="true"></i>
+          <p>{{tv.rating}}/5.0</p>
+          <p>{{tv.rated}}</p>
+        </div>
+
+        <div *ngIf="tv.rating==4">
+          <i class="fa fa-star" ></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <p>{{tv.rating}}/5.0</p>
+          <p>{{tv.rated}}</p>
+        </div>
+
+        <div *ngIf="tv.rating>4&& tv.rating<5">
+          <i class="fa fa-star" ></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star-half-o" aria-hidden="true"></i>
+          <p>{{tv.rating}}/5.0</p>
+          <p>{{tv.rated}}</p>
+        </div>
+
+        <div *ngIf="tv.rating==5">
+          <i class="fa fa-star" ></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <p>{{tv.rating}}/5.0</p>
+          <p>{{tv.rated}}</p>
+        </div>
       </div>
 
-      <p class="s-plot">Nine noble families fight for control over the mythical lands of Westeros, while an
-        ancient enemy returns
-        after being dormant for thousands of years. </p>
+      <p class="s-plot">{{tv.plot}} </p>
       <p>
         Starring
-        <span> Emilia Clarke, Peter Dinklage, Kit Harington </span>
+        <span *ngFor="let cast of tv.cast">
+          <a routerLink="/celebrity/{{cast.celebrityId}}">{{cast.name}},</a>
+        </span>
       </p>
       <p>
         Director
-        <span> David Benioff, D.B. Weiss </span>
+        <a routerLink="/celebrity/{{tv.director.celebrityId}}">{{movie.director.name}}</a>
       </p>
       <p>
         Genres
-        <span> Action | Adventure | Drama | Fantasy | Romance </span>
+        <span *ngFor="let genres of tv.genres">
+          <a routerLink="/search" [queryParams]="{table:'tv', search:genres}">{{genres}}</a>
+        </span>
       </p>
     </div>
   </div>
-</div>
+    <ngb-pagination *ngIf="searchTVBoolean&&tvCount>0" [collectionSize]="movieCount" [(page)]="page" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true" class="pagination" ></ngb-pagination>
+  </div>
 
 
 <div class="container people_results" style="display:none">
+  <h4 class="bottom_divide" *ngIf="searchPeopleBoolean&&(celebrityCount>0)">CELEBRITIES</h4>
   <div class="row" *ngFor="let celebrity of celebritiesResults">
     <div class="col-4 s_img-wrap">
       <img src="{{celebrity.profileImage}}"
@@ -112,7 +277,7 @@
       </p>
     </div>
   </div>
-  <ngb-pagination [collectionSize]="celebrityCount" [(page)]="page" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true" class="pagination" ></ngb-pagination>
+  <ngb-pagination *ngIf="searchPeopleBoolean&&(celebrityCount>0)" [collectionSize]="celebrityCount" [(page)]="page" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true" class="pagination" ></ngb-pagination>
 </div>
 
 </main>

@@ -33,22 +33,31 @@ input::-webkit-search-cancel-button {
 }
 
 input[type=search] {
-  background: transparent url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+  //background: transparent url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+  background-color: transparent;
   border: solid 1px #ccc;
-  padding: 6px 10px 6px 32px;
-  width: 55px;
+  padding: 6px 10px 6px 16px;
+  width: 100px;
   margin-top: -10px;
   @include border_radius(5em);
-
   -webkit-transition: all .5s;
   -moz-transition: all .5s;
   transition: all .5s;
 }
 input[type=search]:focus {
-  width: 200px;
   background-color: transparent;
   border-color: #ccc;
+}
 
+#search_button{
+  background-color: transparent;
+  border: none;
+  margin-left: -40px;
+  outline: none;
+}
+
+#search_button:hover{
+ color:#999;
 }
 input:-moz-placeholder {
   color: #999;
@@ -106,14 +115,7 @@ input::-webkit-input-placeholder {
   }
 }
 
-.example-form {
-  min-width: 150px;
-  max-width: 500px;
-  width: 100%;
-  border-color: white;
-  border-width: 1px;
-}
 
 input[type=search][_ngcontent-c1]:focus {
-  width: 150px;
+  width: 200px;
 }

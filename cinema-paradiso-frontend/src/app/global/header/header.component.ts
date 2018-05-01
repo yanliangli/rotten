@@ -60,8 +60,18 @@ export class HeaderComponent implements OnInit {
 
   gotoMovie(e) {
     if (e.keyCode === 13) {
-      // /search?table=movie&search=keyword
+      let x = $('#input_search').val();
+      if(x!="") {
+        this.router.navigate(['/search'], {queryParams: {keyword: $('#input_search').val()}});
+      }
+    }
+  }
+
+  clickToSearch(){
+    let x = $('#input_search').val();
+    if(x!="") {
       this.router.navigate(['/search'], {queryParams: {keyword: $('#input_search').val()}});
     }
   }
+
 }

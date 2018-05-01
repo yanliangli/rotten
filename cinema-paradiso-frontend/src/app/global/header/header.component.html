@@ -8,9 +8,8 @@
   <nav class="l-header__nav">
 
     <div>
-      <form>
-        <input id="input_search" type="search" placeholder="search" (keypress)="gotoMovie($event)">
-      </form>
+      <input id="input_search" type="search" placeholder="search" (keypress)="gotoMovie($event)">
+      <button id="search_button" type="submit" (click)="clickToSearch()"><i class="fa fa-search"></i></button>
     </div>
     <a routerLink="/home" routerLinkActive="active">Home</a>
     <a routerLink="/movies" routerLinkActive="active">Movies</a>
