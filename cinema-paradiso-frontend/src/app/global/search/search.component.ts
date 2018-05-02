@@ -3,6 +3,7 @@ import {SearchService} from './search.service';
 import {Movie} from '../models/movie.model';
 import {Celebrity} from '../models/celebrity.model';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {TypeVisitor} from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-search',
@@ -12,25 +13,35 @@ import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 })
 export class SearchComponent implements OnInit {
   movieResults:Movie[];
-  movieCount: any;
+  movieCount=0;
   keywordParam: String;
   celebritiesResults: Celebrity[];
-  celebrityCount: any;
-  searchPeopleBoolean = false;
+  celebrityCount=0;
+  tvResults: any;
+  tvCount=0;
+  searchPeopleBoolean = true;
   searchMovieBoolean = true;
-
+  searchTVBoolean = true;
   constructor(private route: ActivatedRoute, private searchService: SearchService, private router: Router) {
   }
 
   ngOnInit() {
     this.route.queryParamMap.subscribe((params: ParamMap)=>{
       this.keywordParam = params.get('keyword');
-      if(this.searchPeopleBoolean){
-        this.searchForCelebrities();
-      }
-      else if(this.searchMovieBoolean){
-        this.searchForMovies();
-      }
+      this.searchForMovies();
+      this.searchForCelebrities();
+      this.searchForTV();
+      this.showAllResults();
+      $('.movie_results').show();
+      $('.people_results').show();
+      $('.tv_results').show();
+    });
+
+    $('.show_all').click(function (e) {
+      e.preventDefault();
+      $('.movie_results').show();
+      $('.people_results').show();
+      $('.tv_results').show();
     });
 
     $('.show_movies').click(function (e) {
@@ -38,7 +49,6 @@ export class SearchComponent implements OnInit {
       $('.movie_results').show();
       $('.people_results').hide();
       $('.tv_results').hide();
-
     });
 
     $('.show_tv').click(function (e) {
@@ -46,8 +56,6 @@ export class SearchComponent implements OnInit {
       $('.movie_results').hide();
       $('.people_results').hide();
       $('.tv_results').show();
-
-
     });
 
     $('.show_people').click(function (e) {
@@ -55,59 +63,86 @@ export class SearchComponent implements OnInit {
       $('.movie_results').hide();
       $('.people_results').show();
       $('.tv_results').hide();
-
     });
+
+    this.showAllResults();
   } //end onInit
 
   searchForMovies(){
-    if(!(this.keywordParam.trim()  == "")){
-      // search only if input is more than two letters
-      if(this.keywordParam.trim().length < 2){this.keywordParam =null;}
       this.searchService.searchMovies(this.keywordParam)
         .subscribe(
           data => {
-            // console.log(data);
             this.movieResults = data as Movie[];
             this.movieCount=this.movieResults.length;
+            if(this.movieCount==0){
+              this.searchMovieBoolean=false;
+            }
+            else{
+              this.searchMovieBoolean=true;
+            }
           },
           error => console.log('Failed to fetch movie data')
         );
-    }
   }
 
   searchForCelebrities(){
-    if(!(this.keywordParam.trim()  == "")){
-      // search only if input is more than two letters
-      if(this.keywordParam.trim().length < 2){this.keywordParam =null;}
       this.searchService.searchCelebrities(this.keywordParam)
         .subscribe(
           data => {
-            // console.log(data);
             this.celebritiesResults = data as Celebrity[];
             this.celebrityCount=this.celebritiesResults.length;
+            if(this.celebrityCount==0){
+              this.searchPeopleBoolean=false;
+            }
+            else{
+              this.searchPeopleBoolean=true;
+            }
           },
           error => console.log('Failed to fetch celebrity data')
         );
-    }
   }
 
-  setSearchPeopleTrue(){
+  searchForTV(){
+      this.searchService.searchTV(this.keywordParam)
+        .subscribe(
+          data => {
+            this.tvResults = data as any[];
+            this.tvCount=this.tvResults.length;
+            if(this.tvCount==0){
+              this.searchTVBoolean=false;
+            }
+            else{
+              this.searchTVBoolean=true;
+            }
+          },
+          error => console.log('Failed to fetch celebrity data')
+        );
+  }
+
+  onlyShowPeopleResults(){
     this.searchPeopleBoolean = true;
     this.searchMovieBoolean = false;
-    this.route.queryParamMap.subscribe((params: ParamMap)=>{
-      this.keywordParam = params.get('keyword');
-      this.searchForCelebrities();
-    });
+    this.searchTVBoolean = false;
   }
 
-  setSearchMovieTrue(){
+  onlyShowMovieResults(){
     this.searchPeopleBoolean = false;
     this.searchMovieBoolean = true;
-    this.route.queryParamMap.subscribe((params: ParamMap)=>{
-      this.keywordParam = params.get('keyword');
-      this.searchForMovies();
-    });
+    this.searchTVBoolean = false;
   }
+
+  onlyShowTVResults(){
+    this.searchPeopleBoolean = false;
+    this.searchMovieBoolean = false;
+    this.searchTVBoolean = true;
+  }
+
+  showAllResults(){
+      this.searchPeopleBoolean = true;
+      this.searchMovieBoolean = true;
+      this.searchTVBoolean = true;
+  }
+
 
   //TODO TV search
 }

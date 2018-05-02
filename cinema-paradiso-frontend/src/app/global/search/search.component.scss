@@ -68,6 +68,9 @@ p {
 .fa-star{
   color:$color-red;
 }
+.fa-star-half-o{
+  color:$color-red;
+}
 // rate
 .flex {
   font-size: 0.8em;
@@ -93,4 +96,15 @@ ngb-pagination /deep/{
   color: white ;
   background-color: transparent;
   margin-left: 40%;
+}
+
+.bottom_divide{
+  border-bottom-style: solid;
+  margin-left:3%;
+  margin-right: 3%;
+  color: #999;
+}
+
+h4{
+  color: #999;
 }

@@ -28,4 +28,14 @@ export class SearchService{
     });
     return this.http.get('http://localhost:8080/search',{params:params});
   }
+
+  searchTV(keyword){
+    let params = new HttpParams({
+      fromObject:{
+        table: 'tv',
+        keyword: keyword,
+      }
+    });
+    return this.http.get('http://localhost:8080/search',{params:params});
+  }
 }
