@@ -13,11 +13,11 @@ export class AdminService {
   }
   createMovie(movie){
     let body = JSON.stringify(movie);
-    return this.http.post('http://localhost:8080/movie/add', body, httpOptions)
+    return this.http.post('http://localhost:8080/movie/add', body, httpOptions);
   }
   updateMovie(movie){
     let body = JSON.stringify(movie);
-    return this.http.post('http://localhost:8080/movie/update', body, httpOptions)
+    return this.http.post('http://localhost:8080/movie/update', body, httpOptions);
   }
   deleteMovie(movieId){
     return this.http.delete('http://localhost:8080/movie/delete/'+movieId);

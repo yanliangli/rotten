@@ -76,9 +76,6 @@ public class MovieController {
     public ResponseEntity<Boolean> rateMovie(@RequestHeader(value = "Authorization") String jwtToken,
                                              @PathVariable String filmId,
                                              @PathVariable Double rating) {
-        System.out.println(jwtToken);
-        System.out.println(filmId);
-        System.out.println(rating);
         // add to user
         boolean result = userService.rateMovie(jwtTokenService.getUserIdFromToken(jwtToken), filmId, rating);
         if (!result)
@@ -87,6 +84,12 @@ public class MovieController {
         // add to film
         filmService.rateFilm(filmId, rating);
         return ResponseEntity.ok(true);
+    }
+
+    @DeleteMapping(value = "/{filmId}")
+    public ResponseEntity<Boolean> deleteRating(@RequestHeader(value = "Authorization") String jwtToken,
+                                                @PathVariable String filmId) {
+        return ResponseEntity.ok(userService.deleteRating(jwtTokenService.getUserIdFromToken(jwtToken), filmId));
     }
 
     @RequestMapping(value = "/update", method = POST)

@@ -299,11 +299,12 @@
                   <button class="o-button o-button" (click)= "addWishlist()">+ Wishlist</button>
                 </ng-template>
 
-                <div *ngIf ="inRatedMovieList; else rateMovieBlock">
+                <ng-container *ngIf ="inRatedMovieList; else rateMovieBlock">
+                  <button class="o-button o-button--yellow" (click)= "deleteRating()">- Rating</button>
                   <ngb-rating [(rate)]="selected" (hover)="hovered=$event" (leave)="hovered=0" [readonly]="readonly" (click)="rateMovie()">
                     <span class="star"></span>
                   </ngb-rating>
-                </div>
+                </ng-container>
                 <ng-template #rateMovieBlock>
                   <ngb-rating [(rate)]="selected" (hover)="hovered=$event" (leave)="hovered=0" [readonly]="readonly" (click)="rateMovie()">
                     <span class="star"></span>

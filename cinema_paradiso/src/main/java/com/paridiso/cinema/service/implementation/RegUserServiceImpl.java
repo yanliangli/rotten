@@ -144,27 +144,25 @@ public class RegUserServiceImpl extends UserService {
         return userRepository.findUserByEmail(email) != null ? true : false;
     }
     @Transactional
-    public Movie getRatedMovie(Integer userId, String filmImdbId) {
+    public Double getRatedMovie(Integer userId, String filmImdbId) {
         // find user
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResponseStatusException(INTERNAL_SERVER_ERROR, "USER NOT FOUND"));
 
         // check movie existence
         List<Movie> movies = user.getUserProfile().getRatedMovies();
-        System.out.println("coming01");
+        List<UserRating> userRatings = user.getUserProfile().getUserRatings();
+        Movie movie = movieRepository.findMovieByImdbId(filmImdbId);
         if (utilityService.containsMovie(movies, filmImdbId)){
-            counter = 0;
-            while (movies.get(counter)!=null){
-                if(movies.get(counter).getImdbId().equals(filmImdbId)){
-                    System.out.println("coming02" + counter);
-                    return movies.get(counter);
+            for(UserRating userRating:userRatings){
+                if(userRating.getMovie().getImdbId().equals(movie.getImdbId())){
+                    return userRating.getUserRating();
                 }
-                else counter++;
             }
         }
         // RatedMovie not exist
         System.out.println("coming03" + counter);
-        return null;
+        return 0.0;
     }
 
 
@@ -188,17 +186,44 @@ public class RegUserServiceImpl extends UserService {
                 .orElseThrow(() -> new ResponseStatusException(INTERNAL_SERVER_ERROR, "USER NOT FOUND"));
 
         Movie newRatedMovie = movieRepository.findMovieByImdbId(filmId);
-        newRatedMovie.setRating(rating);
         // check existence
         List<Movie> movieList = user.getUserProfile().getRatedMovies();
-
+        List<UserRating> userRatings = user.getUserProfile().getUserRatings();
         if (utilityService.containsMovie(movieList, filmId))
             return false;
 
+        UserRating userRating = new UserRating();
+        userRating.setMovie(newRatedMovie);
+        userRating.setUserRating(rating);
+
         // add to rated movie list
         movieList.add(newRatedMovie);
-        user.getUserProfile().setRatedMovies(movieList);
+        userRatings.add(userRating);
         userProfileRepository.save(user.getUserProfile());
+        return true;
+    }
+
+    @Transactional
+    public boolean deleteRating(Integer userId, String filmId){
+        // get user
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResponseStatusException(INTERNAL_SERVER_ERROR, "USER NOT FOUND"));
+        Movie rateMovieToBeRemoved = movieRepository.findMovieByImdbId(filmId);
+        List<Movie> ratedMovieList = user.getUserProfile().getRatedMovies();
+        List<UserRating> userRatings = user.getUserProfile().getUserRatings();
+        for (UserRating userRating: userRatings ){
+            if(userRating.getMovie().getImdbId().equals(rateMovieToBeRemoved.getImdbId())){
+                rateMovieToBeRemoved.setRating((double)Math.round(((rateMovieToBeRemoved.getRating()
+                        *(rateMovieToBeRemoved.getNumberOfRatings()) - userRating.getUserRating())
+                        / (rateMovieToBeRemoved.getNumberOfRatings()-1))*10)/10);
+                ratedMovieList.remove(rateMovieToBeRemoved);
+                rateMovieToBeRemoved.setNumberOfRatings(rateMovieToBeRemoved.getNumberOfRatings()-1);
+                userRatings.remove(userRating);
+                movieRepository.save(rateMovieToBeRemoved);
+                break;
+            }
+        }
+
         return true;
     }
 
@@ -213,6 +238,16 @@ public class RegUserServiceImpl extends UserService {
         return userProfileRepository.findById(validatedUser.getUserProfile().getId())
                 .orElseThrow(() -> new ResponseStatusException(INTERNAL_SERVER_ERROR, "PROFILE NOT FOUND"));
     }
+
+    @Transactional
+    public boolean deleteUser(Integer userId) {
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResponseStatusException(INTERNAL_SERVER_ERROR, "USER NOT FOUND"));
+        List<Review> reviews = user.getUserProfile().getReviews();
+        reviews.clear();
+        return true;
+    }
+
 
 
 }

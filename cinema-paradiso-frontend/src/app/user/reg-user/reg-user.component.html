@@ -65,7 +65,10 @@
           <i class="fa fa-list-alt w3-margin-right"></i>Watchlist
         </button>
         <button class="show_My_Critics w3-button w3-white w3-hide-small" aria-hidden="true" (click)="showDiv(5)">
-          <i class="fa fa-comment w3-margin-right"></i>My Critics
+          <i class="fa fa-comment w3-margin-right"></i>My Reviews
+        </button>
+        <button class="show_My_Critics w3-button w3-white w3-hide-small" aria-hidden="true" (click)="showDiv(6)">
+          <i class="fa fa-users w3-margin-right"></i>My Follow/ers
         </button>
       </div>
     </div>
@@ -246,8 +249,24 @@
           </a>
         </div>
       </div>
+    </div>
+    <div class="container Movie_List_results" *ngIf="currentIndex === 6">
+      <section class="l-cards">
+        <h2 class="l-cards__title">My Watchlist</h2>
+        <a class="l-cards__more w3-margin-right" href="#">more <i class="fa fa-angle-double-right"></i></a>
 
-
+        <ul class="l-cards__list">
+          <li class="l-cards__item"*ngFor="let movie of watchlist">
+            <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active" class="l-cards__image fill">
+              <img [src]="movie.poster" [alt]="movie.title">
+            </a>
+            <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active"  class="l-cards__text">
+              {{movie.title}}
+              <p>{{movie.rating}}/5.0</p>
+            </a>
+          </li>
+        </ul>
+      </section>
     </div>
 
     <div class="w3-container Account" *ngIf="currentIndex === 7">
@@ -281,7 +300,7 @@
             </textarea>
 
             <label>Make Profile Private</label>
-            <input class="w3-input" type="checkbox" name="description" placeholder="A critic user, happy everyday">
+            <!input class="w3-input" type="checkbox" name="description" placeholder="A critic user, happy everyday">
 
           </div>
 
@@ -311,6 +330,10 @@
             class="fa fa-paper-plane w3-margin-right"></i>Reset Password
           </button>
         </form>
+        <hr class="w3-opacity">
+        <button  class="w3-button w3-red w3-margin-bottom" (click)= "deleteUser()"><i
+          class="fa fa-trash w3-margin-right"></i>Delete Account
+        </button>
 
 
       </div>

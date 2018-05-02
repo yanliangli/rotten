@@ -72,16 +72,14 @@ public class MovieServiceImpl implements FilmService {
     @Override
     public void rateFilm(String filmId, Double rating) {
         // add the rating to total rating, then get average
-
-        System.out.println(filmId);
-        System.out.println(rating);
         Movie movie = (Movie) this.getFilm(filmId);
         if (movie.getNumberOfRatings() == null) {
-            movie.setNumberOfRatings(1);
+            movie.setNumberOfRatings(10+1);
         } else {
             movie.setNumberOfRatings(movie.getNumberOfRatings() + 1);
         }
-        Double newRatings = (double)Math.round(((movie.getRating()*(movie.getNumberOfRatings()-1) + rating) / movie.getNumberOfRatings())*100)/100;
+
+        Double newRatings = (double)Math.round(((movie.getRating()*(movie.getNumberOfRatings()-1) + rating) / movie.getNumberOfRatings())*10)/10;
         movie.setRating(newRatings);
         movieRepository.save(movie);
     }

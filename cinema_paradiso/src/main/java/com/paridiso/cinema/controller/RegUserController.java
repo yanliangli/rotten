@@ -33,6 +33,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
+import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @RequestMapping("/user")
@@ -86,6 +87,11 @@ public class RegUserController {
         return ResponseEntity.ok(jwtUser);
     }
 
+    @DeleteMapping(value = "/deleteUser")
+    public ResponseEntity<Boolean> deleteUser(@RequestHeader(value = "Authorization") String jwtToken){
+        return ResponseEntity.ok(userService.deleteUser(jwtTokenService.getUserIdFromToken(jwtToken)));
+    }
+
     @GetMapping(value = "/check/username/{username}")
     public ResponseEntity<?> checkUsername(@PathVariable String username) {
         ObjectNode objectNode = objectMapper.createObjectNode();
@@ -127,15 +133,14 @@ public class RegUserController {
 
     @RequestMapping(value = "/getRatedMovie/{filmId}", method = GET)
     public ResponseEntity<Double> getRatedMovie(@RequestHeader(value = "Authorization") String jwtToken, @PathVariable String filmId)  {
-        Movie movie = userService.getRatedMovie(jwtTokenService.getUserIdFromToken(jwtToken), filmId);
-        Double rating = 0.0;
-        if(movie != null)
-        rating = movie.getRating();
+        Double rating = userService.getRatedMovie(jwtTokenService.getUserIdFromToken(jwtToken), filmId);
+        System.out.println("Rating is: "+rating);
         return ResponseEntity.ok(rating);
     }
 
     @RequestMapping(value = "/getRatedMovies", method = GET)
     public ResponseEntity<List<Movie>> getRatedMovies(@RequestHeader(value = "Authorization") String jwtToken)  {
+        System.out.println("coming01");
         List<Movie> movies = userService.getRatedMovies(jwtTokenService.getUserIdFromToken(jwtToken));
         return ResponseEntity.ok(movies);
     }

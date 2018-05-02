@@ -160,4 +160,8 @@ public class UserProfile {
     public void setRatedMovies(List<Movie> ratedMovies) {
         this.ratedMovies = ratedMovies;
     }
+
+    public List<UserRating> getUserRatings(){return userRatings;}
+
+    public void setUserRatings(List<UserRating> userRatings){this.userRatings = userRatings;}
 }

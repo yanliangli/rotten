@@ -82,13 +82,6 @@ export class MovieDetailComponent implements OnInit {
           }
         );
         this.getRatedMovie();
-            if (this.selected !== 0) {
-              this.inRatedMovieList = true;
-              console.log(this.inRatedMovieList);
-            } else {
-              this.inRatedMovieList = false;
-              console.log(this.inRatedMovieList);
-            }
       }
       this.regUserService.getProfile().subscribe(profileDetails => {
         console.log(profileDetails);
@@ -153,12 +146,25 @@ export class MovieDetailComponent implements OnInit {
       location.reload(true);
     });
   }
+  deleteRating() {
+    this.movieDetailService.deleteRating(this.selectedMovieId).subscribe(result => {
+      console.log(result);
+      location.reload(true);
+    });
+  }
   getRatedMovie(): any {
     this.movieDetailService.getRatedMovie(this.selectedMovieId)
       .subscribe(
         data => {
           // console.log(data);
             this.selected = data as number;
+          if (this.selected !== 0) {
+            this.inRatedMovieList = true;
+            console.log(this.inRatedMovieList);
+          } else {
+            this.inRatedMovieList = false;
+            console.log(this.inRatedMovieList);
+          }
           console.log(this.selected);
         },
         error => console.log('Failed to fetch carousel data')

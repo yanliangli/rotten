@@ -45,4 +45,7 @@ export class RegUserService {
   deleteReview(imbdId: string, reviewId: number) {
     return this.http.delete('http://localhost:8080/review/deleteReview/' + imbdId + '/' + reviewId);
   }
+  deleteUser() {
+    return this.http.delete('http://localhost:8080/user/deleteUser');
+  }
 }
