@@ -274,14 +274,16 @@
               alt="user"/>
             <div class="col-add-ratings">
               <div *ngIf="!status; else elseBlock">
-                <button routerLinkActive="active" class="o-button o-button--gray trigger"  href="javascript:;">+ Watchlist</button>
-                <button routerLinkActive="active" class="o-button trigger" href="javascript:;">+ Wishlist</button>
-                <ngb-rating [(rate)]="selected" (hover)="hovered=$event" (leave)="hovered=0" [readonly]="readonly" >
+                <button class="o-button o-button--gray trigger" routerLinkActive="active"  href="javascript:;"
+                        (click)= "notice()">+ Watchlist</button>
+                <button class="o-button o-button trigger" routerLinkActive="active"  href="javascript:;"
+                        (click)= "notice()">+ Wishlist</button>
+                <ngb-rating [(rate)]="selected" (hover)="hovered=$event" (leave)="hovered=0" [readonly]="readonly"
+                            routerLinkActive="active" class="trigger" href="javascript:;" (click)="notice()">
                   <span class="star"></span>
                 </ngb-rating>
                 <textarea placeholder="Add a review..."></textarea>
-                <button  routerLinkActive="active" class="trigger" href="javascript:;">Post</button>
-                <app-login></app-login>
+                <button  routerLinkActive="active" class="trigger" href="javascript:;" (click)="notice()">Post</button>
               </div>
               <ng-template #elseBlock>
                 <ng-container  *ngIf ="inWatchlist; else addToWatchlist">

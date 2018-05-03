@@ -55,13 +55,9 @@ public class ReviewServiceImpl implements ReviewService {
         review.setUserId(userId);
         review.setAuthor(user.getUsername());
         List<Review> reviews = user.getUserProfile().getReviews();
-        if (reviews == null)
-            reviews = new ArrayList<>();
         reviews.add(review);
         user.getUserProfile().setReviews(reviews);
         reviews = movie.getReviews();
-        if (reviews == null)
-            reviews = new ArrayList<>();
         reviews.add(review);
         movie.setReviews(reviews);
         Optional.ofNullable(reviewRepository.save(review));

@@ -21,6 +21,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,6 +30,9 @@ import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 
 @Service
 public class RegUserServiceImpl extends UserService {
+
+    @Autowired
+    ReviewServiceImpl reviewService;
 
     @Autowired
     private UtilityServiceImpl utilityService;
@@ -211,14 +215,15 @@ public class RegUserServiceImpl extends UserService {
         Movie rateMovieToBeRemoved = movieRepository.findMovieByImdbId(filmId);
         List<Movie> ratedMovieList = user.getUserProfile().getRatedMovies();
         List<UserRating> userRatings = user.getUserProfile().getUserRatings();
-        for (UserRating userRating: userRatings ){
+        for (Iterator<UserRating> it = userRatings.iterator();it.hasNext();){
+            UserRating userRating = it.next();
             if(userRating.getMovie().getImdbId().equals(rateMovieToBeRemoved.getImdbId())){
                 rateMovieToBeRemoved.setRating((double)Math.round(((rateMovieToBeRemoved.getRating()
                         *(rateMovieToBeRemoved.getNumberOfRatings()) - userRating.getUserRating())
                         / (rateMovieToBeRemoved.getNumberOfRatings()-1))*10)/10);
                 ratedMovieList.remove(rateMovieToBeRemoved);
                 rateMovieToBeRemoved.setNumberOfRatings(rateMovieToBeRemoved.getNumberOfRatings()-1);
-                userRatings.remove(userRating);
+                it.remove();
                 movieRepository.save(rateMovieToBeRemoved);
                 break;
             }
@@ -244,7 +249,28 @@ public class RegUserServiceImpl extends UserService {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResponseStatusException(INTERNAL_SERVER_ERROR, "USER NOT FOUND"));
         List<Review> reviews = user.getUserProfile().getReviews();
+        if(reviews!=null){
+            for(Review review: reviews){
+                List<Review> reviewList = movieRepository.findMovieByImdbId(review.getImdbId()).getReviews();
+                reviewList.remove(review);
+            }
+        }
         reviews.clear();
+        List<UserRating> userRatings = user.getUserProfile().getUserRatings();
+        if(userRatings!=null){
+            if(userRatings.size() == 1){
+                UserRating userRating = userRatings.get(0);
+                this.deleteRating(userId,userRating.getMovie().getImdbId());
+            }else{
+                for(UserRating userRating:userRatings){
+                    this.deleteRating(userId,userRating.getMovie().getImdbId());
+                }
+            }
+        }
+        user.getUserProfile().getWatchList().clear();
+        user.getUserProfile().getWishList().clear();
+        userProfileRepository.deleteById(userId);
+        userRepository.deleteById(userId);
         return true;
     }
 

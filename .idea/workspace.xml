@@ -2,33 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="29c4fb0a-a2e6-4a3e-84cb-22799b29242b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-paradiso-frontend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-paradiso-frontend/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-paradiso-frontend/src/app/global/login/login.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-paradiso-frontend/src/app/global/login/login.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-paradiso-frontend/src/app/global/movie-detail/movie-detail.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-paradiso-frontend/src/app/global/movie-detail/movie-detail.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-paradiso-frontend/src/app/global/movie-detail/movie-detail.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-paradiso-frontend/src/app/global/movie-detail/movie-detail.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema-paradiso-frontend/src/app/global/movie-detail/movie-detail.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-paradiso-frontend/src/app/global/movie-detail/movie-detail.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-paradiso-frontend/src/app/global/movie-detail/movie-detail.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-paradiso-frontend/src/app/global/movie-detail/movie-detail.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-paradiso-frontend/src/app/user/admin/admin.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-paradiso-frontend/src/app/user/admin/admin.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-paradiso-frontend/src/app/user/reg-user/reg-user.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-paradiso-frontend/src/app/user/reg-user/reg-user.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-paradiso-frontend/src/app/user/reg-user/reg-user.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-paradiso-frontend/src/app/user/reg-user/reg-user.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema-paradiso-frontend/src/app/user/reg-user/reg-user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/cinema-paradiso-frontend/src/app/user/reg-user/reg-user.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema_paradiso/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/cinema_paradiso/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema_paradiso/src/main/java/com/paridiso/cinema/controller/MovieController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema_paradiso/src/main/java/com/paridiso/cinema/controller/MovieController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema_paradiso/src/main/java/com/paridiso/cinema/controller/RegUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema_paradiso/src/main/java/com/paridiso/cinema/controller/RegUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema_paradiso/src/main/java/com/paridiso/cinema/entity/UserProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema_paradiso/src/main/java/com/paridiso/cinema/entity/UserProfile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema_paradiso/src/main/java/com/paridiso/cinema/service/implementation/MovieServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema_paradiso/src/main/java/com/paridiso/cinema/service/implementation/MovieServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema_paradiso/src/main/java/com/paridiso/cinema/service/implementation/RegUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema_paradiso/src/main/java/com/paridiso/cinema/service/implementation/RegUserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema_paradiso/target/classes/com/paridiso/cinema/controller/MovieController.class" beforeDir="false" afterPath="$PROJECT_DIR$/cinema_paradiso/target/classes/com/paridiso/cinema/controller/MovieController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema_paradiso/target/classes/com/paridiso/cinema/controller/RegUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/cinema_paradiso/target/classes/com/paridiso/cinema/controller/RegUserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema_paradiso/target/classes/com/paridiso/cinema/controller/ReviewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/cinema_paradiso/target/classes/com/paridiso/cinema/controller/ReviewController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema_paradiso/target/classes/com/paridiso/cinema/controller/WatchlistController.class" beforeDir="false" afterPath="$PROJECT_DIR$/cinema_paradiso/target/classes/com/paridiso/cinema/controller/WatchlistController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema_paradiso/target/classes/com/paridiso/cinema/controller/WishlistController.class" beforeDir="false" afterPath="$PROJECT_DIR$/cinema_paradiso/target/classes/com/paridiso/cinema/controller/WishlistController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cinema_paradiso/src/main/java/com/paridiso/cinema/service/implementation/ReviewServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/cinema_paradiso/src/main/java/com/paridiso/cinema/service/implementation/ReviewServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema_paradiso/target/classes/com/paridiso/cinema/entity/UserProfile.class" beforeDir="false" afterPath="$PROJECT_DIR$/cinema_paradiso/target/classes/com/paridiso/cinema/entity/UserProfile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema_paradiso/target/classes/com/paridiso/cinema/service/implementation/MovieServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/cinema_paradiso/target/classes/com/paridiso/cinema/service/implementation/MovieServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema_paradiso/target/classes/com/paridiso/cinema/service/implementation/RegUserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/cinema_paradiso/target/classes/com/paridiso/cinema/service/implementation/RegUserServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cinema_paradiso/target/classes/com/paridiso/cinema/service/implementation/ReviewServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/cinema_paradiso/target/classes/com/paridiso/cinema/service/implementation/ReviewServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cinema_paradiso/target/classes/com/paridiso/cinema/service/implementation/WishlistServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/cinema_paradiso/target/classes/com/paridiso/cinema/service/implementation/WishlistServiceImpl.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -76,7 +58,7 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/cinema-paradiso-frontend/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-1" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
@@ -255,7 +237,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />

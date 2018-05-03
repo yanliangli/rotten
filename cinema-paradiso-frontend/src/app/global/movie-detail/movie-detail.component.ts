@@ -50,7 +50,7 @@ export class MovieDetailComponent implements OnInit {
               private loginStatusService: LoginStatusService,
               private regUserService: RegUserService,
               route: ActivatedRoute) {
-
+    this.profile_url = 'http://localhost:8080/user/avatar/default.jpeg';
     this.selectedMovieId = route.snapshot.params['id'];
     this.loginStatusService.currentStatus.subscribe(state => {
       this.status = state;
@@ -170,7 +170,9 @@ export class MovieDetailComponent implements OnInit {
         error => console.log('Failed to fetch carousel data')
       );
   }
-
+  notice() {
+    alert('Please Log in/Sign up first!');
+  }
 
   ngOnInit() {
     // TODO: get data from route instead of from movieService.movieIdObservable
