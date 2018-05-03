@@ -23,9 +23,12 @@ import {AuthInterceptor} from './http.interceptor';
 import {HomeService} from './global/home/home.service';
 import {MovieDetailService} from './global/movie-detail/movie-detail.service';
 import {MovieService} from './global/movie/movie.service';
+import {CategoriesService} from './global/categories/categories.service';
 import {ToastrModule} from 'ngx-toastr';
 import { StarsComponent } from './global/stars/stars.component';
-
+import {AboutComponent} from './global/general/about.component';
+import {ContactComponent} from './global/general/contact.component';
+import {PolicyComponent} from './global/general/policy.component';
 @NgModule({
   // entryComponents: [MessageComponent],
   declarations: [
@@ -41,6 +44,9 @@ import { StarsComponent } from './global/stars/stars.component';
     SearchComponent,
     AdminComponent,
     StarsComponent,
+    AboutComponent,
+    ContactComponent,
+    PolicyComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,6 +63,7 @@ import { StarsComponent } from './global/stars/stars.component';
     HomeService,
     MovieService,
     MovieDetailService,
+    CategoriesService,
     {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,

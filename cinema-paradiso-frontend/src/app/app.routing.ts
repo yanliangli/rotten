@@ -8,22 +8,22 @@ import {RegUserComponent} from './user/reg-user/reg-user.component';
 import {SearchComponent} from './global/search/search.component';
 import {AdminComponent} from './user/admin/admin.component';
 import {StarsComponent} from './global/stars/stars.component';
+import {ContactComponent} from './global/general/contact.component';
+import {AboutComponent} from './global/general/about.component';
 
 const appRoutes: Routes = [
-  {path: '', pathMatch: 'full', redirectTo: 'home'},
+  //{path: '', pathMatch: 'full', redirectTo: 'home'},
   {path: 'home', component: HomeComponent},
   {path: 'movies', component: CategoriesComponent},
-  // {path: ':id', component: MovieDetailComponent, data: {imdb_id: this.}},
   {path: 'celebrity/:id', component: CelebrityComponent},
-  // {path: 'user', component: RegUserComponent},
   {path: 'search', component: SearchComponent},
   {path: 'admin', component: AdminComponent},
   {path: 'star', component: StarsComponent},
   {path: 'movie/:id', component: MovieDetailComponent},
   {path: 'user/:id', component: RegUserComponent},
-  {path: 'home/:id', component: MovieDetailComponent}
-
-
+  {path: 'home/:id', component: MovieDetailComponent},
+  {path:'about', component:AboutComponent},
+  {path:'contact', component:ContactComponent},
 ];
 
 @NgModule({
