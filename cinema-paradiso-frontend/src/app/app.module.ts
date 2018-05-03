@@ -5,6 +5,7 @@ import {FormsModule} from '@angular/forms';
 import {AppComponent} from './app.component';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 
 import {HomeComponent} from './global/home/home.component';
 import {FooterComponent} from './global/footer/footer.component';
@@ -57,6 +58,7 @@ import {PolicyComponent} from './global/general/policy.component';
     CommonModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    NgxPaginationModule,
   ],
   providers: [
     LoginStatusService,
