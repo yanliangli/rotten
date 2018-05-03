@@ -24,7 +24,7 @@
 
 <div class="container movie_results">
   <h4 class="bottom_divide" *ngIf="searchMovieBoolean&&movieCount>0">MOVIES</h4>
-  <div class="row s-item" *ngFor="let movie of movieResults">
+  <div class="row s-item" *ngFor="let movie of movieResults | paginate: { itemsPerPage: itemsPerPage, currentPage: moviePage }">
     <div class="col-4 s_img-wrap">
       <img src="{{movie.poster}}"
            alt="">
@@ -137,13 +137,13 @@
       </p>
     </div>
   </div>
-  <ngb-pagination *ngIf="searchMovieBoolean&&movieCount>0" [collectionSize]="movieCount" [(page)]="page" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true" class="pagination" ></ngb-pagination>
+  <ngb-pagination *ngIf="searchMovieBoolean&&movieCount>0" [collectionSize]="movieCount" [pageSize]="itemsPerPage" [(page)]="moviePage" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true" class="pagination" ></ngb-pagination>
 </div>
 
 
   <div class="container tv_results" style="display:none">
     <h4 class="bottom_divide" *ngIf="searchTVBoolean&&tvCount>0">TV</h4>
-  <div class="row"  *ngFor="let tv of tvResults">
+  <div class="row"  *ngFor="let tv of tvResults | paginate: { itemsPerPage: itemsPerPage, currentPage: tvPage }">
     <div class="col-4 s_img-wrap">
       <img src="{{tv.poster}}"
            alt="">
@@ -257,13 +257,14 @@
       </p>
     </div>
   </div>
-    <ngb-pagination *ngIf="searchTVBoolean&&tvCount>0" [collectionSize]="movieCount" [(page)]="page" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true" class="pagination" ></ngb-pagination>
+    <ngb-pagination *ngIf="searchTVBoolean&&tvCount>0" [collectionSize]="tvCount" [pageSize]="itemsPerPage" [(page)]="tvPage" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true" class="pagination" ></ngb-pagination>
+
   </div>
 
 
 <div class="container people_results" style="display:none">
   <h4 class="bottom_divide" *ngIf="searchPeopleBoolean&&(celebrityCount>0)">CELEBRITIES</h4>
-  <div class="row" *ngFor="let celebrity of celebritiesResults">
+  <div class="row" *ngFor="let celebrity of celebritiesResults | paginate: { itemsPerPage: itemsPerPage, currentPage: celebrityPage }">
     <div class="col-4 s_img-wrap">
       <img src="{{celebrity.profileImage}}"
            alt="" routerLink="/celebrity/{{celebrity.celebrityId}}">
@@ -277,7 +278,7 @@
       </p>
     </div>
   </div>
-  <ngb-pagination *ngIf="searchPeopleBoolean&&(celebrityCount>0)" [collectionSize]="celebrityCount" [(page)]="page" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true" class="pagination" ></ngb-pagination>
+  <ngb-pagination *ngIf="searchPeopleBoolean&&(celebrityCount>0)" [collectionSize]="celebrityCount" [pageSize]="itemsPerPage" [(page)]="celebrityPage" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true" class="pagination" ></ngb-pagination>
 </div>
 
 </main>

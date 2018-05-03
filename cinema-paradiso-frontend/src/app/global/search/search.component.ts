@@ -12,7 +12,6 @@ import {TypeVisitor} from '@angular/compiler/src/output/output_ast';
   providers: [SearchService]
 })
 export class SearchComponent implements OnInit {
-  page=1;
   movieResults:Movie[];
   movieCount=0;
   keywordParam: String;
@@ -23,6 +22,10 @@ export class SearchComponent implements OnInit {
   searchPeopleBoolean = true;
   searchMovieBoolean = true;
   searchTVBoolean = true;
+  itemsPerPage=3;
+  moviePage: number = 1;
+  tvPage: number = 1;
+  celebrityPage:number  =1;
   constructor(private route: ActivatedRoute, private searchService: SearchService, private router: Router) {
   }
 
@@ -146,4 +149,5 @@ export class SearchComponent implements OnInit {
 
 
   //TODO TV search
+
 }

@@ -76,7 +76,7 @@ export class HomeComponent implements OnInit {
         data => {
           this.moviesOpening = data as Movie[];
           console.log(this.moviesOpening);
-          this.moviesOpening.sort(function(a,b){return new Date(a.releaseDate)- new Date(b.releaseDate)});
+          this.moviesOpening.sort(function(a,b){return new Date(a.releaseDate) - new Date(b.releaseDate)});
         },
         error => console.log('Failed to fetch movies opening this week')
       );
@@ -88,7 +88,7 @@ export class HomeComponent implements OnInit {
         data => {
           this.moviesComingSoon = data as Movie[];
           console.log(this.moviesComingSoon);
-          this.moviesComingSoon.sort(function(a,b){return new Date(a.releaseDate)- new Date(b.releaseDate)});
+          this.moviesComingSoon.sort(function(a,b){return new Date(a.releaseDate) - new Date(b.releaseDate)});
         },
         error => console.log('Failed to fetch movies coming soon')
       );
