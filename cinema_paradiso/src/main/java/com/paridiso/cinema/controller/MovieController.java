@@ -66,7 +66,6 @@ public class MovieController {
 
     @RequestMapping(value = "/delete/{filmId}", method = DELETE)
     public ResponseEntity<Boolean> deleteMovie(@PathVariable String filmId) {
-        System.out.println("************* Starting deletion");
         filmService.deleteFilm(filmId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -86,10 +85,11 @@ public class MovieController {
         return ResponseEntity.ok(true);
     }
 
+
     @DeleteMapping(value = "/{filmId}")
     public ResponseEntity<Boolean> deleteRating(@RequestHeader(value = "Authorization") String jwtToken,
                                                 @PathVariable String filmId) {
-        return ResponseEntity.ok(userService.deleteRating(jwtTokenService.getUserIdFromToken(jwtToken), filmId));
+                return ResponseEntity.ok(userService.deleteRating(jwtTokenService.getUserIdFromToken(jwtToken), filmId));
     }
 
     @RequestMapping(value = "/update", method = POST)
@@ -116,14 +116,14 @@ public class MovieController {
         return new ResponseEntity<>(filmService.getTrailers(id), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/trending", method = GET)
-    public ResponseEntity<List> getMoviesTrending() {
-        return new ResponseEntity<>(filmService.getTrending(), HttpStatus.OK);
+    @RequestMapping(value = "/opening_this_week", method = GET)
+    public ResponseEntity<List> getMoviesOpeningThisWeek() {
+        return new ResponseEntity<>(filmService.getMoviesOpeningThisWeek(), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/playing", method = GET)
-    public ResponseEntity<List> getMoviesPlaying() {
-        return new ResponseEntity<>(filmService.getMoviesPlaying(), HttpStatus.OK);
+    @RequestMapping(value = "/coming_soon", method = GET)
+    public ResponseEntity<List> getMoviesComingSoon() {
+        return new ResponseEntity<>(filmService.getMoviesComingSoon(), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/top_box_office", method = GET)
@@ -144,6 +144,11 @@ public class MovieController {
     @RequestMapping(value = "/in_range", method = GET)
     public ResponseEntity<List> getMoviesInRange(@RequestParam String startDate, @RequestParam String endDate) {
         return new ResponseEntity<>(filmService.getMoviesInRage(startDate, endDate), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/trending", method = GET)
+    public ResponseEntity<List> getMoviesTrending() {
+        return new ResponseEntity<>(filmService.getTrending(), HttpStatus.OK);
     }
 
 

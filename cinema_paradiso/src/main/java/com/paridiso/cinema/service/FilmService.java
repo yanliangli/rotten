@@ -2,6 +2,7 @@ package com.paridiso.cinema.service;
 
 import com.paridiso.cinema.entity.Film;
 import com.paridiso.cinema.entity.Movie;
+import com.paridiso.cinema.entity.TV;
 import com.paridiso.cinema.entity.Trailer;
 
 import java.util.Date;
@@ -40,11 +41,12 @@ public interface FilmService {
 
     List<Movie> getTrending();
 
-    List<Movie> getMoviesPlaying();
+    List<Movie> getMoviesOpeningThisWeek();
+
+    List<Movie> getMoviesComingSoon();
 
     List<Movie> getTopRating();
 
     List<Movie> getTopBoxOffice();
-
 
 }

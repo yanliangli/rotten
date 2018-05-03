@@ -13,6 +13,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.*;
 
 @Service
@@ -78,7 +81,6 @@ public class MovieServiceImpl implements FilmService {
         } else {
             movie.setNumberOfRatings(movie.getNumberOfRatings() + 1);
         }
-
         Double newRatings = (double)Math.round(((movie.getRating()*(movie.getNumberOfRatings()-1) + rating) / movie.getNumberOfRatings())*10)/10;
         movie.setRating(newRatings);
         movieRepository.save(movie);
@@ -120,31 +122,39 @@ public class MovieServiceImpl implements FilmService {
     // TODO: find proper movies
     @Transactional
     @Override
-    public List<Movie> getMoviesPlaying() {
-        List<Movie> movieList = new ArrayList<>();
-        Movie movie1 = (Movie) this.getFilm("tt1856101");
-        Movie movie2 = (Movie) this.getFilm("tt2380307");
-        Movie movie3 = (Movie) this.getFilm("tt5726616");
-        Movie movie4 = (Movie) this.getFilm("tt4925292");
-        Movie movie5 = (Movie) this.getFilm("tt5052448");
-        Movie movie6 = (Movie) this.getFilm("tt5723272");
-        movieList.addAll(Arrays.asList(movie1, movie2, movie3, movie4, movie5, movie6));
-        return movieList;
+    public List<Movie> getMoviesOpeningThisWeek() {
+        //SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+        Date dateNow = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(dateNow);
+        cal.add(Calendar.DATE, -3);
+        Date dateBefore = cal.getTime();
+        cal.add(Calendar.DATE, 7);
+        Date dateAfter = cal.getTime();
+        return movieRepository.findAllByReleaseDateBetween(dateBefore, dateAfter);
+    }
+
+    @Override
+    public List<Movie> getMoviesComingSoon() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+        Date dateNow = new Date();
+        return movieRepository.findAllByReleaseDateAfter(dateNow);
     }
 
     @Override
     public List<Movie> getTopRating() {
-        return movieRepository.findTop10ByOrderByRatingDesc();
+        return movieRepository.findTop6ByOrderByRatingDesc();
     }
 
     @Override
     public List<Movie> getTopBoxOffice() {
-        return movieRepository.findTop10ByOrderByBoxOfficeDesc();
+        return movieRepository.findTop60ByOrderByBoxOfficeDesc();
     }
 
     @Override
     public List<Movie> getTrending() {
-        return movieRepository.findTop10ByOrderByNumberOfRatingsDesc();
+        return movieRepository.findTop6ByOrderByNumberOfRatingsDesc();
     }
+
 
 }

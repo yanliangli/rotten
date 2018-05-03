@@ -1,5 +1,6 @@
 package com.paridiso.cinema.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.paridiso.cinema.entity.enumerations.Genre;
 import com.paridiso.cinema.entity.enumerations.Rated;
 
@@ -30,7 +31,8 @@ public class Film {
     private Rated rated;
 
     @Column(name = "releasedDate")
-    private Calendar releaseDate;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd MMM yyyy")
+    private Date releaseDate;
 
     @ElementCollection(targetClass = Genre.class)
     @CollectionTable(name = "MovieGenres", joinColumns = @JoinColumn(name = "imdbId"))
@@ -152,11 +154,11 @@ public class Film {
         this.rated = rated;
     }
 
-    public Calendar getReleaseDate() {
+    public Date getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(Calendar releaseDate) {
+    public void setReleaseDate(Date releaseDate) {
         this.releaseDate = releaseDate;
     }
 

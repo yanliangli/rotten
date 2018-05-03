@@ -1,11 +1,14 @@
 package com.paridiso.cinema.controller;
 
 import com.paridiso.cinema.entity.TV;
+import com.paridiso.cinema.service.JwtTokenService;
+import com.paridiso.cinema.service.TVService;
+import com.paridiso.cinema.service.implementation.RegUserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.paridiso.cinema.service.FilmService;
 
 import java.util.Date;
 import java.util.List;
@@ -19,9 +22,15 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 @CrossOrigin(origins = "http://localhost:4200")
 public class TVController {
 
-//    @Autowired
-//    @Qualifier("TVServiceImpl")
-//    FilmService filmService;
+    @Autowired
+    @Qualifier("TVServiceImpl")
+    TVService tvService;
+
+    @Autowired
+    JwtTokenService jwtTokenService;
+
+    @Autowired
+    RegUserServiceImpl userService;
 
     @RequestMapping(value = "/all", method = GET)
     public ResponseEntity<List> getAllTV() {
@@ -97,6 +106,18 @@ public class TVController {
     public ResponseEntity<List> getTVsInRange(@RequestParam Date startDate, @RequestParam Date endDate) {
         return null;
     }
+
+    @RequestMapping(value = "/new_tv_tonight", method = GET)
+    public ResponseEntity<List> getNewTVTonight() {
+        return new ResponseEntity<>(tvService.getNewTVTonight(), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/most_popular", method = GET)
+    public ResponseEntity<List> getMostPopularTVOnCP() {
+        return new ResponseEntity<>(tvService.getMostPopularTVOnCP(), HttpStatus.OK);
+    }
+
+
 
 
 }

@@ -26,21 +26,19 @@ public class SearchController {
     @Autowired
     SearchService searchService;
 
-    // http://localhost:8080/search?table=movie&keyword=the+shape
-    // http://localhost:8080/search?table=celebrity&keyword=john
     @RequestMapping(value = "", method = GET)
-    public ResponseEntity<List> search(@RequestParam("table") String table, @RequestParam("keyword") String keyword) {
-        if(table.equals("celebrity")) {
-            List<Celebrity> movieList = searchService.getCelebritiesFromKeyword(keyword);
-            return new ResponseEntity<>(movieList, HttpStatus.OK);
-        }
-        else if(table.equals("movie")){
+    public ResponseEntity<List> searchMovie(@RequestParam("table") String table, @RequestParam("keyword") String keyword) {
+        if(table.equals("movie")) {
             List<Movie> movieList = searchService.getMoviesFromKeyword(keyword);
             return new ResponseEntity<>(movieList, HttpStatus.OK);
         }
+        else if(table.equals("celebrity")){
+            List<Celebrity> celebrityList = searchService.getCelebritiesFromKeyword(keyword);
+            return new ResponseEntity<>(celebrityList, HttpStatus.OK);
+        }
         else{
-            // TODO: search for TV
-            return null;
+            List<TV> tvList = searchService.getTVsFromKeyword(keyword);
+            return new ResponseEntity<>(tvList, HttpStatus.OK);
         }
     }
 }

@@ -28,18 +28,29 @@ public interface MovieRepository extends JpaRepository<Movie, String>{
     List<Movie> findAllByOrderByReleaseDateAsc();
     List<Movie> findAllByOrderByReleaseDateDesc();
 
-    // get top box office movies
-    List<Movie> findTop10ByOrderByBoxOfficeDesc();
+    // get top 6 box office movies
+    List<Movie> findTop6ByOrderByBoxOfficeDesc();
+
+
+
+    // get trending movies
+    List<Movie> findTop6ByOrderByNumberOfRatingsDesc();
+
+    // get top rating movies
+    List<Movie> findTop6ByOrderByRatingDesc();
 
     // get now playing movies
     List<Movie> findAllByReleaseDateBetween(Date date1, Date date2);
 
-    // get trending movies
-    List<Movie> findTop10ByOrderByNumberOfRatingsDesc();
+    // get coming soon movies
+    List<Movie> findAllByReleaseDateAfter(Date date1);
 
-    // get top rating movies
-    List<Movie> findTop10ByOrderByRatingDesc();
+    // get top 60 rated movies
+    List<Movie> findTop60ByOrderByRatingDesc();
 
-//    List<Movie> findMoviesBy
+    // get top 60 box office movies
+    List<Movie> findTop60ByOrderByBoxOfficeDesc();
+
+    //    List<Movie> findMoviesBy
 
 }
