@@ -94,9 +94,10 @@ main {
   margin-bottom:0;
   height:40px;
 }
-.fa-star{
+.fa-star, .fa-star-half-o{
   color:$color-red;
 }
+
 // rate
 .flex p:nth-of-type(1){
   margin-left:5px;
@@ -139,6 +140,9 @@ p {
 .l-cards{
   padding-left: 1.2em;
   padding-bottom: 12.5em;
+  p{
+    font-size: 0.6em !important;
+  }
 }
 
 .l-cards__title-wrap{
@@ -155,13 +159,16 @@ p {
 .l-cards__nav-left, .l-cards__nav-right{
   float: right;
   color: white;
-  background-color: $color-red;
+/*  background-color: $color-red;*/
   font-size: 0.8em;
   padding: 1px 8px;
   border-radius: 50%;
 }
 .l-cards__nav-left{
   margin-right: 3%;
+}
+.l-cards__nav-left:hover{
+
 }
 .l-cards__nav-right {
   margin-right: 0.5em;

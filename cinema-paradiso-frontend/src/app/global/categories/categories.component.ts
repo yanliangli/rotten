@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Movie} from '../models/movie.model';
+import {TV} from '../models/tv.model';
+import {CategoriesService} from './categories.service';
 
 @Component({
   selector: 'app-categories',
@@ -8,52 +11,39 @@ import { Component, OnInit } from '@angular/core';
 export class CategoriesComponent implements OnInit {
 
   page = 1;
+  moviesOpeningTHisWeek: Movie[];
+  moviesTopBoxOffice: Movie[];
+  moviesComingSoon: Movie[];
+  moviesTopRated: Movie[];
 
-  constructor() { }
+  moviesOpeningTHisWeekCount=0;
+  moviesTopBoxOfficeCount=0;
+  moviesComingSoonCount=0;
+  moviesTopRatedCount=0;
 
-  ngOnInit() {
-    this.loadPosters();
+  isMoviesOpeningTHisWeek: boolean;
+  isMoviesTopBoxOffice: boolean;
+  isMoviesComingSoon: boolean;
+  isMoviesTopRated: boolean;
+
+  tvNewTonight: TV[];
+  tvMostPopularOnCP: TV[];
+  tvTopRated: TV[];
+
+  tvNewTonightCount=0;
+  tvMostPopularOnCPCount=0;
+  tvTopRatedCount=0;
+
+  isTvNewTonight: boolean;
+  isTvMostPopularOnCP: boolean;
+  IsTvTopRated: boolean;
+
+
+
+  constructor(private catService: CategoriesService) {
   }
 
-  loadPosters(): void {
-    let movieNames = ["Blade Runner 2049", "Coco", "Call Me By Your Name", "Lady Bird", "Get Out", "Dunkirk", "In the Fade", "Phantom Thread"];
-
-    let images = ["https://images-na.ssl-images-amazon.com/images/M/MV5BNzA1Njg4NzYxOV5BMl5BanBnXkFtZTgwODk5NjU3MzI@._V1_SX300.jpg"	,
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BYjQ5NjM0Y2YtNjZkNC00ZDhkLWJjMWItN2QyNzFkMDE3ZjAxXkEyXkFqcGdeQXVyODIxMzk5NjA@._V1_SX300.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BNDk3NTEwNjc0MV5BMl5BanBnXkFtZTgwNzYxNTMwMzI@._V1_SX300.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BODhkZGE0NDQtZDc0Zi00YmQ4LWJiNmUtYTY1OGM1ODRmNGVkXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTUxMjEzNzE1NF5BMl5BanBnXkFtZTgwNDYwNjUzMTI@.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BNjA4MzEzOTc0N15BMl5BanBnXkFtZTgwOTcyNDY4MjI@.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BMTYwNDI5Njg2M15BMl5BanBnXkFtZTgwMzIyNTYxNDM@.jpg",
-      "https://images-na.ssl-images-amazon.com/images/M/MV5BOTE5MzkwMjM0NV5BMl5BanBnXkFtZTgwMTQ0Mjk0NDM@.jpg",
-    ];
-
-    let imageContainers : NodeListOf<Element> = document.getElementsByClassName("l-cards__image");
-    let movieTitles : NodeListOf<Element> = document.getElementsByClassName("l-cards__text");
-
-    var i = 0, y = 0;
-    while (i < movieTitles.length) {
-      // create img element and append to container
-      var img = document.createElement('img');
-      img.setAttribute('src', images[y]);
-      img.setAttribute('alt', movieNames[y]);
-      img.style.height = '10em';
-      imageContainers[i].appendChild(img);
-
-      // create span and append movie names and ratings
-      var ratings = document.createElement('p');
-      ratings.style.color = 'rgb(229, 9, 20)';
-      ratings.innerHTML = '4.9/5.0';
-
-      movieTitles[i].innerHTML = movieNames[y];
-      movieTitles[i].appendChild(ratings);
-      // movieTitles[i].style.fontSize = '2em';
-
-      i++;
-      y++;
-      if (y == 4) y = 0;
-    }
-
+  ngOnInit() {
   }
 
 }

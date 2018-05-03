@@ -12,6 +12,7 @@ import {TypeVisitor} from '@angular/compiler/src/output/output_ast';
   providers: [SearchService]
 })
 export class SearchComponent implements OnInit {
+  page=1;
   movieResults:Movie[];
   movieCount=0;
   keywordParam: String;

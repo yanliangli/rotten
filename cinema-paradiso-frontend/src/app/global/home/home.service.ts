@@ -20,30 +20,26 @@ export class HomeService {
     return Observable.throw(error.json.error || 'Server error');
   }
 
-  getMoviesPlaying() {
-    return this.http.get('http://localhost:8080/movie/playing');
+  getMoviesOpeningThisWeek() {
+    return this.http.get('http://localhost:8080/movie/opening_this_week');
   }
 
-  getMoviesTrending() {
-    return this.http.get('http://localhost:8080/movie/trending');
+  getMoviesComingSoon() {
+    return this.http.get('http://localhost:8080/movie/coming_soon');
   }
+
 
   getMoviesTopBoxOffice() {
     return this.http.get('http://localhost:8080/movie/top_box_office');
   }
 
-  getMoviesTopRating() {
-    return this.http.get('http://localhost:8080/movie/top_rating');
+  getNewTVTonight(){
+    return this.http.get('http://localhost:8080/tv/new_tv_tonight');
   }
 
-  getMoviesSimilar(movieId:String) {
-    return this.http.get('http://localhost:8080/similar/'+movieId);
+  getMostPopularTVOnCP(){
+    return this.http.get('http://localhost:8080/tv/most_popular');
   }
-
-  getMoviesInRange(start:String, end:String) {
-    return this.http.get('http://localhost:8080/movie/in_range/'+start+"/"+end);
-  }
-
 
   parseImdbId(imdbId: string) {
     return this.selectedImdbId = imdbId;

@@ -1,5 +1,4 @@
 <html lang="en">
-
 <body>
 
 <main>
@@ -12,12 +11,51 @@
             <div class="l-hero__text">
 
               <a routerLink="{{carouselSlide.imdbId}}" (click)="setImdbId(carouselSlide.imdbId)">
-
                 <div class="c-title">
                   <span class="c-title__category"><strong>{{carouselSlide.awards}}</strong> </span>
                   <span class="c-title__name">{{carouselSlide.title}} <br></span>
                   <div class="absolute">
-                    <div class="flex">
+                    <div class="flex" *ngIf="carouselSlide.rating>4 && carouselSlide.rating<5">
+                      <i class="fa fa-star "></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star-half-o"></i>
+                      <p>{{carouselSlide.rating}}/5.0</p>
+                      <p>{{carouselSlide.rated}}</p>
+                    </div><!--flex end-->
+
+                    <div class="flex" *ngIf="carouselSlide.rating>3 && carouselSlide.rating<4">
+                      <i class="fa fa-star "></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star-half-o"></i>
+                      <p>{{carouselSlide.rating}}/5.0</p>
+                      <p>{{carouselSlide.rated}}</p>
+                    </div><!--flex end-->
+
+                    <div class="flex" *ngIf="carouselSlide.rating>2 && carouselSlide.rating<3">
+                      <i class="fa fa-star "></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star-half-o"></i>
+                      <p>{{carouselSlide.rating}}/5.0</p>
+                      <p>{{carouselSlide.rated}}</p>
+                    </div><!--flex end-->
+
+                    <div class="flex" *ngIf="carouselSlide.rating>1 && carouselSlide.rating<2">
+                      <i class="fa fa-star "></i>
+                      <i class="fa fa-star-half-o"></i>
+                      <p>{{carouselSlide.rating}}/5.0</p>
+                      <p>{{carouselSlide.rated}}</p>
+                    </div><!--flex end-->
+
+                    <div class="flex" *ngIf="carouselSlide.rating>0 && carouselSlide.rating<1">
+                      <i class="fa fa-star-half-o"></i>
+                      <p>{{carouselSlide.rating}}/5.0</p>
+                      <p>{{carouselSlide.rated}}</p>
+                    </div><!--flex end-->
+
+                    <div class="flex" *ngIf="carouselSlide.rating==5">
                       <i class="fa fa-star "></i>
                       <i class="fa fa-star"></i>
                       <i class="fa fa-star"></i>
@@ -25,6 +63,40 @@
                       <i class="fa fa-star"></i>
                       <p>{{carouselSlide.rating}}/5.0</p>
                       <p>{{carouselSlide.rated}}</p>
+                    </div><!--flex end-->
+
+                    <div class="flex" *ngIf="carouselSlide.rating==4">
+                      <i class="fa fa-star "></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <p>{{carouselSlide.rating}}/5.0</p>
+                      <p>{{carouselSlide.rated}}</p>
+                    </div><!--flex end-->
+
+                    <div class="flex" *ngIf="carouselSlide.rating==3">
+                      <i class="fa fa-star "></i>
+                      <i class="fa fa-star"></i>
+                      <i class="fa fa-star"></i>
+                      <p>{{carouselSlide.rating}}/5.0</p>
+                      <p>{{carouselSlide.rated}}</p>
+                    </div><!--flex end-->
+
+                    <div class="flex" *ngIf="carouselSlide.rating==2">
+                      <i class="fa fa-star "></i>
+                      <i class="fa fa-star"></i>
+                      <p>{{carouselSlide.rating}}/5.0</p>
+                      <p>{{carouselSlide.rated}}</p>
+                    </div><!--flex end-->
+
+                    <div class="flex" *ngIf="carouselSlide.rating==1">
+                      <i class="fa fa-star "></i>
+                      <p>{{carouselSlide.rating}}/5.0</p>
+                      <p>{{carouselSlide.rated}}</p>
+                    </div><!--flex end-->
+
+                    <div class="flex" *ngIf="carouselSlide.rating==0">
+                      <p>No Rating</p>
                     </div><!--flex end-->
                   </div>
                 </div>
@@ -60,40 +132,59 @@
     <!-- 	1st section	 -->
     <section class="l-cards">
       <div class="l-cards__title-wrap">
-        <h2 class="l-cards__title">Now Playing</h2>
-        <a class="l-cards__nav-left" href="#"><i class="fa fa-angle-right"></i></a><a class="l-cards__nav-right" href="#">
-        <i class="fa fa-angle-left"></i></a>
+        <h2 class="l-cards__title">MOVIES OPENING THIS WEEK</h2>
+        <a class="l-cards__nav-left" href="" routerLink="/movies" [queryParams]="{category:'opening_this_week'}">View All</a>
       </div>
 
-      <ul class="l-cards__list">
-        <li class="l-cards__item" *ngFor="let movie of moviesPlaying">
+      <ul class="l-cards__list" id="movies_opening_this_week">
+        <li class="l-cards__item" *ngFor="let movie of moviesOpening">
           <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active" class="l-cards__image fill">
             <img [src]="movie.poster" [alt]="movie.title">
           </a>
           <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active"  class="l-cards__text">
             {{movie.title}}
-            <p>{{movie.rating}}/5.0</p>
           </a>
+          <p>{{convertStringToDate(movie.releaseDate)}}</p>
         </li>
       </ul>
     </section>
     <!-- 	end 1st section	 -->
 
+
     <section class="l-cards">
       <div class="l-cards__title-wrap">
-        <h2 class="l-cards__title">Movies Trending Now</h2>
-        <a class="l-cards__nav-left" href="#"><i class="fa fa-angle-right"></i></a><a class="l-cards__nav-right" href="#"><i class="fa fa-angle-left"></i></a>
+        <h2 class="l-cards__title">TOP BOX OFFICE</h2>
+        <a class="l-cards__nav-left" href="" routerLink="/movies" [queryParams]="{category:'top_box_office'}">View All</a>
       </div>
-      <ul class="l-cards__list">
-
-        <li class="l-cards__item" *ngFor="let movie of moviesTrending">
+      <ul class="l-cards__list" id="top_box_office">
+        <li class="l-cards__item" *ngFor="let movie of moviesTopBoxOffice | slice: 0:6" >
           <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active" class="l-cards__image fill">
             <img [src]="movie.poster" [alt]="movie.title">
           </a>
           <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active"  class="l-cards__text">
             {{movie.title}}
-            <p>{{movie.rating}}/5.0</p>
           </a>
+          <p>{{convertNumberToMillion(movie.boxOffice)}}</p>
+        </li>
+
+      </ul>
+    </section>
+
+    <section class="l-cards">
+      <div class="l-cards__title-wrap">
+        <h2 class="l-cards__title">COMING SOON TO THEATERS</h2>
+        <a class="l-cards__nav-left" href="" routerLink="/movies" [queryParams]="{category:'coming_soon'}">View All</a>
+      </div>
+      <ul class="l-cards__list" id="coming_soon_to_theaters">
+
+        <li class="l-cards__item" *ngFor="let movie of moviesComingSoon | slice: 0:6">
+          <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active" class="l-cards__image fill">
+            <img [src]="movie.poster" [alt]="movie.title">
+          </a>
+          <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active"  class="l-cards__text">
+            {{movie.title}}
+          </a>
+          <p>{{convertStringToDate(movie.releaseDate)}}</p>
         </li>
 
       </ul>
@@ -102,63 +193,39 @@
 
     <section class="l-cards">
       <div class="l-cards__title-wrap">
-        <h2 class="l-cards__title">Movies Top Rated</h2>
-        <a class="l-cards__nav-left" href="#"><i class="fa fa-angle-right"></i></a><a class="l-cards__nav-right" href="#"><i class="fa fa-angle-left"></i></a>
+        <h2 class="l-cards__title">NEW TV TONIGHT</h2>
+        <a class="l-cards__nav-left" href="" routerLink="/movies" [queryParams]="{category:'new_tv_tonight'}">View All</a>
       </div>
       <ul class="l-cards__list">
-
-        <li class="l-cards__item" *ngFor="let movie of moviesTopRating">
-          <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active" class="l-cards__image fill">
-            <img [src]="movie.poster" [alt]="movie.title">
+        <li class="l-cards__item" *ngFor="let tv of newTVTonight | slice: 0:6">
+          <a routerLink="/tv/{{tv.imdbId}}" (click)="setImdbId(tv.imdbId)" routerLinkActive="active" class="l-cards__image fill">
+            <img [src]="tv.poster" [alt]="tv.title">
           </a>
-          <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active"  class="l-cards__text">
-            {{movie.title}}
-            <p>{{movie.rating}}/5.0</p>
+          <a routerLink="/tv/{{tv.imdbId}}" (click)="setImdbId(tv.imdbId)" routerLinkActive="active"  class="l-cards__text">
+            {{tv.title}}
+            <p>{{tv.rating}}/5.0</p>
           </a>
         </li>
-
       </ul>
     </section>
     <!-- end -->
 
-    <section class="l-cards">
-      <div class="l-cards__title-wrap">
-        <h2 class="l-cards__title">Top Box Office</h2>
-        <a class="l-cards__nav-left" href="#"><i class="fa fa-angle-right"></i></a><a class="l-cards__nav-right" href="#"><i class="fa fa-angle-left"></i></a>
-      </div>
-      <ul class="l-cards__list">
-
-        <li class="l-cards__item" *ngFor="let movie of moviesTopBoxOffice">
-          <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active" class="l-cards__image fill">
-            <img [src]="movie.poster" [alt]="movie.title">
-          </a>
-          <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active"  class="l-cards__text">
-            {{movie.title}}
-            <p>{{movie.rating}}/5.0</p>
-          </a>
-        </li>
-
-      </ul>
-    </section>
-
 
     <section class="l-cards">
       <div class="l-cards__title-wrap">
-      <h2 class="l-cards__title">Recommended For You</h2>
-      <a class="l-cards__nav-left" href="#"><i class="fa fa-angle-right"></i></a><a class="l-cards__nav-right" href="#"><i class="fa fa-angle-left"></i></a>
+      <h2 class="l-cards__title">MOST POPULAR TV ON CP</h2>
+        <a class="l-cards__nav-left" href="" routerLink="/movies" [queryParams]="{category:'most_popular_tv'}">View All</a>
       </div>
         <ul class="l-cards__list">
-
-          <li class="l-cards__item" *ngFor="let movie of moviesPlaying">
-            <a routerLink="/movie/{{movie.imdbId}}" routerLinkActive="active" class="l-cards__image fill">
-              <img [src]="movie.poster" [alt]="movie.title">
+          <li class="l-cards__item" *ngFor="let tv of mostPopularTVOnCP | slice: 0:6">
+            <a routerLink="/tv/{{tv.imdbId}}" routerLinkActive="active" class="l-cards__image fill">
+              <img [src]="tv.poster" [alt]="tv.title">
             </a>
-            <a routerLink="/movie/{{movie.imdbId}}" routerLinkActive="active"  class="l-cards__text">
-              {{movie.title}}
-              <p>{{movie.rating}}/5.0</p>
+            <a routerLink="/tv/{{tv.imdbId}}" routerLinkActive="active"  class="l-cards__text">
+              {{tv.title}}
+              <p>{{tv.rating}}/5.0</p>
             </a>
           </li>
-
       </ul>
     </section>
 
