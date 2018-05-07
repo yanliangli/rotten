@@ -24,13 +24,13 @@
 
 <div class="container movie_results">
   <h4 class="bottom_divide" *ngIf="searchMovieBoolean&&movieCount>0">MOVIES</h4>
-  <div class="row s-item" *ngFor="let movie of movieResults | paginate: { itemsPerPage: itemsPerPage, currentPage: moviePage }">
-    <div class="col-4 s_img-wrap">
+  <div class="row s-item" *ngFor="let movie of movieResults">
+    <div class="col-4 s_img-wrap" routerLink="/movie/{{movie.imdbId}}">
       <img src="{{movie.poster}}"
            alt="">
     </div>
     <div class="col-7">
-      <a routerLink="/movie/{{movie.imdbId}}" class="s-item__title">{{movie.title}}</a>
+      <a routerLink="/movie/{{movie.imdbId}}" class="s-item__title">{{movie.title}} ({{movie.year}})</a>
       <div class="flex">
         <div *ngIf="movie.rating==0">
           No Ratings
@@ -122,28 +122,34 @@
       <p>
         Starring
         <span *ngFor="let cast of movie.cast">
-          <a routerLink="/celebrity/{{cast.celebrityId}}">{{cast.name}},</a>
+          <a routerLink="/celebrity/{{cast}}">{{cast}}, </a>
         </span>
       </p>
       <p>
         Director
-        <a routerLink="/celebrity/{{movie.director.celebrityId}}">{{movie.director.name}}</a>
+        <span *ngFor="let direct of movie.director">
+          <a routerLink="/celebrity/{{direct}}">{{direct}}, </a>
+        </span>
+
       </p>
       <p>
         Genres
         <span *ngFor="let genres of movie.genres">
-          <a routerLink="/search" [queryParams]="{table:'movie', search:genres}">{{genres}}</a>
+          <a routerLink="/search" [queryParams]="{table:'movie', search:genres}">{{genres}}, </a>
         </span>
       </p>
     </div>
   </div>
-  <ngb-pagination *ngIf="searchMovieBoolean&&movieCount>0" [collectionSize]="movieCount" [pageSize]="itemsPerPage" [(page)]="moviePage" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true" class="pagination" ></ngb-pagination>
+  <div style="text-align: center;">
+    <ngb-pagination *ngIf="searchMovieBoolean&&movieCount>0" [(page)]="moviePage" [collectionSize]="movieCount" [pageSize]="itemsPerPage" [maxSize]="maxPageDisplay" [rotate]="true" [ellipses]="false" [boundaryLinks]="true" class="pagination" (pageChange)="searchForMovies()" ></ngb-pagination>
+  </div>
 </div>
+
 
 
   <div class="container tv_results" style="display:none">
     <h4 class="bottom_divide" *ngIf="searchTVBoolean&&tvCount>0">TV</h4>
-  <div class="row"  *ngFor="let tv of tvResults | paginate: { itemsPerPage: itemsPerPage, currentPage: tvPage }">
+  <div class="row"  *ngFor="let tv of tvResults">
     <div class="col-4 s_img-wrap">
       <img src="{{tv.poster}}"
            alt="">
@@ -257,14 +263,13 @@
       </p>
     </div>
   </div>
-    <ngb-pagination *ngIf="searchTVBoolean&&tvCount>0" [collectionSize]="tvCount" [pageSize]="itemsPerPage" [(page)]="tvPage" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true" class="pagination" ></ngb-pagination>
-
+    <ngb-pagination *ngIf="searchTVBoolean&&tvCount>0" [(page)]="tvPage" [collectionSize]="tvCount" [pageSize]="itemsPerPage" [maxSize]="maxPageDisplay"  [rotate]="true" [ellipses]="false" [boundaryLinks]="true" class="pagination" ></ngb-pagination>
   </div>
 
 
 <div class="container people_results" style="display:none">
   <h4 class="bottom_divide" *ngIf="searchPeopleBoolean&&(celebrityCount>0)">CELEBRITIES</h4>
-  <div class="row" *ngFor="let celebrity of celebritiesResults | paginate: { itemsPerPage: itemsPerPage, currentPage: celebrityPage }">
+  <div class="row" *ngFor="let celebrity of celebritiesResults">
     <div class="col-4 s_img-wrap">
       <img src="{{celebrity.profileImage}}"
            alt="" routerLink="/celebrity/{{celebrity.celebrityId}}">
@@ -278,7 +283,7 @@
       </p>
     </div>
   </div>
-  <ngb-pagination *ngIf="searchPeopleBoolean&&(celebrityCount>0)" [collectionSize]="celebrityCount" [pageSize]="itemsPerPage" [(page)]="celebrityPage" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true" class="pagination" ></ngb-pagination>
+  <ngb-pagination *ngIf="searchPeopleBoolean&&(celebrityCount>0)" [(page)]="celebrityPage" [collectionSize]="celebrityCount" [pageSize]="itemsPerPage" [maxSize]="maxPageDisplay"  [rotate]="true" [ellipses]="false" [boundaryLinks]="true" class="pagination" ></ngb-pagination>
 </div>
 
 </main>

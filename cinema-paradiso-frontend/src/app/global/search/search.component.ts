@@ -4,6 +4,8 @@ import {Movie} from '../models/movie.model';
 import {Celebrity} from '../models/celebrity.model';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {TypeVisitor} from '@angular/compiler/src/output/output_ast';
+import {Page} from 'ngx-pagination/dist/pagination-controls.directive';
+import {TV} from '../models/tv.model';
 
 @Component({
   selector: 'app-search',
@@ -12,23 +14,24 @@ import {TypeVisitor} from '@angular/compiler/src/output/output_ast';
   providers: [SearchService]
 })
 export class SearchComponent implements OnInit {
+  keywordParam: string;
   movieResults:Movie[];
   movieCount=0;
-  keywordParam: String;
   celebritiesResults: Celebrity[];
   celebrityCount=0;
-  tvResults: any;
+  tvResults: TV[];
   tvCount=0;
   searchPeopleBoolean = true;
   searchMovieBoolean = true;
   searchTVBoolean = true;
-  itemsPerPage=3;
-  moviePage: number = 1;
+  itemsPerPage=7;
+  maxPageDisplay=7;
+  moviePage:number=1;
   tvPage: number = 1;
-  celebrityPage:number  =1;
+  celebrityPage:number = 1;
   constructor(private route: ActivatedRoute, private searchService: SearchService, private router: Router) {
-  }
 
+  }
   ngOnInit() {
     this.route.queryParamMap.subscribe((params: ParamMap)=>{
       this.keywordParam = params.get('keyword');
@@ -73,54 +76,64 @@ export class SearchComponent implements OnInit {
   } //end onInit
 
   searchForMovies(){
-      this.searchService.searchMovies(this.keywordParam)
-        .subscribe(
-          data => {
-            this.movieResults = data as Movie[];
-            this.movieCount=this.movieResults.length;
-            if(this.movieCount==0){
-              this.searchMovieBoolean=false;
-            }
-            else{
-              this.searchMovieBoolean=true;
+    console.log("page: ", this.moviePage)
+    this.searchService.searchMovies(this.keywordParam, this.moviePage, this.itemsPerPage)
+      .subscribe(
+        data=>{
+            if(data){
+              console.log(data)
+              this.movieResults = (data as Page[])['content'];
+              this.movieCount=(data as Page[])['totalElements'];
+              if(this.movieCount==0){
+                this.searchMovieBoolean=false;
+              }
+              else{
+                this.searchMovieBoolean=true;
+              }
             }
           },
-          error => console.log('Failed to fetch movie data')
-        );
+        error => console.log('Failed to fetch movie data')
+      );
   }
 
   searchForCelebrities(){
-      this.searchService.searchCelebrities(this.keywordParam)
-        .subscribe(
-          data => {
-            this.celebritiesResults = data as Celebrity[];
-            this.celebrityCount=this.celebritiesResults.length;
+    this.searchService.searchCelebrities(this.keywordParam, this.celebrityPage, this.itemsPerPage)
+      .subscribe(
+        data=>{
+          if(data){
+            console.log(data)
+            this.celebritiesResults = (data as Page[])['content'];
+            this.celebrityCount = (data as Page[])['totalElements'];
             if(this.celebrityCount==0){
               this.searchPeopleBoolean=false;
             }
             else{
               this.searchPeopleBoolean=true;
             }
-          },
-          error => console.log('Failed to fetch celebrity data')
-        );
+          }
+        },
+        error => console.log('Failed to fetch celebrity data')
+      );
   }
 
   searchForTV(){
-      this.searchService.searchTV(this.keywordParam)
-        .subscribe(
-          data => {
-            this.tvResults = data as any[];
-            this.tvCount=this.tvResults.length;
+    this.searchService.searchTV(this.keywordParam, this.tvPage, this.itemsPerPage)
+      .subscribe(
+        data=>{
+          if(data){
+            console.log(data)
+            this.tvResults = (data as Page[])['content'];
+            this.tvCount = (data as Page[])['totalElements'];
             if(this.tvCount==0){
               this.searchTVBoolean=false;
             }
             else{
               this.searchTVBoolean=true;
             }
-          },
-          error => console.log('Failed to fetch celebrity data')
-        );
+          }
+        },
+        error => console.log('Failed to fetch tv data')
+      );
   }
 
   onlyShowPeopleResults(){
@@ -146,8 +159,5 @@ export class SearchComponent implements OnInit {
       this.searchMovieBoolean = true;
       this.searchTVBoolean = true;
   }
-
-
-  //TODO TV search
 
 }

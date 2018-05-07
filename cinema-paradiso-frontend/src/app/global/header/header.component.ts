@@ -17,7 +17,6 @@ export class HeaderComponent implements OnInit {
   status: boolean;
   user: Token;
   is_admin: boolean;
-
   constructor(private loginStatusService: LoginStatusService, private loginService: LoginService, private toastrService: ToastrService,
               private router: Router, private route: ActivatedRoute) {
   }
@@ -62,7 +61,7 @@ export class HeaderComponent implements OnInit {
     if (e.keyCode === 13) {
       let x = $('#input_search').val();
       if(x!="") {
-        this.router.navigate(['/search'], {queryParams: {keyword: $('#input_search').val()}});
+        this.router.navigate(['/search'], {queryParams: {keyword: x}});
       }
     }
   }
@@ -70,7 +69,7 @@ export class HeaderComponent implements OnInit {
   clickToSearch(){
     let x = $('#input_search').val();
     if(x!="") {
-      this.router.navigate(['/search'], {queryParams: {keyword: $('#input_search').val()}});
+      this.router.navigate(['/search'], {queryParams: {keyword: x}});
     }
   }
 

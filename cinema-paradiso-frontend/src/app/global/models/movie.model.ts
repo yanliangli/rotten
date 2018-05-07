@@ -11,8 +11,8 @@ export class Movie {
   genres: string[];
   awards: string[];
   photos: string[];
-  director: Celebrity;
-  cast: Celebrity[];
+  director: string[];
+  cast: string[];
   trailers: Trailer[];
   reviews: Review[];
   plot: string;

@@ -33,7 +33,7 @@ main{
   padding-left: 4em;
   img {
     height: 250px;
-    width: auto;
+    max-width: 180px;
   }
 
 }
@@ -95,7 +95,7 @@ p {
 ngb-pagination /deep/{
   color: white ;
   background-color: transparent;
-  margin-left: 40%;
+  display:inline-block;
 }
 
 .bottom_divide{

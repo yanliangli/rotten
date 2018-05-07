@@ -9,17 +9,20 @@ const httpOptions = {headers: new HttpHeaders({ 'Content-Type': 'application/jso
 export class SearchService{
   constructor(private http: HttpClient) { }
 
-  searchMovies(keyword){
+  searchMovies(keyword, page, limit){
+    page=page-1;
     let params = new HttpParams({
       fromObject:{
         table: 'movie',
         keyword: keyword,
+        page: page,
+        limit: limit
       }
     });
     return this.http.get('http://localhost:8080/search?',{params:params});
   }
 
-  searchCelebrities(keyword){
+  searchCelebrities(keyword, page, limit){
     let params = new HttpParams({
       fromObject:{
         table: 'celebrity',
@@ -29,7 +32,7 @@ export class SearchService{
     return this.http.get('http://localhost:8080/search',{params:params});
   }
 
-  searchTV(keyword){
+  searchTV(keyword, page, limit){
     let params = new HttpParams({
       fromObject:{
         table: 'tv',
