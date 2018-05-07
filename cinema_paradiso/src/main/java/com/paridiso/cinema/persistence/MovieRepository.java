@@ -2,9 +2,11 @@ package com.paridiso.cinema.persistence;
 
 import com.paridiso.cinema.entity.Film;
 import com.paridiso.cinema.entity.Movie;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
 import java.util.Date;
 import java.util.List;
 
@@ -18,7 +20,8 @@ public interface MovieRepository extends JpaRepository<Movie, String>{
 
     List<Movie> findMoviesByTitle(String filmTitle);
 
-    List<Movie> findMoviesByTitleContains(String filmTitle);
+    //List<Movie> findMoviesByTitleContains(String filmTitle);
+    Page<Movie> findMoviesByTitleContains(String keyword, Pageable pageable);
 
     // sort movies by rating
     List<Movie> findAllByOrderByRatingAsc();
@@ -50,6 +53,7 @@ public interface MovieRepository extends JpaRepository<Movie, String>{
 
     // get top 60 box office movies
     List<Movie> findTop60ByOrderByBoxOfficeDesc();
+
 
     //    List<Movie> findMoviesBy
 

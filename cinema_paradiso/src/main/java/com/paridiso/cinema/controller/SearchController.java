@@ -5,6 +5,10 @@ import com.paridiso.cinema.entity.Movie;
 import com.paridiso.cinema.entity.TV;
 import com.paridiso.cinema.service.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -27,18 +31,24 @@ public class SearchController {
     SearchService searchService;
 
     @RequestMapping(value = "", method = GET)
-    public ResponseEntity<List> searchMovie(@RequestParam("table") String table, @RequestParam("keyword") String keyword) {
+    public ResponseEntity<Page> searchMovie(@RequestParam("table") String table, @RequestParam("keyword") String keyword, @RequestParam(value = "page", defaultValue = "0") Integer page,@RequestParam(value = "limit", defaultValue = "7") Integer size) {
         if(table.equals("movie")) {
-            List<Movie> movieList = searchService.getMoviesFromKeyword(keyword);
-            return new ResponseEntity<>(movieList, HttpStatus.OK);
+            Sort sort = new Sort(Sort.Direction.DESC, "rating");
+            Pageable pageable = new PageRequest(page, size, sort);
+            Page<Movie> moviePage = searchService.getMoviesFromKeyword(keyword, pageable);
+            return new ResponseEntity<>(moviePage, HttpStatus.OK);
         }
         else if(table.equals("celebrity")){
-            List<Celebrity> celebrityList = searchService.getCelebritiesFromKeyword(keyword);
-            return new ResponseEntity<>(celebrityList, HttpStatus.OK);
+            Sort sort = new Sort(Sort.Direction.DESC, "name");
+            Pageable pageable = new PageRequest(page, size, sort);
+            Page<Celebrity> celebrityPage = searchService.getCelebritiesFromKeyword(keyword, pageable);
+            return new ResponseEntity<>(celebrityPage, HttpStatus.OK);
         }
         else{
-            List<TV> tvList = searchService.getTVsFromKeyword(keyword);
-            return new ResponseEntity<>(tvList, HttpStatus.OK);
+            Sort sort = new Sort(Sort.Direction.DESC, "rating");
+            Pageable pageable = new PageRequest(page, size, sort);
+            Page<TV> tvPage = searchService.getTVsFromKeyword(keyword, pageable);
+            return new ResponseEntity<>(tvPage, HttpStatus.OK);
         }
     }
 }

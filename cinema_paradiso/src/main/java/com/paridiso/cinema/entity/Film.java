@@ -1,8 +1,10 @@
 package com.paridiso.cinema.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.paridiso.cinema.entity.enumerations.Genre;
 import com.paridiso.cinema.entity.enumerations.Rated;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.net.URI;
@@ -21,44 +23,61 @@ public class Film {
     private String imdbId;
 
     @Column(name = "title")
+    //@JsonProperty("Title")
     private String title;
 
     @Column(name = "year")
+    //@JsonProperty("Year")
     private String year;
 
     @Enumerated
     @Column(name = "rated")
+    //@JsonProperty("Rated")
     private Rated rated;
 
     @Column(name = "releasedDate")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd MMM yyyy")
+   // @JsonProperty("Released")
     private Date releaseDate;
 
     @ElementCollection(targetClass = Genre.class)
     @CollectionTable(name = "MovieGenres", joinColumns = @JoinColumn(name = "imdbId"))
     @Column(name = "genre")
+    //@JsonProperty("Genre")
     private List<Genre> genres;
 
-    @ElementCollection
-    @CollectionTable(name = "MovieAwards", joinColumns = @JoinColumn(name = "imdbId"))
+   // @ElementCollection
+    //@CollectionTable(name = "MovieAwards", joinColumns = @JoinColumn(name = "imdbId"))
     @Column(name = "award")
-    private Set<String> awards;
+    //@JsonProperty("Awards")
+    private String awards;
 
     @ElementCollection
     @CollectionTable(name = "MoviePhotos", joinColumns = @JoinColumn(name = "imdbId"))
     @Column(name = "photo")
+    //@JsonProperty("images")
     private List<String> photos;
 
-    @OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    private Celebrity director;
+    //@Column(name = "director")
+    //@JsonProperty("Director")
+    @ElementCollection
+    @CollectionTable(name = "MovieDirector", joinColumns = @JoinColumn(name = "imdbId"))
+    private List<String> director;
 
-    @ManyToMany(cascade = {CascadeType.MERGE})
-    @JoinTable(
-            name = "FilmsCelebrities",
-            joinColumns = {@JoinColumn(name = "imdbId")},
-            inverseJoinColumns = {@JoinColumn(name = "celebrityId")}
-    )
-    private List<Celebrity> casts;
+//    @ManyToMany(fetch = FetchType.LAZY,
+//            cascade = {
+//                    CascadeType.PERSIST,
+//                    CascadeType.MERGE
+//            }, mappedBy = "movie")
+////    @JoinTable(
+////            name = "FilmsCelebrities",
+////            joinColumns = {@JoinColumn(name = "imdbId")},
+////            inverseJoinColumns = {@JoinColumn(name = "name")}
+////    )
+    @ElementCollection
+    @CollectionTable(name = "MovieCasts", joinColumns = @JoinColumn(name = "imdbId"))
+    //@JsonProperty("Actors")
+    private List<String> casts;
 
     @OneToMany(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER, mappedBy = "movie")
     private Set<Trailer> trailers;
@@ -66,10 +85,14 @@ public class Film {
     @OneToMany(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
     private List<Review> reviews;
 
-    @Column(name = "plot")
+    //@Column(name = "plot")
+  //  @JsonProperty("Plot")
+    @Lob
+    @Column(length = 1000)
     private String plot;
 
     @Column(name = "language")
+   // @JsonProperty("Language")
     private String language;
 
     @Column(name = "country")
@@ -162,19 +185,19 @@ public class Film {
         this.releaseDate = releaseDate;
     }
 
-    public Celebrity getDirector() {
+    public List<String> getDirector() {
         return director;
     }
 
-    public void setDirector(Celebrity director) {
+    public void setDirector(List<String> director) {
         this.director = director;
     }
 
-    public List<Celebrity> getCast() {
+    public List<String> getCast() {
         return casts;
     }
 
-    public void setCast(List<Celebrity> cast) {
+    public void setCast(List<String> cast) {
         this.casts = cast;
     }
 
@@ -234,11 +257,11 @@ public class Film {
         this.genres = genres;
     }
 
-    public Set<String> getAwards() {
+    public String getAwards() {
         return awards;
     }
 
-    public void setAwards(Set<String> awards) {
+    public void setAwards(String awards) {
         this.awards = awards;
     }
 

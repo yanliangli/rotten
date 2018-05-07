@@ -8,6 +8,10 @@ import com.paridiso.cinema.persistence.MovieRepository;
 import com.paridiso.cinema.persistence.TVRepository;
 import com.paridiso.cinema.service.SearchService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -25,21 +29,27 @@ public class SearchServiceImpl implements SearchService{
     TVRepository tvRepository;
 
     // @TODO: tokenize the keyword
+//    @Override
+//    public List<Movie> getMoviesFromKeyword(String keyword) {
+//        List<Movie> movieResult = movieRepository.findMoviesByTitleContains(keyword);
+//        return movieResult;
+//    }
+
     @Override
-    public List<Movie> getMoviesFromKeyword(String keyword) {
-        List<Movie> movieResult = movieRepository.findMoviesByTitleContains(keyword);
+    public Page<Movie> getMoviesFromKeyword(String keyword, Pageable pageable) {
+        Page<Movie> movieResult = movieRepository.findMoviesByTitleContains(keyword, pageable);
         return movieResult;
     }
 
     @Override
-    public List<Celebrity> getCelebritiesFromKeyword(String keyword) {
-        List<Celebrity> celebrityResult = celebrityRepository.findCelebritiesByNameContains(keyword);
+    public Page<Celebrity> getCelebritiesFromKeyword(String keyword, Pageable pageable) {
+        Page<Celebrity> celebrityResult = celebrityRepository.findCelebritiesByNameContains(keyword, pageable);
         return celebrityResult;
     }
 
     @Override
-    public List<TV> getTVsFromKeyword(String keyword){
-        List<TV> tvResults = tvRepository.findTVByTitleContains(keyword);
+    public Page<TV> getTVsFromKeyword(String keyword, Pageable pageable){
+        Page<TV> tvResults = tvRepository.findTVByTitleContains(keyword, pageable);
         return tvResults;
     }
 

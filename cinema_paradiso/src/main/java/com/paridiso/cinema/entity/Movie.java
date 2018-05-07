@@ -1,5 +1,6 @@
 package com.paridiso.cinema.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.paridiso.cinema.entity.enumerations.Genre;
 import com.paridiso.cinema.entity.enumerations.Rated;
 
@@ -36,5 +37,7 @@ public class Movie extends Film {
     public void setBoxOffice(Long boxOffice) {
         this.boxOffice = boxOffice;
     }
+
+
 
 }

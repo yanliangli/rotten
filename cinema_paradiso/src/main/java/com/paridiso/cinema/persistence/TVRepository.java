@@ -1,6 +1,8 @@
 package com.paridiso.cinema.persistence;
 
 import com.paridiso.cinema.entity.TV;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -13,5 +15,5 @@ public interface TVRepository extends JpaRepository<TV, String> {
 
     List<TV> findTop60ByOrderByAudienceRating();
 
-    List<TV> findTVByTitleContains(String keyword);
+    Page<TV> findTVByTitleContains(String keyword, Pageable pageable);
 }
