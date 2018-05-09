@@ -30,6 +30,8 @@ import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 
 @Service
 public class RegUserServiceImpl extends UserService {
+    @Autowired
+    private VerificationTokenRepository tokenRepository;
 
     @Autowired
     ReviewServiceImpl reviewService;
@@ -58,10 +60,12 @@ public class RegUserServiceImpl extends UserService {
     @Autowired
     MovieRepository movieRepository;
 
+
     private Integer counter;
 
     @Transactional
     public Optional<User> signup(User user) {
+        user.setEnabled(false);
         user.setRole(Role.ROLE_USER);
         user.setAccountSuspended(false);
         user.setPassword(utilityService.getHashedPassword(user.getPassword(), salt));
@@ -275,6 +279,15 @@ public class RegUserServiceImpl extends UserService {
     }
 
 
+    @Override
+    public void createVerificationToken(User user, String token) {
+        VerificationToken myToken = new VerificationToken(token, user);
+        tokenRepository.save(myToken);
+    }
 
+    @Override
+    public VerificationToken getVerificationToken(String VerificationToken) {
+        return tokenRepository.findByToken(VerificationToken);
+    }
 }
 

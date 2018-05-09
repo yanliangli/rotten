@@ -39,6 +39,9 @@ public class User {
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private UserProfile userProfile;
 
+    @Column(name = "enabled")
+    private Boolean enabled;
+
     public User() {
     }
 
@@ -97,6 +100,10 @@ public class User {
     public void setUserProfile(UserProfile userProfile) {
         this.userProfile = userProfile;
     }
+
+    public boolean getEnabled() { return enabled; }
+
+    public void setEnabled(boolean enabled){ this.enabled = enabled; }
 
     @Override
     public String toString() {

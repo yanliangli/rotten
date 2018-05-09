@@ -3,6 +3,7 @@ package com.paridiso.cinema.service.implementation;
 import com.paridiso.cinema.entity.CriticApplication;
 import com.paridiso.cinema.entity.User;
 import com.paridiso.cinema.entity.UserProfile;
+import com.paridiso.cinema.entity.VerificationToken;
 import com.paridiso.cinema.entity.enumerations.Role;
 import com.paridiso.cinema.persistence.CriticApplicationRepository;
 import com.paridiso.cinema.persistence.UserProfileRepository;
@@ -77,4 +78,13 @@ public class AdminServiceImpl extends UserService {
         return userProfileRepository.save(profile);
     }
 
+    @Override
+    public void createVerificationToken(User user, String token) {
+
+    }
+
+    @Override
+    public VerificationToken getVerificationToken(String VerificationToken) {
+        return null;
+    }
 }

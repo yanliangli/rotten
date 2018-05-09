@@ -5,6 +5,9 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.paridiso.cinema.entity.Movie;
 import com.paridiso.cinema.entity.User;
 import com.paridiso.cinema.entity.UserProfile;
+import com.paridiso.cinema.entity.VerificationToken;
+import com.paridiso.cinema.event.OnRegistrationCompleteEvent;
+import com.paridiso.cinema.persistence.UserRepository;
 import com.paridiso.cinema.security.JwtTokenGenerator;
 import com.paridiso.cinema.security.JwtTokenValidator;
 import com.paridiso.cinema.security.JwtUser;
@@ -13,13 +16,14 @@ import com.paridiso.cinema.service.implementation.RegUserServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.core.env.Environment;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -27,19 +31,22 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
-import static org.springframework.web.bind.annotation.RequestMethod.DELETE;
+import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @RequestMapping("/user")
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class RegUserController {
+
+    @Autowired
+    private UserRepository userRepository;
     @Autowired
     private RegUserServiceImpl userService;
 
@@ -58,6 +65,9 @@ public class RegUserController {
     @Autowired
     JwtTokenService jwtTokenService;
 
+    @Autowired
+    ApplicationEventPublisher eventPublisher;
+
     private static final Logger logger = LogManager.getLogger(RegUserController.class);
 
     @PostMapping(value = "/login")
@@ -66,8 +76,13 @@ public class RegUserController {
                                              @RequestParam(value = "password", required = true) String password) {
         User user = userService.login(email, password).orElseThrow(() ->
                 new ResponseStatusException(BAD_REQUEST, "USER NOT FOUND"));
-        JwtUser jwtUser = new JwtUser(user.getUsername(), generator.generate(user), user.getUserID(), user.getRole());
-        return ResponseEntity.ok(jwtUser);
+        if(user.getEnabled() == false){
+            return ResponseEntity.ok(null);
+        }else {
+            JwtUser jwtUser = new JwtUser(user.getUsername(), generator.generate(user), user.getUserID(), user.getRole());
+            return ResponseEntity.ok(jwtUser);
+        }
+
     }
 
     @PostMapping(value = "/logout")
@@ -76,15 +91,48 @@ public class RegUserController {
     }
 
     @PostMapping(value = "/signup")
-    public ResponseEntity<JwtUser> userSignup(@RequestBody User user) {
+    public ResponseEntity<JwtUser> userSignup(@RequestBody User user,
+                                              WebRequest webRequest) {
         System.out.println(user.getUsername());
         System.out.println(user.getUserID());
+
         User optionalUser = userService.signup(user).orElseThrow(() ->
                 new ResponseStatusException(BAD_REQUEST, "USER ALREADY EXISTS"));
         System.out.println(optionalUser.getUserID());
         JwtUser jwtUser = new JwtUser(optionalUser.getUsername(),
                 generator.generate(optionalUser), optionalUser.getUserID(), optionalUser.getRole());
+        try {
+            String appUrl = webRequest.getContextPath();
+            System.out.println("the appUrl is: " + appUrl);
+            eventPublisher.publishEvent(new OnRegistrationCompleteEvent
+                    (optionalUser, webRequest.getLocale(), appUrl));
+        } catch (Exception me) {
+            System.out.println("Email err.");
+            return null;
+        }
         return ResponseEntity.ok(jwtUser);
+    }
+
+    @RequestMapping(value = "/regitrationConfirm", method = RequestMethod.GET)
+    public String confirmRegistration
+            (WebRequest request, @RequestParam("token") String token) {
+        System.out.println("Coming regitrationConfirm");
+        Locale locale = request.getLocale();
+
+        VerificationToken verificationToken = userService.getVerificationToken(token);
+        if (verificationToken == null) {
+            return "redirect:/badUser.html";
+        }
+
+        User user = verificationToken.getUser();
+        Calendar cal = Calendar.getInstance();
+        if ((verificationToken.getExpiryDate().getTime() - cal.getTime().getTime()) <= 0) {
+            return "redirect:/badUser.html";
+        }
+
+        user.setEnabled(true);
+        userRepository.save(user);
+        return "Verify succeed, you can now login to our website with email account: "+user.getEmail()+"\n'http://localhost:4200/home'";
     }
 
     @DeleteMapping(value = "/deleteUser")

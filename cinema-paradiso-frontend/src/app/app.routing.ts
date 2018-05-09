@@ -22,8 +22,8 @@ const appRoutes: Routes = [
   {path: 'movie/:id', component: MovieDetailComponent},
   {path: 'user/:id', component: RegUserComponent},
   {path: 'home/:id', component: MovieDetailComponent},
-  {path:'about', component:AboutComponent},
-  {path:'contact', component:ContactComponent},
+  {path: 'about', component: AboutComponent},
+  {path: 'contact', component: ContactComponent},
 ];
 
 @NgModule({

@@ -57,14 +57,20 @@ export class LoginComponent implements OnInit {
           // Set user loggedIn status to global. So header can subscribe to the event.
           this.loginStatusService.changeStatus(true);
         });
-      }
-      else {
+      } else {
         this.loginService.singup(this.user).subscribe(data => {
-          localStorage.setItem('credential', JSON.stringify(data));
-          localStorage.setItem('token', JSON.stringify(data['token']));
+          // localStorage.setItem('credential', JSON.stringify(data));
+          // localStorage.setItem('token', JSON.stringify(data['token']));
 
           // Set user loggedIn status to global. So header can subscribe to the event.
-          this.loginStatusService.changeStatus(true);
+          // this.loginStatusService.changeStatus(true);
+          if(data !== null){
+            alert('One last step: Please activate your account by Email\n The link will be Invalid in TEN minutes');
+            location.reload(true);
+          } else {
+            alert('Invalid email address, please resignUp with an valid one');
+            location.reload(true);
+          }
         });
       }
     }
@@ -113,10 +119,15 @@ export class LoginComponent implements OnInit {
       }
       else{
         this.loginService.login(this.email, this.password).subscribe(data => {
-          localStorage.setItem('credential', JSON.stringify(data));
-          localStorage.setItem('token', JSON.stringify(data['token']));
-          // Set user loggedIn status to global. So header can subscribe to the event.
-          this.loginStatusService.changeStatus(true);
+          if (data !== null) {
+            localStorage.setItem('credential', JSON.stringify(data));
+            localStorage.setItem('token', JSON.stringify(data['token']));
+            // Set user loggedIn status to global. So header can subscribe to the event.
+            this.loginStatusService.changeStatus(true);
+            location.reload(true);
+          } else {
+            alert(' Please activate your account by Email');
+          }
         });
       }
     }

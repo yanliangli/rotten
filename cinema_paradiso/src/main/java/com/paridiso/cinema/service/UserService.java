@@ -2,6 +2,7 @@ package com.paridiso.cinema.service;
 
 import com.paridiso.cinema.entity.Mail;
 import com.paridiso.cinema.entity.User;
+import com.paridiso.cinema.entity.VerificationToken;
 import com.paridiso.cinema.persistence.UserRepository;
 import com.paridiso.cinema.service.implementation.EmailServiceImpl;
 import com.paridiso.cinema.service.implementation.UtilityServiceImpl;
@@ -47,6 +48,10 @@ public abstract class UserService {
         }
 
     }
+
+    public abstract void createVerificationToken(User user, String token);
+
+    public abstract VerificationToken getVerificationToken(String VerificationToken);
 
 //    User logout(Integer userId);
 //
