@@ -6,7 +6,7 @@
     <div class="l-hero">
       <ngb-carousel>
         <ng-template ngbSlide *ngFor="let carouselSlide of carousel">
-          <a routerLink="{{carouselSlide.imdbId}}"><img [src]=carouselSlide.photos[0] alt="slide" class="l-hero__img"  ></a>
+          <a routerLink="{{carouselSlide.imdbId}}" ><img [src]=carouselSlide.photos[2] alt="slide" class="l-hero__img"  ></a>
           <div class="l-hero__text-wrapper">
             <div class="l-hero__text">
 
@@ -15,6 +15,11 @@
                   <span class="c-title__category"><strong>{{carouselSlide.awards}}</strong> </span>
                   <span class="c-title__name">{{carouselSlide.title}} <br></span>
                   <div class="absolute">
+                    <div class="flex" *ngIf="carouselSlide.rating==null">
+                      <p style="color: #e50914;font-size: 0.8em !important;">NOT RATING</p>
+                      <p style="background:grey;color: #fff; margin-left: 0; padding-left: 3px; padding-right: 3px;">{{carouselSlide.rated}}</p>
+                    </div>
+
                     <div class="flex" *ngIf="carouselSlide.rating>4 && carouselSlide.rating<5">
                       <i class="fa fa-star "></i>
                       <i class="fa fa-star"></i>
@@ -108,15 +113,22 @@
               <p clss="c-starring">
                 Starring
                 <span *ngFor="let cast of carouselSlide.cast">
-                    {{cast.name}},
+                    {{cast}},
                 </span>
               </p>
 
               <p>
-                Director <span>{{carouselSlide.director.name}}</span>
+                Director
+                <span *ngFor="let director of carouselSlide.director">
+                  {{director}},
+                </span>
               </p>
               <p>
-                Genres <span class="c-genres" style="text-transform: lowercase">{{carouselSlide.genres}}</span>
+                Genres
+                <!--<span class="c-genres" style="text-transform: lowercase">{{carouselSlide.genres}}</span>-->
+                <span *ngFor="let genre of carouselSlide.genres">
+                  {{genre}},
+                </span>
               </p>
               <!--<div class="l-hero__buttons">-->
                 <!--<button class="o-button o-button&#45;&#45;gray">+ Watchlist</button>-->

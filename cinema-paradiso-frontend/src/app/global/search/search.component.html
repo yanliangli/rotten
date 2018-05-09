@@ -140,7 +140,7 @@
       </p>
     </div>
   </div>
-  <div style="text-align: center;">
+  <div class="pagination_center">
     <ngb-pagination *ngIf="searchMovieBoolean&&movieCount>0" [(page)]="moviePage" [collectionSize]="movieCount" [pageSize]="itemsPerPage" [maxSize]="maxPageDisplay" [rotate]="true" [ellipses]="false" [boundaryLinks]="true" class="pagination" (pageChange)="searchForMovies()" ></ngb-pagination>
   </div>
 </div>
@@ -149,7 +149,7 @@
 
   <div class="container tv_results" style="display:none">
     <h4 class="bottom_divide" *ngIf="searchTVBoolean&&tvCount>0">TV</h4>
-  <div class="row"  *ngFor="let tv of tvResults">
+  <div class="row s-item"  *ngFor="let tv of tvResults">
     <div class="col-4 s_img-wrap">
       <img src="{{tv.poster}}"
            alt="">
@@ -248,22 +248,20 @@
       <p>
         Starring
         <span *ngFor="let cast of tv.cast">
-          <a routerLink="/celebrity/{{cast.celebrityId}}">{{cast.name}},</a>
+          <a routerLink="/celebrity/{{cast.celebrityId}}">{{cast}}, </a>
         </span>
-      </p>
-      <p>
-        Director
-        <a routerLink="/celebrity/{{tv.director.celebrityId}}">{{movie.director.name}}</a>
       </p>
       <p>
         Genres
         <span *ngFor="let genres of tv.genres">
-          <a routerLink="/search" [queryParams]="{table:'tv', search:genres}">{{genres}}</a>
+          <a routerLink="/search" [queryParams]="{table:'tv', search:genres}">{{genres}}, </a>
         </span>
       </p>
     </div>
   </div>
-    <ngb-pagination *ngIf="searchTVBoolean&&tvCount>0" [(page)]="tvPage" [collectionSize]="tvCount" [pageSize]="itemsPerPage" [maxSize]="maxPageDisplay"  [rotate]="true" [ellipses]="false" [boundaryLinks]="true" class="pagination" ></ngb-pagination>
+    <div class="pagination_center">
+      <ngb-pagination *ngIf="searchTVBoolean&&tvCount>0" [(page)]="tvPage" [collectionSize]="tvCount" [pageSize]="itemsPerPage" [maxSize]="maxPageDisplay"  [rotate]="true" [ellipses]="false" [boundaryLinks]="true" class="pagination" ></ngb-pagination>
+    </div>
   </div>
 
 

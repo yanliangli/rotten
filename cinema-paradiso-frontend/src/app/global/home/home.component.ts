@@ -13,6 +13,7 @@ import {CarouselSlide} from '../models/carouselSlide.model';
 import {MovieDetailService} from '../movie-detail/movie-detail.service';
 import {MovieService} from '../movie/movie.service';
 import {TV} from '../models/tv.model';
+import {Page} from 'ngx-pagination/dist/pagination-controls.directive';
 
 @Component({
   selector: 'app-home',
@@ -44,7 +45,6 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     // load carousel
     this.getCarousel();
-
     // load movies playing
     this.getMoviesOpeningThisWeek();
     this.getMoviesComingSoon();
@@ -74,9 +74,8 @@ export class HomeComponent implements OnInit {
     this.homeService.getMoviesOpeningThisWeek()
       .subscribe(
         data => {
-          this.moviesOpening = data as Movie[];
+          this.moviesOpening = (data as Page[])['content'];
           console.log(this.moviesOpening);
-          this.moviesOpening.sort(function(a,b){return new Date(a.releaseDate) - new Date(b.releaseDate)});
         },
         error => console.log('Failed to fetch movies opening this week')
       );
@@ -86,10 +85,10 @@ export class HomeComponent implements OnInit {
     this.homeService.getMoviesComingSoon()
       .subscribe(
         data => {
-          this.moviesComingSoon = data as Movie[];
+          this.moviesComingSoon = (data as Page[])['content'];
           console.log(this.moviesComingSoon);
-          this.moviesComingSoon.sort(function(a,b){return new Date(a.releaseDate) - new Date(b.releaseDate)});
-        },
+        }
+        ,
         error => console.log('Failed to fetch movies coming soon')
       );
   }
@@ -98,7 +97,7 @@ export class HomeComponent implements OnInit {
     this.homeService.getMoviesTopBoxOffice()
       .subscribe(
         data => {
-          this.moviesTopBoxOffice = data as Movie[];
+          this.moviesTopBoxOffice = (data as Page[])['content'];
           console.log(this.moviesTopBoxOffice);
          // this.moviesTopBoxOffice.sort(function(a,b){return b.boxOffice - a.boxOffice});
         },
@@ -110,7 +109,7 @@ export class HomeComponent implements OnInit {
     this.homeService.getNewTVTonight()
       .subscribe(
         data => {
-          this.newTVTonight = data as TV[];
+          this.newTVTonight = (data as Page[])['content'];
           console.log(this.newTVTonight);
         },
         error => console.log('Failed to fetch new tv tonight')
@@ -121,7 +120,7 @@ export class HomeComponent implements OnInit {
     this.homeService.getMostPopularTVOnCP()
       .subscribe(
         data => {
-          this.mostPopularTVOnCP = data as TV[];
+          this.mostPopularTVOnCP = (data as Page[])['content'];
           console.log(this.mostPopularTVOnCP);
         },
         error => console.log('Failed to fetch most popular tv on cinema paradiso')
