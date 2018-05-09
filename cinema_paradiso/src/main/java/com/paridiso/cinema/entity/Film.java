@@ -79,8 +79,9 @@ public class Film {
     //@JsonProperty("Actors")
     private List<String> casts;
 
-    @OneToMany(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER, mappedBy = "movie")
-    private Set<Trailer> trailers;
+    @ElementCollection
+    @CollectionTable(name = "MovieTrailers", joinColumns = @JoinColumn(name = "imdbId"))
+    private Set<String> trailers;
 
     @OneToMany(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
     private List<Review> reviews;
@@ -112,6 +113,9 @@ public class Film {
 
     @Column(name = "website")
     private URI website;
+
+    @Column(name = "isOscar")
+    private boolean isOscar;
 
     public Film() {
     }
@@ -233,11 +237,11 @@ public class Film {
         this.imdbId = imdbId;
     }
 
-    public Set<Trailer> getTrailers() {
+    public Set<String> getTrailers() {
         return trailers;
     }
 
-    public void setTrailers(Set<Trailer> trailers) {
+    public void setTrailers(Set<String> trailers) {
         this.trailers = trailers;
     }
 
@@ -279,6 +283,14 @@ public class Film {
 
     public void setNumberOfRatings(Integer numberOfRatings) {
         this.numberOfRatings = numberOfRatings;
+    }
+
+    public boolean getIsOscar(){
+        return this.isOscar;
+    }
+
+    public void SetIsOscar(boolean oscar){
+        this.isOscar = oscar;
     }
 
 }

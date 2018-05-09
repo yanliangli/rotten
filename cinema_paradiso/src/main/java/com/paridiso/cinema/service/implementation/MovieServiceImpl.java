@@ -2,20 +2,17 @@ package com.paridiso.cinema.service.implementation;
 
 import com.paridiso.cinema.entity.Film;
 import com.paridiso.cinema.entity.Movie;
-import com.paridiso.cinema.entity.Trailer;
 import com.paridiso.cinema.persistence.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import com.paridiso.cinema.service.FilmService;
-import com.paridiso.cinema.service.UtilityService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.*;
 
 @Service
@@ -48,9 +45,9 @@ public class MovieServiceImpl implements FilmService {
     @Override
     public List<Movie> getCarouselMovies() {
         List<Movie> movieList = new ArrayList<>();
-        Movie movie1 = (Movie) this.getFilm("tt2380307");
-        Movie movie2 = (Movie) this.getFilm("tt5052448");
-        Movie movie3 = (Movie) this.getFilm("tt1856101");
+        Movie movie1 = (Movie) this.getFilm("tt5463162");
+        Movie movie2 = (Movie) this.getFilm("tt4154756");
+        Movie movie3 = (Movie) this.getFilm("tt5095030");
         movieList.addAll(Arrays.asList(movie1, movie2, movie3));
         return movieList;
     }
@@ -87,7 +84,7 @@ public class MovieServiceImpl implements FilmService {
     }
 
     @Override
-    public Set<Trailer> getTrailers(String filmId) {
+    public Set<String> getTrailers(String filmId) {
         return this.getFilm(filmId).getTrailers();
     }
 
@@ -122,8 +119,7 @@ public class MovieServiceImpl implements FilmService {
     // TODO: find proper movies
     @Transactional
     @Override
-    public List<Movie> getMoviesOpeningThisWeek() {
-        //SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+    public Page<Movie> getMoviesOpeningThisWeek(Pageable pageable) {
         Date dateNow = new Date();
         Calendar cal = Calendar.getInstance();
         cal.setTime(dateNow);
@@ -131,24 +127,41 @@ public class MovieServiceImpl implements FilmService {
         Date dateBefore = cal.getTime();
         cal.add(Calendar.DATE, 7);
         Date dateAfter = cal.getTime();
-        return movieRepository.findAllByReleaseDateBetween(dateBefore, dateAfter);
+        Page<Movie> movies = movieRepository.findAllByReleaseDateBetween(dateBefore, dateAfter, pageable);
+        return movies;
     }
 
     @Override
-    public List<Movie> getMoviesComingSoon() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+    public Page<Movie> getInTheatersNow(Pageable pageable){
         Date dateNow = new Date();
-        return movieRepository.findAllByReleaseDateAfter(dateNow);
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(dateNow);
+        cal.add(Calendar.DATE, -30);
+        Date dateBefore = cal.getTime();
+        Page<Movie> movies = movieRepository.findAllByReleaseDateBetween(dateBefore, dateNow, pageable);
+        return movies;
     }
 
     @Override
-    public List<Movie> getTopRating() {
-        return movieRepository.findTop6ByOrderByRatingDesc();
+    public Page<Movie> getMoviesComingSoon(Pageable pageable) {
+        //SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+        Date dateNow = new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(dateNow);
+        cal.add(Calendar.DATE, +5);
+        Date dateAfter = cal.getTime();
+        Page<Movie> movies = movieRepository.findAllByReleaseDateAfter(dateAfter, pageable);
+        return movies;
     }
 
     @Override
-    public List<Movie> getTopBoxOffice() {
-        return movieRepository.findTop60ByOrderByBoxOfficeDesc();
+    public Page<Movie> getTopRating(Pageable pageable) {
+        return movieRepository.findTop60ByOrderByRatingDesc(pageable);
+    }
+
+    @Override
+    public Page<Movie> getTopBoxOffice(Pageable pageable) {
+        return movieRepository.findTop60ByOrderByBoxOfficeDesc(pageable);
     }
 
     @Override

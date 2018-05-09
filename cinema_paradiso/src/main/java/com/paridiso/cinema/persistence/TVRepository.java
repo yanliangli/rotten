@@ -11,9 +11,11 @@ import java.util.List;
 
 @Repository
 public interface TVRepository extends JpaRepository<TV, String> {
-    List<TV> findAllByReleaseDate(Date date);
+    TV findTVByImdbId(String imdbId);
 
-    List<TV> findTop60ByOrderByAudienceRating();
+    Page<TV> findAllByIsNewTonightTrue(Pageable pageable);
+
+    Page<TV> findTop60ByOrderByRatingDesc(Pageable pageable);
 
     Page<TV> findTVByTitleContains(String keyword, Pageable pageable);
 }

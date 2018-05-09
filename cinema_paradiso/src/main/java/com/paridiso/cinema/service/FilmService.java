@@ -2,10 +2,9 @@ package com.paridiso.cinema.service;
 
 import com.paridiso.cinema.entity.Film;
 import com.paridiso.cinema.entity.Movie;
-import com.paridiso.cinema.entity.TV;
-import com.paridiso.cinema.entity.Trailer;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -27,7 +26,7 @@ public interface FilmService {
 
     void rateFilm(String filmId, Double rating);
 
-    Set<Trailer> getTrailers(String filmId);
+    Set<String> getTrailers(String filmId);
 
     boolean updateTrailer(String filmId, Integer trailerId);
 
@@ -41,12 +40,18 @@ public interface FilmService {
 
     List<Movie> getTrending();
 
-    List<Movie> getMoviesOpeningThisWeek();
 
-    List<Movie> getMoviesComingSoon();
 
-    List<Movie> getTopRating();
+    Page<Movie> getTopRating(Pageable pageable);
 
-    List<Movie> getTopBoxOffice();
+    Page<Movie> getTopBoxOffice(Pageable pageable);
+
+    Page<Movie> getMoviesOpeningThisWeek(Pageable pageable);
+
+    Page<Movie> getInTheatersNow(Pageable pageable);
+
+    Page<Movie> getMoviesComingSoon(Pageable pageable);
+
+
 
 }

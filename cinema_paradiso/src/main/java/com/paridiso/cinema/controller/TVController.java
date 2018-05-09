@@ -6,6 +6,10 @@ import com.paridiso.cinema.service.TVService;
 import com.paridiso.cinema.service.implementation.RegUserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -108,13 +112,17 @@ public class TVController {
     }
 
     @RequestMapping(value = "/new_tv_tonight", method = GET)
-    public ResponseEntity<List> getNewTVTonight() {
-        return new ResponseEntity<>(tvService.getNewTVTonight(), HttpStatus.OK);
+    public ResponseEntity<Page> getNewTVTonight(@RequestParam(value = "page", defaultValue = "0") Integer page, @RequestParam(value = "limit", defaultValue = "6") Integer size) {
+        Sort sort = new Sort(Sort.Direction.ASC, "rating");
+        Pageable pageable = new PageRequest(page, size, sort);
+        return new ResponseEntity<>(tvService.getNewTVTonight(pageable), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/most_popular", method = GET)
-    public ResponseEntity<List> getMostPopularTVOnCP() {
-        return new ResponseEntity<>(tvService.getMostPopularTVOnCP(), HttpStatus.OK);
+    public ResponseEntity<Page> getMostPopularTVOnCP(@RequestParam(value = "page", defaultValue = "0") Integer page,@RequestParam(value = "limit", defaultValue = "6") Integer size) {
+        Sort sort = new Sort(Sort.Direction.ASC, "rating");
+        Pageable pageable = new PageRequest(page, size, sort);
+        return new ResponseEntity<>(tvService.getMostPopularTVOnCP(pageable), HttpStatus.OK);
     }
 
 

@@ -13,5 +13,7 @@ public enum Rated {
     TV_MA,
     TV_PG,
     TV14,
+    TV_Y7_FV,
+    TVY7,
     UNRATED,
 }

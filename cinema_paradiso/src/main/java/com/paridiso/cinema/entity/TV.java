@@ -16,6 +16,12 @@ public class TV extends Film{
     @Column(name = "audienceRating")
     private Double audienceRating;
 
+    @Column(name = "totalSeasons")
+    private Integer totalSeasons;
+
+    @Column(name = "isNewTonight")
+    private boolean isNewTonight;
+
     public TV() {
     }
 
@@ -34,4 +40,12 @@ public class TV extends Film{
     public void setAudienceRating(Double audienceRating) {
         this.audienceRating = audienceRating;
     }
+
+    public Integer getTotalSeasons(){return this.totalSeasons;}
+
+    public void setTotalSeasons(Integer t){ this.totalSeasons = t; }
+
+    public boolean getIsNewTonight() { return isNewTonight; }
+
+    public void setNewTonight(boolean b){ this.isNewTonight = b; }
 }

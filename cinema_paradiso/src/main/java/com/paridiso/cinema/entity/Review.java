@@ -1,7 +1,10 @@
 package com.paridiso.cinema.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.util.Calendar;
+import java.util.Date;
 
 @Entity
 @Table(name = "Reviews", uniqueConstraints = @UniqueConstraint(columnNames = {"reviewId", "imdbId"}))
@@ -23,12 +26,15 @@ public class Review {
 
     private String author;
 
-    private Calendar postedDate;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd MMM yyyy")
+    private Date postedDate;
 
     private Integer likeCount;
 
     private boolean isCriticReview;
 
+    @Lob
+    @Column(length = 1000)
     private String reviewContent;
 
 
@@ -96,11 +102,11 @@ public class Review {
         this.author = author;
     }
 
-    public Calendar getPostedDate() {
+    public Date getPostedDate() {
         return postedDate;
     }
 
-    public void setPostedDate(Calendar postedDate) {
+    public void setPostedDate(Date postedDate) {
         this.postedDate = postedDate;
     }
 

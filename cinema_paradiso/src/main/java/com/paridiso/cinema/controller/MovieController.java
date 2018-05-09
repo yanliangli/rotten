@@ -6,6 +6,10 @@ import com.paridiso.cinema.service.UserService;
 import com.paridiso.cinema.service.implementation.RegUserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -43,7 +47,6 @@ public class MovieController {
 
     @RequestMapping(value = "/carousel", method = GET)
     public ResponseEntity<List<Movie>> getCarousel() {
-        System.out.println("Movie Controller: Get carousel ... ");
         return ResponseEntity.ok(filmService.getCarouselMovies());
     }
 
@@ -117,24 +120,40 @@ public class MovieController {
     }
 
     @RequestMapping(value = "/opening_this_week", method = GET)
-    public ResponseEntity<List> getMoviesOpeningThisWeek() {
-        return new ResponseEntity<>(filmService.getMoviesOpeningThisWeek(), HttpStatus.OK);
+    public ResponseEntity<Page> getMoviesOpeningThisWeek(@RequestParam(value = "page", defaultValue = "0") Integer page,@RequestParam(value = "limit", defaultValue = "6") Integer size) {
+        Sort sort = new Sort(Sort.Direction.ASC, "releaseDate");
+        Pageable pageable = new PageRequest(page, size, sort);
+        return new ResponseEntity<>(filmService.getMoviesOpeningThisWeek(pageable), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/coming_soon", method = GET)
-    public ResponseEntity<List> getMoviesComingSoon() {
-        return new ResponseEntity<>(filmService.getMoviesComingSoon(), HttpStatus.OK);
+    public ResponseEntity<Page> getMoviesComingSoon(@RequestParam(value = "page", defaultValue = "0") Integer page, @RequestParam(value = "limit", defaultValue = "6") Integer size) {
+        Sort sort = new Sort(Sort.Direction.ASC, "releaseDate");
+        Pageable pageable = new PageRequest(page, size, sort);
+        return new ResponseEntity<>(filmService.getMoviesComingSoon(pageable), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/top_box_office", method = GET)
-    public ResponseEntity<List> getTopBoxOffice() {
-        return new ResponseEntity<>(filmService.getTopBoxOffice(), HttpStatus.OK);
+    public ResponseEntity<Page> getTopBoxOffice(@RequestParam(value = "page", defaultValue = "0") Integer page,@RequestParam(value = "limit", defaultValue = "6") Integer size) {
+        Sort sort = new Sort(Sort.Direction.DESC, "boxOffice");
+        Pageable pageable = new PageRequest(page, size, sort);
+        return new ResponseEntity<>(filmService.getTopBoxOffice(pageable), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/top_rating", method = GET)
-    public ResponseEntity<List> getTopRating() {
-        return new ResponseEntity<>(filmService.getTopRating(), HttpStatus.OK);
+    public ResponseEntity<Page> getTopRating(@RequestParam(value = "page", defaultValue = "0") Integer page,@RequestParam(value = "limit", defaultValue = "6") Integer size) {
+        Sort sort = new Sort(Sort.Direction.DESC, "rating");
+        Pageable pageable = new PageRequest(page, size, sort);
+        return new ResponseEntity<>(filmService.getTopRating(pageable), HttpStatus.OK);
     }
+
+    @RequestMapping(value = "/in_theater", method = GET)
+    public ResponseEntity<Page> getMoviesInTheater(@RequestParam(value = "page", defaultValue = "0") Integer page,@RequestParam(value = "limit", defaultValue = "6") Integer size) {
+        Sort sort = new Sort(Sort.Direction.ASC, "releasedDate");
+        Pageable pageable = new PageRequest(page, size, sort);
+        return new ResponseEntity<>(filmService.getInTheatersNow(pageable), HttpStatus.OK);
+    }
+
 
     @RequestMapping(value = "/similar/{id}", method = GET)
     public ResponseEntity<List> getSimilarMovies(@PathVariable String id) {

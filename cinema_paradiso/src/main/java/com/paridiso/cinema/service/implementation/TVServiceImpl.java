@@ -8,6 +8,8 @@ import com.paridiso.cinema.service.TVService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import com.paridiso.cinema.service.UtilityService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
@@ -21,14 +23,12 @@ public class TVServiceImpl implements TVService {
     TVRepository tvRepository;
 
     @Override
-    public List<TV> getNewTVTonight(){
-        Date dateNow = new Date();
-        return tvRepository.findAllByReleaseDate(dateNow);
+    public Page<TV> getNewTVTonight(Pageable pageable){
+        return tvRepository.findAllByIsNewTonightTrue(pageable);
     }
 
     @Override
-    public List<TV> getMostPopularTVOnCP(){
-        return tvRepository.findTop60ByOrderByAudienceRating();
+    public Page<TV> getMostPopularTVOnCP(Pageable pageable){
+        return tvRepository.findTop60ByOrderByRatingDesc(pageable);
     }
-
 }
