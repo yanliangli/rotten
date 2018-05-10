@@ -156,12 +156,12 @@ public class MovieServiceImpl implements FilmService {
 
     @Override
     public Page<Movie> getTopRating(Pageable pageable) {
-        return movieRepository.findTop60ByOrderByRatingDesc(pageable);
+        return movieRepository.findAllByOrderByRatingDesc(pageable);
     }
 
     @Override
     public Page<Movie> getTopBoxOffice(Pageable pageable) {
-        return movieRepository.findTop60ByOrderByBoxOfficeDesc(pageable);
+        return movieRepository.findAllByOrderByBoxOfficeDesc(pageable);
     }
 
     @Override

@@ -15,7 +15,7 @@ public interface TVRepository extends JpaRepository<TV, String> {
 
     Page<TV> findAllByIsNewTonightTrue(Pageable pageable);
 
-    Page<TV> findTop60ByOrderByRatingDesc(Pageable pageable);
+    Page<TV> findAllByOrderByRatingDesc(Pageable pageable);
 
     Page<TV> findTVByTitleContains(String keyword, Pageable pageable);
 }

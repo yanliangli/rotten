@@ -29,6 +29,6 @@ public class TVServiceImpl implements TVService {
 
     @Override
     public Page<TV> getMostPopularTVOnCP(Pageable pageable){
-        return tvRepository.findTop60ByOrderByRatingDesc(pageable);
+        return tvRepository.findAllByOrderByRatingDesc(pageable);
     }
 }

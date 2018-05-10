@@ -24,15 +24,15 @@ public interface MovieRepository extends JpaRepository<Movie, String>{
     Page<Movie> findMoviesByTitleContains(String keyword, Pageable pageable);
 
     // sort movies by rating
-    List<Movie> findAllByOrderByRatingAsc();
-    List<Movie> findAllByOrderByRatingDesc();
-
-    // sort movies by date
-    List<Movie> findAllByOrderByReleaseDateAsc();
-    List<Movie> findAllByOrderByReleaseDateDesc();
-
-    // get top 6 box office movies
-    List<Movie> findTop6ByOrderByBoxOfficeDesc();
+//    List<Movie> findAllByOrderByRatingAsc();
+//    List<Movie> findAllByOrderByRatingDesc();
+//
+//    // sort movies by date
+//    List<Movie> findAllByOrderByReleaseDateAsc();
+//    List<Movie> findAllByOrderByReleaseDateDesc();
+//
+//    // get top 6 box office movies
+//    List<Movie> findTop6ByOrderByBoxOfficeDesc();
 
 
 
@@ -49,10 +49,10 @@ public interface MovieRepository extends JpaRepository<Movie, String>{
     Page<Movie> findAllByReleaseDateAfter(Date date1, Pageable pageable);
 
     // get top 60 rated movies
-    Page<Movie> findTop60ByOrderByRatingDesc(Pageable pageable);
+    Page<Movie> findAllByOrderByRatingDesc(Pageable pageable);
 
     // get top 60 box office movies
-    Page<Movie> findTop60ByOrderByBoxOfficeDesc(Pageable pageable);
+    Page<Movie> findAllByOrderByBoxOfficeDesc(Pageable pageable);
 
 
     //    List<Movie> findMoviesBy
