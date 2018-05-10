@@ -60,6 +60,7 @@ public class LoadMovieData implements ApplicationRunner {
         //loadAllCelebrities();
         //loadAllMovies();
         //loadTV();
+        //System.out.println("load done");
 
     }
 
@@ -77,8 +78,10 @@ public class LoadMovieData implements ApplicationRunner {
     }
 
     private void loadAllCelebrities(){
-        loadCelebrityData("data/celebrity/oscar_celebrity.json");
-        loadCelebrityData("data/celebrity/recent_celebrity.json");
+        loadCelebrityData("data/celebrity/oscar/oscar_celebrity.json");
+        loadCelebrityData("data/celebrity/recent/recent_celebrity.json");
+        loadCelebrityPhotos("data/celebrity/oscar/oscar_celebrity_photos.json");
+        loadCelebrityPhotos("data/celebrity/recent/recent_celebrity_photos.json");
     }
 
     private void loadOscarMovies(){
@@ -319,6 +322,34 @@ public class LoadMovieData implements ApplicationRunner {
                 Celebrity c = mapper.readValue(strLine, Celebrity.class);
                 celebrityRepository.save(c);
                 System.out.println("Saved: " + c.getName());
+            }
+            br.close();
+        }
+        catch(FileNotFoundException fe){
+            System.out.println(fe.getMessage());
+        }
+        catch (IOException ie){
+            System.out.println(ie.getMessage());
+        }
+    }
+
+    private void loadCelebrityPhotos(String path){
+        try {
+            FileInputStream fstream = new FileInputStream(path);
+            BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
+            String strLine;
+            while ((strLine = br.readLine()) != null) {
+                TypeReference<HashMap<String, List<String>>> typeRef
+                        = new TypeReference<HashMap<String, List<String>>>() {};
+                Map<String, List<String>> map = mapper.readValue(strLine, typeRef);
+                String id = map.get("celebrityId").get(0);
+                List<String> photos = map.get("photos");
+                if(celebrityRepository.existsById(id)) {
+                    Celebrity celebrity = celebrityRepository.findCelebrityByCelebrityId(id);
+                    celebrity.setPhotos(photos);
+                    celebrityRepository.save(celebrity);
+                }
+
             }
             br.close();
         }
