@@ -2,10 +2,7 @@ package com.paridiso.cinema.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.paridiso.cinema.entity.Movie;
-import com.paridiso.cinema.entity.User;
-import com.paridiso.cinema.entity.UserProfile;
-import com.paridiso.cinema.entity.VerificationToken;
+import com.paridiso.cinema.entity.*;
 import com.paridiso.cinema.event.OnRegistrationCompleteEvent;
 import com.paridiso.cinema.persistence.UserRepository;
 import com.paridiso.cinema.security.JwtTokenGenerator;
@@ -21,12 +18,16 @@ import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.ui.Model;
 import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -35,6 +36,7 @@ import java.nio.file.Paths;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
+import java.util.UUID;
 
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
@@ -44,6 +46,8 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class RegUserController {
+    @Autowired
+    private JavaMailSender mailSender;
 
     @Autowired
     private UserRepository userRepository;
@@ -71,7 +75,6 @@ public class RegUserController {
     private static final Logger logger = LogManager.getLogger(RegUserController.class);
 
     @PostMapping(value = "/login")
-
     public ResponseEntity<JwtUser> userLogin(@RequestParam(value = "email", required = true) String email,
                                              @RequestParam(value = "password", required = true) String password) {
         User user = userService.login(email, password).orElseThrow(() ->
@@ -84,6 +87,47 @@ public class RegUserController {
         }
 
     }
+
+    @RequestMapping(value = "/forgotPassword", method = RequestMethod.POST)
+    public ResponseEntity<Boolean> forgotPassword(HttpServletRequest request,
+                                          WebRequest webRequest,
+                                          @RequestParam("email") String userEmail) {
+        User user = userRepository.findUserByEmail(userEmail);
+        if (user == null) {
+            throw new ResponseStatusException(BAD_REQUEST, "USER NOT FOUND");
+        }
+        String token = UUID.randomUUID().toString();
+        userService.createPasswordResetTokenForUser(user, token);
+        mailSender.send(constructResetTokenEmail(request.getLocale(), token, user));
+        return ResponseEntity.ok(true);
+    }
+
+    private SimpleMailMessage constructResetTokenEmail(
+            Locale locale, String token, User user) {
+        String url = "http://localhost:8080/user/changePassword?id=" +
+                user.getUserID() + "&token=" + token;
+        String message = "ResetPassword by the link: ";
+        return constructEmail("Reset Password", message + " \r\n" + url, user);
+    }
+
+    private SimpleMailMessage constructEmail(String subject, String body,
+                                             User user) {
+        SimpleMailMessage email = new SimpleMailMessage();
+        email.setSubject(subject);
+        email.setText(body);
+        email.setTo(user.getEmail());
+        return email;
+    }
+
+    @RequestMapping(value = "/changePassword", method = RequestMethod.GET)
+    public String showChangePasswordPage(@RequestParam("id") long id, @RequestParam("token") String token) {
+        String result = userService.validatePasswordResetToken(id, token);
+        if (result != null) {
+            return "Failed to reset the password, time expired";
+        }
+        return "Your password reset as your email address! \nPlease login to your account and change your password in your personal page!";
+    }
+
 
     @PostMapping(value = "/logout")
     public ResponseEntity<Boolean> userLogout() {
@@ -127,12 +171,12 @@ public class RegUserController {
         User user = verificationToken.getUser();
         Calendar cal = Calendar.getInstance();
         if ((verificationToken.getExpiryDate().getTime() - cal.getTime().getTime()) <= 0) {
-            return "redirect:/badUser.html";
+            return "Time expired";
         }
 
         user.setEnabled(true);
         userRepository.save(user);
-        return "Verify succeed, you can now login to our website with email account: "+user.getEmail()+"\n'http://localhost:4200/home'";
+        return "Verify succeed, you can now login to our website with email account: "+user.getEmail();
     }
 
     @DeleteMapping(value = "/deleteUser")

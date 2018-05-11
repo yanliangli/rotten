@@ -79,6 +79,11 @@ public class AdminServiceImpl extends UserService {
     }
 
     @Override
+    public void createPasswordResetTokenForUser(User user, String token) {
+
+    }
+
+    @Override
     public void createVerificationToken(User user, String token) {
 
     }

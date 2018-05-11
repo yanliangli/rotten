@@ -10,6 +10,10 @@ import com.paridiso.cinema.service.UserService;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -20,16 +24,16 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 import static jdk.nashorn.internal.objects.NativeFunction.function;
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 
 @Service
 public class RegUserServiceImpl extends UserService {
+    @Autowired
+    private passwordTokenRepository passwordTokenRepository;
+
     @Autowired
     private VerificationTokenRepository tokenRepository;
 
@@ -288,6 +292,38 @@ public class RegUserServiceImpl extends UserService {
     @Override
     public VerificationToken getVerificationToken(String VerificationToken) {
         return tokenRepository.findByToken(VerificationToken);
+    }
+
+    @Override
+    public void createPasswordResetTokenForUser(User user, String token) {
+        PasswordResetToken myToken = new PasswordResetToken(token, user);
+        passwordTokenRepository.save(myToken);
+    }
+
+    @Transactional
+    public String validatePasswordResetToken(long id, String token) {
+        PasswordResetToken passToken =
+                passwordTokenRepository.findByToken(token);
+        System.out.println("coming 01");
+        if ((passToken == null) || (passToken.getUser()
+                .getUserID() != id)) {
+            return "invalidToken";
+        }
+
+        Calendar cal = Calendar.getInstance();
+        if ((passToken.getExpiryDate()
+                .getTime() - cal.getTime()
+                .getTime()) <= 0) {
+            return "expired";
+        }
+
+        User user = passToken.getUser();
+        user.setPassword(utilityService.getHashedPassword(user.getEmail(), salt));
+        Authentication auth = new UsernamePasswordAuthenticationToken(
+                user, null, Arrays.asList(
+                new SimpleGrantedAuthority("CHANGE_PASSWORD_PRIVILEGE")));
+        SecurityContextHolder.getContext().setAuthentication(auth);
+        return null;
     }
 }
 

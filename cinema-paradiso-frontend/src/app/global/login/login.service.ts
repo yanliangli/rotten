@@ -24,6 +24,11 @@ export class LoginService {
     return this.http.post('http://localhost:8080/user/login', params);
   }
 
+  forgotPassword(email: string) {
+    const params = new HttpParams().set('email', email);
+    return this.http.post('http://localhost:8080/user/forgotPassword', params);
+  }
+
   adminLogin(email: string, password: string) {
     const params = new HttpParams().set('email', email).set('password', password);
     return this.http.post('http://localhost:8080/admin/login', params);

@@ -132,6 +132,17 @@ export class LoginComponent implements OnInit {
       }
     }
   }
+  forgotPassword() {
+    if (this.email !== null) {
+      this.loginService.forgotPassword(this.email).subscribe(data => {
+        if (data === true) {
+          alert('A reset password email has been sent to your account email box, please check.\nThe link will be Invalid in TEN minutes');
+        }
+      });
+    } else {
+      alert('Please enter your account email address!');
+    }
+  }
 
 
 

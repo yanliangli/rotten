@@ -48,6 +48,7 @@ public abstract class UserService {
         }
 
     }
+    public abstract void createPasswordResetTokenForUser(User user, String token);
 
     public abstract void createVerificationToken(User user, String token);
 
