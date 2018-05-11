@@ -22,6 +22,7 @@ class Profile {
   isCritic: boolean;
   username: string;
   email: string;
+  registeredDate: string;
 }
 
 @Component({
@@ -75,6 +76,7 @@ export class RegUserComponent implements OnInit {
         this.profile.id = decodedToken['profileId'];
         this.profile.username = decodedToken['username'];
         this.profile.profileImage = profileDetails['profileImage'];
+        this.profile.registeredDate = profileDetails['registeredDate'];
 
         if (this.profile.profileImage === undefined) {
           this.profile_url = 'http://localhost:8080/user/avatar/default.jpeg';

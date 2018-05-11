@@ -251,6 +251,7 @@ public class RegUserController {
         }
         objectNode.put("biography", profile.getBiography());
         objectNode.put("isCritic", profile.getCritic());
+        objectNode.put("registeredDate",profile.getRegisteredDate().toString());
         return ResponseEntity.ok(objectNode);
     }
 

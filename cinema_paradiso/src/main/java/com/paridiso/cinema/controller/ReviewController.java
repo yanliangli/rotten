@@ -88,7 +88,6 @@ public class ReviewController {
     @RequestMapping(value = "/updateReview/{imbdId}", method = POST)
     public ResponseEntity<Review > updateReview(@PathVariable String imbdId,
                                                 @RequestBody Review review) {
-        System.out.println("Coming!!!!");
         Boolean ok = reviewService.updateReview(imbdId, review);
         if (ok != false)
             return new ResponseEntity<>(review, HttpStatus.OK);

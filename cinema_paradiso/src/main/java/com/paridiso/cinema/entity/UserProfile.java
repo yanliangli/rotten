@@ -1,6 +1,9 @@
 package com.paridiso.cinema.entity;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -20,6 +23,9 @@ public class UserProfile {
 
     @Column(name = "biography")
     private String biography;
+
+    @Column(name = "registeredDate")
+    private Date registeredDate;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private WatchList watchList;
@@ -122,6 +128,16 @@ public class UserProfile {
 
     public void setPrivate(Boolean aPrivate) {
         isPrivate = aPrivate;
+    }
+
+    public Date getRegisteredDate() {
+        return registeredDate;
+    }
+
+    public void setRegisteredDate() {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new Timestamp(cal.getTime().getTime()));
+        this.registeredDate = new Date(cal.getTime().getTime());
     }
 
     @Override
