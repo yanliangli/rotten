@@ -275,7 +275,7 @@
             <div class="col-add-ratings">
               <div *ngIf="!status; else elseBlock">
                 <button class="o-button o-button--gray trigger" routerLinkActive="active"  href="javascript:;"
-                        (click)= "notice()">+ Watchlist</button>
+                        (click)= "notice()">+ Not Interest</button>
                 <button class="o-button o-button trigger" routerLinkActive="active"  href="javascript:;"
                         (click)= "notice()">+ Wishlist</button>
                 <ngb-rating [(rate)]="selected" (hover)="hovered=$event" (leave)="hovered=0" [readonly]="readonly"
@@ -287,10 +287,10 @@
               </div>
               <ng-template #elseBlock>
                 <ng-container  *ngIf ="inWatchlist; else addToWatchlist">
-                  <button class="o-button o-button--blue" (click)= "removeFromWacthList()">- Watchlist</button>
+                  <button class="o-button o-button--blue" (click)= "removeFromWacthList()">- Not Interest</button>
                 </ng-container >
                 <ng-template #addToWatchlist >
-                  <button class="o-button o-button--gray" (click)= "addWatchlist()">+ Watchlist</button>
+                  <button class="o-button o-button--gray" (click)= "addWatchlist()">+ Not Interest</button>
                 </ng-template>
 
                 <ng-container *ngIf ="inWishlist; else addToWishlist">

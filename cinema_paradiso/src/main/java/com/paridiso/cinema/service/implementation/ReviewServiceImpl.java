@@ -117,6 +117,25 @@ public class ReviewServiceImpl implements ReviewService {
         return false;
     }
 
+    @Override
+    public boolean updateReview(String movieId, Review newReview) {
+        Review updatingReview = reviewRepository.findReviewByReviewId(newReview.getReviewId());
+        updatingReview.setReviewContent(newReview.getReviewContent());
+        reviewRepository.save(updatingReview);
+        Movie movie = movieRepository.findMovieByImdbId(movieId);
+        List<Review> reviews = movie.getReviews();
+        for (Review review: reviews) {
+            if (review.getReviewId().equals(newReview.getReviewId())) {
+                review.setReviewContent(newReview.getReviewContent());
+                break;
+            }
+            return false;
+        }
+        movie.setReviews(reviews);
+        movieRepository.save(movie);
+        return true;
+    }
+
     public List<Review> getUserReviews(Integer userId) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResponseStatusException(INTERNAL_SERVER_ERROR, "USER NOT FOUND"));

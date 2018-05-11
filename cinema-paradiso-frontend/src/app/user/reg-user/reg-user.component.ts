@@ -116,6 +116,23 @@ export class RegUserComponent implements OnInit {
       console.log('deleted');
     }
   }
+  editReview(imbdId: string, review: Review) {
+    if (confirm('Want to edit review of ' + review.movieTitle)) {
+      console.log('editing: review of ' + review.movieTitle);
+      this.regUserService.editReview(imbdId, review).subscribe(
+        data => {
+          // refresh the list
+          this.getReviews();
+          return true;
+        },
+        error => {
+          console.error('Error edit review of ' + review.movieTitle);
+          return Observable.throw(error);
+        }
+      );
+      console.log('edited');
+    }
+  }
   getReviews(): any {
     this.regUserService.getReviews()
       .subscribe(

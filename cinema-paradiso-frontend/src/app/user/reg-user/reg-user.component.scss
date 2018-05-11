@@ -25,6 +25,13 @@ main {
   color: gray;
 }
 
+.l-cards__delete {
+  float: right;
+  font-size: 14px;
+  margin: 0 0 1em;
+  color: black;
+}
+
 .l-cards {
   padding-left: 1.2em;
   padding-bottom: 12.5em;
@@ -114,3 +121,48 @@ p {
   color: black;
 }
 
+// reviews
+.testimonial{
+  //height: 200px;
+  //overflow: scroll;
+}
+.col-testimonial[_ngcontent-c4]{
+  width: 50%;
+}
+
+.testimonial .testimonial-content{
+  padding: 20px;
+  margin-bottom: 35px;
+  background: #fff;
+  position: relative;
+}
+.testimonial .testimonial-content:before{
+  content: "";
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  border-top: 15px solid #718076;
+  border-left: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+}
+.testimonial .testimonial-content:after{
+  content: "";
+  position: absolute;
+  bottom: -30px;
+  right: 0;
+  border-top: 15px solid #718076;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+}
+.testimonial-content .testimonial-icon{
+  width: 30px;
+  height: 25px;
+  background: #e50914;
+  text-align: center;
+  font-size: 15px;
+  color: #fff;
+  line-height: 30px;
+  position: absolute;
+  top: 37px;
+  left: -19px;
+}

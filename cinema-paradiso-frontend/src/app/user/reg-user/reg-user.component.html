@@ -62,7 +62,7 @@
           <i class="fa fa-heart w3-margin-right"></i>Wishlist
         </button>
         <button class="show_Movie_List w3-button w3-white w3-hide-small" aria-hidden="true" (click)="showDiv(4)">
-          <i class="fa fa-list-alt w3-margin-right"></i>Watchlist
+          <i class="fa fa-list-alt w3-margin-right"></i>Not Interest
         </button>
         <button class="show_My_Critics w3-button w3-white w3-hide-small" aria-hidden="true" (click)="showDiv(5)">
           <i class="fa fa-comment w3-margin-right"></i>My Reviews
@@ -103,7 +103,7 @@
       </section>
 
       <section class="l-cards">
-        <h2 class="l-cards__title">My Watchlist</h2>
+        <h2 class="l-cards__title">My Not Interest</h2>
         <a class="l-cards__more w3-margin-right" href="#">more <i class="fa fa-angle-double-right"></i></a>
 
         <ul class="l-cards__list">
@@ -205,7 +205,7 @@
     </div>
     <div class="container Movie_List_results" *ngIf="currentIndex === 4">
       <section class="l-cards">
-        <h2 class="l-cards__title">My Watchlist</h2>
+        <h2 class="l-cards__title">My Not Interest</h2>
         <a class="l-cards__more w3-margin-right" href="#">more <i class="fa fa-angle-double-right"></i></a>
 
         <ul class="l-cards__list">
@@ -224,35 +224,36 @@
     <div class="container My_Critics_results" *ngIf="currentIndex === 5">
       <div class="w3-container w3-padding-large w3-black">
 
+
+
         <div class="testimonial" *ngFor="let review of reviews">
+          <hr class="w3-opacity">
+          <a routerLink="/movie/{{review.imdbId}}" (click)="setImdbId(review.imdbId)" routerLinkActive="active">Review of {{review.movieTitle}}</a>
+
           <div class="testimonial-content">
             <div class="testimonial-icon">
               <i class="fa fa-quote-left"></i>
             </div>
-            <div class="show_more w3-margin-right">
-              <a class="l-cards__more load_more_movies " (click)="deleteReview(review.imdbId, review)">Delete
-              </a>
-            </div>
+
             <div class="l_description">
-              <a routerLink="/movie/{{review.imdbId}}" (click)="setImdbId(review.imdbId)" routerLinkActive="active">{{review.movieTitle}}</a>
-              <p class="description">{{review.reviewContent}}
+              <p class="description">
+                <textarea rows="2" cols="80" placeholder="Add a review..." [(ngModel)]="review.reviewContent" required></textarea>
               </p>
             </div>
           </div>
-          <h3 class="title">{{profile.username}}</h3>
           <span class="post">Critics</span>
-
-        </div>
-        <div class="show_more w3-margin-right">
-          <a class="l-cards__more load_more_movies" href="javascript:void(0)">more
-            <i class="fa fa-angle-double-right"></i>
-          </a>
+          <div class="show_more w3-margin-right">
+            <a class="w3-button w3-black " (click)="deleteReview(review.imdbId, review)">Delete
+            </a>
+            <a class="w3-button w3-black " (click)="editReview(review.imdbId, review)">Edit
+            </a>
+          </div>
         </div>
       </div>
     </div>
     <div class="container Movie_List_results" *ngIf="currentIndex === 6">
       <section class="l-cards">
-        <h2 class="l-cards__title">My Watchlist</h2>
+        <h2 class="l-cards__title">My Not Interest</h2>
         <a class="l-cards__more w3-margin-right" href="#">more <i class="fa fa-angle-double-right"></i></a>
 
         <ul class="l-cards__list">

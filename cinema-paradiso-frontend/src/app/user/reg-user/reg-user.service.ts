@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams, HttpRequest} from '@angular/common/http';
+import {Review} from '../../global/models/review.model';
 
 @Injectable()
 export class RegUserService {
@@ -44,6 +45,10 @@ export class RegUserService {
 
   deleteReview(imbdId: string, reviewId: number) {
     return this.http.delete('http://localhost:8080/review/deleteReview/' + imbdId + '/' + reviewId);
+  }
+  editReview(imbdId: string, review: Review) {
+    alert('coming');
+    return this.http.post('http://localhost:8080/review/updateReview/' + imbdId, review );
   }
   deleteUser() {
     return this.http.delete('http://localhost:8080/user/deleteUser');

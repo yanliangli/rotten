@@ -25,4 +25,6 @@ public interface ReviewService {
 
     boolean detectBadReview(Review review);
 
+    boolean updateReview(String movieId, Review review);
+
 }

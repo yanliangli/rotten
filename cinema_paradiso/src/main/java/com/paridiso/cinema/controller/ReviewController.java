@@ -85,10 +85,14 @@ public class ReviewController {
     }
 
 
-    @RequestMapping(value = "user/update_review/{reviewId}", method = POST)
-    public ResponseEntity<Boolean> updateReview(@PathVariable Integer reviewId,
-                                                @RequestParam(value = "review_content", required = true) String reviewContent) {
-        return null;
+    @RequestMapping(value = "/updateReview/{imbdId}", method = POST)
+    public ResponseEntity<Review > updateReview(@PathVariable String imbdId,
+                                                @RequestBody Review review) {
+        System.out.println("Coming!!!!");
+        Boolean ok = reviewService.updateReview(imbdId, review);
+        if (ok != false)
+            return new ResponseEntity<>(review, HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @RequestMapping(value = "/{movieId}/review", method = POST, params = "liked")
