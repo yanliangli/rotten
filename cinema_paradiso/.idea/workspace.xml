@@ -4,16 +4,8 @@
     <list default="true" id="c52c75d2-3ad3-4c5a-91c6-10b75ebb8529" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema-paradiso-frontend/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/user/reg-user/reg-user.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/user/reg-user/reg-user.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/user/reg-user/reg-user.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/user/reg-user/reg-user.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/RegUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/RegUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/ReviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/ReviewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/entity/UserProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/entity/UserProfile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/RegUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/RegUserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/controller/RegUserController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/controller/ReviewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/controller/ReviewController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/entity/UserProfile.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/entity/UserProfile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/service/ReviewService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/service/ReviewService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/service/implementation/RegUserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/service/implementation/RegUserServiceImpl.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -49,8 +41,8 @@
       <file leaf-file-name="RegUserController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/RegUserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="439">
-              <caret line="252" column="56" selection-start-line="252" selection-start-column="56" selection-end-line="252" selection-end-column="56" />
+            <state relative-caret-position="208">
+              <caret line="250" column="9" lean-forward="true" selection-start-line="250" selection-start-column="9" selection-end-line="250" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -576,7 +568,7 @@
       <workItem from="1525385897468" duration="3163000" />
       <workItem from="1525648218746" duration="689000" />
       <workItem from="1525882176956" duration="23039000" />
-      <workItem from="1525905961505" duration="15821000" />
+      <workItem from="1525905961505" duration="16462000" />
     </task>
     <task id="LOCAL-00001" summary="signUp email verify">
       <created>1525904676027</created>
@@ -599,11 +591,18 @@
       <option name="project" value="LOCAL" />
       <updated>1526064804212</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="user registeredDate linked">
+      <created>1526067242345</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1526067242345</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42712000" />
+    <option name="totallyTimeSpent" value="43353000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -654,7 +653,8 @@
     <MESSAGE value="signUp email verify" />
     <MESSAGE value="forget password and resetPassword through email complete&#10;PS:In login form, user need to enter the email address then click &#10;forget password button" />
     <MESSAGE value="edit review complete" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit review complete" />
+    <MESSAGE value="user registeredDate linked" />
+    <option name="LAST_COMMIT_MESSAGE" value="user registeredDate linked" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/AdminController.java">
@@ -1024,8 +1024,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/RegUserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="252" column="56" selection-start-line="252" selection-start-column="56" selection-end-line="252" selection-end-column="56" />
+        <state relative-caret-position="208">
+          <caret line="250" column="9" lean-forward="true" selection-start-line="250" selection-start-column="9" selection-end-line="250" selection-end-column="9" />
         </state>
       </provider>
     </entry>

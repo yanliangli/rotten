@@ -1,19 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="88d67834-73db-4f83-b126-1694d195863a" name="Default" comment="">
+    <list default="true" id="88d67834-73db-4f83-b126-1694d195863a" name="Default" comment="profileDetails">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/user/reg-user/reg-user.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/user/reg-user/reg-user.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/user/reg-user/reg-user.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/user/reg-user/reg-user.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../cinema_paradiso/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema_paradiso/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema_paradiso/src/main/java/com/paridiso/cinema/controller/RegUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema_paradiso/src/main/java/com/paridiso/cinema/controller/RegUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema_paradiso/src/main/java/com/paridiso/cinema/controller/ReviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema_paradiso/src/main/java/com/paridiso/cinema/controller/ReviewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema_paradiso/src/main/java/com/paridiso/cinema/entity/UserProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema_paradiso/src/main/java/com/paridiso/cinema/entity/UserProfile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema_paradiso/src/main/java/com/paridiso/cinema/service/implementation/RegUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema_paradiso/src/main/java/com/paridiso/cinema/service/implementation/RegUserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema_paradiso/target/classes/com/paridiso/cinema/controller/RegUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema_paradiso/target/classes/com/paridiso/cinema/controller/RegUserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema_paradiso/target/classes/com/paridiso/cinema/controller/ReviewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema_paradiso/target/classes/com/paridiso/cinema/controller/ReviewController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema_paradiso/target/classes/com/paridiso/cinema/entity/UserProfile.class" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema_paradiso/target/classes/com/paridiso/cinema/entity/UserProfile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema_paradiso/target/classes/com/paridiso/cinema/service/ReviewService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema_paradiso/target/classes/com/paridiso/cinema/service/ReviewService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../cinema_paradiso/target/classes/com/paridiso/cinema/service/implementation/RegUserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema_paradiso/target/classes/com/paridiso/cinema/service/implementation/RegUserServiceImpl.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/dist/" />
@@ -53,15 +44,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.component.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/global/login/login.component.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="29" column="45" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="45" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="movie-detail.component.scss" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/global/movie-detail/movie-detail.component.scss">
           <provider selected="true" editor-type-id="text-editor">
@@ -71,7 +53,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="reg-user.service.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="reg-user.service.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/user/reg-user/reg-user.service.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="882">
@@ -83,8 +65,19 @@
       <file leaf-file-name="reg-user.component.scss" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/user/reg-user/reg-user.component.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
+            <state relative-caret-position="252">
               <caret line="27" column="16" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="reg-user.component.spec.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/user/reg-user/reg-user.component.spec.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-27">
+              <folding>
+                <element signature="e#0#73#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -101,11 +94,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="reg-user.component.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="reg-user.component.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app/user/reg-user/reg-user.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="286" column="57" selection-start-line="286" selection-start-column="57" selection-end-line="286" selection-end-column="57" />
+            <state relative-caret-position="505">
+              <caret line="542" lean-forward="true" selection-start-line="542" selection-end-line="542" />
             </state>
           </provider>
         </entry>
@@ -113,8 +106,19 @@
       <file leaf-file-name="reg-user.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/user/reg-user/reg-user.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
+            <state relative-caret-position="309">
               <caret line="78" column="71" lean-forward="true" selection-start-line="78" selection-start-column="71" selection-end-line="78" selection-end-column="71" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="reg-user.service.spec.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/user/reg-user/reg-user.service.spec.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="e#0#56#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -124,15 +128,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="393">
               <caret line="54" column="42" lean-forward="true" selection-start-line="54" selection-start-column="28" selection-end-line="54" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="home.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/global/home/home.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="88" column="45" selection-start-line="88" selection-start-column="45" selection-end-line="88" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -155,13 +150,16 @@
       <find>movie</find>
       <find>cr</find>
       <find>revie</find>
-      <find>showDiv</find>
       <find>delete</find>
       <find>button</find>
       <find>watchList</find>
       <find>review</find>
       <find>post</find>
       <find>update</find>
+      <find>account</find>
+      <find>currentIndex</find>
+      <find>showDiv</find>
+      <find>show_Account</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -191,8 +189,8 @@
         <option value="$PROJECT_DIR$/src/app/global/movie-detail/movie-detail.component.html" />
         <option value="$PROJECT_DIR$/src/app/user/reg-user/reg-user.component.scss" />
         <option value="$PROJECT_DIR$/src/app/user/reg-user/reg-user.service.ts" />
-        <option value="$PROJECT_DIR$/src/app/user/reg-user/reg-user.component.html" />
         <option value="$PROJECT_DIR$/src/app/user/reg-user/reg-user.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/user/reg-user/reg-user.component.html" />
       </list>
     </option>
   </component>
@@ -467,7 +465,7 @@
       <workItem from="1525385923005" duration="1822000" />
       <workItem from="1525648221989" duration="666000" />
       <workItem from="1525882181268" duration="10933000" />
-      <workItem from="1525905959537" duration="13851000" />
+      <workItem from="1525905959537" duration="17840000" />
     </task>
     <task id="LOCAL-00001" summary="userPage, adminPage and so on router fixed">
       <created>1523570324883</created>
@@ -487,7 +485,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="124577000" />
+    <option name="totallyTimeSpent" value="128566000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -544,18 +542,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="rating system done" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/app/global/login/login.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-567" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/global/login/login.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package-lock.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -858,13 +844,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/user/reg-user/reg-user.component.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="27" column="16" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/global/movie-detail/movie-detail.service.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="393">
@@ -872,24 +851,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/user/reg-user/reg-user.component.html">
+    <entry file="file://$PROJECT_DIR$/src/app/user/reg-user/reg-user.service.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="286" column="57" selection-start-line="286" selection-start-column="57" selection-end-line="286" selection-end-column="57" />
+        <state relative-caret-position="882">
+          <caret line="50" column="68" selection-start-line="50" selection-start-column="56" selection-end-line="50" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/user/reg-user/reg-user.component.spec.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-27">
+          <folding>
+            <element signature="e#0#73#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/user/reg-user/reg-user.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
+        <state relative-caret-position="309">
           <caret line="78" column="71" lean-forward="true" selection-start-line="78" selection-start-column="71" selection-end-line="78" selection-end-column="71" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/user/reg-user/reg-user.service.ts">
+    <entry file="file://$PROJECT_DIR$/src/app/user/reg-user/reg-user.service.spec.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="882">
-          <caret line="50" column="68" selection-start-line="50" selection-start-column="56" selection-end-line="50" selection-end-column="68" />
+        <state>
+          <folding>
+            <element signature="e#0#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/user/reg-user/reg-user.component.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="27" column="16" selection-start-line="27" selection-start-column="1" selection-end-line="27" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/user/reg-user/reg-user.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="505">
+          <caret line="542" lean-forward="true" selection-start-line="542" selection-end-line="542" />
         </state>
       </provider>
     </entry>
