@@ -6,6 +6,7 @@ import {AppComponent} from './app.component';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+import { OrderModule } from 'ngx-order-pipe';
 
 import {HomeComponent} from './global/home/home.component';
 import {FooterComponent} from './global/footer/footer.component';
@@ -13,7 +14,6 @@ import {HeaderComponent} from './global/header/header.component';
 import {AppRoutingModule} from './app.routing';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {LoginComponent} from './global/login/login.component';
-import {CategoriesComponent} from './global/categories/categories.component';
 import {MovieDetailComponent} from './global/movie-detail/movie-detail.component';
 import {CelebrityComponent} from './global/celebrity/celebrity.component';
 import {RegUserComponent} from './user/reg-user/reg-user.component';
@@ -24,12 +24,22 @@ import {AuthInterceptor} from './http.interceptor';
 import {HomeService} from './global/home/home.service';
 import {MovieDetailService} from './global/movie-detail/movie-detail.service';
 import {MovieService} from './global/movie/movie.service';
-import {CategoriesService} from './global/categories/categories.service';
 import {ToastrModule} from 'ngx-toastr';
 import { StarsComponent } from './global/stars/stars.component';
 import {AboutComponent} from './global/general/about.component';
 import {ContactComponent} from './global/general/contact.component';
 import {PolicyComponent} from './global/general/policy.component';
+import {SidebarComponent} from './global/categories/sidebar/sidebar.component';
+import {OpeningThisWeekComponent} from './global/categories/opening_this_week/opening_this_week.component';
+import {ComingSoonComponent} from './global/categories/coming_soon/coming_soon.component';
+import {TopBoxOfficeComponent} from './global/categories/top_box_office/top_box_office.component';
+import {CertifiedFreshMovieComponent} from './global/categories/certified_fresh_movie/certified_fresh_movies.component';
+import {CertifiedFreshTVComponent} from './global/categories/certified_fresh_tv/certified_fresh_tv.component';
+import {MostPopularTVComponent} from './global/categories/most_popular_tv/most_popular_tv.component';
+import {NewTVTonightComponent} from './global/categories/new_tv_tonight/new_tv_tonight.component';
+import {TopRatedTVComponent} from './global/categories/top_rated_tv/top_rated_tv.component';
+import {AcademyAwardComponent} from './global/categories/acadamy_award/academy_award.component';
+import {TopRatedMovieComponent} from './global/categories/top_rated_movies/top_rated_movie.component';
 @NgModule({
   // entryComponents: [MessageComponent],
   declarations: [
@@ -38,7 +48,6 @@ import {PolicyComponent} from './global/general/policy.component';
     FooterComponent,
     HeaderComponent,
     LoginComponent,
-    CategoriesComponent,
     MovieDetailComponent,
     CelebrityComponent,
     RegUserComponent,
@@ -48,6 +57,17 @@ import {PolicyComponent} from './global/general/policy.component';
     AboutComponent,
     ContactComponent,
     PolicyComponent,
+    SidebarComponent,
+    OpeningThisWeekComponent,
+    ComingSoonComponent,
+    TopBoxOfficeComponent,
+    CertifiedFreshMovieComponent,
+    CertifiedFreshTVComponent,
+    MostPopularTVComponent,
+    NewTVTonightComponent,
+    TopRatedTVComponent,
+    TopRatedMovieComponent,
+    AcademyAwardComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,13 +79,13 @@ import {PolicyComponent} from './global/general/policy.component';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     NgxPaginationModule,
+    OrderModule,
   ],
   providers: [
     LoginStatusService,
     HomeService,
     MovieService,
     MovieDetailService,
-    CategoriesService,
     {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
