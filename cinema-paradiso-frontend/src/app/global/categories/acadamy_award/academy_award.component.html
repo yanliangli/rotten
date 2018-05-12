@@ -1,0 +1,127 @@
+<html>
+<body>
+<main>
+  <div class="container">
+    <div class="sidebar_wrap">
+      <categories-sidebar>
+      </categories-sidebar>
+    </div> <!-- ./sidebar -->
+
+    <div class="my_header">
+      <h4 class="l-cards__title">OSCAR BEST PICTURE(2017 - 1929)</h4>
+      <div class="l_cards__filter">
+        <div ngbDropdown class="d-inline-block">
+          <button class="btn btn-outline-primary nav-link dropdown-toggle" id="dropdownBasic1" ngbDropdownToggle>Sort By</button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownBasic1" ngbDropdownMenu >
+            <button class="dropdown-item" routerLink="/movies/academy_award" [queryParams]="{page:page, itemPerPage: itemPerPage, sortBy:'releaseDate'}">Released Date</button>
+            <button class="dropdown-item" routerLink="/movies/academy_award" [queryParams]="{page:page, itemPerPage: itemPerPage, sortBy:'rating'}">Rating</button>
+            <button class="dropdown-item" routerLink="/movies/academy_award" [queryParams]="{page:page, itemPerPage: itemPerPage, sortBy:'numberOfRatings'}">Popularity</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--  right panel -->
+    <div class="content-wrap">
+      <br>
+      <ul class="l-cards__list">
+        <li class="my_items" *ngFor="let movie of academyAward">
+          <div class="my_items_text">
+            <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active" class="l-cards__image fill">
+              <img [src]="movie.poster" [alt]="movie.title">
+            </a>
+          </div>
+          <div class="my_items_text">
+            <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active"  class="l-cards__text">
+              {{movie.title}} ({{movie.year}})
+            </a>
+          </div>
+          <div class="flex">
+            <div *ngIf="movie.rating==0">
+              No Ratings
+              <p>{{movie.rated}}</p>
+            </div>
+
+            <div *ngIf="movie.rating>0&& movie.rating<1">
+              <i class="fa fa-star-half-o" aria-hidden="true"></i>
+              <p>{{movie.rating}}/5.0</p>
+            </div>
+
+            <div *ngIf="movie.rating==1">
+              <i class="fa fa-star" ></i>
+              <p>{{movie.rating}}/5.0</p>
+            </div>
+
+            <div *ngIf="movie.rating>1&& movie.rating<2">
+              <i class="fa fa-star" ></i>
+              <i class="fa fa-star-half-o" aria-hidden="true"></i>
+              <p>{{movie.rating}}/5.0</p>
+            </div>
+
+            <div *ngIf="movie.rating==2">
+              <i class="fa fa-star" ></i>
+              <i class="fa fa-star"></i>
+              <p>{{movie.rating}}/5.0</p>
+            </div>
+
+            <div *ngIf="movie.rating>2&& movie.rating<3">
+              <i class="fa fa-star" ></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-half-o" aria-hidden="true"></i>
+              <p>{{movie.rating}}/5.0</p>
+            </div>
+
+            <div *ngIf="movie.rating==3">
+              <i class="fa fa-star" ></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <p>{{movie.rating}}/5.0</p>
+            </div>
+
+            <div *ngIf="movie.rating>3&& movie.rating<4">
+              <i class="fa fa-star" ></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-half-o" aria-hidden="true"></i>
+              <p>{{movie.rating}}/5.0</p>
+            </div>
+
+            <div *ngIf="movie.rating==4">
+              <i class="fa fa-star" ></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <p>{{movie.rating}}/5.0</p>
+            </div>
+
+            <div *ngIf="movie.rating>4&& movie.rating<5">
+              <i class="fa fa-star" ></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-half-o" aria-hidden="true"></i>
+              <p>{{movie.rating}}/5.0</p>
+            </div>
+
+            <div *ngIf="movie.rating==5">
+              <i class="fa fa-star" ></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <p>{{movie.rating}}/5.0</p>
+            </div>
+          </div>
+          <!--<p>Year {{(movie.year)}}</p>-->
+        </li>
+      </ul>
+      <div class="ngb_paginaton">
+        <!--   pagination   -->
+        <ngb-pagination [(page)]="page" [collectionSize]="movieCount" [pageSize]="numberOfElements" [maxSize]="maxPageDisplay"  [rotate]="true" [ellipses]="false" [boundaryLinks]="true" class="pagination" (pageChange)="onPageChange(page, numberOfElements, sortBy)"></ngb-pagination>
+      </div>
+    </div> <!-- ./end right panel -->
+  </div> <!-- ./container -->
+
+
+</main>
+</body>
+</html>

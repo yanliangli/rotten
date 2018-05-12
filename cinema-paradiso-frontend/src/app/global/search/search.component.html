@@ -260,7 +260,7 @@
     </div>
   </div>
     <div class="pagination_center">
-      <ngb-pagination *ngIf="searchTVBoolean&&tvCount>0" [(page)]="tvPage" [collectionSize]="tvCount" [pageSize]="itemsPerPage" [maxSize]="maxPageDisplay"  [rotate]="true" [ellipses]="false" [boundaryLinks]="true" class="pagination" ></ngb-pagination>
+      <ngb-pagination *ngIf="searchTVBoolean&&tvCount>0" [(page)]="tvPage" [collectionSize]="tvCount" [pageSize]="itemsPerPage" [maxSize]="maxPageDisplay"  [rotate]="true" [ellipses]="false" [boundaryLinks]="true" class="pagination" (pageChange)="searchForTV()"></ngb-pagination>
     </div>
   </div>
 
@@ -281,7 +281,7 @@
       </p>
     </div>
   </div>
-  <ngb-pagination *ngIf="searchPeopleBoolean&&(celebrityCount>0)" [(page)]="celebrityPage" [collectionSize]="celebrityCount" [pageSize]="itemsPerPage" [maxSize]="maxPageDisplay"  [rotate]="true" [ellipses]="false" [boundaryLinks]="true" class="pagination" ></ngb-pagination>
+  <ngb-pagination *ngIf="searchPeopleBoolean&&(celebrityCount>0)" [(page)]="celebrityPage" [collectionSize]="celebrityCount" [pageSize]="itemsPerPage" [maxSize]="maxPageDisplay"  [rotate]="true" [ellipses]="false" [boundaryLinks]="true" class="pagination" (pageChange)="searchForCelebrities()"></ngb-pagination>
 </div>
 
 </main>

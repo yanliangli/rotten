@@ -26,11 +26,10 @@ export class SearchComponent implements OnInit {
   searchTVBoolean = true;
   itemsPerPage=7;
   maxPageDisplay=7;
-  moviePage:number=1;
+  moviePage:number = 1;
   tvPage: number = 1;
   celebrityPage:number = 1;
   constructor(private route: ActivatedRoute, private searchService: SearchService, private router: Router) {
-
   }
   ngOnInit() {
     this.route.queryParamMap.subscribe((params: ParamMap)=>{
@@ -76,7 +75,6 @@ export class SearchComponent implements OnInit {
   } //end onInit
 
   searchForMovies(){
-    console.log("page: ", this.moviePage)
     this.searchService.searchMovies(this.keywordParam, this.moviePage, this.itemsPerPage)
       .subscribe(
         data=>{
