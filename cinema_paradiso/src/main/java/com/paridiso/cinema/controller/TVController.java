@@ -1,8 +1,10 @@
 package com.paridiso.cinema.controller;
 
 import com.paridiso.cinema.entity.TV;
+import com.paridiso.cinema.service.FilmService;
 import com.paridiso.cinema.service.JwtTokenService;
 import com.paridiso.cinema.service.TVService;
+import com.paridiso.cinema.service.implementation.MovieServiceImpl;
 import com.paridiso.cinema.service.implementation.RegUserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -36,6 +38,9 @@ public class TVController {
     @Autowired
     RegUserServiceImpl userService;
 
+    @Autowired
+    MovieServiceImpl movieService;
+
     @RequestMapping(value = "/all", method = GET)
     public ResponseEntity<List> getAllTV() {
         return null;
@@ -65,9 +70,10 @@ public class TVController {
         return null;
     }
 
-    @RequestMapping(value = "/update_tv", method = POST)
+    @RequestMapping(value = "/update", method = POST)
     public ResponseEntity<Boolean> updateTV(@RequestBody TV tv) {
-        return null;
+        TV optionalTV = tvService.updateTV(tv);
+        return ResponseEntity.ok(true);
     }
 
     // TODO how to represent image ?
@@ -96,11 +102,6 @@ public class TVController {
         return null;
     }
 
-    @RequestMapping(value = "/top_rating", method = GET)
-    public ResponseEntity<List> getTVsTopRatings() {
-        return null;
-    }
-
     @RequestMapping(value = "/{id}/similar", method = GET)
     public ResponseEntity<List> getSimilarTVs(@PathVariable Integer id) {
         return null;
@@ -111,21 +112,31 @@ public class TVController {
         return null;
     }
 
-    @RequestMapping(value = "/new_tv_tonight", method = GET)
-    public ResponseEntity<Page> getNewTVTonight(@RequestParam(value = "page", defaultValue = "0") Integer page, @RequestParam(value = "limit", defaultValue = "6") Integer size) {
-        Sort sort = new Sort(Sort.Direction.ASC, "rating");
+    @RequestMapping(value = "/new_tv_tonight", method = POST)
+    public ResponseEntity<Page> getNewTVTonight(@RequestParam(value = "page", defaultValue = "0") Integer page, @RequestParam(value = "itemsPerPage", defaultValue = "6") Integer size,  @RequestParam(value = "sortBy", defaultValue = "releaseDate") String sortBy) {
+        Sort sort = new Sort(Sort.Direction.ASC, sortBy);
         Pageable pageable = new PageRequest(page, size, sort);
         return new ResponseEntity<>(tvService.getNewTVTonight(pageable), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/most_popular", method = GET)
-    public ResponseEntity<Page> getMostPopularTVOnCP(@RequestParam(value = "page", defaultValue = "0") Integer page,@RequestParam(value = "limit", defaultValue = "6") Integer size) {
-        Sort sort = new Sort(Sort.Direction.ASC, "rating");
+    @RequestMapping(value = "/most_popular", method = POST)
+    public ResponseEntity<Page> getMostPopularTVOnCP(@RequestParam(value = "page", defaultValue = "0") Integer page,@RequestParam(value = "itemsPerPage", defaultValue = "6") Integer size, @RequestParam(value = "sortBy", defaultValue = "numberOfRatings") String sortBy) {
+        Sort sort = new Sort(Sort.Direction.DESC, sortBy);
         Pageable pageable = new PageRequest(page, size, sort);
         return new ResponseEntity<>(tvService.getMostPopularTVOnCP(pageable), HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/top_rating", method = POST)
+    public ResponseEntity<Page> getTVsTopRatings(@RequestParam(value = "page", defaultValue = "0") Integer page,@RequestParam(value = "itemsPerPage", defaultValue = "6") Integer size, @RequestParam(value = "sortBy", defaultValue = "rating") String sortBy) {
+        Sort sort = new Sort(Sort.Direction.DESC, sortBy);
+        Pageable pageable = new PageRequest(page, size, sort);
+        return new ResponseEntity<>(tvService.getTopRating(pageable), HttpStatus.OK);
+    }
 
-
-
+    @RequestMapping(value = "/certified_fresh", method = POST)
+    public ResponseEntity<Page> getCertifiedFresh(@RequestParam(value = "page", defaultValue = "0") Integer page, @RequestParam(value = "itemsPerPage", defaultValue = "6") Integer size, @RequestParam(value = "sortBy", defaultValue = "numberOfRatings") String sortBy) {
+        Sort sort = new Sort(Sort.Direction.DESC, sortBy);
+        Pageable pageable = new PageRequest(page, size, sort);
+        return new ResponseEntity<>(tvService.getCertifiedFresh(pageable), HttpStatus.OK);
+    }
 }
