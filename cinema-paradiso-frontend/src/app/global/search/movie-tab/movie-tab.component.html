@@ -119,7 +119,7 @@
           </span>
       </p>
     </div>
-    <p class="item_bottom_divide" *ngIf="(index< (celebrityLineCount-1))"></p>
+    <p class="item_bottom_divide" *ngIf="(index< (movieLineCount-1))"></p>
   </div>
   <div class="pagination_center">
     <ngb-pagination [(page)]="moviePage" [collectionSize]="movieSearchCount" [pageSize]="itemsPerPage" [maxSize]="maxPageDisplay" [rotate]="true" [ellipses]="false" [boundaryLinks]="true" class="pagination" (pageChange)="searchForMovies()" ></ngb-pagination>
