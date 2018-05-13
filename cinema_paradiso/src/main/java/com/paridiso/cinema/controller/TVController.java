@@ -113,8 +113,8 @@ public class TVController {
     }
 
     @RequestMapping(value = "/new_tv_tonight", method = POST)
-    public ResponseEntity<Page> getNewTVTonight(@RequestParam(value = "page", defaultValue = "0") Integer page, @RequestParam(value = "itemsPerPage", defaultValue = "6") Integer size,  @RequestParam(value = "sortBy", defaultValue = "releaseDate") String sortBy) {
-        Sort sort = new Sort(Sort.Direction.ASC, sortBy);
+    public ResponseEntity<Page> getNewTVTonight(@RequestParam(value = "page", defaultValue = "0") Integer page, @RequestParam(value = "itemsPerPage", defaultValue = "6") Integer size,  @RequestParam(value = "sortBy", defaultValue = "numberOfRatings") String sortBy) {
+        Sort sort = new Sort(Sort.Direction.DESC, sortBy);
         Pageable pageable = new PageRequest(page, size, sort);
         return new ResponseEntity<>(tvService.getNewTVTonight(pageable), HttpStatus.OK);
     }
