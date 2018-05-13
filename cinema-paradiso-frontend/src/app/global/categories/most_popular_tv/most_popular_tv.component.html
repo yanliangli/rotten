@@ -1,0 +1,115 @@
+<html>
+<body>
+<main>
+  <div class="container">
+    <div class="sidebar_wrap">
+      <categories-sidebar>
+      </categories-sidebar>
+    </div> <!-- ./sidebar -->
+
+    <div class="my_header">
+      <h4 class="l-cards__title">MOST POPULAR TV ON CINEMA PARADISO</h4>
+    </div>
+    <!--  right panel -->
+    <div class="content-wrap">
+      <br>
+      <ul class="l-cards__list">
+        <li class="my_items" *ngFor="let tv of mostPopular">
+          <div class="my_items_text">
+            <a routerLink="/tv/{{tv.imdbId}}" (click)="setImdbId(tv.imdbId)" routerLinkActive="active" class="l-cards__image fill">
+              <img [src]="tv.poster" [alt]="tv.title">
+            </a>
+          </div>
+          <div class="my_items_text">
+            <a routerLink="/tv/{{tv.imdbId}}" (click)="setImdbId(tv.imdbId)" routerLinkActive="active"  class="l-cards__text">
+              {{tv.title}}
+            </a>
+          </div>
+          <div class="flex">
+            <div *ngIf="tv.rating==null">
+              <P>No Ratings</P>
+            </div>
+
+            <div *ngIf="tv.rating>0&& tv.rating<1">
+              <i class="fa fa-star-half-o" aria-hidden="true"></i>
+              <p>{{tv.rating}}/5.0</p>
+            </div>
+
+            <div *ngIf="tv.rating==1">
+              <i class="fa fa-star" ></i>
+              <p>{{tv.rating}}/5.0</p>
+            </div>
+
+            <div *ngIf="tv.rating>1&& tv.rating<2">
+              <i class="fa fa-star" ></i>
+              <i class="fa fa-star-half-o" aria-hidden="true"></i>
+              <p>{{tv.rating}}/5.0</p>
+            </div>
+
+            <div *ngIf="tv.rating==2">
+              <i class="fa fa-star" ></i>
+              <i class="fa fa-star"></i>
+              <p>{{tv.rating}}/5.0</p>
+            </div>
+
+            <div *ngIf="tv.rating>2&& tv.rating<3">
+              <i class="fa fa-star" ></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-half-o" aria-hidden="true"></i>
+              <p>{{tv.rating}}/5.0</p>
+            </div>
+
+            <div *ngIf="tv.rating==3">
+              <i class="fa fa-star" ></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <p>{{tv.rating}}/5.0</p>
+            </div>
+
+            <div *ngIf="tv.rating>3&& tv.rating<4">
+              <i class="fa fa-star" ></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-half-o" aria-hidden="true"></i>
+              <p>{{tv.rating}}/5.0</p>
+            </div>
+
+            <div *ngIf="tv.rating==4">
+              <i class="fa fa-star" ></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <p>{{tv.rating}}/5.0</p>
+            </div>
+
+            <div *ngIf="tv.rating>4&& tv.rating<5">
+              <i class="fa fa-star" ></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star-half-o" aria-hidden="true"></i>
+              <p>{{tv.rating}}/5.0</p>
+            </div>
+
+            <div *ngIf="tv.rating==5">
+              <i class="fa fa-star" ></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <i class="fa fa-star"></i>
+              <p>{{tv.rating}}/5.0</p>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="ngb_paginaton">
+        <!--   pagination   -->
+        <ngb-pagination [(page)]="page" [collectionSize]="tvCount" [pageSize]="numberOfElements" [maxSize]="maxPageDisplay"  [rotate]="true" [ellipses]="false" [boundaryLinks]="true" class="pagination" (pageChange)="onPageChange(page, numberOfElements)"></ngb-pagination>
+      </div>
+    </div> <!-- ./end right panel -->
+  </div> <!-- ./container -->
+
+
+</main>
+</body>
+</html>

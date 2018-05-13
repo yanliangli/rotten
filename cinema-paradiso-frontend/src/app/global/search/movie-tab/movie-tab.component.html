@@ -1,0 +1,130 @@
+<html>
+<body>
+<main>
+  <search-toolbar></search-toolbar>
+  <div class="container movie_results"  *ngIf="movieSearchCount>0">
+  <h4 class="bottom_divide">MOVIES</h4>
+  <div class="row s-item" *ngFor="let movie of movieResults, let index = index">
+    <div class="col-4 s_img-wrap" routerLink="/movie/{{movie.imdbId}}">
+      <img src="{{movie.poster}}"
+           alt="">
+    </div>
+    <div class="col-7">
+      <a routerLink="/movie/{{movie.imdbId}}" class="s-item__title">{{movie.title}} ({{movie.year}})</a>
+      <div class="flex">
+        <div *ngIf="movie.rating==null">
+          <p class="no_rating">No Ratings</p>
+          <p>{{movie.rated}}</p>
+        </div>
+
+        <div *ngIf="movie.rating>0&& movie.rating<1">
+          <i class="fa fa-star-half-o" aria-hidden="true"></i>
+          <p>{{movie.rating}}/5.0</p>
+          <p>{{movie.rated}}</p>
+        </div>
+
+        <div *ngIf="movie.rating==1">
+          <i class="fa fa-star" ></i>
+          <p>{{movie.rating}}/5.0</p>
+          <p>{{movie.rated}}</p>
+        </div>
+
+        <div *ngIf="movie.rating>1&& movie.rating<2">
+          <i class="fa fa-star" ></i>
+          <i class="fa fa-star-half-o" aria-hidden="true"></i>
+          <p>{{movie.rating}}/5.0</p>
+          <p>{{movie.rated}}</p>
+        </div>
+
+        <div *ngIf="movie.rating==2">
+          <i class="fa fa-star" ></i>
+          <i class="fa fa-star"></i>
+          <p>{{movie.rating}}/5.0</p>
+          <p>{{movie.rated}}</p>
+        </div>
+
+        <div *ngIf="movie.rating>2&& movie.rating<3">
+          <i class="fa fa-star" ></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star-half-o" aria-hidden="true"></i>
+          <p>{{movie.rating}}/5.0</p>
+          <p>{{movie.rated}}</p>
+        </div>
+
+        <div *ngIf="movie.rating==3">
+          <i class="fa fa-star" ></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <p>{{movie.rating}}/5.0</p>
+          <p>{{movie.rated}}</p>
+        </div>
+
+        <div *ngIf="movie.rating>3&& movie.rating<4">
+          <i class="fa fa-star" ></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star-half-o" aria-hidden="true"></i>
+          <p>{{movie.rating}}/5.0</p>
+          <p>{{movie.rated}}</p>
+        </div>
+
+        <div *ngIf="movie.rating==4">
+          <i class="fa fa-star" ></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <p>{{movie.rating}}/5.0</p>
+          <p>{{movie.rated}}</p>
+        </div>
+
+        <div *ngIf="movie.rating>4&& movie.rating<5">
+          <i class="fa fa-star" ></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star-half-o" aria-hidden="true"></i>
+          <p>{{movie.rating}}/5.0</p>
+          <p>{{movie.rated}}</p>
+        </div>
+
+        <div *ngIf="movie.rating==5">
+          <i class="fa fa-star" ></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <i class="fa fa-star"></i>
+          <p>{{movie.rating}}/5.0</p>
+          <p>{{movie.rated}}</p>
+        </div>
+      </div>
+
+      <p class="s-plot">{{movie.plot}}</p>
+      <p>
+        Starring
+        <span *ngFor="let cast of movie.cast">
+            <a routerLink="/celebrity/{{cast}}">{{cast}}, </a>
+          </span>
+      </p>
+      <p>
+        Director
+        <span *ngFor="let direct of movie.director">
+            <a routerLink="/celebrity/{{direct}}">{{direct}}, </a>
+          </span>
+
+      </p>
+      <p>
+        Genres
+        <span *ngFor="let genres of movie.genres">
+            <a routerLink="/search" [queryParams]="{table:'movie', search:genres}">{{genres}}, </a>
+          </span>
+      </p>
+    </div>
+    <p class="item_bottom_divide" *ngIf="(index< (movieLineCount-1))"></p>
+  </div>
+  <div class="pagination_center">
+    <ngb-pagination [(page)]="moviePage" [collectionSize]="movieSearchCount" [pageSize]="itemsPerPage" [maxSize]="maxPageDisplay" [rotate]="true" [ellipses]="false" [boundaryLinks]="true" class="pagination" (pageChange)="searchForMovies()" ></ngb-pagination>
+  </div>
+</div>
+</main>
+</body>
+</html>

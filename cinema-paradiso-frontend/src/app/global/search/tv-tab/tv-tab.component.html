@@ -1,0 +1,125 @@
+<html>
+<body>
+<main>
+  <search-toolbar></search-toolbar>
+  <div class="container tv_results" *ngIf="tvSearchCount>0">
+    <h4 class="bottom_divide">TV</h4>
+    <div class="row s-item"  *ngFor="let tv of tvResults, let index = index">
+      <div class="col-4 s_img-wrap">
+        <img src="{{tv.poster}}"
+             alt="">
+      </div>
+      <div class="col-7">
+        <p class="s-item__title">{{tv.title}}e</p>
+
+        <div class="flex">
+          <div *ngIf="tv.rating==null">
+            <p class="no_rating">No Ratings</p>
+            <p>{{tv.rated}}</p>
+          </div>
+
+          <div *ngIf="tv.rating>0&& tv.rating<1">
+            <i class="fa fa-star-half-o" aria-hidden="true"></i>
+            <p>{{tv.rating}}/5.0</p>
+            <p>{{tv.rated}}</p>
+          </div>
+
+          <div *ngIf="tv.rating==1">
+            <i class="fa fa-star" ></i>
+            <p>{{tv.rating}}/5.0</p>
+            <p>{{tv.rated}}</p>
+          </div>
+
+          <div *ngIf="tv.rating>1&& tv.rating<2">
+            <i class="fa fa-star" ></i>
+            <i class="fa fa-star-half-o" aria-hidden="true"></i>
+            <p>{{tv.rating}}/5.0</p>
+            <p>{{tv.rated}}</p>
+          </div>
+
+          <div *ngIf="tv.rating==2">
+            <i class="fa fa-star" ></i>
+            <i class="fa fa-star"></i>
+            <p>{{tv.rating}}/5.0</p>
+            <p>{{tv.rated}}</p>
+          </div>
+
+          <div *ngIf="tv.rating>2&& tv.rating<3">
+            <i class="fa fa-star" ></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-o" aria-hidden="true"></i>
+            <p>{{tv.rating}}/5.0</p>
+            <p>{{tv.rated}}</p>
+          </div>
+
+          <div *ngIf="tv.rating==3">
+            <i class="fa fa-star" ></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <p>{{tv.rating}}/5.0</p>
+            <p>{{tv.rated}}</p>
+          </div>
+
+          <div *ngIf="tv.rating>3&& tv.rating<4">
+            <i class="fa fa-star" ></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-o" aria-hidden="true"></i>
+            <p>{{tv.rating}}/5.0</p>
+            <p>{{tv.rated}}</p>
+          </div>
+
+          <div *ngIf="tv.rating==4">
+            <i class="fa fa-star" ></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <p>{{tv.rating}}/5.0</p>
+            <p>{{tv.rated}}</p>
+          </div>
+
+          <div *ngIf="tv.rating>4&& tv.rating<5">
+            <i class="fa fa-star" ></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-half-o" aria-hidden="true"></i>
+            <p>{{tv.rating}}/5.0</p>
+            <p>{{tv.rated}}</p>
+          </div>
+
+          <div *ngIf="tv.rating==5">
+            <i class="fa fa-star" ></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <p>{{tv.rating}}/5.0</p>
+            <p>{{tv.rated}}</p>
+          </div>
+        </div>
+
+        <p class="s-plot">{{tv.plot}} </p>
+        <p>
+          Starring
+          <span *ngFor="let cast of tv.cast">
+              <a routerLink="/celebrity/{{cast.celebrityId}}">{{cast}}, </a>
+            </span>
+        </p>
+        <p>
+          Genres
+          <span *ngFor="let genres of tv.genres">
+              <a routerLink="/search" [queryParams]="{table:'tv', search:genres}">{{genres}}, </a>
+            </span>
+        </p>
+      </div>
+      <p class="item_bottom_divide" *ngIf="(index< (tvLineCount-1))"></p>
+    </div>
+    <div class="pagination_center">
+      <ngb-pagination [(page)]="tvPage" [collectionSize]="tvSearchCount" [pageSize]="itemsPerPage" [maxSize]="maxPageDisplay"  [rotate]="true" [ellipses]="false" [boundaryLinks]="true" class="pagination" (pageChange)="searchForTV()"></ngb-pagination>
+    </div>
+  </div>
+
+</main>
+</body>
+</html>

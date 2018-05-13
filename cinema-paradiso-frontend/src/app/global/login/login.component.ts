@@ -24,9 +24,6 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit() {
-    this.email = null;
-    this.password = null;
-    this.user = new User();
     const signupButton = document.getElementById('signup-button'),
       loginButton = document.getElementById('login-button'),
       userForms = document.getElementById('user_options-forms');
@@ -112,36 +109,27 @@ export class LoginComponent implements OnInit {
 
   login() {
     if (this.email !== null && this.password !== null) {
-      if (this.email.includes("admin")){
+      if(this.email.includes("admin")){
         this.loginService.adminLogin(this.email, this.password).subscribe(data => {
           localStorage.setItem('credential', JSON.stringify(data));
           localStorage.setItem('token', JSON.stringify(data['token']));
           // Set user loggedIn status to global. So header can subscribe to the event.
           this.loginStatusService.changeStatus(true);
         });
-      } else {
+      }
+      else{
         this.loginService.login(this.email, this.password).subscribe(data => {
           if (data !== null) {
             localStorage.setItem('credential', JSON.stringify(data));
             localStorage.setItem('token', JSON.stringify(data['token']));
             // Set user loggedIn status to global. So header can subscribe to the event.
             this.loginStatusService.changeStatus(true);
+            location.reload(true);
           } else {
             alert(' Please activate your account by Email');
           }
         });
       }
-    }
-  }
-  forgotPassword() {
-    if (this.email !== null) {
-      this.loginService.forgotPassword(this.email).subscribe(data => {
-        if (data === true) {
-          alert('A reset password email has been sent to your account email box, please check.\nThe link will be Invalid in TEN minutes');
-        }
-      });
-    } else {
-      alert('Please enter your account email address!');
     }
   }
 
