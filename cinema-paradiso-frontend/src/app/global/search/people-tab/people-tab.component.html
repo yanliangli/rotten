@@ -1,0 +1,30 @@
+<html>
+<body>
+<main>
+  <search-toolbar></search-toolbar>
+  <div class="container people_results"  *ngIf="celebritySearchCount>0">
+    <h4 class="bottom_divide">CELEBRITIES</h4>
+    <div class="row s-item" *ngFor="let celebrity of celebritiesResults, let index = index">
+      <div class="col-4 s_img-wrap">
+        <img src="{{celebrity.poster}}"
+             alt="" routerLink="/celebrity/{{celebrity.celebrityId}}">
+      </div>
+      <div class="col-7">
+        <a class="s-item__title" routerLink="/celebrity/{{celebrity.celebrityId}}">{{celebrity.name}}</a>
+        <p class="s-item__bio">{{celebrity.biography}}</p>
+        <p class="s-item__birth">
+          Born in:
+          <span class="actor_birth_date">{{celebrity.yearOfBirth}}</span>
+          Birth Place:
+          <span class="actor_birth_date">{{celebrity.locationOfBirth}}</span>
+        </p>
+      </div>
+      <p class="item_bottom_divide" *ngIf="(index< (celebrityLineCount-1))"></p>
+    </div>
+    <div class="pagination_center">
+      <ngb-pagination [(page)]="celebrityPage" [collectionSize]="celebritySearchCount" [pageSize]="itemsPerPage" [maxSize]="maxPageDisplay"  [rotate]="true" [ellipses]="false" [boundaryLinks]="true" class="pagination" (pageChange)="searchForCelebrities()"></ngb-pagination>
+    </div>
+  </div>
+</main>
+</body>
+</html>

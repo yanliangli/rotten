@@ -11,67 +11,33 @@ import {TV} from '../models/tv.model';
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
-  providers: [SearchService]
 })
 export class SearchComponent implements OnInit {
-  keywordParam: string;
+  keywordParam;
   movieResults:Movie[];
-  movieCount=0;
+  movieSearchCount=0;
   celebritiesResults: Celebrity[];
-  celebrityCount=0;
+  celebritySearchCount=0;
   tvResults: TV[];
-  tvCount=0;
-  searchPeopleBoolean = true;
-  searchMovieBoolean = true;
-  searchTVBoolean = true;
+  tvSearchCount=0;
   itemsPerPage=7;
   maxPageDisplay=7;
   moviePage:number = 1;
   tvPage: number = 1;
   celebrityPage:number = 1;
+  movieLineCount;
+  tvLineCont;
+  celebrityLineCount;
   constructor(private route: ActivatedRoute, private searchService: SearchService, private router: Router) {
   }
+
   ngOnInit() {
     this.route.queryParamMap.subscribe((params: ParamMap)=>{
       this.keywordParam = params.get('keyword');
       this.searchForMovies();
       this.searchForCelebrities();
       this.searchForTV();
-      this.showAllResults();
-      $('.movie_results').show();
-      $('.people_results').show();
-      $('.tv_results').show();
     });
-
-    $('.show_all').click(function (e) {
-      e.preventDefault();
-      $('.movie_results').show();
-      $('.people_results').show();
-      $('.tv_results').show();
-    });
-
-    $('.show_movies').click(function (e) {
-      e.preventDefault();
-      $('.movie_results').show();
-      $('.people_results').hide();
-      $('.tv_results').hide();
-    });
-
-    $('.show_tv').click(function (e) {
-      e.preventDefault();
-      $('.movie_results').hide();
-      $('.people_results').hide();
-      $('.tv_results').show();
-    });
-
-    $('.show_people').click(function (e) {
-      e.preventDefault();
-      $('.movie_results').hide();
-      $('.people_results').show();
-      $('.tv_results').hide();
-    });
-
-    this.showAllResults();
   } //end onInit
 
   searchForMovies(){
@@ -81,13 +47,8 @@ export class SearchComponent implements OnInit {
             if(data){
               console.log(data)
               this.movieResults = (data as Page[])['content'];
-              this.movieCount=(data as Page[])['totalElements'];
-              if(this.movieCount==0){
-                this.searchMovieBoolean=false;
-              }
-              else{
-                this.searchMovieBoolean=true;
-              }
+              this.movieSearchCount=(data as Page[])['totalElements'];
+              this.movieLineCount = this.movieResults.length;
             }
           },
         error => console.log('Failed to fetch movie data')
@@ -101,13 +62,8 @@ export class SearchComponent implements OnInit {
           if(data){
             console.log(data)
             this.celebritiesResults = (data as Page[])['content'];
-            this.celebrityCount = (data as Page[])['totalElements'];
-            if(this.celebrityCount==0){
-              this.searchPeopleBoolean=false;
-            }
-            else{
-              this.searchPeopleBoolean=true;
-            }
+            this.celebritySearchCount = (data as Page[])['totalElements'];
+            this.celebrityLineCount = this.celebritiesResults.length;
           }
         },
         error => console.log('Failed to fetch celebrity data')
@@ -121,41 +77,11 @@ export class SearchComponent implements OnInit {
           if(data){
             console.log(data)
             this.tvResults = (data as Page[])['content'];
-            this.tvCount = (data as Page[])['totalElements'];
-            if(this.tvCount==0){
-              this.searchTVBoolean=false;
-            }
-            else{
-              this.searchTVBoolean=true;
-            }
+            this.tvSearchCount = (data as Page[])['totalElements'];
+            this.tvLineCont = this.tvResults.length;
           }
         },
         error => console.log('Failed to fetch tv data')
       );
   }
-
-  onlyShowPeopleResults(){
-    this.searchPeopleBoolean = true;
-    this.searchMovieBoolean = false;
-    this.searchTVBoolean = false;
-  }
-
-  onlyShowMovieResults(){
-    this.searchPeopleBoolean = false;
-    this.searchMovieBoolean = true;
-    this.searchTVBoolean = false;
-  }
-
-  onlyShowTVResults(){
-    this.searchPeopleBoolean = false;
-    this.searchMovieBoolean = false;
-    this.searchTVBoolean = true;
-  }
-
-  showAllResults(){
-      this.searchPeopleBoolean = true;
-      this.searchMovieBoolean = true;
-      this.searchTVBoolean = true;
-  }
-
 }

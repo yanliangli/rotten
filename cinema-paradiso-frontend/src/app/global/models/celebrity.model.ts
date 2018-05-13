@@ -1,11 +1,10 @@
 export class Celebrity {
   celebrityId: string;
   photoLocation: string;
+  locationOfBirth: string;
   biography: string;
-  birthCity: string;
-  birthCountry: string;
-  birthDate: Date;
-  birthState: string;
+  yearOfBirth: string;
+  poster: string;
   isDirector: boolean;
   name: string;
   profileImage: string;
