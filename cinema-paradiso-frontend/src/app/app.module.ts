@@ -17,7 +17,6 @@ import {LoginComponent} from './global/login/login.component';
 import {MovieDetailComponent} from './global/movie-detail/movie-detail.component';
 import {CelebrityComponent} from './global/celebrity/celebrity.component';
 import {RegUserComponent} from './user/reg-user/reg-user.component';
-import {SearchComponent} from './global/search/search.component';
 import {AdminComponent} from './user/admin/admin.component';
 import {LoginStatusService} from './global/login/login.status.service';
 import {AuthInterceptor} from './http.interceptor';
@@ -25,7 +24,7 @@ import {HomeService} from './global/home/home.service';
 import {MovieDetailService} from './global/movie-detail/movie-detail.service';
 import {MovieService} from './global/movie/movie.service';
 import {ToastrModule} from 'ngx-toastr';
-import { StarsComponent } from './global/stars/stars.component';
+import {StarsComponent} from './global/stars/stars.component';
 import {AboutComponent} from './global/general/about.component';
 import {ContactComponent} from './global/general/contact.component';
 import {PolicyComponent} from './global/general/policy.component';
@@ -40,6 +39,13 @@ import {NewTVTonightComponent} from './global/categories/new_tv_tonight/new_tv_t
 import {TopRatedTVComponent} from './global/categories/top_rated_tv/top_rated_tv.component';
 import {AcademyAwardComponent} from './global/categories/acadamy_award/academy_award.component';
 import {TopRatedMovieComponent} from './global/categories/top_rated_movies/top_rated_movie.component';
+import {SearchComponent} from './global/search/search.component';
+import {SearchToolbarComponent} from './global/search/search-toolbar/search-toolbar.component';
+import {SearchMovieTabComponent} from './global/search/movie-tab/movie-tab.component';
+import {SearchTVTabComponent} from './global/search/tv-tab/tv-tab.component';
+import {SearchPeopleTabComponent} from './global/search/people-tab/people-tab.component';
+import {SearchService} from './global/search/search.service';
+
 @NgModule({
   // entryComponents: [MessageComponent],
   declarations: [
@@ -52,6 +58,10 @@ import {TopRatedMovieComponent} from './global/categories/top_rated_movies/top_r
     CelebrityComponent,
     RegUserComponent,
     SearchComponent,
+    SearchToolbarComponent,
+    SearchMovieTabComponent,
+    SearchPeopleTabComponent,
+    SearchTVTabComponent,
     AdminComponent,
     StarsComponent,
     AboutComponent,
@@ -86,6 +96,7 @@ import {TopRatedMovieComponent} from './global/categories/top_rated_movies/top_r
     HomeService,
     MovieService,
     MovieDetailService,
+    SearchService,
     {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,

@@ -19,6 +19,9 @@ import {NewTVTonightComponent} from './global/categories/new_tv_tonight/new_tv_t
 import {TopRatedTVComponent} from './global/categories/top_rated_tv/top_rated_tv.component';
 import {TopRatedMovieComponent} from './global/categories/top_rated_movies/top_rated_movie.component';
 import {AcademyAwardComponent} from './global/categories/acadamy_award/academy_award.component';
+import {SearchMovieTabComponent} from './global/search/movie-tab/movie-tab.component';
+import {SearchTVTabComponent} from './global/search/tv-tab/tv-tab.component';
+import {SearchPeopleTabComponent} from './global/search/people-tab/people-tab.component';
 
 const appRoutes: Routes = [
   //{path: '', pathMatch: 'full', redirectTo: 'home'},
@@ -36,6 +39,9 @@ const appRoutes: Routes = [
   {path: 'movies/top_rated_tv',component: TopRatedTVComponent},
   {path: 'celebrity/:id', component: CelebrityComponent},
   {path: 'search', component: SearchComponent},
+  {path: 'search/movie', component: SearchMovieTabComponent},
+  {path: 'search/tv', component: SearchTVTabComponent},
+  {path: 'search/celebrity', component: SearchPeopleTabComponent},
   {path: 'admin', component: AdminComponent},
   {path: 'star', component: StarsComponent},
   {path: 'movie/:id', component: MovieDetailComponent},
