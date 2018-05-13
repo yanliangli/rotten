@@ -5,8 +5,11 @@
   <article>
     <div class="l-hero">
       <ngb-carousel>
-        <ng-template ngbSlide *ngFor="let carouselSlide of carousel">
-          <a routerLink="{{carouselSlide.imdbId}}" ><img [src]=carouselSlide.photos[2] alt="slide" class="l-hero__img"  ></a>
+        <ng-template ngbSlide *ngFor="let carouselSlide of carousel; let idx = index">
+          <a routerLink="{{carouselSlide.imdbId}}" >
+            <img *ngIf="idx==0" src="./assets/images/carousel_img/1.jpg" alt="slide" class="l-hero__img">
+            <img *ngIf="idx==1" src="./assets/images/carousel_img/2.jpg" alt="slide" class="l-hero__img">
+            <img *ngIf="idx==2" src="./assets/images/carousel_img/3.jpg" alt="slide" class="l-hero__img"></a>
           <div class="l-hero__text-wrapper">
             <div class="l-hero__text">
 
@@ -145,7 +148,7 @@
     <section class="l-cards">
       <div class="l-cards__title-wrap">
         <h2 class="l-cards__title">MOVIES OPENING THIS WEEK</h2>
-        <a class="l-cards__nav-left" href="" routerLink="/movies" [queryParams]="{category:'opening_this_week'}">View All</a>
+        <a class="l-cards__nav-left" href="" routerLink="/movies/opening_this_week">View All</a>
       </div>
 
       <ul class="l-cards__list" id="movies_opening_this_week">
@@ -166,10 +169,10 @@
     <section class="l-cards">
       <div class="l-cards__title-wrap">
         <h2 class="l-cards__title">TOP BOX OFFICE</h2>
-        <a class="l-cards__nav-left" href="" routerLink="/movies" [queryParams]="{category:'top_box_office'}">View All</a>
+        <a class="l-cards__nav-left" href="" routerLink="/movies/top_box_office">View All</a>
       </div>
       <ul class="l-cards__list" id="top_box_office">
-        <li class="l-cards__item" *ngFor="let movie of moviesTopBoxOffice | slice: 0:6" >
+        <li class="l-cards__item" *ngFor="let movie of moviesTopBoxOffice" >
           <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active" class="l-cards__image fill">
             <img [src]="movie.poster" [alt]="movie.title">
           </a>
@@ -185,11 +188,11 @@
     <section class="l-cards">
       <div class="l-cards__title-wrap">
         <h2 class="l-cards__title">COMING SOON TO THEATERS</h2>
-        <a class="l-cards__nav-left" href="" routerLink="/movies" [queryParams]="{category:'coming_soon'}">View All</a>
+        <a class="l-cards__nav-left" href="" routerLink="/movies/coming_soon">View All</a>
       </div>
       <ul class="l-cards__list" id="coming_soon_to_theaters">
 
-        <li class="l-cards__item" *ngFor="let movie of moviesComingSoon | slice: 0:6">
+        <li class="l-cards__item" *ngFor="let movie of moviesComingSoon">
           <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active" class="l-cards__image fill">
             <img [src]="movie.poster" [alt]="movie.title">
           </a>
@@ -206,10 +209,10 @@
     <section class="l-cards">
       <div class="l-cards__title-wrap">
         <h2 class="l-cards__title">NEW TV TONIGHT</h2>
-        <a class="l-cards__nav-left" href="" routerLink="/movies" [queryParams]="{category:'new_tv_tonight'}">View All</a>
+        <a class="l-cards__nav-left" href="" routerLink="/movies/new_tv_tonight">View All</a>
       </div>
       <ul class="l-cards__list">
-        <li class="l-cards__item" *ngFor="let tv of newTVTonight | slice: 0:6">
+        <li class="l-cards__item" *ngFor="let tv of newTVTonight">
           <a routerLink="/tv/{{tv.imdbId}}" (click)="setImdbId(tv.imdbId)" routerLinkActive="active" class="l-cards__image fill">
             <img [src]="tv.poster" [alt]="tv.title">
           </a>
@@ -226,10 +229,10 @@
     <section class="l-cards">
       <div class="l-cards__title-wrap">
       <h2 class="l-cards__title">MOST POPULAR TV ON CP</h2>
-        <a class="l-cards__nav-left" href="" routerLink="/movies" [queryParams]="{category:'most_popular_tv'}">View All</a>
+        <a class="l-cards__nav-left" href="" routerLink="/movies/most_popular_tv">View All</a>
       </div>
         <ul class="l-cards__list">
-          <li class="l-cards__item" *ngFor="let tv of mostPopularTVOnCP | slice: 0:6">
+          <li class="l-cards__item" *ngFor="let tv of mostPopularTVOnCP">
             <a routerLink="/tv/{{tv.imdbId}}" routerLinkActive="active" class="l-cards__image fill">
               <img [src]="tv.poster" [alt]="tv.title">
             </a>

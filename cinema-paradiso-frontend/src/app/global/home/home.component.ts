@@ -1,16 +1,9 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import * as $ from 'jquery';
 import {LoginStatusService} from '../login/login.status.service';
 import {HomeService} from './home.service';
 import {Movie} from '../models/movie.model';
-import {Celebrity} from '../models/celebrity.model';
-import {Carousel} from '../models/carousel.model';
-import {log} from 'util';
-import {HttpClient} from '@angular/common/http';
-import {map} from 'rxjs/operators';
 import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
-import {CarouselSlide} from '../models/carouselSlide.model';
-import {MovieDetailService} from '../movie-detail/movie-detail.service';
 import {MovieService} from '../movie/movie.service';
 import {TV} from '../models/tv.model';
 import {Page} from 'ngx-pagination/dist/pagination-controls.directive';
@@ -32,7 +25,6 @@ export class HomeComponent implements OnInit {
   selectedMovieId: string;
   newTVTonight: TV[];
   mostPopularTVOnCP: TV[];
-
   constructor(private loginStatusService: LoginStatusService,
               private homeService: HomeService,
               private movieService: MovieService,
@@ -71,7 +63,7 @@ export class HomeComponent implements OnInit {
   }
 
   getMoviesOpeningThisWeek(): any {
-    this.homeService.getMoviesOpeningThisWeek()
+    this.homeService.getMoviesOpeningThisWeek(1,6, "", "")
       .subscribe(
         data => {
           this.moviesOpening = (data as Page[])['content'];
@@ -82,7 +74,7 @@ export class HomeComponent implements OnInit {
   }
 
   getMoviesComingSoon(): any {
-    this.homeService.getMoviesComingSoon()
+    this.homeService.getMoviesComingSoon(1,6, "", "")
       .subscribe(
         data => {
           this.moviesComingSoon = (data as Page[])['content'];
@@ -94,7 +86,7 @@ export class HomeComponent implements OnInit {
   }
 
   getMoviesTopBoxOffice(): any {
-    this.homeService.getMoviesTopBoxOffice()
+    this.homeService.getMoviesTopBoxOffice(1,6, "", "")
       .subscribe(
         data => {
           this.moviesTopBoxOffice = (data as Page[])['content'];
@@ -106,7 +98,7 @@ export class HomeComponent implements OnInit {
   }
 
   getNewTVTonight(): any {
-    this.homeService.getNewTVTonight()
+    this.homeService.getNewTVTonight(1,6)
       .subscribe(
         data => {
           this.newTVTonight = (data as Page[])['content'];
@@ -117,7 +109,7 @@ export class HomeComponent implements OnInit {
   }
 
   getMostPopularTVOnCP(): any {
-    this.homeService.getMostPopularTVOnCP()
+    this.homeService.getMostPopularTVOnCP(1,6)
       .subscribe(
         data => {
           this.mostPopularTVOnCP = (data as Page[])['content'];
@@ -143,25 +135,19 @@ export class HomeComponent implements OnInit {
   }
 
   numberInMillion(labelValue:any) {
-    // Nine Zeroes for Billions
-    return Math.abs(Number(labelValue)) >= 1.0e+9 ? (Math.abs(Number(labelValue)) / 1.0e+9).toFixed(2) + "B"
-      // Six Zeroes for Millions
-      : Math.abs(Number(labelValue)) >= 1.0e+6 ? (Math.abs(Number(labelValue)) / 1.0e+6).toFixed(2) + "M"
-        // Three Zeroes for Thousands
-        : Math.abs(Number(labelValue)) >= 1.0e+3 ? (Math.abs(Number(labelValue)) / 1.0e+3).toFixed(2) + "K"
-          : Math.abs(Number(labelValue));
+    if(labelValue == null){
+      return "N/A";
+    }
+    else {
+      // Nine Zeroes for Billions
+      return Math.abs(Number(labelValue)) >= 1.0e+9 ? (Math.abs(Number(labelValue)) / 1.0e+9).toFixed(2) + "B"
+        // Six Zeroes for Millions
+        : Math.abs(Number(labelValue)) >= 1.0e+6 ? (Math.abs(Number(labelValue)) / 1.0e+6).toFixed(2) + "M"
+          // Three Zeroes for Thousands
+          : Math.abs(Number(labelValue)) >= 1.0e+3 ? (Math.abs(Number(labelValue)) / 1.0e+3).toFixed(2) + "K"
+            : Math.abs(Number(labelValue));
+    }
   }
 
-  dynamicSort(property) {
-    var sortOrder = 1;
-    if(property[0] === "-") {
-      sortOrder = -1;
-      property = property.substr(1);
-    }
-    return function (a,b) {
-      var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
-      return result * sortOrder;
-    }
-  }
 }
 
