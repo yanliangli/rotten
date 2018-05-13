@@ -62,7 +62,16 @@ public class RegUserServiceImpl extends UserService {
     WatchListRepository watchListRepository;
 
     @Autowired
+    FollowListRepository followListRepository;
+
+    @Autowired
+    FollowYouListRepository followYouListRepository;
+
+    @Autowired
     MovieRepository movieRepository;
+
+    @Autowired
+    FollowerImpl followerImpl;
 
 
     private Integer counter;
@@ -81,6 +90,8 @@ public class RegUserServiceImpl extends UserService {
         user.setUserProfile(userProfileRepository.save(userProfile));
         user.getUserProfile().setWishList(wishListRepository.save(new WishList()));
         user.getUserProfile().setWatchList(watchListRepository.save(new WatchList()));
+        user.getUserProfile().setFollowList(followListRepository.save(new FollowList()));
+        user.getUserProfile().setFollowYouList(followYouListRepository.save(new FollowYouList()));
         user.getUserProfile().setRegisteredDate();
         return Optional.ofNullable(userRepository.save(user));
     }
@@ -242,14 +253,8 @@ public class RegUserServiceImpl extends UserService {
     }
 
     @Transactional
-    public UserProfile getProfile(String jwtToken) {
-        int headerLength = environment.getProperty("token.type").length();
-        User validatedUser = validator.validate(jwtToken.substring(headerLength));
-
-        System.out.println(validatedUser.getUserID());
-        System.out.println(validatedUser.getUserProfile().getId());
-
-        return userProfileRepository.findById(validatedUser.getUserProfile().getId())
+    public UserProfile getProfile(Integer userId) {
+        return userProfileRepository.findById(userId)
                 .orElseThrow(() -> new ResponseStatusException(INTERNAL_SERVER_ERROR, "PROFILE NOT FOUND"));
     }
 
@@ -276,6 +281,18 @@ public class RegUserServiceImpl extends UserService {
                 }
             }
         }
+        List<Integer> userIds = user.getUserProfile().getFollowList().getUserIds();
+        if(userIds != null){
+            if(userIds.size() == 1){
+                Integer toBeRemove = userIds.get(0);
+                followerImpl.removeFromFollowers(userId, toBeRemove);
+            }else{
+                for(Integer toBeRemove:userIds){
+                    followerImpl.removeFromFollowers(userId, toBeRemove);
+                }
+            }
+        }
+        user.getUserProfile().getFollowYouList().getUserIds().clear();
         user.getUserProfile().getWatchList().clear();
         user.getUserProfile().getWishList().clear();
         userProfileRepository.deleteById(userId);

@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import com.paridiso.cinema.service.FilmService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -137,7 +136,7 @@ public class MovieServiceImpl implements FilmService {
         Date dateNow = new Date();
         Calendar cal = Calendar.getInstance();
         cal.setTime(dateNow);
-        cal.add(Calendar.DATE, -45);
+        cal.add(Calendar.DATE, -30);
         Date dateBefore = cal.getTime();
         Page<Movie> movies = movieRepository.findAllByReleaseDateBetween(dateBefore, dateNow, pageable);
         return movies;
@@ -145,6 +144,7 @@ public class MovieServiceImpl implements FilmService {
 
     @Override
     public Page<Movie> getMoviesComingSoon(Pageable pageable) {
+        //SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
         Date dateNow = new Date();
         Calendar cal = Calendar.getInstance();
         cal.setTime(dateNow);
@@ -156,51 +156,18 @@ public class MovieServiceImpl implements FilmService {
 
     @Override
     public Page<Movie> getTopRating(Pageable pageable) {
-        Double ratingFilter = 3.49;
-        Integer numberFilter = 80;
-        return movieRepository.findAllByRatingAfterAndNumberOfRatingsAfter(ratingFilter, numberFilter, pageable);
+        return movieRepository.findAllByOrderByRatingDesc(pageable);
     }
 
     @Override
     public Page<Movie> getTopBoxOffice(Pageable pageable) {
-        return this.getInTheatersNow(pageable);
+        return movieRepository.findAllByOrderByBoxOfficeDesc(pageable);
     }
 
     @Override
     public List<Movie> getTrending() {
-        return null;
+        return movieRepository.findTop6ByOrderByNumberOfRatingsDesc();
     }
 
-    @Override
-    public Page<Movie> getCertifiedFresh(Pageable pageable){
-        Date dateNow = new Date();
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(dateNow);
-        cal.add(Calendar.DATE, -60);
-        Date dateBefore = cal.getTime();
-        Double ratingFilter = 3.49;
-        Integer numberFilter = 80;
-        Page<Movie> movies = movieRepository.findAllByReleaseDateBetweenAndRatingAfterAndNumberOfRatingsAfter(dateBefore, dateNow, ratingFilter, numberFilter,pageable);
-        return movies;
-    }
-
-    @Override
-    public Page<Movie> getOscarBestPictures(Pageable pageable){
-        return movieRepository.findAllByIsOscarTrue(pageable);
-    }
-
-
-    @Override
-    public Sort getSortParam(String order, String sort){
-        if(order.equals("ASC")){
-            return new Sort(Sort.Direction.ASC, sort);
-        }
-        else if(order.equals("DESC")){
-            return new Sort(Sort.Direction.DESC, sort);
-        }
-        else{
-            return null;
-        }
-    }
 
 }

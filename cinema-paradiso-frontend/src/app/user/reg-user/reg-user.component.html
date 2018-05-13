@@ -255,17 +255,34 @@
     </div>
     <div class="container Movie_List_results" *ngIf="currentIndex === 6">
       <section class="l-cards">
-        <h2 class="l-cards__title">My Not Interest</h2>
+        <h2 class="l-cards__title">My Follow</h2>
         <a class="l-cards__more w3-margin-right" href="#">more <i class="fa fa-angle-double-right"></i></a>
 
         <ul class="l-cards__list">
-          <li class="l-cards__item"*ngFor="let movie of watchlist">
-            <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active" class="l-cards__image fill">
-              <img [src]="movie.poster" [alt]="movie.title">
+          <li class="l-cards__item"*ngFor="let follow of followerProfiles">
+            <a routerLink="/userView/{{follow.id}}">
+              <img src="{{profile_url}}"
+                   class="w3-round">
             </a>
-            <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active"  class="l-cards__text">
-              {{movie.title}}
-              <p>{{movie.rating}}/5.0</p>
+            <a routerLink="/userView/{{follow.id}}">
+              {{follow.name}}
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="l-cards">
+        <h2 class="l-cards__title">My Followers</h2>
+        <a class="l-cards__more w3-margin-right" href="#">more <i class="fa fa-angle-double-right"></i></a>
+
+        <ul class="l-cards__list">
+          <li class="l-cards__item"*ngFor="let follow of followYouProfiles">
+            <a routerLink="/userView/{{follow.id}}">
+              <img src="{{profile_url}}"
+                   class="w3-round">
+            </a>
+            <a routerLink="/userView/{{follow.id}}">
+              {{follow.name}}
             </a>
           </li>
         </ul>
@@ -453,89 +470,90 @@
             </div>
           </div>
         </div>
-      </div>
-
-      <hr class="w3-opacity">
-      <div class="testimonial">
-        <div class="testimonial-content">
-          <div class="testimonial-icon">
-            <i class="fa fa-quote-left"></i>
+        <hr class="w3-opacity">
+        <div class="testimonial">
+          <div class="testimonial-content">
+            <div class="testimonial-icon">
+              <i class="fa fa-quote-left"></i>
+            </div>
+            <div class="l_description">
+              <p class="film_name w3-text-brown w3-large">Broadcast outlets </p>
+              <p class="description">
+                must achieve and maintain status as a national TV or radio outlet
+                (either via syndication or network broadcast) for Tomatometer consideration. Alternatively, a TV outlet
+                must be broadcasting in one of the top ten DMAs, as listed by Nielsen Ratings. Radio outlets must be broadcasting
+                in one of the top five DMAs, as listed by Arbitron. In almost all cases, an outlet's individual reviews
+                must be available online, either as a segment transcript or an alternate, written review.
+              </p>
+              <p class="film_name w3-text-brown w3-large">Online publications </p>
+              <p class="description">
+                must achieve and maintain a minimum 500,000 unique monthly visitors according to
+                comScore, Inc or Nielsen Net Ratings and reviews must have an average length of at least 300 words.
+                Publications must also show a consistent standard of professionalism, writing quality, and editorial
+                integrity across all reviews and articles. Lastly, site design and layout should also reflect a
+                reasonable level of quality and must have a domain name specific to the property.
+              </p>
+              <p class="film_name w3-text-brown w3-large">For all outlets </p>
+              <p class="description">
+                reviews should be readable within a standard browser; reviews that require users to
+                download additional software or browser plugins (ie PDFs) are strongly discouraged. Applications for
+                international outlets will be made on a case-by-case basis, with input from local Rotten Tomatoes editors
+                when applicable.
+              </p>
+            </div>
           </div>
-          <div class="l_description">
-            <p class="film_name w3-text-brown w3-large">Broadcast outlets </p>
-            <p class="description">
-              must achieve and maintain status as a national TV or radio outlet
-              (either via syndication or network broadcast) for Tomatometer consideration. Alternatively, a TV outlet
-              must be broadcasting in one of the top ten DMAs, as listed by Nielsen Ratings. Radio outlets must be broadcasting
-              in one of the top five DMAs, as listed by Arbitron. In almost all cases, an outlet's individual reviews
-              must be available online, either as a segment transcript or an alternate, written review.
-            </p>
-            <p class="film_name w3-text-brown w3-large">Online publications </p>
-            <p class="description">
-              must achieve and maintain a minimum 500,000 unique monthly visitors according to
-              comScore, Inc or Nielsen Net Ratings and reviews must have an average length of at least 300 words.
-              Publications must also show a consistent standard of professionalism, writing quality, and editorial
-              integrity across all reviews and articles. Lastly, site design and layout should also reflect a
-              reasonable level of quality and must have a domain name specific to the property.
-            </p>
-            <p class="film_name w3-text-brown w3-large">For all outlets </p>
-            <p class="description">
-              reviews should be readable within a standard browser; reviews that require users to
-              download additional software or browser plugins (ie PDFs) are strongly discouraged. Applications for
-              international outlets will be made on a case-by-case basis, with input from local Rotten Tomatoes editors
-              when applicable.
-            </p>
+        </div>
+
+        <hr class="w3-opacity">
+        <div class="testimonial">
+          <p class="film_name w3-text-sand w3-large">CRITIC APPLICATION</p>
+          <div class="testimonial-content">
+            <div class="testimonial-icon">
+              <i class="fa fa-quote-left"></i>
+            </div>
+            <div class="l_description">
+              <p class="film_name w3-text-brown w3-large">Please follow the instructions below to apply to become an
+                approved Cinima Paradisor Critic.</p>
+
+              <p class="description">
+                1. Register for a Cinima Paradiso account if you haven't already. This is a required step.
+              </p>
+              <p class="description"> </p>
+
+              <p class="description">
+                2. Send an email to nanjiang1995@gmail.com with the subject Film Critic Submission
+                Application and the following information:
+              </p>
+              <p class="description">
+                a. Your Name
+              </p>
+              <p class="description">
+                b. Your Email Address
+              </p>
+              <p class="description">
+                c. Source Name (publications, web site, TV/radio station
+              </p>
+              <p class="description">
+                d. Source URL
+              </p>
+              <p class="description">
+                e. URL to an index of your film reviews
+              </p>
+              <p class="description">
+                f. URLs to at least three film reviews you've authored
+              </p>
+              <p class="description">
+                g. Critics Society or Association
+              </p>
+              <p class="description">
+                h. Email address you registered with
+              </p>
+            </div>
           </div>
         </div>
       </div>
 
-      <hr class="w3-opacity">
-      <div class="testimonial">
-        <p class="film_name w3-text-sand w3-large">CRITIC APPLICATION</p>
-        <div class="testimonial-content">
-          <div class="testimonial-icon">
-            <i class="fa fa-quote-left"></i>
-          </div>
-          <div class="l_description">
-            <p class="film_name w3-text-brown w3-large">Please follow the instructions below to apply to become an
-              approved Cinima Paradisor Critic.</p>
 
-            <p class="description">
-              1. Register for a Cinima Paradiso account if you haven't already. This is a required step.
-            </p>
-            <p class="description"> </p>
-
-            <p class="description">
-              2. Send an email to nanjiang1995@gmail.com with the subject Film Critic Submission
-              Application and the following information:
-            </p>
-            <p class="description">
-              a. Your Name
-            </p>
-            <p class="description">
-              b. Your Email Address
-            </p>
-            <p class="description">
-              c. Source Name (publications, web site, TV/radio station
-            </p>
-            <p class="description">
-              d. Source URL
-            </p>
-            <p class="description">
-              e. URL to an index of your film reviews
-            </p>
-            <p class="description">
-              f. URLs to at least three film reviews you've authored
-            </p>
-            <p class="description">
-              g. Critics Society or Association
-            </p>
-            <p class="description">
-              h. Email address you registered with
-            </p>
-          </div>
-        </div>
-      </div>
     </div>
 
 

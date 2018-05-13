@@ -83,6 +83,10 @@ public class ReviewController {
     public ResponseEntity<List<Review>> getUserReviews(@RequestHeader(value = "Authorization") String jwtToken) {
         return ResponseEntity.ok(reviewService.getUserReviews(jwtTokenService.getUserIdFromToken(jwtToken)));
     }
+    @RequestMapping(value = "/user/reviews/{userId}", method = GET)
+    public ResponseEntity<List<Review>> getUserReviews(@PathVariable Integer userId) {
+        return ResponseEntity.ok(reviewService.getUserReviews(userId));
+    }
 
 
     @RequestMapping(value = "/updateReview/{imbdId}", method = POST)

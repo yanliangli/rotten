@@ -47,6 +47,10 @@ public class WishlistController {
     public ResponseEntity<List> getWishlist(@RequestHeader(value = "Authorization") String jwtToken) {
         return new ResponseEntity<>(listService.getList(jwtTokenService.getUserIdFromToken(jwtToken)), HttpStatus.OK);
     }
+    @RequestMapping(value = "/get/wishlist/{userId}", method = GET)
+    public ResponseEntity<List> getWishlist(@PathVariable Integer userId) {
+        return new ResponseEntity<>(listService.getList(userId), HttpStatus.OK);
+    }
     @GetMapping(value = "/check/{filmId}")
     public ResponseEntity<Boolean> checkWishlist(@RequestHeader(value = "Authorization") String jwtToken,
                                                  @PathVariable String filmId) {

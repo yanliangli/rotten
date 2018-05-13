@@ -55,11 +55,6 @@ public interface MovieRepository extends JpaRepository<Movie, String>{
     Page<Movie> findAllByOrderByBoxOfficeDesc(Pageable pageable);
 
 
-    Page<Movie> findAllByReleaseDateBetweenAndRatingAfterAndNumberOfRatingsAfter(Date date1, Date date2, Double rating, Integer numberFilter, Pageable pageable);
     //    List<Movie> findMoviesBy
-
-    Page<Movie> findAllByIsOscarTrue(Pageable pageable);
-
-    Page<Movie> findAllByRatingAfterAndNumberOfRatingsAfter(Double rating, Integer numberFilter, Pageable pageable);
 
 }

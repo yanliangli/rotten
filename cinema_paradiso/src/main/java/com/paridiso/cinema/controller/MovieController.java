@@ -12,7 +12,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 import com.paridiso.cinema.service.FilmService;
 import org.springframework.web.server.ResponseStatusException;
@@ -120,53 +119,39 @@ public class MovieController {
         return new ResponseEntity<>(filmService.getTrailers(id), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/opening_this_week", method = POST)
-    public ResponseEntity<Page> getMoviesOpeningThisWeek(@RequestParam(value = "page", defaultValue = "0") Integer page,@RequestParam(value = "itemsPerPage", defaultValue = "6") Integer size, @RequestParam(value = "sortBy", defaultValue = "releaseDate") String sortBy, @RequestParam(value = "order", defaultValue = "ASC") String order) {
-        Sort sort = filmService.getSortParam(order, sortBy);
+    @RequestMapping(value = "/opening_this_week", method = GET)
+    public ResponseEntity<Page> getMoviesOpeningThisWeek(@RequestParam(value = "page", defaultValue = "0") Integer page,@RequestParam(value = "limit", defaultValue = "6") Integer size) {
+        Sort sort = new Sort(Sort.Direction.ASC, "releaseDate");
         Pageable pageable = new PageRequest(page, size, sort);
         return new ResponseEntity<>(filmService.getMoviesOpeningThisWeek(pageable), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/coming_soon", method = POST)
-    public ResponseEntity<Page> getMoviesComingSoon(@RequestParam(value = "page", defaultValue = "0") Integer page, @RequestParam(value = "itemsPerPage", defaultValue = "6") Integer size, @RequestParam(value = "sortBy", defaultValue = "releaseDate") String sortBy, @RequestParam(value = "order", defaultValue = "ASC") String order) {
-        Sort sort = filmService.getSortParam(order, sortBy);
+    @RequestMapping(value = "/coming_soon", method = GET)
+    public ResponseEntity<Page> getMoviesComingSoon(@RequestParam(value = "page", defaultValue = "0") Integer page, @RequestParam(value = "limit", defaultValue = "6") Integer size) {
+        Sort sort = new Sort(Sort.Direction.ASC, "releaseDate");
         Pageable pageable = new PageRequest(page, size, sort);
         return new ResponseEntity<>(filmService.getMoviesComingSoon(pageable), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/top_box_office", method = POST)
-    public ResponseEntity<Page> getTopBoxOffice(@RequestParam(value = "page", defaultValue = "0") Integer page,@RequestParam(value = "itemsPerPage", defaultValue = "6") Integer size, @RequestParam(value = "sortBy", defaultValue = "boxOffice") String sortBy, @RequestParam(value = "order", defaultValue = "DESC") String order) {
-        Sort sort = filmService.getSortParam(order, sortBy);
+    @RequestMapping(value = "/top_box_office", method = GET)
+    public ResponseEntity<Page> getTopBoxOffice(@RequestParam(value = "page", defaultValue = "0") Integer page,@RequestParam(value = "limit", defaultValue = "6") Integer size) {
+        Sort sort = new Sort(Sort.Direction.DESC, "boxOffice");
         Pageable pageable = new PageRequest(page, size, sort);
         return new ResponseEntity<>(filmService.getTopBoxOffice(pageable), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/top_rating", method = POST)
-    public ResponseEntity<Page> getTopRating(@RequestParam(value = "page", defaultValue = "0") Integer page,@RequestParam(value = "itemsPerPage", defaultValue = "6") Integer size, @RequestParam(value = "sortBy", defaultValue = "rating") String sortBy, @RequestParam(value = "order", defaultValue = "DESC") String order) {
-        Sort sort = filmService.getSortParam(order, sortBy);
+    @RequestMapping(value = "/top_rating", method = GET)
+    public ResponseEntity<Page> getTopRating(@RequestParam(value = "page", defaultValue = "0") Integer page,@RequestParam(value = "limit", defaultValue = "6") Integer size) {
+        Sort sort = new Sort(Sort.Direction.DESC, "rating");
         Pageable pageable = new PageRequest(page, size, sort);
         return new ResponseEntity<>(filmService.getTopRating(pageable), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/in_theater", method = POST)
-    public ResponseEntity<Page> getMoviesInTheater(@RequestParam(value = "page", defaultValue = "0") Integer page, @RequestParam(value = "itemsPerPage", defaultValue = "6") Integer size, @RequestParam(value = "sortBy", defaultValue = "releaseDate") String sortBy, @RequestParam(value = "order", defaultValue = "ASC") String order) {
-        Sort sort = filmService.getSortParam(order, sortBy);
+    @RequestMapping(value = "/in_theater", method = GET)
+    public ResponseEntity<Page> getMoviesInTheater(@RequestParam(value = "page", defaultValue = "0") Integer page,@RequestParam(value = "limit", defaultValue = "6") Integer size) {
+        Sort sort = new Sort(Sort.Direction.ASC, "releasedDate");
         Pageable pageable = new PageRequest(page, size, sort);
         return new ResponseEntity<>(filmService.getInTheatersNow(pageable), HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/certified_fresh", method = POST)
-    public ResponseEntity<Page> getCertifiedFresh(@RequestParam(value = "page", defaultValue = "0") Integer page, @RequestParam(value = "itemsPerPage", defaultValue = "6") Integer size, @RequestParam(value = "sortBy", defaultValue = "numberOfRatings") String sortBy, @RequestParam(value = "order", defaultValue = "DESC") String order) {
-        Sort sort = filmService.getSortParam(order, sortBy);
-        Pageable pageable = new PageRequest(page, size, sort);
-        return new ResponseEntity<>(filmService.getCertifiedFresh(pageable), HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/oscar_best_picture", method = POST)
-    public ResponseEntity<Page> getAllOscarBestPicture(@RequestParam(value = "page", defaultValue = "0") Integer page, @RequestParam(value = "itemsPerPage", defaultValue = "6") Integer size, @RequestParam(value = "sortBy", defaultValue = "releaseDate") String sortBy, @RequestParam(value = "order", defaultValue = "DESC") String order) {
-        Sort sort = filmService.getSortParam(order, sortBy);
-        Pageable pageable = new PageRequest(page, size, sort);
-        return new ResponseEntity<>(filmService.getOscarBestPictures(pageable), HttpStatus.OK);
     }
 
 
@@ -175,7 +160,7 @@ public class MovieController {
         return new ResponseEntity<>(filmService.getSimilarMovies(id), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/in_range", method = POST)
+    @RequestMapping(value = "/in_range", method = GET)
     public ResponseEntity<List> getMoviesInRange(@RequestParam String startDate, @RequestParam String endDate) {
         return new ResponseEntity<>(filmService.getMoviesInRage(startDate, endDate), HttpStatus.OK);
     }
@@ -184,7 +169,6 @@ public class MovieController {
     public ResponseEntity<List> getMoviesTrending() {
         return new ResponseEntity<>(filmService.getTrending(), HttpStatus.OK);
     }
-
 
 
 }

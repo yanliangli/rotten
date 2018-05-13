@@ -26,9 +26,7 @@ main{
 }
 // individual result
 .s-item {
-  //margin-bottom: 2em;
-  padding-top: 1%;
-  padding-bottom: 1%;
+  margin-bottom: 2em;
 }
 // image wrap
 .s_img-wrap {
@@ -101,17 +99,10 @@ ngb-pagination /deep/{
 }
 
 .bottom_divide{
-  border-bottom:1px solid;
-  padding-bottom: 6px;
-  margin-left:5.7%;
+  border-bottom-style: solid;
+  margin-left:3%;
   margin-right: 3%;
   color: #999;
-}
-.item_bottom_divide{
-  border-bottom:1px solid;
-  padding-bottom: 1.5%;
-  margin-left: 7%;
-  min-width: 973px;
 }
 
 h4{
@@ -120,23 +111,4 @@ h4{
 
 .pagination_center{
   text-align: center;
-}
-
-.container{
-  padding-bottom: 30px;
-}
-.view-more{
-  padding-top: 0.7em;
-  margin-right:6em;
-  float: right;
-  font-size: 15px;
-  a{
-    color: #3976DC;
-  }
-  a:hover{
-    color: #53bbf1;
-  }
-}
-.no_rating{
-  color: white;
 }

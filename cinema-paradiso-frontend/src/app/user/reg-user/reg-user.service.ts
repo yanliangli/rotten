@@ -53,4 +53,10 @@ export class RegUserService {
   deleteUser() {
     return this.http.delete('http://localhost:8080/user/deleteUser');
   }
+  getFollowers(){
+    return this.http.get('http://localhost:8080/follower/get/followers');
+  }
+  getFollowYou(){
+    return this.http.get('http://localhost:8080/follower/get/followYou');
+  }
 }

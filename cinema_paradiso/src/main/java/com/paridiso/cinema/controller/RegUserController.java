@@ -236,11 +236,37 @@ public class RegUserController {
         List<Movie> movies = userService.getRatedMovies(jwtTokenService.getUserIdFromToken(jwtToken));
         return ResponseEntity.ok(movies);
     }
+    @RequestMapping(value = "/getRatedMovies/{userId}", method = GET)
+    public ResponseEntity<List<Movie>> getRatedMovies(@PathVariable Integer userId)  {
+        System.out.println("coming01");
+        List<Movie> movies = userService.getRatedMovies(userId);
+        return ResponseEntity.ok(movies);
+    }
 
 
     @GetMapping(value = "/get/profile")
     public ResponseEntity<?> getProfile(@RequestHeader(value = "Authorization") String jwtToken) {
-        UserProfile profile = userService.getProfile(jwtToken);
+
+        int headerLength = environment.getProperty("token.type").length();
+        User validatedUser = validator.validate(jwtToken.substring(headerLength));
+        UserProfile profile = userService.getProfile(validatedUser.getUserProfile().getId());
+        ObjectNode objectNode = objectMapper.createObjectNode();
+        objectNode.put("name", profile.getName());
+        objectNode.put("id", profile.getId());
+        if (profile.getProfileImage() == null) {
+            objectNode.put("profileImage", "default.jpeg");
+        } else {
+            objectNode.put("profileImage", profile.getProfileImage());
+        }
+        objectNode.put("biography", profile.getBiography());
+        objectNode.put("isCritic", profile.getCritic());
+        objectNode.put("registeredDate",profile.getRegisteredDate().toString());
+        return ResponseEntity.ok(objectNode);
+    }
+
+    @GetMapping(value = "/get/profile/{userId}")
+    public ResponseEntity<?> getProfile(@PathVariable Integer userId) {
+        UserProfile profile = userService.getProfile(userId);
         ObjectNode objectNode = objectMapper.createObjectNode();
         objectNode.put("name", profile.getName());
         objectNode.put("id", profile.getId());
@@ -258,8 +284,10 @@ public class RegUserController {
 
     @GetMapping(value = "/avatar/{fileName}", produces = MediaType.IMAGE_JPEG_VALUE)
     public ResponseEntity<byte[]> getAvatar(@PathVariable String fileName) throws IOException {
+        System.out.println("coming getAvatar");
         String fileLocation = Paths.get("avatars/" + fileName).toAbsolutePath().toString();
         logger.info(fileLocation);
+        System.out.println("firleLocation is "+ fileLocation);
 
         try {
             File file = new File(fileLocation);

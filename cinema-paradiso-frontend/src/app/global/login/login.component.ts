@@ -126,7 +126,6 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('token', JSON.stringify(data['token']));
             // Set user loggedIn status to global. So header can subscribe to the event.
             this.loginStatusService.changeStatus(true);
-            location.reload(true);
           } else {
             alert(' Please activate your account by Email');
           }

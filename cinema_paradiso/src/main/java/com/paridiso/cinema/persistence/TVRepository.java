@@ -15,9 +15,7 @@ public interface TVRepository extends JpaRepository<TV, String> {
 
     Page<TV> findAllByIsNewTonightTrue(Pageable pageable);
 
+    Page<TV> findAllByOrderByRatingDesc(Pageable pageable);
+
     Page<TV> findTVByTitleContains(String keyword, Pageable pageable);
-
-    Page<TV> findAllByRatingAfter(Double rating, Pageable pageable);
-
-    Page<TV> findAllByYearEndsWithAndRatingAfterAndNumberOfRatingsAfter(String endWIth, Double ratingFilter, Integer numberFilter, Pageable pageable);
 }

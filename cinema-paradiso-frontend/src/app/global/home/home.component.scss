@@ -157,9 +157,9 @@ p {
   margin-left: 1.5%;
 }
 // the more button on the right
-.l-cards__nav-left, .l-cards__nav-right {
+.l-cards__nav-left, .l-cards__nav-right{
   float: right;
-  color: #3976DC;
+  color: white;
 /*  background-color: $color-red;*/
   font-size: 0.8em;
   padding: 1px 8px;
@@ -167,9 +167,6 @@ p {
 }
 .l-cards__nav-left{
   margin-right: 3%;
-}
-.l-cards__nav-left:hover{
-  color: #53bbf1;
 }
 .l-cards__nav-left:hover{
 

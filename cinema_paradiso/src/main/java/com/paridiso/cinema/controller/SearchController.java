@@ -30,27 +30,25 @@ public class SearchController {
     @Autowired
     SearchService searchService;
 
-    @RequestMapping(value = "/movie", method = GET)
-    public ResponseEntity<Page> searchMovie(@RequestParam("keyword") String keyword, @RequestParam(value = "page", defaultValue = "0") Integer page,@RequestParam(value = "limit", defaultValue = "7") Integer size) {
-        Sort sort = new Sort(Sort.Direction.DESC, "rating");
-        Pageable pageable = new PageRequest(page, size, sort);
-        Page<Movie> moviePage = searchService.getMoviesFromKeyword(keyword, pageable);
-        return new ResponseEntity<>(moviePage, HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/celebrity", method = GET)
-    public ResponseEntity<Page> searchCelebrity(@RequestParam("keyword") String keyword, @RequestParam(value = "page", defaultValue = "0") Integer page,@RequestParam(value = "limit", defaultValue = "7") Integer size) {
-        Sort sort = new Sort(Sort.Direction.DESC, "name");
-        Pageable pageable = new PageRequest(page, size, sort);
-        Page<Celebrity> celebrityPage = searchService.getCelebritiesFromKeyword(keyword, pageable);
-        return new ResponseEntity<>(celebrityPage, HttpStatus.OK);
-    }
-
-    @RequestMapping(value = "/tv", method = GET)
-    public ResponseEntity<Page> searchTV(@RequestParam("keyword") String keyword, @RequestParam(value = "page", defaultValue = "0") Integer page,@RequestParam(value = "limit", defaultValue = "7") Integer size) {
-        Sort sort = new Sort(Sort.Direction.DESC, "rating");
-        Pageable pageable = new PageRequest(page, size, sort);
-        Page<TV> tvPage = searchService.getTVsFromKeyword(keyword, pageable);
-        return new ResponseEntity<>(tvPage, HttpStatus.OK);
+    @RequestMapping(value = "", method = GET)
+    public ResponseEntity<Page> searchMovie(@RequestParam("table") String table, @RequestParam("keyword") String keyword, @RequestParam(value = "page", defaultValue = "0") Integer page,@RequestParam(value = "limit", defaultValue = "7") Integer size) {
+        if(table.equals("movie")) {
+            Sort sort = new Sort(Sort.Direction.DESC, "rating");
+            Pageable pageable = new PageRequest(page, size, sort);
+            Page<Movie> moviePage = searchService.getMoviesFromKeyword(keyword, pageable);
+            return new ResponseEntity<>(moviePage, HttpStatus.OK);
+        }
+        else if(table.equals("celebrity")){
+            Sort sort = new Sort(Sort.Direction.DESC, "name");
+            Pageable pageable = new PageRequest(page, size, sort);
+            Page<Celebrity> celebrityPage = searchService.getCelebritiesFromKeyword(keyword, pageable);
+            return new ResponseEntity<>(celebrityPage, HttpStatus.OK);
+        }
+        else{
+            Sort sort = new Sort(Sort.Direction.DESC, "rating");
+            Pageable pageable = new PageRequest(page, size, sort);
+            Page<TV> tvPage = searchService.getTVsFromKeyword(keyword, pageable);
+            return new ResponseEntity<>(tvPage, HttpStatus.OK);
+        }
     }
 }

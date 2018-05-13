@@ -39,6 +39,11 @@ public class WatchlistController {
         return new ResponseEntity<>(listService.getList(jwtTokenService.getUserIdFromToken(jwtToken)), HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/get/watchlist/{userId}", method = GET)
+    public ResponseEntity<List> getWatchlist(@PathVariable Integer userId) {
+        return new ResponseEntity<>(listService.getList(userId), HttpStatus.OK);
+    }
+
     @GetMapping(value = "/check/{filmId}")
     public ResponseEntity<Boolean> checkWatchlist(@RequestHeader(value = "Authorization") String jwtToken,
                                                   @PathVariable String filmId) {

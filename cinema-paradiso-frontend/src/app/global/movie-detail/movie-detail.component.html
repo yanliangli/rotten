@@ -416,7 +416,8 @@
                     {{reviews.reviewContent}}
                   </p>
                 </div>
-                <h3 class="title">{{reviews.author}}</h3>
+                <!--<h3 class="title">{{reviews.author}}</h3>-->
+                <a routerLink="/userView/{{reviews.userId}}">{{reviews.author}}</a>
                 <div *ngIf="!isCritic; else notCriticBlock">
                   <span class="post">Top Critics</span>
                 </div>

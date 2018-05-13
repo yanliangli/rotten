@@ -13,10 +13,11 @@ import {Movie} from '../../global/models/movie.model';
 import {MovieService} from '../../global/movie/movie.service';
 import {Review} from '../../global/models/review.model';
 import {Observable} from 'rxjs/Observable';
+import {UserFile} from '../../global/models/userFile.model';
 
 class Profile {
   name: string;
-  id: number;
+  profileId: number;
   profileImage: string;
   biography: string;
   isCritic: boolean;
@@ -45,6 +46,8 @@ export class RegUserComponent implements OnInit {
   watchlist: Movie[];
   ratedMovieList: Movie[];
   reviews: Review[];
+  followerProfiles: UserFile[];
+  followYouProfiles: UserFile[];
   constructor(private router: Router,
               private movieService: MovieService,
               private loginService: LoginService,
@@ -68,12 +71,14 @@ export class RegUserComponent implements OnInit {
       this.getWatchlist();
       this.getRatedMovieList();
       this.getReviews();
+      this.getFollowers();
+      this.getFollowYou();
       this.regUserService.getProfile().subscribe(profileDetails => {
         console.log(profileDetails);
         this.profile = profileDetails as Profile;
         const decodedToken = this.tokenHelper.decodeToken(localStorage.getItem('token'));
         this.profile.email = decodedToken['email'];
-        this.profile.id = decodedToken['profileId'];
+        this.profile.profileId = decodedToken['profileId'];
         this.profile.username = decodedToken['username'];
         this.profile.profileImage = profileDetails['profileImage'];
         this.profile.registeredDate = profileDetails['registeredDate'];
@@ -141,6 +146,26 @@ export class RegUserComponent implements OnInit {
         data => {
           this.reviews = data as Review[];
           console.log(this.reviews);
+        },
+        error => console.log('Failed to fetch movies playing')
+      );
+  }
+  getFollowers(): any {
+    this.regUserService.getFollowers()
+      .subscribe(
+        data => {
+          this.followerProfiles = data as UserFile[];
+          console.log(this.followerProfiles);
+        },
+        error => console.log('Failed to fetch movies playing')
+      );
+  }
+  getFollowYou(): any {
+    this.regUserService.getFollowYou()
+      .subscribe(
+        data => {
+          this.followYouProfiles = data as UserFile[];
+          console.log(this.followYouProfiles);
         },
         error => console.log('Failed to fetch movies playing')
       );

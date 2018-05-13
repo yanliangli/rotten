@@ -33,6 +33,12 @@ public class UserProfile {
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private WishList wishList;
 
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private FollowList followList;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private FollowYouList followYouList;
+
     @Column(name = "isCritic")
     private Boolean isCritic;
 
@@ -180,4 +186,20 @@ public class UserProfile {
     public List<UserRating> getUserRatings(){return userRatings;}
 
     public void setUserRatings(List<UserRating> userRatings){this.userRatings = userRatings;}
+
+    public FollowList getFollowList() {
+        return followList;
+    }
+
+    public void setFollowList(FollowList followList) {
+        this.followList = followList;
+    }
+
+    public FollowYouList getFollowYouList() {
+        return followYouList;
+    }
+
+    public void setFollowYouList(FollowYouList followYouList) {
+        this.followYouList = followYouList;
+    }
 }

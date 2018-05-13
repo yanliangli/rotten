@@ -4,7 +4,6 @@ import com.paridiso.cinema.entity.Film;
 import com.paridiso.cinema.entity.Movie;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 
 import java.util.List;
 import java.util.Optional;
@@ -41,6 +40,8 @@ public interface FilmService {
 
     List<Movie> getTrending();
 
+
+
     Page<Movie> getTopRating(Pageable pageable);
 
     Page<Movie> getTopBoxOffice(Pageable pageable);
@@ -50,15 +51,6 @@ public interface FilmService {
     Page<Movie> getInTheatersNow(Pageable pageable);
 
     Page<Movie> getMoviesComingSoon(Pageable pageable);
-
-    Page<Movie> getCertifiedFresh(Pageable pageable);
-
-    Page<Movie> getOscarBestPictures(Pageable pageable);
-
-
-    Sort getSortParam(String order, String sort);
-
-
 
 
 
