@@ -33,7 +33,7 @@ main{
   padding-left: 4em;
   img {
     height: 250px;
-    max-width: 180px;
+    width: auto;
   }
 
 }
@@ -68,9 +68,6 @@ p {
 .fa-star{
   color:$color-red;
 }
-.fa-star-half-o{
-  color:$color-red;
-}
 // rate
 .flex {
   font-size: 0.8em;
@@ -90,25 +87,4 @@ p {
     padding: 0 4px;
   }
 
-}
-
-ngb-pagination /deep/{
-  color: white ;
-  background-color: transparent;
-  display:inline-block;
-}
-
-.bottom_divide{
-  border-bottom-style: solid;
-  margin-left:3%;
-  margin-right: 3%;
-  color: #999;
-}
-
-h4{
-  color: #999;
-}
-
-.pagination_center{
-  text-align: center;
 }

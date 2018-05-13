@@ -4,18 +4,10 @@
 
 <div class="search-tab">
 
-
-  <div *ngIf="(movieCount+celebrityCount+tvCount)>0;else no_results_found">
-    <h4>SEARCH RESULTS FOR: "{{keywordParam}}"</h4>
-  </div>
-  <ng-template #no_results_found>
-    <h4>SORRY, NO RESULTS FOUND FOR "{{keywordParam}}"</h4>
-  </ng-template>
   <ul>
-    <li><a routerLinkActive="active" class="show_all" href="" (click)="showAllResults()">All({{movieCount+celebrityCount+tvCount}})</a></li>
-    <li><a routerLinkActive="active" class="show_movies" href="" (click)="onlyShowMovieResults()" ><i class="fa fa-film"></i> Movies({{movieCount}})</a></li>
-    <li><a routerLinkActive="active" class="show_tv" href="" (click)="onlyShowTVResults()"><i class="fa fa-tv"></i> TV-Series({{tvCount}})</a></li>
-    <li><a routerLinkActive="active" class="show_people" href="" (click)="onlyShowPeopleResults()" ><i class="fa fa-user"></i> People({{celebrityCount}})</a></li>
+    <li><a class="show_movies" href=""><i class="fa fa-film"></i> Movies</a></li>
+    <li><a class="show_tv" href=""><i class="fa fa-tv"></i> TV-Series</a></li>
+    <li><a class="show_people" href=""><i class="fa fa-user"></i> People</a></li>
   </ul>
 
 </div>
@@ -23,265 +15,143 @@
 <br>
 
 <div class="container movie_results">
-  <h4 class="bottom_divide" *ngIf="searchMovieBoolean&&movieCount>0">MOVIES</h4>
-  <div class="row s-item" *ngFor="let movie of movieResults">
-    <div class="col-4 s_img-wrap" routerLink="/movie/{{movie.imdbId}}">
-      <img src="{{movie.poster}}"
+
+  <div class="row s-item">
+    <div class="col-4 s_img-wrap">
+      <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BNGNiNWQ5M2MtNGI0OC00MDA2LWI5NzEtMmZiYjVjMDEyOWYzXkEyXkFqcGdeQXVyMjM4NTM5NDY@._V1_UX182_CR0,0,182,268_AL_.jpg"
            alt="">
     </div>
     <div class="col-7">
-      <a routerLink="/movie/{{movie.imdbId}}" class="s-item__title">{{movie.title}} ({{movie.year}})</a>
+      <a routerLink="/movie-detail" class="s-item__title">The Shape of Water</a>
+
       <div class="flex">
-        <div *ngIf="movie.rating==0">
-          No Ratings
-          <p>{{movie.rated}}</p>
-        </div>
-
-        <div *ngIf="movie.rating>0&& movie.rating<1">
-          <i class="fa fa-star-half-o" aria-hidden="true"></i>
-          <p>{{movie.rating}}/5.0</p>
-          <p>{{movie.rated}}</p>
-        </div>
-
-        <div *ngIf="movie.rating==1">
-          <i class="fa fa-star" ></i>
-          <p>{{movie.rating}}/5.0</p>
-          <p>{{movie.rated}}</p>
-        </div>
-
-        <div *ngIf="movie.rating>1&& movie.rating<2">
-          <i class="fa fa-star" ></i>
-          <i class="fa fa-star-half-o" aria-hidden="true"></i>
-          <p>{{movie.rating}}/5.0</p>
-          <p>{{movie.rated}}</p>
-        </div>
-
-        <div *ngIf="movie.rating==2">
-          <i class="fa fa-star" ></i>
-          <i class="fa fa-star"></i>
-          <p>{{movie.rating}}/5.0</p>
-          <p>{{movie.rated}}</p>
-        </div>
-
-        <div *ngIf="movie.rating>2&& movie.rating<3">
-          <i class="fa fa-star" ></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star-half-o" aria-hidden="true"></i>
-          <p>{{movie.rating}}/5.0</p>
-          <p>{{movie.rated}}</p>
-        </div>
-
-        <div *ngIf="movie.rating==3">
-          <i class="fa fa-star" ></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <p>{{movie.rating}}/5.0</p>
-          <p>{{movie.rated}}</p>
-        </div>
-
-        <div *ngIf="movie.rating>3&& movie.rating<4">
-          <i class="fa fa-star" ></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star-half-o" aria-hidden="true"></i>
-          <p>{{movie.rating}}/5.0</p>
-          <p>{{movie.rated}}</p>
-        </div>
-
-        <div *ngIf="movie.rating==4">
-          <i class="fa fa-star" ></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <p>{{movie.rating}}/5.0</p>
-          <p>{{movie.rated}}</p>
-        </div>
-
-        <div *ngIf="movie.rating>4&& movie.rating<5">
-          <i class="fa fa-star" ></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star-half-o" aria-hidden="true"></i>
-          <p>{{movie.rating}}/5.0</p>
-          <p>{{movie.rated}}</p>
-        </div>
-
-        <div *ngIf="movie.rating==5">
-          <i class="fa fa-star" ></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <p>{{movie.rating}}/5.0</p>
-          <p>{{movie.rated}}</p>
-        </div>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <p>5.0/5.0</p>
+        <p>R</p>
       </div>
 
-      <p class="s-plot">{{movie.plot}}</p>
+      <p class="s-plot">At a top secret research facility in the 1960s, a lonely janitor forms a unique
+        relationship with an amphibious
+        creature that is being held in captivity.</p>
       <p>
         Starring
-        <span *ngFor="let cast of movie.cast">
-          <a routerLink="/celebrity/{{cast}}">{{cast}}, </a>
-        </span>
+        <span> Sally Hawkins, Octavia Spencer, Michael Shannon</span>
       </p>
       <p>
         Director
-        <span *ngFor="let direct of movie.director">
-          <a routerLink="/celebrity/{{direct}}">{{direct}}, </a>
-        </span>
-
+        <span>Guillermo del Toro</span>
       </p>
       <p>
         Genres
-        <span *ngFor="let genres of movie.genres">
-          <a routerLink="/search" [queryParams]="{table:'movie', search:genres}">{{genres}}, </a>
-        </span>
+        <span>Adventure, Drama, Fantasy, Horror, Romance</span>
       </p>
     </div>
   </div>
-  <div class="pagination_center">
-    <ngb-pagination *ngIf="searchMovieBoolean&&movieCount>0" [(page)]="moviePage" [collectionSize]="movieCount" [pageSize]="itemsPerPage" [maxSize]="maxPageDisplay" [rotate]="true" [ellipses]="false" [boundaryLinks]="true" class="pagination" (pageChange)="searchForMovies()" ></ngb-pagination>
+
+  <div class="row s-item">
+    <div class="col-4 s_img-wrap">
+      <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BNGNiNWQ5M2MtNGI0OC00MDA2LWI5NzEtMmZiYjVjMDEyOWYzXkEyXkFqcGdeQXVyMjM4NTM5NDY@._V1_UX182_CR0,0,182,268_AL_.jpg"
+           alt="">
+    </div>
+    <div class="col-7">
+      <a routerLink="/movie-detail" class="s-item__title">The Shape of Water</a>
+
+      <div class="flex">
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <p>5.0/5.0</p>
+        <p>R</p>
+      </div>
+
+      <p class="s-plot">At a top secret research facility in the 1960s, a lonely janitor forms a unique
+        relationship with an amphibious
+        creature that is being held in captivity.</p>
+      <p>
+        Starring
+        <span> Sally Hawkins, Octavia Spencer, Michael Shannon</span>
+      </p>
+      <p>
+        Director
+        <span>Guillermo del Toro</span>
+      </p>
+      <p>
+        Genres
+        <span>Adventure, Drama, Fantasy, Horror, Romance</span>
+      </p>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="container tv_results" style="display:none">
+
+  <div class="row">
+    <div class="col-4 s_img-wrap">
+      <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjE3NTQ1NDg1Ml5BMl5BanBnXkFtZTgwNzY2NDA0MjI@._V1_UX182_CR0,0,182,268_AL_.jpg"
+           alt="">
+    </div>
+    <div class="col-7">
+      <p class="s-item__title">Game of Throne</p>
+
+      <div class="flex">
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <p>5.0/5.0</p>
+        <p>RR</p>
+      </div>
+
+      <p class="s-plot">Nine noble families fight for control over the mythical lands of Westeros, while an
+        ancient enemy returns
+        after being dormant for thousands of years. </p>
+      <p>
+        Starring
+        <span> Emilia Clarke, Peter Dinklage, Kit Harington </span>
+      </p>
+      <p>
+        Director
+        <span> David Benioff, D.B. Weiss </span>
+      </p>
+      <p>
+        Genres
+        <span> Action | Adventure | Drama | Fantasy | Romance </span>
+      </p>
+    </div>
   </div>
 </div>
 
 
-
-  <div class="container tv_results" style="display:none">
-    <h4 class="bottom_divide" *ngIf="searchTVBoolean&&tvCount>0">TV</h4>
-  <div class="row s-item"  *ngFor="let tv of tvResults">
+<div class="container people_results" style="display:none">
+  <div class="row">
     <div class="col-4 s_img-wrap">
-      <img src="{{tv.poster}}"
+      <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BODE4MDE0MDEzMl5BMl5BanBnXkFtZTgwNjI1NTU5MDE@._V1_UY317_CR14,0,214,317_AL_.jpg"
            alt="">
     </div>
     <div class="col-7">
-      <p class="s-item__title">{{tv.title}}e</p>
-
-      <div class="flex">
-        <div *ngIf="tv.rating==0">
-          No Ratings
-          <p>{{tv.rated}}</p>
-        </div>
-
-        <div *ngIf="tv.rating>0&& tv.rating<1">
-          <i class="fa fa-star-half-o" aria-hidden="true"></i>
-          <p>{{tv.rating}}/5.0</p>
-          <p>{{tv.rated}}</p>
-        </div>
-
-        <div *ngIf="tv.rating==1">
-          <i class="fa fa-star" ></i>
-          <p>{{tv.rating}}/5.0</p>
-          <p>{{tv.rated}}</p>
-        </div>
-
-        <div *ngIf="tv.rating>1&& tv.rating<2">
-          <i class="fa fa-star" ></i>
-          <i class="fa fa-star-half-o" aria-hidden="true"></i>
-          <p>{{tv.rating}}/5.0</p>
-          <p>{{tv.rated}}</p>
-        </div>
-
-        <div *ngIf="tv.rating==2">
-          <i class="fa fa-star" ></i>
-          <i class="fa fa-star"></i>
-          <p>{{tv.rating}}/5.0</p>
-          <p>{{tv.rated}}</p>
-        </div>
-
-        <div *ngIf="tv.rating>2&& tv.rating<3">
-          <i class="fa fa-star" ></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star-half-o" aria-hidden="true"></i>
-          <p>{{tv.rating}}/5.0</p>
-          <p>{{tv.rated}}</p>
-        </div>
-
-        <div *ngIf="tv.rating==3">
-          <i class="fa fa-star" ></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <p>{{tv.rating}}/5.0</p>
-          <p>{{tv.rated}}</p>
-        </div>
-
-        <div *ngIf="tv.rating>3&& tv.rating<4">
-          <i class="fa fa-star" ></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star-half-o" aria-hidden="true"></i>
-          <p>{{tv.rating}}/5.0</p>
-          <p>{{tv.rated}}</p>
-        </div>
-
-        <div *ngIf="tv.rating==4">
-          <i class="fa fa-star" ></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <p>{{tv.rating}}/5.0</p>
-          <p>{{tv.rated}}</p>
-        </div>
-
-        <div *ngIf="tv.rating>4&& tv.rating<5">
-          <i class="fa fa-star" ></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star-half-o" aria-hidden="true"></i>
-          <p>{{tv.rating}}/5.0</p>
-          <p>{{tv.rated}}</p>
-        </div>
-
-        <div *ngIf="tv.rating==5">
-          <i class="fa fa-star" ></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <i class="fa fa-star"></i>
-          <p>{{tv.rating}}/5.0</p>
-          <p>{{tv.rated}}</p>
-        </div>
-      </div>
-
-      <p class="s-plot">{{tv.plot}} </p>
-      <p>
-        Starring
-        <span *ngFor="let cast of tv.cast">
-          <a routerLink="/celebrity/{{cast.celebrityId}}">{{cast}}, </a>
-        </span>
-      </p>
-      <p>
-        Genres
-        <span *ngFor="let genres of tv.genres">
-          <a routerLink="/search" [queryParams]="{table:'tv', search:genres}">{{genres}}, </a>
-        </span>
-      </p>
-    </div>
-  </div>
-    <div class="pagination_center">
-      <ngb-pagination *ngIf="searchTVBoolean&&tvCount>0" [(page)]="tvPage" [collectionSize]="tvCount" [pageSize]="itemsPerPage" [maxSize]="maxPageDisplay"  [rotate]="true" [ellipses]="false" [boundaryLinks]="true" class="pagination" ></ngb-pagination>
-    </div>
-  </div>
-
-
-<div class="container people_results" style="display:none">
-  <h4 class="bottom_divide" *ngIf="searchPeopleBoolean&&(celebrityCount>0)">CELEBRITIES</h4>
-  <div class="row" *ngFor="let celebrity of celebritiesResults">
-    <div class="col-4 s_img-wrap">
-      <img src="{{celebrity.profileImage}}"
-           alt="" routerLink="/celebrity/{{celebrity.celebrityId}}">
-    </div>
-    <div class="col-7">
-      <a class="s-item__title" routerLink="/celebrity/{{celebrity.celebrityId}}">{{celebrity.name}}</a>
-      <p class="s-item__bio">{{celebrity.biography}}</p>
+      <p class="s-item__title">Sally Hawkins</p>
+      <p class="s-item__bio">Sally Cecilia Hawkins was born in 1976 in Lewisham hospital, London, England, to Jacqui
+        and Colin Hawkins,
+        authors and illustrators of children\s books. She is of English and Irish descent. Hawkins was brought
+        up in Greenwich, in southeast London. She attended James Allen\'s Girls\' School in Dulwich. She
+        graduated
+        from the Royal Academy of ...</p>
       <p class="s-item__birth">
         Born in:
-        <span class="actor_birth_date">{{celebrity.birthDate}} in {{celebrity.birthCity}}, {{celebrity.birthState}}, {{celebrity.birthCountry}}</span>
+        <span class="actor_birth_date">April 27, 1976 in Dulwich, London, England, UK</span>
       </p>
+
     </div>
   </div>
-  <ngb-pagination *ngIf="searchPeopleBoolean&&(celebrityCount>0)" [(page)]="celebrityPage" [collectionSize]="celebrityCount" [pageSize]="itemsPerPage" [maxSize]="maxPageDisplay"  [rotate]="true" [ellipses]="false" [boundaryLinks]="true" class="pagination" ></ngb-pagination>
 </div>
 
 </main>
