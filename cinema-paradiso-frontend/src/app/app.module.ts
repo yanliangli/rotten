@@ -6,8 +6,6 @@ import {AppComponent} from './app.component';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
-import { OrderModule } from 'ngx-order-pipe';
-
 import {HomeComponent} from './global/home/home.component';
 import {FooterComponent} from './global/footer/footer.component';
 import {HeaderComponent} from './global/header/header.component';
@@ -89,7 +87,6 @@ import {SearchService} from './global/search/search.service';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     NgxPaginationModule,
-    OrderModule,
   ],
   providers: [
     LoginStatusService,
