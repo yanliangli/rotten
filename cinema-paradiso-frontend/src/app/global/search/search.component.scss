@@ -8,7 +8,7 @@ main{
 }
 
 .search-tab {
-  margin-left: 3%;
+  margin-left: 7%;
   margin-bottom: 1em;
   li {
     display: inline-block;
@@ -106,9 +106,10 @@ ngb-pagination /deep/{
   padding-bottom: 6px;
   margin-left:5.7%;
   margin-right: 3%;
-  color: #999;
+  color: white;
   float: left;
   width: 75%;
+  font-weight: bold;
 }
 .item_bottom_divide{
   border-bottom:1px solid;
@@ -118,7 +119,7 @@ ngb-pagination /deep/{
 }
 
 h4{
-  color: #999;
+  color: white;
 }
 
 .pagination_center{
@@ -142,4 +143,16 @@ h4{
 }
 .no_rating{
   color: white;
+}
+
+.btn-outline-primary{
+  font-size: 14px;
+  font-weight: bold;
+  color:white;
+  border-color: white;
+}
+
+.dropdown-menu{
+  min-width: 8rem;
+  font-size: 14px;
 }

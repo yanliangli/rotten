@@ -98,9 +98,10 @@ ngb-pagination /deep/{
   border-bottom:1px solid;
   padding-bottom: 10px;
   margin-left:2%;
-  color: #cccccc;
+  color: white;
   margin-top: 0.5%;
   width: 55%;
+  font-weight: bold;
 }
 
 .fa-filter{
@@ -130,3 +131,16 @@ ngb-pagination /deep/{
 .fa-star-half-o{
   color:$color-red;
 }
+
+.btn-outline-primary{
+  font-size: 14px;
+  font-weight: bold;
+  color:white;
+  border-color: white;
+}
+
+.dropdown-menu{
+  min-width: 8rem;
+  font-size: 14px;
+}
+
