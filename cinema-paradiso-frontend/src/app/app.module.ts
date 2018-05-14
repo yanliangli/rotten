@@ -43,6 +43,7 @@ import {SearchMovieTabComponent} from './global/search/movie-tab/movie-tab.compo
 import {SearchTVTabComponent} from './global/search/tv-tab/tv-tab.component';
 import {SearchPeopleTabComponent} from './global/search/people-tab/people-tab.component';
 import {SearchService} from './global/search/search.service';
+import {UserViewComponent} from './global/userView/userView.component';
 
 @NgModule({
   // entryComponents: [MessageComponent],
@@ -55,6 +56,7 @@ import {SearchService} from './global/search/search.service';
     MovieDetailComponent,
     CelebrityComponent,
     RegUserComponent,
+    UserViewComponent,
     SearchComponent,
     SearchToolbarComponent,
     SearchMovieTabComponent,

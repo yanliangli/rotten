@@ -22,6 +22,7 @@ import {AcademyAwardComponent} from './global/categories/acadamy_award/academy_a
 import {SearchMovieTabComponent} from './global/search/movie-tab/movie-tab.component';
 import {SearchTVTabComponent} from './global/search/tv-tab/tv-tab.component';
 import {SearchPeopleTabComponent} from './global/search/people-tab/people-tab.component';
+import {UserViewComponent} from './global/userView/userView.component';
 
 const appRoutes: Routes = [
   //{path: '', pathMatch: 'full', redirectTo: 'home'},
@@ -46,6 +47,7 @@ const appRoutes: Routes = [
   {path: 'star', component: StarsComponent},
   {path: 'movie/:id', component: MovieDetailComponent},
   {path: 'user/:id', component: RegUserComponent},
+  {path: 'userView/:id', component: UserViewComponent},
   {path: 'home/:id', component: MovieDetailComponent},
   {path: 'about', component: AboutComponent},
   {path: 'contact', component: ContactComponent},
