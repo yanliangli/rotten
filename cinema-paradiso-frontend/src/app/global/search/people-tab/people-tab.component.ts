@@ -18,15 +18,28 @@ export class SearchPeopleTabComponent implements OnInit{
   maxPageDisplay=7;
   celebrityPage:number = 1;
   celebrityLineCount;
+  sortBy;
+  orderBy;
   constructor(private homeService: HomeService,private route: ActivatedRoute, private router: Router, private searchService: SearchService){}
   ngOnInit() {
     this.route.queryParamMap.subscribe((params: ParamMap)=>{
       this.keywordParam = params.get('keyword');
+      if(params.get('page')){
+        this.celebrityPage= Number(params.get('page'));
+      }
+      this.sortBy = params.get('sortBy');
+      if(this.sortBy==null){
+        this.sortBy="";
+      }
+      this.orderBy = params.get('order');
+      if(!this.orderBy){
+        this.orderBy="";
+      }
       this.searchForCelebrities();
     });
   }
   searchForCelebrities(){
-    this.searchService.searchCelebrities(this.keywordParam, this.celebrityPage, this.itemsPerPage)
+    this.searchService.searchCelebrities(this.keywordParam, this.celebrityPage, this.itemsPerPage, this.sortBy, this.orderBy)
       .subscribe(
         data=>{
           if(data){
@@ -39,5 +52,7 @@ export class SearchPeopleTabComponent implements OnInit{
         error => console.log('Failed to fetch celebrity data')
       );
   }
-
+  onPageChange(page, itemsPerPage, sort, order){
+    this.router.navigate(['/search/celebrity'], {queryParams: {keyword:this.keywordParam, page:page, itemsPerPage:itemsPerPage, sortBy:sort, oder:order}});
+  }
 }

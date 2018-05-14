@@ -3,7 +3,18 @@
 <main>
   <search-toolbar></search-toolbar>
   <div class="container people_results"  *ngIf="celebritySearchCount>0">
-    <h4 class="bottom_divide">CELEBRITIES</h4>
+    <div>
+      <h4 class="bottom_divide">CELEBRITIES</h4>
+      <div class="l_cards__filter">
+        <div ngbDropdown class="d-inline-block">
+          <button class="btn btn-outline-primary nav-link dropdown-toggle" id="dropdownBasic1" ngbDropdownToggle>Sort By</button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownBasic1" ngbDropdownMenu >
+            <button class="dropdown-item" routerLink="/search/celebrity" [queryParams]="{keyword:keywordParam, page:celebrityPage, itemPerPage: itemPerPage, sortBy:'name'}">Name</button>
+            <button class="dropdown-item" routerLink="/search/celebrity" [queryParams]="{keyword:keywordParam, page:celebrityPage, itemPerPage: itemPerPage, sortBy:'yearOfBirth'}">Age</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="row s-item" *ngFor="let celebrity of celebritiesResults, let index = index">
       <div class="col-4 s_img-wrap">
         <img src="{{celebrity.poster}}"
@@ -15,6 +26,7 @@
         <p class="s-item__birth">
           Born in:
           <span class="actor_birth_date">{{celebrity.yearOfBirth}}</span>
+          <br>
           Birth Place:
           <span class="actor_birth_date">{{celebrity.locationOfBirth}}</span>
         </p>
@@ -22,7 +34,7 @@
       <p class="item_bottom_divide" *ngIf="(index< (celebrityLineCount-1))"></p>
     </div>
     <div class="pagination_center">
-      <ngb-pagination [(page)]="celebrityPage" [collectionSize]="celebritySearchCount" [pageSize]="itemsPerPage" [maxSize]="maxPageDisplay"  [rotate]="true" [ellipses]="false" [boundaryLinks]="true" class="pagination" (pageChange)="searchForCelebrities()"></ngb-pagination>
+      <ngb-pagination [(page)]="celebrityPage" [collectionSize]="celebritySearchCount" [pageSize]="itemsPerPage" [maxSize]="maxPageDisplay"  [rotate]="true" [ellipses]="false" [boundaryLinks]="true" class="pagination" (pageChange)="onPageChange(celebrityPage, itemsPerPage, sortBy, orderBy)"></ngb-pagination>
     </div>
   </div>
 </main>

@@ -18,15 +18,28 @@ export class SearchTVTabComponent implements OnInit{
   maxPageDisplay=7;
   tvPage:number = 1;
   tvLineCount;
+  sortBy;
+  orderBy;
   constructor(private homeService: HomeService,private route: ActivatedRoute, private router: Router, private searchService: SearchService){}
   ngOnInit() {
     this.route.queryParamMap.subscribe((params: ParamMap)=>{
       this.keywordParam = params.get('keyword');
+      if(params.get('page')){
+        this.tvPage= Number(params.get('page'));
+      }
+      this.sortBy = params.get('sortBy');
+      if(this.sortBy==null){
+        this.sortBy="";
+      }
+      this.orderBy = params.get('order');
+      if(!this.orderBy){
+        this.orderBy="";
+      }
       this.searchForTV();
     });
   }
   searchForTV(){
-    this.searchService.searchTV(this.keywordParam, this.tvPage, this.itemsPerPage)
+    this.searchService.searchTV(this.keywordParam, this.tvPage, this.itemsPerPage, this.sortBy, this.orderBy)
       .subscribe(
         data=>{
           if(data){
@@ -40,4 +53,7 @@ export class SearchTVTabComponent implements OnInit{
       );
   }
 
+  onPageChange(page, itemsPerPage, sort, order){
+    this.router.navigate(['/search/tv'], {queryParams: {keyword:this.keywordParam, page:page, itemsPerPage:itemsPerPage, sortBy:sort, oder:order}});
+  }
 }

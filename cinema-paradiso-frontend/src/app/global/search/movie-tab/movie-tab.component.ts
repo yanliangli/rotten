@@ -18,15 +18,28 @@ export class SearchMovieTabComponent implements OnInit{
   maxPageDisplay=7;
   moviePage:number = 1;
   movieLineCount;
+  sortBy;
+  orderBy;
   constructor(private homeService: HomeService,private route: ActivatedRoute, private router: Router, private searchService: SearchService){}
   ngOnInit() {
     this.route.queryParamMap.subscribe((params: ParamMap)=>{
       this.keywordParam = params.get('keyword');
+      if(params.get('page')){
+        this.moviePage= Number(params.get('page'));
+      }
+      this.sortBy = params.get('sortBy');
+      if(this.sortBy==null){
+        this.sortBy="";
+      }
+      this.orderBy = params.get('order');
+      if(!this.orderBy){
+        this.orderBy="";
+      }
       this.searchForMovies();
     });
   }
   searchForMovies(){
-    this.searchService.searchMovies(this.keywordParam, this.moviePage, this.itemsPerPage)
+    this.searchService.searchMovies(this.keywordParam, this.moviePage, this.itemsPerPage, this.sortBy, this.orderBy)
       .subscribe(
         data=>{
           if(data){
@@ -38,5 +51,9 @@ export class SearchMovieTabComponent implements OnInit{
         },
         error => console.log('Failed to fetch movie data')
       );
+  }
+
+  onPageChange(page, itemsPerPage, sort, order){
+    this.router.navigate(['/search/movie'], {queryParams: {keyword:this.keywordParam, page:page, itemsPerPage:itemsPerPage, sortBy:sort, oder:order}});
   }
 }

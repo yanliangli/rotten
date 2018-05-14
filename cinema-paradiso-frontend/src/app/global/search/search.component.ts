@@ -41,7 +41,7 @@ export class SearchComponent implements OnInit {
   } //end onInit
 
   searchForMovies(){
-    this.searchService.searchMovies(this.keywordParam, this.moviePage, this.itemsPerPage)
+    this.searchService.searchMovies(this.keywordParam, this.moviePage, this.itemsPerPage,"", "")
       .subscribe(
         data=>{
             if(data){
@@ -56,7 +56,7 @@ export class SearchComponent implements OnInit {
   }
 
   searchForCelebrities(){
-    this.searchService.searchCelebrities(this.keywordParam, this.celebrityPage, this.itemsPerPage)
+    this.searchService.searchCelebrities(this.keywordParam, this.celebrityPage, this.itemsPerPage, "", "")
       .subscribe(
         data=>{
           if(data){
@@ -71,7 +71,7 @@ export class SearchComponent implements OnInit {
   }
 
   searchForTV(){
-    this.searchService.searchTV(this.keywordParam, this.tvPage, this.itemsPerPage)
+    this.searchService.searchTV(this.keywordParam, this.tvPage, this.itemsPerPage,"", "")
       .subscribe(
         data=>{
           if(data){

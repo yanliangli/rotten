@@ -29,6 +29,7 @@ main{
   //margin-bottom: 2em;
   padding-top: 1%;
   padding-bottom: 1%;
+  float: left;
 }
 // image wrap
 .s_img-wrap {
@@ -106,6 +107,8 @@ ngb-pagination /deep/{
   margin-left:5.7%;
   margin-right: 3%;
   color: #999;
+  float: left;
+  width: 75%;
 }
 .item_bottom_divide{
   border-bottom:1px solid;

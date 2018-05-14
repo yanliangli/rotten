@@ -33,7 +33,7 @@ export class SearchToolbarComponent implements OnInit{
     this.searchForTV();
   }
   searchForMovies(){
-    this.searchService.searchMovies(this.toolbar_keyword, this.page, this.itemsPerPage)
+    this.searchService.searchMovies(this.toolbar_keyword, this.page, this.itemsPerPage,"", "")
       .subscribe(
         data=>{
           if(data){
@@ -46,7 +46,7 @@ export class SearchToolbarComponent implements OnInit{
   }
 
   searchForCelebrities(){
-    this.searchService.searchCelebrities(this.toolbar_keyword, this.page, this.itemsPerPage)
+    this.searchService.searchCelebrities(this.toolbar_keyword, this.page, this.itemsPerPage,"", "")
       .subscribe(
         data=>{
           if(data){
@@ -59,7 +59,7 @@ export class SearchToolbarComponent implements OnInit{
   }
 
   searchForTV(){
-    this.searchService.searchTV(this.toolbar_keyword, this.page, this.itemsPerPage)
+    this.searchService.searchTV(this.toolbar_keyword, this.page, this.itemsPerPage,"", "")
       .subscribe(
         data=>{
           if(data){

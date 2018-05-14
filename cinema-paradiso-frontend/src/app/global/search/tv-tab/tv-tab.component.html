@@ -3,7 +3,19 @@
 <main>
   <search-toolbar></search-toolbar>
   <div class="container tv_results" *ngIf="tvSearchCount>0">
-    <h4 class="bottom_divide">TV</h4>
+    <div>
+      <h4 class="bottom_divide">TV</h4>
+      <div class="l_cards__filter">
+        <div ngbDropdown class="d-inline-block">
+          <button class="btn btn-outline-primary nav-link dropdown-toggle" id="dropdownBasic1" ngbDropdownToggle>Sort By</button>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownBasic1" ngbDropdownMenu >
+            <button class="dropdown-item" routerLink="/search/tv" [queryParams]="{keyword:keywordParam, page:tvPage, itemPerPage: itemPerPage, sortBy:'releaseDate'}">Released Date</button>
+            <button class="dropdown-item" routerLink="/search/tv" [queryParams]="{keyword:keywordParam, page:tvPage, itemPerPage: itemPerPage, sortBy:'rating'}">Rating</button>
+            <button class="dropdown-item" routerLink="/search/tv" [queryParams]="{keyword:keywordParam, page:tvPage, itemPerPage: itemPerPage, sortBy:'numberOfRatings'}">Popularity</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="row s-item"  *ngFor="let tv of tvResults, let index = index">
       <div class="col-4 s_img-wrap">
         <img src="{{tv.poster}}"
@@ -116,7 +128,7 @@
       <p class="item_bottom_divide" *ngIf="(index< (tvLineCount-1))"></p>
     </div>
     <div class="pagination_center">
-      <ngb-pagination [(page)]="tvPage" [collectionSize]="tvSearchCount" [pageSize]="itemsPerPage" [maxSize]="maxPageDisplay"  [rotate]="true" [ellipses]="false" [boundaryLinks]="true" class="pagination" (pageChange)="searchForTV()"></ngb-pagination>
+      <ngb-pagination [(page)]="tvPage" [collectionSize]="tvSearchCount" [pageSize]="itemsPerPage" [maxSize]="maxPageDisplay"  [rotate]="true" [ellipses]="false" [boundaryLinks]="true" class="pagination" (pageChange)="onPageChange(tvPage, itemsPerPage, sortBy, orderBy)"></ngb-pagination>
     </div>
   </div>
 
