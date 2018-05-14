@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.ServletRequestBindingException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -43,6 +44,16 @@ public class CelebrityController {
         Celebrity celebrity = celebrityService.getCelebrity(id);
         if (celebrity != null)
             return new ResponseEntity<>(celebrity, HttpStatus.OK);
+
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+
+    @RequestMapping(value = "/get/{name}", method = GET)
+    public ResponseEntity<List<Celebrity>> getCelebrityByNameList(@PathVariable List<String> name) {
+        System.out.println("finding: "+name);
+        List<Celebrity> celebrities = celebrityService.getCelebrityListByName(name);
+        if (celebrities != null)
+            return new ResponseEntity<>(celebrities, HttpStatus.OK);
 
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }

@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,6 +28,19 @@ public class CelebrityServiceImpl implements CelebrityService {
     @Override
     public Celebrity getCelebrity(String celebrityId) {
         return celebrityRepository.findCelebrityByCelebrityId(celebrityId);
+    }
+
+    @Override
+    public List<Celebrity> getCelebrityListByName(List<String> celebrityName) {
+        List<Celebrity> celebrities = new ArrayList<>();
+        for(int i = 0; i<celebrityName.size(); i++){
+            Celebrity celebrity = celebrityRepository.findCelebrityByNameEquals(celebrityName.get(i));
+            if(celebrity != null) {
+                celebrities.add(celebrity);
+                System.out.println(celebrity.getName());
+            }
+        }
+        return celebrities;
     }
 
     @Override

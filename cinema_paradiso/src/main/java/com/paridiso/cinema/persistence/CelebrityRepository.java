@@ -11,6 +11,8 @@ import java.util.List;
 
 @Repository
 public interface CelebrityRepository extends JpaRepository<Celebrity, String>{
+    Celebrity findCelebrityByNameEquals(String name);
+
     Celebrity findCelebrityByCelebrityId(String celebrityId);
 
     Page<Celebrity> findCelebritiesByNameContains(String keyword, Pageable pageable);

@@ -11,10 +11,11 @@ public interface CelebrityService {
 
     Celebrity getCelebrity(String celebrityId);
 
+    List<Celebrity> getCelebrityListByName(List<String> celebrityName);
+
     void deleteCelebrity(String celebrityId);
 
     Optional<Celebrity> updateCelebrity(Celebrity celebrity);
 
     Optional<Celebrity> addCelebrity(Celebrity celebrity);
-
 }
