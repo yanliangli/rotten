@@ -40,6 +40,10 @@ export class MovieDetailService {
     return this.http.get(MOVIE_SERVER + imdbId);
   }
 
+  getCelebrityByName(nameList : string[]): any{
+    return this.http.get("http://localhost:8080/celebrity/get/" + nameList);
+  }
+
   rateMovie(hovered: number, imdbId: string) {
     return this.http.post(MOVIE_SERVER + imdbId + '/' + hovered, null);
   }

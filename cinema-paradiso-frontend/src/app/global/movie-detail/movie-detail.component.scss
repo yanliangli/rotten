@@ -39,16 +39,16 @@ main{
   @include cols(24.5%, 0, 0);
 }
 .col-testimonial {
-  @include cols(33%, 15px, 15px);
+  @include cols(100%, 15px, 15px);
+  padding-bottom: 30px;
 }
 .col-ratings {
-  @include cols(49.5%, 15px, 15px);
 }
 .col-profile-img {
   @include cols(23%, 15px, 15px);
 }
 .col-add-ratings {
-  @include cols(76.5%, 15px, 15px);
+  @include cols(76.5%, 0px, 0px);
 }
 //.col-list-btn {
 //  @include cols(23%, 15px, 15px);
@@ -131,11 +131,7 @@ main{
   vertical-align:middle;
   text-align:center;
   margin-bottom: 1em;
-  position: relative;
-  overflow: hidden;
-  //background: url("https://images-na.ssl-images-amazon.com/images/M/MV5BZDdmMDU2OWUtMzY2NS00YmIyLWJhMGEtYzlhY2M3MTkyYTdmXkEyXkFqcGdeQXVyNDg2MjUxNjM@._V1_SX1500_CR0,100,1500,500_AL_.jpg") no-repeat;
-  background-size: cover;
-  height: 15em;
+  width: 100%;
 }
 
 // the play button
@@ -170,12 +166,11 @@ main{
   color: white;
   font-size: 0.6em;
   line-height: 1;
-  letter-spacing: 0.1em;
   font-weight: bold;
   text-transform: uppercase;
-  padding: 0.5em 1.125em;
   background-color: $color-red;
   border: none;
+  padding: 5px 5px;
 
   &--gray{
     background-color: $color-gray;
@@ -221,11 +216,12 @@ main{
 
 .md-list__item {
   margin: 0;
-  padding: 0;
+  padding-bottom: 25px;
   .item__detail {
     padding: 1px;
     font-size: 0.7em;
-    color: gray;
+    text-align: center;
+    color: white;
   }
 }
 
@@ -243,16 +239,12 @@ main{
   float: right;
   font-size: 14px;
   margin: 0 0 1em;
-  color: gray;
 }
 
 // reviews
 .testimonial{
   //height: 200px;
   //overflow: scroll;
-}
-.col-testimonial[_ngcontent-c4]{
-  width: 50%;
 }
 
 .testimonial .testimonial-content{
@@ -361,21 +353,14 @@ main{
    border-radius: 4px; */
 }
 .ratings-header {
-  color: gray;
+  color: white;
   font-size: 0.8em;
   margin-bottom: 0.5em;
-}
-.rating {
-  float: left;
-  width: 40%;
-  /*margin-right: 5%;*/
-  text-align: center;
 }
 
 .rating-num {
   color: #e50914;
   font-size: 3em;
-  font-weight: 100;
   line-height: 1em;
 }
 
@@ -496,20 +481,63 @@ main{
   margin-left: 2px;
 }
 
-a {
-  color: white;
-}
 
-.col-profile-img{
-    height: 100px;
-    width: auto;
-}
 ngb-rating{
   color: #fff;
 }
 
+#rating_poster{
+  float: left;
+  width: 30%;
+}
+
+#rating_panel{
+  width: 68%;
+  float: right;
+}
+
+#right_panel{
+  margin-top: 2%;
+  height: 350px;
+  a:hover{
+    color:#3976DC ;
+  }
+}
+
+.ratings, .rating-container{
+  width: 100%;
+  text-align: center;
+}
+
+.rating-container{
+  background-color: #1a1a1a;
+  padding-bottom: 10px;
+}
+.ratings-add{
+  padding-top: 5px;
+}
+
 .col-profile-img{
-  margin-top: 0.8%;
-  width: 22%;
-  height: 30%;
+  padding-top: 5px;
+  max-height: 85px;
+}
+
+button, html [type="button"], [type="reset"], [type="submit"] {
+  font-size: 15px;
+}
+
+.flex{
+  font-size: 20px;
+  width: 100%;
+  height:32px;
+  .fa-star{
+  color:$color-red;
+  }
+  .fa-star-half-o{
+    color:$color-red;
+  }
+}
+
+.row{
+  display:inline-block;
 }

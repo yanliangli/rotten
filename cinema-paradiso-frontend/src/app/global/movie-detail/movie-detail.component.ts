@@ -9,6 +9,10 @@ import {Token} from '../login/token.model';
 import {RegUserService} from '../../user/reg-user/reg-user.service';
 import {JwtHelperService} from '@auth0/angular-jwt';
 import {Review} from '../models/review.model';
+import {Celebrity} from '../models/celebrity.model';
+import {post} from 'selenium-webdriver/http';
+import {Trailer} from '../models/trailer.model';
+import {DomSanitizer} from '@angular/platform-browser';
 
 class Profile {
   name: string;
@@ -27,7 +31,6 @@ class Profile {
   providers: [MovieDetailService, RegUserService]
 })
 export class MovieDetailComponent implements OnInit {
-
   status: boolean;
   inWatchlist: boolean;
   inWishlist: boolean;
@@ -44,14 +47,16 @@ export class MovieDetailComponent implements OnInit {
   profile_url: string;
   isCritic: boolean;
   review = new Review();
+  casts: Celebrity[] = null;
+  myTrailers: string[] = [];
   constructor(config: NgbRatingConfig,
               private movieService: MovieService,
               private movieDetailService: MovieDetailService,
               private loginStatusService: LoginStatusService,
               private regUserService: RegUserService,
-              route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private sanitizer: DomSanitizer) {
     this.profile_url = 'http://localhost:8080/user/avatar/default.jpeg';
-    this.selectedMovieId = route.snapshot.params['id'];
     this.loginStatusService.currentStatus.subscribe(state => {
       this.status = state;
       console.log('current login state ', this.status);
@@ -157,7 +162,7 @@ export class MovieDetailComponent implements OnInit {
       .subscribe(
         data => {
           // console.log(data);
-            this.selected = data as number;
+          this.selected = data as number;
           if (this.selected !== 0) {
             this.inRatedMovieList = true;
             console.log(this.inRatedMovieList);
@@ -180,17 +185,18 @@ export class MovieDetailComponent implements OnInit {
     //   .data
     //   .subscribe(v => console.log(v)
     //   );
-
+    this.selectedMovieId = this.route.snapshot.params['id'];
 
     if (this.loginStatusService.getTokenDetails() !== null) {
       this.loginStatusService.changeStatus(true);
     }
-
     console.log('id: ' + this.selectedMovieId);
     this.getMovie(this.selectedMovieId);
 
     this.ratingAnimation();
     console.log('user token ', this.loginStatusService.getTokenDetails());
+
+
   }
 
   getMovie(imdbId: string): any {
@@ -200,13 +206,36 @@ export class MovieDetailComponent implements OnInit {
         data => {
           console.log(data);
           this.movie = data as Movie;
+          this.getCast(this.movie.cast);
+          this.getTrailerData(this.movie.trailers);
         },
         error => console.log('Failed to fetch movie with id')
       );
+
+  }
+
+  getCast(list:string[]):any{
+    this.movieDetailService.getCelebrityByName(list)
+        .subscribe(
+          data => {
+            this.casts = data as Celebrity[];
+            console.log(this.casts);
+            this.checkEmptyProfilePic();
+          },
+          error => console.log('Failed to fetch celebrity by name')
+        );
+  }
+  checkEmptyProfilePic(){
+    let i : number
+    for(i=0; i<this.casts.length; i++){
+      if((this.casts[i]).poster== "N/A"){
+        this.casts[i].poster = "http://valmorgan.co.nz/wp-content/uploads/2016/06/default-movie-1-3.jpg"
+      }
+    }
   }
 
   // TODO: temp method
-  ratingAnimation(): void {
+  ratingAnimation():void{
     $('.bar span').hide();
     $('#bar-five').animate({
       width: '100%'
@@ -243,6 +272,36 @@ export class MovieDetailComponent implements OnInit {
     setTimeout(function () {
       $('.bar span').fadeIn('slow');
     }, 500);
+  }
 
+  numberInMillion(labelValue:any) {
+    if(labelValue == null){
+      return "N/A";
+    }
+    // Nine Zeroes for Billions
+    return Math.abs(Number(labelValue)) >= 1.0e+9 ? (Math.abs(Number(labelValue)) / 1.0e+9).toFixed(2) + "B"
+      // Six Zeroes for Millions
+      : Math.abs(Number(labelValue)) >= 1.0e+6 ? (Math.abs(Number(labelValue)) / 1.0e+6).toFixed(2) + "M"
+        // Three Zeroes for Thousands
+        : Math.abs(Number(labelValue)) >= 1.0e+3 ? (Math.abs(Number(labelValue)) / 1.0e+3).toFixed(2) + "K"
+          : Math.abs(Number(labelValue));
+  }
+
+  getTrailerData(trailerIds : string[]){
+    let prefix = "https://www.imdb.com/video/imdb/";
+    let postfix = "/imdb/embed?autoplay=false&width=400";
+
+    let i;
+    for(i=0;i<trailerIds.length;i++) {
+      let x = prefix+trailerIds[i]+postfix;
+      this.myTrailers.push(x);
+    }
+  }
+
+  trailelURL(str:string){
+    return this.sanitizer.bypassSecurityTrustResourceUrl(str);
   }
 }
+
+
+

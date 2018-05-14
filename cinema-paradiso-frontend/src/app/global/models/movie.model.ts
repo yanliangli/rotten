@@ -13,7 +13,7 @@ export class Movie {
   photos: string[];
   director: string[];
   cast: string[];
-  trailers: Trailer[];
+  trailers: string[];
   reviews: Review[];
   plot: string;
   language: string;
@@ -28,5 +28,9 @@ export class Movie {
 
   constructor(values: Object = {}) {
     Object.assign(this, values);
+  }
+
+  getCastList(){
+    return this.cast;
   }
 }
