@@ -1,0 +1,23 @@
+<html>
+<body>
+<main>
+  <div class="more_container">
+    <!-- 	1st section	videos -->
+    <section class="md_wrap">
+      <h2 class="md-title"><span>{{movie.title}} VIDEOS</span></h2>
+      <!--<a class="l-cards__more" href="#">more <i class="fa fa-angle-double-right"></i></a>-->
+
+      <ul class="container md-list__videos" >
+        <li class="row md-list__item" *ngFor="let videos of myTrailers">
+          <!--<object class="col-video item__detail"-->
+          <iframe [src]="trailerURL(videos)" width="400px"  height="225px" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" frameborder="no" scrolling="no">
+          </iframe>
+          <!--<object [data]="trailelURL(videos)"></object>-->
+        </li>
+      </ul>
+    </section>
+    <!-- 	end 1st section	 -->
+  </div>
+</main>
+</body>
+</html>

@@ -28,7 +28,6 @@ class Profile {
   selector: 'app-movie-detail',
   templateUrl: './movie-detail.component.html',
   styleUrls: ['./movie-detail.component.scss'],
-  providers: [MovieDetailService, RegUserService]
 })
 export class MovieDetailComponent implements OnInit {
   status: boolean;
@@ -47,7 +46,7 @@ export class MovieDetailComponent implements OnInit {
   profile_url: string;
   isCritic: boolean;
   review = new Review();
-  casts: Celebrity[] = null;
+  casts: Celebrity[] = [];
   myTrailers: string[] = [];
   constructor(config: NgbRatingConfig,
               private movieService: MovieService,
@@ -206,7 +205,7 @@ export class MovieDetailComponent implements OnInit {
         data => {
           console.log(data);
           this.movie = data as Movie;
-          this.getCast(this.movie.cast);
+          this.getCast(this.movie);
           this.getTrailerData(this.movie.trailers);
         },
         error => console.log('Failed to fetch movie with id')
@@ -214,17 +213,17 @@ export class MovieDetailComponent implements OnInit {
 
   }
 
-  getCast(list:string[]):any{
-    this.movieDetailService.getCelebrityByName(list)
+  getCast(movie:Movie):any{
+    this.movieDetailService.getCelebrityByName(movie.cast)
         .subscribe(
           data => {
             this.casts = data as Celebrity[];
-            console.log(this.casts);
             this.checkEmptyProfilePic();
           },
           error => console.log('Failed to fetch celebrity by name')
         );
   }
+
   checkEmptyProfilePic(){
     let i : number
     for(i=0; i<this.casts.length; i++){
@@ -298,7 +297,7 @@ export class MovieDetailComponent implements OnInit {
     }
   }
 
-  trailelURL(str:string){
+  trailerURL(str:string){
     return this.sanitizer.bypassSecurityTrustResourceUrl(str);
   }
 }

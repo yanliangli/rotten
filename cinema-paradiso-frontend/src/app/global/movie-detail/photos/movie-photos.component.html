@@ -1,0 +1,21 @@
+<html>
+  <body>
+    <main>
+      <div class="more_container">
+          <!-- 	2nd section	photos -->
+          <section class="md_wrap">
+            <h2 class="md-title"><span>{{movie.title}} PHOTOS</span></h2>
+            <!--<a class="l-cards__more" href="#">more <i class="fa fa-angle-double-right"></i></a>-->
+            <ul class="container md-list__photos">
+              <!--<li class="row md-list__item" *ngFor="let photo of movie.photos">-->
+              <li class="row md-list__item" >
+                <a class="col-photos item__detail" href="" *ngFor="let photos of movie.photos" style="width: 200px;height: 200px;">
+                  <img src="{{photos}}" [alt]="movie.title">
+                </a>
+              </li>
+            </ul>
+          </section>
+      </div>
+    </main>
+  </body>
+</html>

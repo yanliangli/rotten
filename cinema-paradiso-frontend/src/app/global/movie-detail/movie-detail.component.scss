@@ -39,7 +39,7 @@ main{
   @include cols(24.5%, 0, 0);
 }
 .col-testimonial {
-  @include cols(100%, 15px, 15px);
+  @include cols(50%, 15px, 15px);
   padding-bottom: 30px;
 }
 .col-ratings {
@@ -206,12 +206,14 @@ main{
   span {
     margin-left: 1em;
     padding: 10px;
-    background-color: lighten(black, 7%);;
+    background-color: lighten(black, 7%);
+    font-weight: bold;
   }
 }
 .md-plot {
-  color: gray;
-  //font-size: 0.8em;
+  font-size: 0.8em;
+  padding-left: 3%;
+  padding-top: 3%;
 }
 
 .md-list__item {
@@ -239,6 +241,10 @@ main{
   float: right;
   font-size: 14px;
   margin: 0 0 1em;
+  color: #007bff;
+}
+.md-more:hover{
+  color:#00aced;
 }
 
 // reviews
@@ -540,4 +546,21 @@ button, html [type="button"], [type="reset"], [type="submit"] {
 
 .row{
   display:inline-block;
+}
+
+
+.more_container{
+  width: 80%;
+  margin:auto;
+}
+
+.movie_info{
+    p{
+      color: #787878;
+      padding-left: 6%;
+      font-weight: 500;
+    }
+  span{
+    color: #b7b7b7;
+  }
 }

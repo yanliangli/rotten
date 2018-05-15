@@ -28,10 +28,10 @@
                   <div class="rating-inner">
                     <div class="rating">
                       <p class="ratings-header">CURRENT RATING</p>
-                      <span class="rating-num">{{movie.rating}}</span>
+                      <span class="rating-num" *ngIf="movie.numberOfRatings!=0">{{movie.rating}}</span>
                       <div class="flex">
-                        <div *ngIf="movie.rating==null">
-                          <p class="no_rating">No Ratings</p>
+                        <div *ngIf="movie.rating==null || movie.numberOfRatings == 0">
+                          <p class="no_rating" style="color: white">No Rating Yet</p>
                         </div>
 
                         <div *ngIf="movie.rating>0&& movie.rating<1">
@@ -94,7 +94,7 @@
                           <i class="fa fa-star"></i>
                         </div>
                       </div>
-                      <div class="rating-users">
+                      <div class="rating-users" *ngIf="movie.numberOfRatings > 0 && movie.rating!=null">
                         <i class="icon-user"></i> {{numberInMillion(movie.numberOfRatings)}} Total
                       </div>
                     </div>
@@ -162,29 +162,51 @@
 
         <div class="md_wrap">
           <h4 class="md-title"><span>MOVIE INFO</span></h4>
-
-
-          <p class="md-plot">{{movie.plot}}</p>
-
-          <p>
-            Director
-            <span *ngFor="let director of movie.director">
-              <a routerLink="/celebrity/{{director}}">{{director}}, </a>
-            </span>
-          </p>
-          <p>
-            Starring
-            <span *ngFor="let cast of movie.cast">
-              <a routerLink="/celebrity/{{cast}}">{{cast}}, </a>
-            </span>
-          </p>
-          <p>
-            Genre
-            <span *ngFor="let genre of movie.genres">
-              <a href="">{{genre}},</a>
-            </span>
-          </p>
-
+          <div class="movie_info">
+            <p class="md-plot">{{movie.plot}}</p>
+            <br>
+            <p style="padding-left: 29.4%">
+              Rating:&nbsp;&nbsp;&nbsp;&nbsp;
+              <span>
+                {{movie.rated}}
+              </span>
+            </p>
+            <p style="padding-left: 30%">
+              Genre:&nbsp;&nbsp;&nbsp;&nbsp;
+              <span *ngFor="let genre of movie.genres">
+                {{genre}},
+              </span>
+            </p>
+            <p style="padding-left: 24%">
+              Directed By:&nbsp;&nbsp;&nbsp;&nbsp;
+              <span *ngFor="let director of movie.director">
+                {{director}},
+              </span>
+            </p>
+            <p style="padding-left: 27.6%">
+              Runtime:&nbsp;&nbsp;&nbsp;&nbsp;
+              <span >
+                {{movie.runTime}} minutes
+              </span>
+            </p>
+            <p  style="padding-left: 24.6%">
+              In Theaters:&nbsp;&nbsp;&nbsp;&nbsp;
+              <span >
+                {{movie.releaseDate}}
+              </span>
+            </p>
+            <p style="padding-left: 29.4%">
+              Studio:&nbsp;&nbsp;&nbsp;&nbsp;
+              <span *ngIf="movie.production != ''; else noProduction;">
+                {{movie.production}}
+              </span>
+              <ng-template #noProduction>
+                <span >
+                  N/A
+                </span>
+              </ng-template>
+            </p>
+          </div>
         </div>
 
 
@@ -196,12 +218,12 @@
           <ul class="container md-list__videos" >
             <li class="row md-list__item" *ngFor="let videos of myTrailers | slice:0:2">
               <!--<object class="col-video item__detail"-->
-              <iframe [src]="trailelURL(videos)" width="400px"  height="225px" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" frameborder="no" scrolling="no">
+              <iframe [src]="trailerURL(videos)" width="400px"  height="225px" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" frameborder="no" scrolling="no">
               </iframe>
               <!--<object [data]="trailelURL(videos)"></object>-->
             </li>
           </ul>
-          <a class="md-more" href="#">more <i class="fa fa-angle-double-right"></i></a>
+          <a class="md-more" href="" routerLink="../../movie/trailers/{{movie.imdbId}}">View All ({{myTrailers.length}})<i class="fa fa-angle-double-right"></i></a>
         </section>
         <!-- 	end 1st section	 -->
 
@@ -217,7 +239,7 @@
               </a>
             </li>
           </ul>
-          <a class="md-more" href="#">more <i class="fa fa-angle-double-right"></i></a>
+          <a class="md-more" href="" routerLink="../../movie/photos/{{movie.imdbId}}">View All ({{movie.photos.length}})<i class="fa fa-angle-double-right"></i></a>
         </section>
         <!-- end 2nd section -->
 
@@ -227,7 +249,7 @@
           <!--<a class="l-cards__more" href="#">more <i class="fa fa-angle-double-right"></i></a>-->
           <ul class="container md-list__casts">
             <li class="row md-list__item">
-              <a class="col-casts item__detail" *ngFor="let cast of casts | slice:0:4">
+              <a class="col-casts item__detail" *ngFor="let cast of casts">
                 <a routerLink="/celebrity/{{cast.celebrityId}}">
                   <img [src]="cast.poster">
                 </a>
@@ -237,7 +259,7 @@
               </a>
             </li>
           </ul>
-          <a class="md-more" href="#">more <i class="fa fa-angle-double-right"></i></a>
+          <!--<a class="md-more" href="" routerLink="movie/actors/{{movie.imdbId}}">more <i class="fa fa-angle-double-right"></i></a>-->
         </section>
         <!-- end 3rd section -->
 
@@ -250,12 +272,12 @@
             <div class="row">
               <!--<div class="col-md-12">-->
               <!--<div id="testimonial-slider" class="owl-carousel">-->
-              <div class="col-testimonial testimonial" *ngFor="let reviews of movie.reviews | slice:0:3">
+              <div class="col-testimonial testimonial" *ngFor="let reviews of movie.reviews | slice:0:2">
                 <div class="testimonial-content">
                   <div class="testimonial-icon">
                     <i class="fa fa-quote-left"></i>
                   </div>
-                  <p class="t_description">
+                  <p class="t_description" style="max-height: 121px; overflow: hidden">
                     {{reviews.reviewContent}}
                   </p>
                 </div>
@@ -267,7 +289,7 @@
               </div>
             </div>
           </div>
-          <a class="md-more" href="#">more <i class="fa fa-angle-double-right"></i></a>
+          <a class="md-more" href="" routerLink="../../movie/reviews/{{movie.imdbId}}">View All ({{movie.reviews.length}})<i class="fa fa-angle-double-right"></i></a>
           <!--</div>-->
           <!--</div>-->
 
