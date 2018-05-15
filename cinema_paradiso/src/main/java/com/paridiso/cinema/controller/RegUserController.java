@@ -76,10 +76,20 @@ public class RegUserController {
 
     @PostMapping(value = "/login")
     public ResponseEntity<JwtUser> userLogin(@RequestParam(value = "email", required = true) String email,
-                                             @RequestParam(value = "password", required = true) String password) {
+                                             @RequestParam(value = "password", required = true) String password,
+                                             WebRequest webRequest) {
         User user = userService.login(email, password).orElseThrow(() ->
                 new ResponseStatusException(BAD_REQUEST, "USER NOT FOUND"));
         if(user.getEnabled() == false){
+            try {
+                String appUrl = webRequest.getContextPath();
+                System.out.println("the appUrl is: " + appUrl);
+                eventPublisher.publishEvent(new OnRegistrationCompleteEvent
+                        (user, webRequest.getLocale(), appUrl));
+            } catch (Exception me) {
+                System.out.println("Email err.");
+                return null;
+            }
             return ResponseEntity.ok(null);
         }else {
             JwtUser jwtUser = new JwtUser(user.getUsername(), generator.generate(user), user.getUserID(), user.getRole());
@@ -137,8 +147,6 @@ public class RegUserController {
     @PostMapping(value = "/signup")
     public ResponseEntity<JwtUser> userSignup(@RequestBody User user,
                                               WebRequest webRequest) {
-        System.out.println(user.getUsername());
-        System.out.println(user.getUserID());
 
         User optionalUser = userService.signup(user).orElseThrow(() ->
                 new ResponseStatusException(BAD_REQUEST, "USER ALREADY EXISTS"));

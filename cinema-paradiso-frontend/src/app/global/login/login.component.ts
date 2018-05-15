@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit {
           // Set user loggedIn status to global. So header can subscribe to the event.
           // this.loginStatusService.changeStatus(true);
           if(data !== null){
-            alert('One last step: Please activate your account by Email\n The link will be Invalid in TEN minutes');
+            alert('One last step: Please activate your account by Email\nThe link will be Invalid in TEN minutes');
             location.reload(true);
           } else {
             alert('Invalid email address, please resignUp with an valid one');
@@ -129,7 +129,8 @@ export class LoginComponent implements OnInit {
             this.loginStatusService.changeStatus(true);
             location.reload(true);
           } else {
-            alert(' Please activate your account by Email');
+            alert(' We detect your account is not activated\nWe resend you a verify email to your registration email, please check\n' +
+              'The link will be Invalid in TEN minutes ');
           }
         });
       }
