@@ -100,22 +100,25 @@
 
         <p class="s-plot">{{movie.plot}}</p>
         <p>
-          Starring
-          <span *ngFor="let cast of movie.cast">
-            <a routerLink="/celebrity/{{cast}}">{{cast}}, </a>
-          </span>
-        </p>
-        <p>
           Director
           <span *ngFor="let direct of movie.director">
-            <a routerLink="/celebrity/{{direct}}">{{direct}}, </a>
+            <!--<a routerLink="/celebrity/{{direct}}">{{direct}}, </a>-->
+            {{direct}},
           </span>
 
         </p>
         <p>
-          Genres
+          Starring
+          <span *ngFor="let cast of movie.cast">
+            <!--<a routerLink="/celebrity/{{cast}}">{{cast}}, </a>-->
+            {{cast}},
+          </span>
+        </p>
+        <p>
+          Genres&nbsp;
           <span *ngFor="let genres of movie.genres">
-            <a routerLink="/search" [queryParams]="{table:'movie', search:genres}">{{genres}}, </a>
+            <!--<a routerLink="/search" [queryParams]="{table:'movie', search:genres}">{{genres}}, </a>-->
+            {{genres}},
           </span>
         </p>
       </div>
@@ -132,11 +135,11 @@
       <h4 class="bottom_divide">TV</h4>
     <div class="row s-item"  *ngFor="let tv of tvResults, let index = index">
       <div class="col-4 s_img-wrap">
-        <img src="{{tv.poster}}"
-             alt="">
+        <img routerLink="/tv/{{tv.imdbId}}" src="{{tv.poster}}"
+             alt="{{tv.title}}">
       </div>
       <div class="col-7">
-        <p class="s-item__title">{{tv.title}}e</p>
+        <a class="s-item__title" routerLink="/tv/{{tv.imdbId}}">{{tv.title}}</a>
 
         <div class="flex">
           <div *ngIf="tv.rating==0">
@@ -229,13 +232,15 @@
         <p>
           Starring
           <span *ngFor="let cast of tv.cast">
-            <a routerLink="/celebrity/{{cast.celebrityId}}">{{cast}}, </a>
+            <!--<a routerLink="/celebrity/{{cast.celebrityId}}">{{cast}}, </a>-->
+            {{cast}},
           </span>
         </p>
         <p>
-          Genres
+          Genres&nbsp;
           <span *ngFor="let genres of tv.genres">
-            <a routerLink="/search" [queryParams]="{table:'tv', search:genres}">{{genres}}, </a>
+            <!--<a routerLink="/search" [queryParams]="{table:'tv', search:genres}">{{genres}}, </a>-->
+            {{genres}},
           </span>
         </p>
       </div>

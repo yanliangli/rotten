@@ -113,22 +113,25 @@
 
         <p class="s-plot">{{movie.plot}}</p>
         <p>
-          Starring
-          <span *ngFor="let cast of movie.cast">
-              <a routerLink="/celebrity/{{cast}}">{{cast}}, </a>
-            </span>
-        </p>
-        <p>
           Director
           <span *ngFor="let direct of movie.director">
-              <a routerLink="/celebrity/{{direct}}">{{direct}}, </a>
+              <!--<a routerLink="/celebrity/{{direct}}">{{direct}}, </a>-->
+            {{direct}},
           </span>
 
         </p>
         <p>
+          Starring
+          <span *ngFor="let cast of movie.cast">
+              <!--<a routerLink="/celebrity/{{cast}}">{{cast}}, </a>-->
+            {{cast}},
+            </span>
+        </p>
+        <p>
           Genres
           <span *ngFor="let genres of movie.genres">
-              <a routerLink="/search" [queryParams]="{table:'movie', search:genres}">{{genres}}, </a>
+              <!--<a routerLink="/search" [queryParams]="{table:'movie', search:genres}">{{genres}}, </a>-->
+            {{genres}},
             </span>
         </p>
       </div>
