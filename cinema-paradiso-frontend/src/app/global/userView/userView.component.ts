@@ -38,8 +38,10 @@ export class UserViewComponent implements OnInit {
   profile = new Profile();
   tokenHelper = new JwtHelperService();
   profile_url: string;
-  whishlist: Movie[];
-  watchlist: Movie[];
+  whishlistMovies: Movie[];
+  watchlistMovies: Movie[];
+  whishlistTvs: Movie[];
+  watchlistTvs: Movie[];
   ratedMovieList: Movie[];
   reviews: Review[];
   followerProfiles: UserFile[];
@@ -142,21 +144,37 @@ export class UserViewComponent implements OnInit {
       );
   }
   getWishlist(): any {
-    this.userViewService.getWishlist(this.userId)
+    this.userViewService.getWishlistMovies(this.userId)
       .subscribe(
         data => {
-          this.whishlist = data as Movie[];
-          console.log(this.whishlist);
+          this.whishlistMovies = data as Movie[];
+          console.log(this.whishlistMovies);
+        },
+        error => console.log('Failed to fetch movies playing')
+      );
+    this.userViewService.getWishlistTvs(this.userId)
+      .subscribe(
+        data => {
+          this.whishlistTvs = data as Movie[];
+          console.log(this.whishlistTvs);
         },
         error => console.log('Failed to fetch movies playing')
       );
   }
   getWatchlist(): any {
-    this.userViewService.getWatchlist(this.userId)
+    this.userViewService.getWatchlistMovies(this.userId)
       .subscribe(
         data => {
-          this.watchlist = data as Movie[];
-          console.log(this.watchlist);
+          this.watchlistMovies = data as Movie[];
+          console.log(this.watchlistMovies);
+        },
+        error => console.log('Failed to fetch movies playing')
+      );
+    this.userViewService.getWatchlistTvs(this.userId)
+      .subscribe(
+        data => {
+          this.watchlistTvs = data as Movie[];
+          console.log(this.watchlistTvs);
         },
         error => console.log('Failed to fetch movies playing')
       );

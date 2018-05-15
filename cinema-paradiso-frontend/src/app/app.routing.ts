@@ -29,6 +29,10 @@ import {CareerComponent} from './global/general/career/career.component';
 import {MoviePhotosComponent} from './global/movie-detail/photos/movie-photos.component';
 import {MovieTrailersComponent} from './global/movie-detail/trailers/movie-trailers.component';
 import {MovieReviewsComponent} from './global/movie-detail/reviews/movie-reviews.component';
+import {TvDetailComponent} from './global/tv_detail/tv-detail.component';
+import {TvPhotosComponent} from './global/tv_detail/photos/tv-photos.component';
+import {TvTrailersComponent} from './global/tv_detail/trailers/tv-trailers.component';
+import {TvReviewsComponent} from './global/tv_detail/reviews/tv-reviews.component';
 
 const appRoutes: Routes = [
   //{path: '', pathMatch: 'full', redirectTo: 'home'},
@@ -55,8 +59,12 @@ const appRoutes: Routes = [
   {path: 'movie/photos/:id', component: MoviePhotosComponent},
   {path: 'movie/trailers/:id', component: MovieTrailersComponent},
   {path: 'movie/reviews/:id', component: MovieReviewsComponent},
+  {path: 'tv/:id', component: TvDetailComponent},
+  {path: 'tv/photos/:id', component: TvPhotosComponent},
+  {path: 'tv/trailers/:id', component: TvTrailersComponent},
+  {path: 'tv/reviews/:id', component: TvReviewsComponent},
   {path: 'user/:id', component: RegUserComponent},
-  {path: 'userView:id', component: UserViewComponent},
+  {path: 'userView/:id', component: UserViewComponent},
   {path: 'home/:id', component: MovieDetailComponent},
   {path: 'about', component: AboutComponent},
   {path: 'contact', component: ContactComponent},

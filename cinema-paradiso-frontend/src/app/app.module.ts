@@ -50,6 +50,11 @@ import {RegUserService} from './user/reg-user/reg-user.service';
 import {MoviePhotosComponent} from './global/movie-detail/photos/movie-photos.component';
 import {MovieReviewsComponent} from './global/movie-detail/reviews/movie-reviews.component';
 import {MovieTrailersComponent} from './global/movie-detail/trailers/movie-trailers.component';
+import {TvDetailComponent} from './global/tv_detail/tv-detail.component';
+import {TvReviewsComponent} from './global/tv_detail/reviews/tv-reviews.component';
+import {TvTrailersComponent} from './global/tv_detail/trailers/tv-trailers.component';
+import {TvPhotosComponent} from './global/tv_detail/photos/tv-photos.component';
+import {TvDetailService} from './global/tv_detail/tv-detail.service';
 
 @NgModule({
   // entryComponents: [MessageComponent],
@@ -60,6 +65,7 @@ import {MovieTrailersComponent} from './global/movie-detail/trailers/movie-trail
     HeaderComponent,
     LoginComponent,
     MovieDetailComponent,
+    TvDetailComponent,
     CelebrityComponent,
     RegUserComponent,
     UserViewComponent,
@@ -89,6 +95,9 @@ import {MovieTrailersComponent} from './global/movie-detail/trailers/movie-trail
     MoviePhotosComponent,
     MovieReviewsComponent,
     MovieTrailersComponent,
+    TvReviewsComponent,
+    TvTrailersComponent,
+    TvPhotosComponent,
   ],
   imports: [
     BrowserModule,
@@ -106,6 +115,7 @@ import {MovieTrailersComponent} from './global/movie-detail/trailers/movie-trail
     HomeService,
     MovieService,
     MovieDetailService,
+    TvDetailService,
     RegUserService,
     SearchService,
     {

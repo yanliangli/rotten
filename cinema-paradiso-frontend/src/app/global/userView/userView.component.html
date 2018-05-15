@@ -42,7 +42,7 @@
       </div>
       <ng-template #elseBlock>
         <div  *ngIf ="inFollower; else addFollower">
-          <a class="show_Account w3-bar-item w3-button w3-padding w3-text-black w3-sand" (click)="deFollowUser()"><i
+          <a class="show_Account w3-bar-item w3-button w3-padding w3-text-black w3-light-blue" (click)="deFollowUser()"><i
             class="fa fa-users fa-fw w3-margin-right"></i>- Follow</a>
         </div >
         <ng-template #addFollower >
@@ -71,7 +71,7 @@
         </button>
 
         <button class="show_Wish_List w3-button w3-white w3-hide-small" aria-hidden="true" (click)="showDiv(3)">
-          <i class="fa fa-heart w3-margin-right"></i>Wishlist
+          <i class="fa fa-heart w3-margin-right"></i>Want To See
         </button>
         <button class="show_Movie_List w3-button w3-white w3-hide-small" aria-hidden="true" (click)="showDiv(4)">
           <i class="fa fa-list-alt w3-margin-right"></i>Not Interest
@@ -98,11 +98,10 @@
         </form>
       </div>
       <section class="l-cards">
-        <h2 class="l-cards__title">User Wishlist </h2>
-        <a class="l-cards__more w3-margin-right" href="#">more <i class="fa fa-angle-double-right"></i></a>
+        <h2 class="l-cards__title">User Want To See Movies</h2>
 
         <ul class="l-cards__list">
-          <li class="l-cards__item"*ngFor="let movie of whishlist">
+          <li class="l-cards__item"*ngFor="let movie of whishlistMovies">
             <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active" class="l-cards__image fill">
               <img [src]="movie.poster" [alt]="movie.title">
             </a>
@@ -116,10 +115,9 @@
 
       <section class="l-cards">
         <h2 class="l-cards__title">User Not Interest</h2>
-        <a class="l-cards__more w3-margin-right" href="#">more <i class="fa fa-angle-double-right"></i></a>
 
         <ul class="l-cards__list">
-          <li class="l-cards__item"*ngFor="let movie of watchlist">
+          <li class="l-cards__item"*ngFor="let movie of watchlistMovies">
             <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active" class="l-cards__image fill">
               <img [src]="movie.poster" [alt]="movie.title">
             </a>
@@ -133,7 +131,6 @@
 
       <section class="l-cards">
         <h2 class="l-cards__title">Rating History</h2>
-        <a class="l-cards__more w3-margin-right" href="#">more <i class="fa fa-angle-double-right"></i></a>
         <ul class="l-cards__list">
           <li class="l-cards__item"*ngFor="let movie of ratedMovieList">
             <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active" class="l-cards__image fill">
@@ -148,42 +145,8 @@
       </section>
     </div>
     <div class="container Movie_Ratings_results" *ngIf="currentIndex === 2">
-      <h2 class="l-cards__title w3-margin-left">Last Rated Movies</h2>
-      <div class="row">
-        <div class="col-4">
-          <img
-            src="https://images-na.ssl-images-amazon.com/images/M/MV5BNGNiNWQ5M2MtNGI0OC00MDA2LWI5NzEtMmZiYjVjMDEyOWYzXkEyXkFqcGdeQXVyMjM4NTM5NDY@._V1_UX182_CR0,0,182,268_AL_.jpg"
-            alt="">
-
-        </div>
-
-        <!--<div class="show_more w3-margin-right">-->
-        <!--</div>-->
-
-        <div class="col-7 testimonial">
-          <p class="film_name">The Shape of Water</p>
-
-          <h2 class="l-cards__title">Your Rate: <span>4.2/5.0</span></h2>
-
-          <div class="testimonial-content">
-            <div class="testimonial-icon">
-              <i class="fa fa-quote-left"></i>
-            </div>
-            <div class="l_description">
-              <p class="description">
-                The Shape of Water is an ingenious fantasy romance that utilizes cold war era elements to the
-                advantage of its premise while subtly challenging our preconceived notions of established
-                archetypes. Del Toro has an innate understanding of portraying beauty of purity in all it's
-                forms while simultaneously showing us the grotesque underbelly and brutality of what it is to be
-                human. These skills help him build a boy meets girl
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
       <section class="l-cards">
         <h2 class="l-cards__title">Rated Movies</h2>
-        <a class="l-cards__more w3-margin-right" href="#">more <i class="fa fa-angle-double-right"></i></a>
         <ul class="l-cards__list">
           <li class="l-cards__item"*ngFor="let movie of ratedMovieList">
             <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active" class="l-cards__image fill">
@@ -199,11 +162,10 @@
     </div>
     <div class="container Wish_List_results" *ngIf="currentIndex === 3">
       <section class="l-cards">
-        <h2 class="l-cards__title">User Wishlist </h2>
-        <a class="l-cards__more w3-margin-right" href="#">more <i class="fa fa-angle-double-right"></i></a>
+        <h2 class="l-cards__title">User Want To See Movies </h2>
 
         <ul class="l-cards__list">
-          <li class="l-cards__item"*ngFor="let movie of whishlist">
+          <li class="l-cards__item"*ngFor="let movie of whishlistMovies">
             <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active" class="l-cards__image fill">
               <img [src]="movie.poster" [alt]="movie.title">
             </a>
@@ -214,18 +176,49 @@
           </li>
         </ul>
       </section>
+
+      <section class="l-cards">
+        <h2 class="l-cards__title">User Want To See Tvs </h2>
+
+        <ul class="l-cards__list">
+          <li class="l-cards__item"*ngFor="let movie of whishlistTvs">
+            <a routerLink="/tv/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active" class="l-cards__image fill">
+              <img [src]="movie.poster" [alt]="movie.title">
+            </a>
+            <a routerLink="/tv/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active"  class="l-cards__text">
+              {{movie.title}}
+              <p>{{movie.rating}}/5.0</p>
+            </a>
+          </li>
+        </ul>
+      </section>
     </div>
     <div class="container Movie_List_results" *ngIf="currentIndex === 4">
       <section class="l-cards">
         <h2 class="l-cards__title">User Not Interest</h2>
-        <a class="l-cards__more w3-margin-right" href="#">more <i class="fa fa-angle-double-right"></i></a>
 
         <ul class="l-cards__list">
-          <li class="l-cards__item"*ngFor="let movie of watchlist">
+          <li class="l-cards__item"*ngFor="let movie of watchlistMovies">
             <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active" class="l-cards__image fill">
               <img [src]="movie.poster" [alt]="movie.title">
             </a>
             <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active"  class="l-cards__text">
+              {{movie.title}}
+              <p>{{movie.rating}}/5.0</p>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="l-cards">
+        <h2 class="l-cards__title">User Not Interest</h2>
+
+        <ul class="l-cards__list">
+          <li class="l-cards__item"*ngFor="let movie of watchlistTvs">
+            <a routerLink="/tv/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active" class="l-cards__image fill">
+              <img [src]="movie.poster" [alt]="movie.title">
+            </a>
+            <a routerLink="/tv/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active"  class="l-cards__text">
               {{movie.title}}
               <p>{{movie.rating}}/5.0</p>
             </a>
@@ -261,7 +254,6 @@
     <div class="container Movie_List_results" *ngIf="currentIndex === 6">
       <section class="l-cards">
         <h2 class="l-cards__title">User Follow</h2>
-        <a class="l-cards__more w3-margin-right" href="#">more <i class="fa fa-angle-double-right"></i></a>
 
         <ul class="l-cards__list">
           <li class="l-cards__item"*ngFor="let follow of followerProfiles">
@@ -278,7 +270,6 @@
 
       <section class="l-cards">
         <h2 class="l-cards__title">User Followers</h2>
-        <a class="l-cards__more w3-margin-right" href="#">more <i class="fa fa-angle-double-right"></i></a>
 
         <ul class="l-cards__list">
           <li class="l-cards__item"*ngFor="let follow of followYouProfiles">
@@ -302,7 +293,6 @@
     <!-- 	Recommend section	 -->
     <section class="l-cards">
       <h2 class="l-cards__title">Recommended For Me</h2>
-      <a class="l-cards__more w3-margin-right" href="#">more <i class="fa fa-angle-double-right"></i></a>
       <ul class="l-cards__list">
         <li class="l-cards__item">
           <a href="#" class="l-cards__image fill"></a>

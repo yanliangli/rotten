@@ -43,13 +43,22 @@ public class WishlistController {
     @Autowired
     private ObjectMapper objectMapper;
 
-    @RequestMapping(value = "/get/wishlist", method = GET)
-    public ResponseEntity<List> getWishlist(@RequestHeader(value = "Authorization") String jwtToken) {
+    @RequestMapping(value = "/get/wishlistMovies", method = GET)
+    public ResponseEntity<List> getWishlistMovies(@RequestHeader(value = "Authorization") String jwtToken) {
         return new ResponseEntity<>(listService.getList(jwtTokenService.getUserIdFromToken(jwtToken)), HttpStatus.OK);
     }
-    @RequestMapping(value = "/get/wishlist/{userId}", method = GET)
-    public ResponseEntity<List> getWishlist(@PathVariable Integer userId) {
+    @RequestMapping(value = "/get/wishlistMovies/{userId}", method = GET)
+    public ResponseEntity<List> getWishlistMovies(@PathVariable Integer userId) {
         return new ResponseEntity<>(listService.getList(userId), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/get/wishlistTvs", method = GET)
+    public ResponseEntity<List> getWishlistTvs(@RequestHeader(value = "Authorization") String jwtToken) {
+        return new ResponseEntity<>(listService.getTVList(jwtTokenService.getUserIdFromToken(jwtToken)), HttpStatus.OK);
+    }
+    @RequestMapping(value = "/get/wishlistTvs/{userId}", method = GET)
+    public ResponseEntity<List> getWishlistTvs(@PathVariable Integer userId) {
+        return new ResponseEntity<>(listService.getTVList(userId), HttpStatus.OK);
     }
     @GetMapping(value = "/check/{filmId}")
     public ResponseEntity<Boolean> checkWishlist(@RequestHeader(value = "Authorization") String jwtToken,

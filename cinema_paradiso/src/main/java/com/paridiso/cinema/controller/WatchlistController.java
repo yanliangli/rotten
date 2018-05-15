@@ -34,14 +34,24 @@ public class WatchlistController {
     @Autowired
     JwtTokenService jwtTokenService;
 
-    @RequestMapping(value = "/get/watchlist", method = GET)
-    public ResponseEntity<List> getWatchlist(@RequestHeader(value = "Authorization") String jwtToken) {
+    @RequestMapping(value = "/get/watchlistMovies", method = GET)
+    public ResponseEntity<List> getWatchlistMovies(@RequestHeader(value = "Authorization") String jwtToken) {
         return new ResponseEntity<>(listService.getList(jwtTokenService.getUserIdFromToken(jwtToken)), HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/get/watchlist/{userId}", method = GET)
-    public ResponseEntity<List> getWatchlist(@PathVariable Integer userId) {
+    @RequestMapping(value = "/get/watchlistMovies/{userId}", method = GET)
+    public ResponseEntity<List> getWatchlistMovies(@PathVariable Integer userId) {
         return new ResponseEntity<>(listService.getList(userId), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/get/watchlistTvs", method = GET)
+    public ResponseEntity<List> getWatchlistTvs(@RequestHeader(value = "Authorization") String jwtToken) {
+        return new ResponseEntity<>(listService.getTVList(jwtTokenService.getUserIdFromToken(jwtToken)), HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/get/watchlistTvs/{userId}", method = GET)
+    public ResponseEntity<List> getWatchlistTvs(@PathVariable Integer userId) {
+        return new ResponseEntity<>(listService.getTVList(userId), HttpStatus.OK);
     }
 
     @GetMapping(value = "/check/{filmId}")

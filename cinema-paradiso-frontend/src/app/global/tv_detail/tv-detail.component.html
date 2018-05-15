@@ -1,0 +1,360 @@
+<html>
+<body>
+<main>
+  <div class="container">
+    <div class="row">
+      <!--   left panel   -->
+      <div class="col-sidebar sidebar">
+        <categories-sidebar></categories-sidebar>
+      </div> <!-- ./end left panel -->
+
+      <!--  right panel -->
+      <div class="col-right content-wrap">
+        <!-- poster -->
+        <div class="r_poster">
+          <img id="detail_poster" [src]="movie.poster" [alt]="movie.title" >
+        </div>
+
+        <h4 class="md-title"><span>RATING</span></h4>
+        <div id="right_panel">
+          <div id="rating_poster">
+            <img [src]="movie.poster" [alt]="movie.title" >
+          </div>
+          <div id="rating_panel">
+            <!-- ratings -->
+            <div class="container">
+              <div class="row ratings">
+                <div class="col-ratings rating-container">
+                  <div class="rating-inner">
+                    <div class="rating">
+                      <p class="ratings-header">CURRENT RATING</p>
+                      <span class="rating-num" *ngIf="movie.numberOfRatings!=0">{{movie.rating}}</span>
+                      <div class="flex">
+                        <div *ngIf="movie.rating==null || movie.numberOfRatings == 0">
+                          <p class="no_rating" style="color: white">No Rating Yet</p>
+                        </div>
+
+                        <div *ngIf="movie.rating>0&& movie.rating<1">
+                          <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                        </div>
+
+                        <div *ngIf="movie.rating==1">
+                          <i class="fa fa-star" ></i>
+                        </div>
+
+                        <div *ngIf="movie.rating>1&& movie.rating<2">
+                          <i class="fa fa-star" ></i>
+                          <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                        </div>
+
+                        <div *ngIf="movie.rating==2">
+                          <i class="fa fa-star" ></i>
+                          <i class="fa fa-star"></i>
+                        </div>
+
+                        <div *ngIf="movie.rating>2&& movie.rating<3">
+                          <i class="fa fa-star" ></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                        </div>
+
+                        <div *ngIf="movie.rating==3">
+                          <i class="fa fa-star" ></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                        </div>
+
+                        <div *ngIf="movie.rating>3&& movie.rating<4">
+                          <i class="fa fa-star" ></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                        </div>
+
+                        <div *ngIf="movie.rating==4">
+                          <i class="fa fa-star" ></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                        </div>
+
+                        <div *ngIf="movie.rating>4&& movie.rating<5">
+                          <i class="fa fa-star" ></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                        </div>
+
+                        <div *ngIf="movie.rating==5">
+                          <i class="fa fa-star" ></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                        </div>
+                      </div>
+                      <div class="rating-users" *ngIf="movie.numberOfRatings > 0 && movie.rating!=null">
+                        <i class="icon-user"></i> {{numberInMillion(movie.numberOfRatings)}} Total
+                      </div>
+                    </div>
+                  </div>
+                  <!--end normal user review-->
+                </div>
+              </div>
+            </div>
+
+            <div class="container ratings-add">
+              <p class="ratings-header">ADD YOUR RATING</p>
+              <div class="row">
+                <img class="col-profile-img"
+                     src="{{profile_url}}"
+                     alt="user"/>
+                <div class="col-add-ratings">
+                  <div *ngIf="!status; else elseBlock">
+                    <button class="o-button o-button--gray trigger" routerLinkActive="active"  href="javascript:;"
+                            (click)= "notice()">+ NOT INTERESTED</button>
+                    <button class="o-button o-button trigger" routerLinkActive="active"  href="javascript:;"
+                            (click)= "notice()">+ WANT TO SEE</button>
+                    <ngb-rating [(rate)]="selected" (hover)="hovered=$event" (leave)="hovered=0" [readonly]="readonly"
+                                routerLinkActive="active" class="trigger" href="javascript:;" (click)="notice()">
+                      <span class="star"></span>
+                    </ngb-rating>
+                    <textarea placeholder="Add a review..."></textarea>
+                    <button  routerLinkActive="active" class="trigger" href="javascript:;" (click)="notice()">Post</button>
+                  </div>
+                  <ng-template #elseBlock>
+                    <ng-container  *ngIf ="inWatchlist; else addToWatchlist">
+                      <button class="o-button o-button--blue" (click)= "removeFromWacthList()">- NOT INTERESTED</button>
+                    </ng-container >
+                    <ng-template #addToWatchlist >
+                      <button class="o-button o-button--gray" (click)= "addWatchlist()">+ NOT INTERESTED</button>
+                    </ng-template>
+
+                    <ng-container *ngIf ="inWishlist; else addToWishlist">
+                      <button class="o-button o-button--blue1" (click)= "removeFromWishList()">- WANT TO SEE</button>
+                    </ng-container>
+
+                    <ng-template #addToWishlist>
+                      <button class="o-button o-button" (click)= "addWishlist()">+ WANT TO SEE</button>
+                    </ng-template>
+
+                    <ng-container *ngIf ="inRatedMovieList; else rateMovieBlock">
+                      <button class="o-button o-button--yellow" (click)= "deleteRating()">- Rating</button>
+                      <ngb-rating [(rate)]="selected" (hover)="hovered=$event" (leave)="hovered=0" [readonly]="readonly" (click)="rateMovie()">
+                        <span class="star"></span>
+                      </ngb-rating>
+                    </ng-container>
+                    <ng-template #rateMovieBlock>
+                      <ngb-rating [(rate)]="selected" (hover)="hovered=$event" (leave)="hovered=0" [readonly]="readonly" (click)="rateMovie()">
+                        <span class="star"></span>
+                      </ngb-rating>
+                    </ng-template>
+                    <textarea placeholder="Add a review..." [(ngModel)]="review.reviewContent" required></textarea>
+                    <button id="post-btn" (click)="addReview()">Post</button>
+                  </ng-template>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- movie info -->
+
+        <div class="md_wrap">
+          <h4 class="md-title"><span>TV INFO</span></h4>
+          <div class="movie_info">
+            <p class="md-plot">{{movie.plot}}</p>
+            <br>
+            <p style="padding-left: 29.4%">
+              Rating:&nbsp;&nbsp;&nbsp;&nbsp;
+              <span>
+                {{movie.rated}}
+              </span>
+            </p>
+            <p style="padding-left: 30%">
+              Genre:&nbsp;&nbsp;&nbsp;&nbsp;
+              <span *ngFor="let genre of movie.genres">
+                {{genre}},
+              </span>
+            </p>
+            <p style="padding-left: 24%">
+              Directed By:&nbsp;&nbsp;&nbsp;&nbsp;
+              <span *ngFor="let director of movie.director">
+                {{director}},
+              </span>
+            </p>
+            <p style="padding-left: 27.6%">
+              Runtime:&nbsp;&nbsp;&nbsp;&nbsp;
+              <span >
+                {{movie.runTime}} minutes
+              </span>
+            </p>
+            <p  style="padding-left: 24.6%">
+              In Theaters:&nbsp;&nbsp;&nbsp;&nbsp;
+              <span >
+                {{movie.releaseDate}}
+              </span>
+            </p>
+            <p style="padding-left: 29.4%">
+              Studio:&nbsp;&nbsp;&nbsp;&nbsp;
+              <span *ngIf="movie.production != ''; else noProduction;">
+                {{movie.production}}
+              </span>
+              <ng-template #noProduction>
+                <span >
+                  N/A
+                </span>
+              </ng-template>
+            </p>
+          </div>
+        </div>
+
+
+        <!-- 	1st section	videos -->
+        <section class="md_wrap">
+          <h2 class="md-title"><span>VIDEOS</span></h2>
+          <!--<a class="l-cards__more" href="#">more <i class="fa fa-angle-double-right"></i></a>-->
+
+          <ul class="container md-list__videos" >
+            <li class="row md-list__item" *ngFor="let videos of myTrailers | slice:0:2">
+              <!--<object class="col-video item__detail"-->
+              <iframe [src]="trailerURL(videos)" width="400px"  height="225px" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" frameborder="no" scrolling="no">
+              </iframe>
+              <!--<object [data]="trailelURL(videos)"></object>-->
+            </li>
+          </ul>
+          <a class="md-more" href="" routerLink="../../tv/trailers/{{movie.imdbId}}">View All ({{myTrailers.length}})<i class="fa fa-angle-double-right"></i></a>
+        </section>
+        <!-- 	end 1st section	 -->
+
+        <!-- 	2nd section	photos -->
+        <section class="md_wrap">
+          <h2 class="md-title"><span>PHOTOS</span></h2>
+          <!--<a class="l-cards__more" href="#">more <i class="fa fa-angle-double-right"></i></a>-->
+          <ul class="container md-list__photos">
+            <!--<li class="row md-list__item" *ngFor="let photo of movie.photos">-->
+            <li class="row md-list__item" >
+              <a class="col-photos item__detail" href="" *ngFor="let photos of movie.photos | slice:0:4">
+                <img src="{{photos}}" [alt]="movie.title">
+              </a>
+            </li>
+          </ul>
+          <a class="md-more" href="" routerLink="../../tv/photos/{{movie.imdbId}}">View All ({{movie.photos.length}})<i class="fa fa-angle-double-right"></i></a>
+        </section>
+        <!-- end 2nd section -->
+
+        <!-- 	3rd section	cast -->
+        <section class="md_wrap">
+          <h2 class="md-title"><span>CAST</span></h2>
+          <!--<a class="l-cards__more" href="#">more <i class="fa fa-angle-double-right"></i></a>-->
+          <ul class="container md-list__casts">
+            <li class="row md-list__item">
+              <a class="col-casts item__detail" *ngFor="let cast of casts">
+                <a routerLink="/celebrity/{{cast.celebrityId}}">
+                  <img [src]="cast.poster">
+                </a>
+                <a routerLink="/celebrity/{{cast.celebrityId}}">
+                  {{cast.name}}
+                </a>
+              </a>
+            </li>
+          </ul>
+          <!--<a class="md-more" href="" routerLink="movie/actors/{{movie.imdbId}}">more <i class="fa fa-angle-double-right"></i></a>-->
+        </section>
+        <!-- end 3rd section -->
+
+        <!--CAUTION: all reviews are mixed together, just specify user role span-->
+
+        <!-- 	4th section	all reviews -->
+        <section class="md_wrap">
+          <h2 class="md-title"><span>REVIEWS</span></h2>
+          <div class="container">
+            <div class="row">
+              <!--<div class="col-md-12">-->
+              <!--<div id="testimonial-slider" class="owl-carousel">-->
+              <div class="col-testimonial testimonial" *ngFor="let reviews of movie.reviews | slice:0:2">
+                <div class="testimonial-content">
+                  <div class="testimonial-icon">
+                    <i class="fa fa-quote-left"></i>
+                  </div>
+                  <p class="t_description" style="max-height: 121px; overflow: hidden">
+                    {{reviews.reviewContent}}
+                  </p>
+                </div>
+                <!--<h3 class="title">{{reviews.author}}</h3>-->
+                <a routerLink="/userView/{{reviews.userId}}">{{reviews.author}}</a>
+                <div>
+                  <span class="post">Posted on {{reviews.postedDate}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <a class="md-more" href="" routerLink="../../tv/reviews/{{movie.imdbId}}">View All ({{movie.reviews.length}})<i class="fa fa-angle-double-right"></i></a>
+          <!--</div>-->
+          <!--</div>-->
+
+        </section>
+
+
+        <!-- 	4th section	audience reviews -->
+        <!--<section class="md_wrap">-->
+        <!--<h2 class="md-title"><span>AUDIENCE REVIEWS</span></h2>-->
+        <!--<a class="md-more" href="#">more <i class="fa fa-angle-double-right"></i></a>-->
+        <!--<div class="container">-->
+        <!--<div class="row">-->
+        <!--&lt;!&ndash;<div class="col-md-12">&ndash;&gt;-->
+        <!--&lt;!&ndash;<div id="testimonial-slider2" class="owl-carousel">&ndash;&gt;-->
+        <!--<div class="col-testimonial testimonial">-->
+        <!--<div class="testimonial-content">-->
+        <!--<div class="testimonial-icon">-->
+        <!--<i class="fa fa-quote-left"></i>-->
+        <!--</div>-->
+        <!--<p class="t_description">-->
+        <!--The Shape of Water is an ingenious fantasy romance that utilizes-->
+        <!--cold war era elements to the advantage of its premise while subtly-->
+
+        <!--</p>-->
+        <!--</div>-->
+        <!--<h3 class="title">Drake Tsui</h3>-->
+        <!--<span class="post">Super Reviewer</span>-->
+        <!--</div>-->
+        <!--<div class="col-testimonial testimonial">-->
+        <!--<div class="testimonial-content">-->
+        <!--<div class="testimonial-icon">-->
+        <!--<i class="fa fa-quote-left"></i>-->
+        <!--</div>-->
+        <!--<p class="t_description">-->
+        <!--Guillermo del Toro has found himself to be quite the respected-->
+        <!--filmmaker over the years but, if I had to be brutally honest, I'd-->
+
+        <!--</p>-->
+        <!--</div>-->
+        <!--<h3 class="title">Mark Walker</h3>-->
+        <!--<span class="post">Super Reviewer</span>-->
+        <!--</div>-->
+        <!--<div class="col-testimonial testimonial">-->
+        <!--<div class="testimonial-content">-->
+        <!--<div class="testimonial-icon">-->
+        <!--<i class="fa fa-quote-left"></i>-->
+        <!--</div>-->
+        <!--<p class="t_description">-->
+        <!--Like many of Del Toro's movies, I just couldn't buy into it. I found-->
+        <!--myself not caring about the monster and I didn't buy the-->
+        <!--</p>-->
+        <!--</div>-->
+        <!--<h3 class="title">Sanjay Rema</h3>-->
+        <!--<span class="post">Super Reviewer</span>-->
+        <!--</div>-->
+
+        <!--</div>-->
+        <!--</div>-->
+        <!--</section>-->
+        <!-- end -->
+
+      </div> <!-- ./end right panel -->
+    </div> <!-- ./row -->
+  </div> <!-- ./container-fluid -->
+
+</main>
+</body>
+</html>

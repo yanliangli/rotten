@@ -13,11 +13,17 @@ export class UserViewService {
     return this.http.get('http://localhost:8080/user/get/profile/' + userId);
   }
 
-  getWishlist(userId: number) {
-    return this.http.get('http://localhost:8080/wishlist/get/wishlist/' + userId);
+  getWishlistMovies(userId: number) {
+    return this.http.get('http://localhost:8080/wishlist/get/wishlistMovies/' + userId);
   }
-  getWatchlist(userId: number) {
-    return this.http.get('http://localhost:8080/watchlist/get/watchlist/' + userId);
+  getWatchlistMovies(userId: number) {
+    return this.http.get('http://localhost:8080/watchlist/get/watchlistMovies/' + userId);
+  }
+  getWishlistTvs(userId: number) {
+    return this.http.get('http://localhost:8080/wishlist/get/wishlistTvs/' + userId);
+  }
+  getWatchlistTvs(userId: number) {
+    return this.http.get('http://localhost:8080/watchlist/get/watchlistTvs/' + userId);
   }
 
   getRatedMovieList(userId: number) {

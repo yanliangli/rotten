@@ -42,8 +42,10 @@ export class RegUserComponent implements OnInit {
   newPassword: string;
   changePasswordSuccess: boolean;
   changePasswordFailure: boolean;
-  whishlist: Movie[];
-  watchlist: Movie[];
+  whishlistMovies: Movie[];
+  watchlistMovies: Movie[];
+  whishlistTvs: Movie[];
+  watchlistTvs: Movie[];
   ratedMovieList: Movie[];
   reviews: Review[];
   followerProfiles: UserFile[];
@@ -181,21 +183,38 @@ export class RegUserComponent implements OnInit {
       );
   }
   getWishlist(): any {
-    this.regUserService.getWishlist()
+    this.regUserService.getWishlistMovies()
       .subscribe(
         data => {
-          this.whishlist = data as Movie[];
-          console.log(this.whishlist);
+          this.whishlistMovies = data as Movie[];
+          console.log(this.whishlistMovies);
+        },
+        error => console.log('Failed to fetch movies playing')
+      );
+
+    this.regUserService.getWishlistTvs()
+      .subscribe(
+        data => {
+          this.whishlistTvs = data as Movie[];
+          console.log(this.whishlistTvs);
         },
         error => console.log('Failed to fetch movies playing')
       );
   }
   getWatchlist(): any {
-    this.regUserService.getWatchlist()
+    this.regUserService.getWatchlistMovies()
       .subscribe(
         data => {
-          this.watchlist = data as Movie[];
-          console.log(this.watchlist);
+          this.watchlistMovies = data as Movie[];
+          console.log(this.watchlistMovies);
+        },
+        error => console.log('Failed to fetch movies playing')
+      );
+    this.regUserService.getWatchlistTvs()
+      .subscribe(
+        data => {
+          this.watchlistTvs = data as Movie[];
+          console.log(this.watchlistTvs);
         },
         error => console.log('Failed to fetch movies playing')
       );

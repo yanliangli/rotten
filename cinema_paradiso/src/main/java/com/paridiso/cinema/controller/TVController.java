@@ -48,8 +48,15 @@ public class TVController {
 
 
     @RequestMapping(value = "/{id}", method = GET)
-    public ResponseEntity<TV> getTV(@PathVariable Long id) {
-        return null;
+    public ResponseEntity<TV> getTV(@PathVariable String id) {
+
+        System.out.println("mapping correct!");
+        TV tv = tvService.getTV(id);
+        System.out.println("TV: " + tv.toString());
+        if (tv != null)
+            return new ResponseEntity<>(tv, HttpStatus.OK);
+
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @RequestMapping(value = "/add_tv", method = POST)
@@ -139,4 +146,5 @@ public class TVController {
         Pageable pageable = new PageRequest(page, size, sort);
         return new ResponseEntity<>(tvService.getCertifiedFresh(pageable), HttpStatus.OK);
     }
+
 }

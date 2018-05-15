@@ -28,11 +28,17 @@ export class RegUserService {
     const params = new HttpParams().set('old_password', oldPassword).set('new_password', newPassword);
     return this.http.post('http://localhost:8080/user/change/password', params);
   }
-  getWishlist() {
-    return this.http.get('http://localhost:8080/wishlist/get/wishlist');
+  getWishlistMovies() {
+    return this.http.get('http://localhost:8080/wishlist/get/wishlistMovies');
   }
-  getWatchlist() {
-    return this.http.get('http://localhost:8080/watchlist/get/watchlist');
+  getWatchlistMovies() {
+    return this.http.get('http://localhost:8080/watchlist/get/watchlistMovies');
+  }
+  getWishlistTvs() {
+    return this.http.get('http://localhost:8080/wishlist/get/wishlistTvs');
+  }
+  getWatchlistTvs() {
+    return this.http.get('http://localhost:8080/watchlist/get/watchlistTvs');
   }
 
   getRatedMovieList() {

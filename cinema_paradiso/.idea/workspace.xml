@@ -1,115 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c52c75d2-3ad3-4c5a-91c6-10b75ebb8529" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/models/userFile.model.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/userView/userView.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/userView/userView.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/userView/userView.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/userView/userView.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/FollowerContoller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/entity/FollowList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/entity/FollowYouList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/persistence/FollowListRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/persistence/FollowYouListRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/FollowerImpl.java" afterDir="false" />
+    <list default="true" id="c52c75d2-3ad3-4c5a-91c6-10b75ebb8529" name="Default" comment="Follow/Unfollow user&#10;View followers list&#10;View following list complete">
+      <change afterPath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/tv_detail/photos/tv-photos.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/tv_detail/photos/tv-photos.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/tv_detail/reviews/tv-reviews.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/tv_detail/reviews/tv-reviews.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/tv_detail/trailers/tv-trailers.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/tv_detail/trailers/tv-trailers.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/tv_detail/tv-detail.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/tv_detail/tv-detail.component.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/tv_detail/tv-detail.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/tv_detail/tv-detail.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema-paradiso-frontend/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/app.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/app.routing.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/app.routing.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/categories/acadamy_award/academy_award.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/categories/acadamy_award/academy_award.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/categories/category.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/categories/certified_fresh_movie/certified_fresh_movies.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/categories/certified_fresh_movie/certified_fresh_movies.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/categories/certified_fresh_tv/certified_fresh_tv.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/categories/certified_fresh_tv/certified_fresh_tv.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/categories/coming_soon/coming_soon.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/categories/coming_soon/coming_soon.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/categories/most_popular_tv/most_popular_tv.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/categories/most_popular_tv/most_popular_tv.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/categories/new_tv_tonight/new_tv_tonight.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/categories/new_tv_tonight/new_tv_tonight.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/categories/opening_this_week/opening_this_week.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/categories/opening_this_week/opening_this_week.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/categories/sidebar/sidebar.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/categories/sidebar/sidebar.component.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/categories/sidebar/sidebar.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/categories/top_box_office/top_box_office.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/categories/top_box_office/top_box_office.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/categories/top_rated_movies/top_rated_movie.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/categories/top_rated_movies/top_rated_movie.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/categories/top_rated_tv/top_rated_tv.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/categories/top_rated_tv/top_rated_tv.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/header/header.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/header/header.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/home/home.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/home/home.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/home/home.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/home/home.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/home/home.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/home/home.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/home/home.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/login/login.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/models/celebrity.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/models/celebrity.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/movie-detail/movie-detail.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/movie-detail/movie-detail.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/search/movie-tab/movie-tab.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/search/movie-tab/movie-tab.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/search/people-tab/people-tab.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/search/people-tab/people-tab.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/search/search-toolbar/search-toolbar.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/search/search-toolbar/search-toolbar.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/search/search.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/search/search.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/search/search.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/search/search.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/search/search.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/search/search.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/search/search.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/search/search.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/search/tv-tab/tv-tab.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/search/tv-tab/tv-tab.component.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/userView/userView.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/userView/userView.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/userView/userView.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/userView/userView.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/userView/userView.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/userView/userView.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/user/reg-user/reg-user.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/user/reg-user/reg-user.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/user/reg-user/reg-user.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/user/reg-user/reg-user.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/user/reg-user/reg-user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/user/reg-user/reg-user.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/assets/images/carousel_img/2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema-paradiso-frontend/src/assets/images/carousel_img/3.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/data/celebrity/oscar/oscar_celebrity.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/data/celebrity/oscar/oscar_celebrity_photos.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/data/celebrity/recent/recent_celebrity.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/data/celebrity/recent/recent_celebrity_photos.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/data/movie/coming_soon/coming_soon_movie.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/data/movie/coming_soon/coming_soon_photos.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/data/movie/coming_soon/coming_soon_reviews.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/data/movie/coming_soon/coming_soon_trailers.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/data/movie/oscar/oscar_movie.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/data/movie/oscar/oscar_photo.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/data/movie/oscar/oscar_photos.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/data/movie/oscar/oscar_reviews.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/data/movie/oscar/oscar_trailers.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/data/movie/recent/recent_movie.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/data/movie/recent/recent_photos.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/data/movie/recent/recent_reviews.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/data/movie/recent/recent_trailers.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/data/tv/tv.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/data/tv/tv_photos.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/data/tv/tv_reviews.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/data/tv/tv_trailers.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/MovieController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/MovieController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/RegUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/RegUserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/ReviewController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/ReviewController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/SearchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/SearchController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/TVController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/TVController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/WatchlistController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/WatchlistController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/WishlistController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/WishlistController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/entity/UserProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/entity/UserProfile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/persistence/MovieRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/persistence/MovieRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/persistence/TVRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/persistence/TVRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/FilmService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/FilmService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/entity/WatchList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/entity/WatchList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/entity/WishList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/entity/WishList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/ListService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/ListService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/TVService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/TVService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/MovieServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/MovieServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/RegUserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/RegUserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/UtilityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/UtilityService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/TVServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/TVServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/controller/RegUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/controller/RegUserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/controller/ReviewController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/controller/ReviewController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/controller/WatchlistController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/controller/WatchlistController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/controller/WishlistController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/controller/WishlistController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/entity/UserProfile.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/entity/UserProfile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/service/implementation/RegUserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/service/implementation/RegUserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/UtilityServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/UtilityServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/WatchlistServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/WatchlistServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/WishlistServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/WishlistServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/controller/CelebrityController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/controller/CelebrityController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/controller/MovieController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/controller/MovieController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/controller/SearchController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/controller/SearchController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/controller/TVController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/controller/TVController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/entity/WatchList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/entity/WishList.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/persistence/CelebrityRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/persistence/CelebrityRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/persistence/MovieRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/persistence/MovieRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/service/CelebrityService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/service/CelebrityService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/service/FilmService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/service/FilmService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/service/UtilityService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/service/UtilityService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/service/implementation/CelebrityServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/service/implementation/CelebrityServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/service/implementation/MovieServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/service/implementation/MovieServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/service/implementation/UtilityServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/service/implementation/UtilityServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/service/implementation/WishlistServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/paridiso/cinema/service/implementation/WishlistServiceImpl.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -121,89 +60,122 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="FollowerImpl.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/FollowerImpl.java">
+      <file leaf-file-name="WatchlistServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/WatchlistServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-65">
-              <caret line="76" column="41" selection-start-line="76" selection-start-column="41" selection-end-line="76" selection-end-column="41" />
+            <state relative-caret-position="2413">
+              <caret line="142" selection-start-line="142" selection-end-line="142" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#1132#1133#0" expanded="true" />
+                <element signature="e#1159#1160#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RegUserServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/RegUserServiceImpl.java">
+      <file leaf-file-name="WishlistServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/WishlistServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="294" column="70" lean-forward="true" selection-start-line="294" selection-start-column="70" selection-end-line="294" selection-end-column="70" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CelebrityController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/CelebrityController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RegUserController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/RegUserController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
-              <caret line="65" column="4" lean-forward="true" selection-start-line="65" selection-start-column="4" selection-end-line="66" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Review.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/entity/Review.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-126">
-              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ReviewController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/ReviewController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="547">
-              <caret line="87" column="71" lean-forward="true" selection-start-line="87" selection-start-column="71" selection-end-line="87" selection-end-column="71" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ReviewServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/ReviewServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="134" column="36" selection-start-line="134" selection-start-column="36" selection-end-line="134" selection-end-column="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FollowerContoller.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/FollowerContoller.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="42" column="68" lean-forward="true" selection-start-line="42" selection-start-column="68" selection-end-line="42" selection-end-column="68" />
+            <state relative-caret-position="441">
+              <caret line="79" column="8" lean-forward="true" selection-start-line="79" selection-start-column="8" selection-end-line="82" selection-end-column="19" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#1393#1394#0" expanded="true" />
+                <element signature="e#1420#1421#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FollowYouList.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/entity/FollowYouList.java">
+      <file leaf-file-name="WishList.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/entity/WishList.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="504">
+              <caret line="27" column="4" lean-forward="true" selection-start-line="27" selection-start-column="4" selection-end-line="33" selection-end-column="25" />
+              <folding>
+                <element signature="e#953#954#0" expanded="true" />
+                <element signature="e#986#987#0" expanded="true" />
+                <element signature="e#1024#1025#0" expanded="true" />
+                <element signature="e#1057#1058#0" expanded="true" />
+                <element signature="e#1110#1111#0" expanded="true" />
+                <element signature="e#1154#1155#0" expanded="true" />
+                <element signature="e#1192#1193#0" expanded="true" />
+                <element signature="e#1221#1222#0" expanded="true" />
+                <element signature="e#1270#1271#0" expanded="true" />
+                <element signature="e#1306#1307#0" expanded="true" />
+                <element signature="e#1649#1650#0" expanded="true" />
+                <element signature="e#1675#1676#0" expanded="true" />
+                <element signature="e#1715#1716#0" expanded="true" />
+                <element signature="e#1745#1746#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WatchList.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/entity/WatchList.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="45" column="52" lean-forward="true" selection-start-line="45" selection-start-column="52" selection-end-line="45" selection-end-column="52" />
+              <folding>
+                <element signature="e#797#798#0" expanded="true" />
+                <element signature="e#839#840#0" expanded="true" />
+                <element signature="e#876#877#0" expanded="true" />
+                <element signature="e#902#903#0" expanded="true" />
+                <element signature="e#941#942#0" expanded="true" />
+                <element signature="e#975#976#0" expanded="true" />
+                <element signature="e#1076#1077#0" expanded="true" />
+                <element signature="e#1114#1115#0" expanded="true" />
+                <element signature="e#1143#1144#0" expanded="true" />
+                <element signature="e#1465#1466#0" expanded="true" />
+                <element signature="e#1495#1496#0" expanded="true" />
+                <element signature="e#1527#1528#0" expanded="true" />
+                <element signature="e#1553#1554#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ListService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/ListService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="252">
-              <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
+              <caret line="15" column="4" lean-forward="true" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UtilityServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/UtilityServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="334">
+              <caret line="64" column="21" lean-forward="true" selection-start-line="64" selection-start-column="21" selection-end-line="64" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TVService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/TVService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="84">
+              <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TVController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/TVController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-617">
+              <caret line="49" column="50" lean-forward="true" selection-start-line="49" selection-start-column="50" selection-end-line="49" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WishlistController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/WishlistController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="376">
+              <caret line="60" column="58" selection-start-line="60" selection-start-column="58" selection-end-line="60" selection-end-column="58" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -211,21 +183,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserProfile.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/entity/UserProfile.java">
+      <file leaf-file-name="WatchlistController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/WatchlistController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-21">
-              <caret line="15" column="20" lean-forward="true" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="23" />
-              <folding>
-                <element signature="e#4641#4642#0" expanded="true" />
-                <element signature="e#4674#4675#0" expanded="true" />
-                <element signature="e#4730#4731#0" expanded="true" />
-                <element signature="e#4774#4775#0" expanded="true" />
-                <element signature="e#4821#4822#0" expanded="true" />
-                <element signature="e#4857#4858#0" expanded="true" />
-                <element signature="e#4922#4923#0" expanded="true" />
-                <element signature="e#4972#4973#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="355">
+              <caret line="46" column="46" selection-start-line="46" selection-start-column="34" selection-end-line="46" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -274,20 +236,29 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/ReviewService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/ReviewServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/WatchlistController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/WishlistController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/ReviewController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/persistence/FollowListRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/persistence/FollowYouListRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/entity/UserProfile.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/RegUserController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/entity/WishList.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/entity/FollowYouList.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/entity/FollowList.java" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/FollowerContoller.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/FollowerImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/RegUserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/TVServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/TVController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/ListService.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/paridiso/cinema/TestWishListAndUserProfile.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/entity/WishList.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/entity/WatchList.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/UtilityService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/UtilityServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/WishlistServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/WatchlistServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/WishlistController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/WatchlistController.java" />
       </list>
     </option>
   </component>
@@ -308,7 +279,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -467,12 +437,34 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="cinema_paradiso" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cinema_paradiso" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cinema_paradiso" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cinema_paradiso" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cinema_paradiso" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cinema_paradiso" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cinema" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -489,6 +481,168 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/app.module.ts</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/app.routing.ts</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/categories/category.scss</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/categories/top_box_office/top_box_office.component.ts</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/footer/footer.component.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/models/movie.model.ts</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/movie-detail/movie-detail.component.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/movie-detail/movie-detail.component.scss</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/movie-detail/movie-detail.component.ts</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/movie-detail/movie-detail.service.ts</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/search/movie-tab/movie-tab.component.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/search/movie-tab/movie-tab.component.ts</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/search/people-tab/people-tab.component.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/search/people-tab/people-tab.component.ts</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/search/search-toolbar/search-toolbar.component.ts</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/search/search.component.scss</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/search/search.component.ts</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/search/search.service.ts</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/search/tv-tab/tv-tab.component.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/search/tv-tab/tv-tab.component.ts</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/avatars/default.jpeg</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/CelebrityController.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/SearchController.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/com/paridiso/cinema/persistence/CelebrityRepository.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/CelebrityService.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/CelebrityServiceImpl.java</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/general/.DS_Store</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/general/about/about.component.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/general/about/about.component.ts</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/general/career/career.component.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/general/career/career.component.ts</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/general/contact/contact.component.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/general/contact/contact.component.ts</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/general/critic-applicaition/critic.component.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/general/critic-applicaition/critic.component.ts</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/general/general.scss</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/general/policy/policy.component.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/general/policy/policy.component.ts</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/movie-detail/photos/movie-photos.component.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/movie-detail/photos/movie-photos.component.ts</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/movie-detail/reviews/movie-reviews.component.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/movie-detail/reviews/movie-reviews.component.ts</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/movie-detail/trailers/movie-trailers.component.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/movie-detail/trailers/movie-trailers.component.ts</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/general/about.component.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/general/about.component.scss</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/general/about.component.ts</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/general/contact.component.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/general/contact.component.scss</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/general/contact.component.ts</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/general/policy.component.html</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/general/policy.component.scss</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/../cinema-paradiso-frontend/src/app/global/general/policy.component.ts</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -574,7 +728,8 @@
       <workItem from="1525648218746" duration="689000" />
       <workItem from="1525882176956" duration="23039000" />
       <workItem from="1525905961505" duration="30086000" />
-      <workItem from="1526219499898" duration="10133000" />
+      <workItem from="1526219499898" duration="13608000" />
+      <workItem from="1526353452321" duration="7377000" />
     </task>
     <task id="LOCAL-00001" summary="signUp email verify">
       <created>1525904676027</created>
@@ -611,11 +766,18 @@
       <option name="project" value="LOCAL" />
       <updated>1526071408356</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Follow/Unfollow user&#10;View followers list&#10;View following list complete">
+      <created>1526229851533</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1526229851533</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67110000" />
+    <option name="totallyTimeSpent" value="77962000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -642,17 +804,17 @@
       <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3293348" />
       <window_info anchor="bottom" id="Spring" order="11" weight="0.3293348" />
       <window_info anchor="bottom" id="Terminal" order="12" weight="0.3293348" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30063966" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2249467" />
       <window_info anchor="right" id="Bean Validation" order="8" />
       <window_info id="Web" order="6" side_tool="true" />
       <window_info anchor="right" id="Theme Preview" order="7" />
       <window_info id="Favorites" order="5" side_tool="true" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
     </layout>
   </component>
@@ -668,93 +830,10 @@
     <MESSAGE value="edit review complete" />
     <MESSAGE value="user registeredDate linked" />
     <MESSAGE value="Critics Application Page Done" />
-    <option name="LAST_COMMIT_MESSAGE" value="Critics Application Page Done" />
+    <MESSAGE value="Follow/Unfollow user&#10;View followers list&#10;View following list complete" />
+    <option name="LAST_COMMIT_MESSAGE" value="Follow/Unfollow user&#10;View followers list&#10;View following list complete" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/data/movie/oscar/oscar_movie.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" column="49" selection-start-line="11" selection-start-column="49" selection-end-line="11" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/LoadMovieData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
-          <caret line="74" column="18" selection-start-line="74" selection-start-column="18" selection-end-line="74" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/UserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="50" column="56" selection-start-line="50" selection-start-column="56" selection-end-line="50" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/persistence/VerificationTokenRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/AdminServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="649">
-          <caret line="82" selection-start-line="82" selection-end-line="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/RegistrationListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="950">
-          <caret line="51" column="34" selection-start-line="51" selection-start-column="34" selection-end-line="51" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/persistence/passwordTokenRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="6" column="40" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/ReviewService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="25" column="43" lean-forward="true" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/ListService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/WatchlistServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="98" column="64" lean-forward="true" selection-start-line="98" selection-start-column="3" selection-end-line="98" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/entity/WatchList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/persistence/WishListRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="9" column="76" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/persistence/FollowListRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
@@ -776,27 +855,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
           <caret line="9" column="24" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/WatchlistController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="41" column="4" selection-start-line="41" selection-start-column="4" selection-end-line="44" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/UtilityServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-443">
-          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/WishlistServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
-          <caret line="86" column="64" lean-forward="true" selection-start-line="86" selection-start-column="64" selection-end-line="88" selection-end-column="105" />
         </state>
       </provider>
     </entry>
@@ -848,23 +906,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/WishlistController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1113">
-          <caret line="53" column="4" selection-start-line="53" selection-start-column="4" selection-end-line="57" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/entity/Film.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1701">
-          <caret line="38" column="60" selection-start-line="38" selection-start-column="60" selection-end-line="38" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/entity/GenericResponse.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -903,34 +944,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/entity/TV.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/entity/Movie.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="11" selection-start-line="11" selection-end-line="12" selection-end-column="87" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/entity/UserId.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="21" lean-forward="true" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/entity/WishList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/entity/UserId.java" />
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="179">
@@ -955,13 +969,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/MovieController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="547">
-          <caret line="66" column="5" lean-forward="true" selection-start-line="66" selection-start-column="5" selection-end-line="66" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/entity/User.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -969,30 +976,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/MovieServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/CelebrityController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+        <state relative-caret-position="336">
+          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/entity/Review.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-126">
+        <state relative-caret-position="126">
           <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/entity/FollowYouList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
+        <state relative-caret-position="210">
           <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1002,29 +1002,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/ReviewController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="547">
-          <caret line="87" column="71" lean-forward="true" selection-start-line="87" selection-start-column="71" selection-end-line="87" selection-end-column="71" />
+        <state relative-caret-position="1470">
+          <caret line="87" column="71" selection-start-line="87" selection-start-column="71" selection-end-line="87" selection-end-column="71" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/RegUserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="65" column="4" lean-forward="true" selection-start-line="65" selection-start-column="4" selection-end-line="66" selection-end-column="38" />
+        <state relative-caret-position="525">
+          <caret line="65" column="4" selection-start-line="65" selection-start-column="4" selection-end-line="66" selection-end-column="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/ReviewServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
+        <state relative-caret-position="2163">
           <caret line="134" column="36" selection-start-line="134" selection-start-column="36" selection-end-line="134" selection-end-column="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/entity/UserProfile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-21">
-          <caret line="15" column="20" lean-forward="true" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="23" />
+        <state relative-caret-position="231">
+          <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="23" />
           <folding>
             <element signature="e#4641#4642#0" expanded="true" />
             <element signature="e#4674#4675#0" expanded="true" />
@@ -1040,8 +1040,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/FollowerContoller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="42" column="68" lean-forward="true" selection-start-line="42" selection-start-column="68" selection-end-line="42" selection-end-column="68" />
+        <state relative-caret-position="630">
+          <caret line="42" column="68" selection-start-line="42" selection-start-column="68" selection-end-line="42" selection-end-column="68" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1050,18 +1050,214 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/RegUserServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="294" column="70" lean-forward="true" selection-start-line="294" selection-start-column="70" selection-end-line="294" selection-end-column="70" />
+        <state relative-caret-position="5607">
+          <caret line="294" column="70" selection-start-line="294" selection-start-column="70" selection-end-line="294" selection-end-column="70" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/FollowerImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-65">
-          <caret line="76" column="41" selection-start-line="76" selection-start-column="41" selection-end-line="76" selection-end-column="41" />
+        <state relative-caret-position="132">
+          <caret line="87" selection-start-line="87" selection-end-line="87" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/entity/Movie.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="11" selection-start-line="11" selection-end-line="12" selection-end-column="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/MovieServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="32" column="4" lean-forward="true" selection-start-line="32" selection-start-column="4" selection-end-line="36" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/entity/TV.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-254">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/MovieController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="54" column="62" selection-start-line="54" selection-start-column="56" selection-end-line="54" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/entity/Film.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="38" column="60" selection-start-line="38" selection-start-column="60" selection-end-line="38" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/persistence/WishListRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="9" column="76" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/persistence/WatchListRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/WatchlistService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/WishlistService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/TVServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-254">
+          <caret line="30" column="10" lean-forward="true" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/paridiso/cinema/TestWishListAndUserProfile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="71" column="23" lean-forward="true" selection-start-line="71" selection-start-column="23" selection-end-line="71" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/UtilityService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="16" column="35" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/TVService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/UtilityServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="64" column="21" lean-forward="true" selection-start-line="64" selection-start-column="21" selection-end-line="64" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/ListService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="15" column="4" lean-forward="true" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/entity/WishList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="27" column="4" lean-forward="true" selection-start-line="27" selection-start-column="4" selection-end-line="33" selection-end-column="25" />
+          <folding>
+            <element signature="e#953#954#0" expanded="true" />
+            <element signature="e#986#987#0" expanded="true" />
+            <element signature="e#1024#1025#0" expanded="true" />
+            <element signature="e#1057#1058#0" expanded="true" />
+            <element signature="e#1110#1111#0" expanded="true" />
+            <element signature="e#1154#1155#0" expanded="true" />
+            <element signature="e#1192#1193#0" expanded="true" />
+            <element signature="e#1221#1222#0" expanded="true" />
+            <element signature="e#1270#1271#0" expanded="true" />
+            <element signature="e#1306#1307#0" expanded="true" />
+            <element signature="e#1649#1650#0" expanded="true" />
+            <element signature="e#1675#1676#0" expanded="true" />
+            <element signature="e#1715#1716#0" expanded="true" />
+            <element signature="e#1745#1746#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/entity/WatchList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="45" column="52" lean-forward="true" selection-start-line="45" selection-start-column="52" selection-end-line="45" selection-end-column="52" />
+          <folding>
+            <element signature="e#797#798#0" expanded="true" />
+            <element signature="e#839#840#0" expanded="true" />
+            <element signature="e#876#877#0" expanded="true" />
+            <element signature="e#902#903#0" expanded="true" />
+            <element signature="e#941#942#0" expanded="true" />
+            <element signature="e#975#976#0" expanded="true" />
+            <element signature="e#1076#1077#0" expanded="true" />
+            <element signature="e#1114#1115#0" expanded="true" />
+            <element signature="e#1143#1144#0" expanded="true" />
+            <element signature="e#1465#1466#0" expanded="true" />
+            <element signature="e#1495#1496#0" expanded="true" />
+            <element signature="e#1527#1528#0" expanded="true" />
+            <element signature="e#1553#1554#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/WishlistServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="79" column="8" lean-forward="true" selection-start-line="79" selection-start-column="8" selection-end-line="82" selection-end-column="19" />
+          <folding>
+            <element signature="e#1393#1394#0" expanded="true" />
+            <element signature="e#1420#1421#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/service/implementation/WatchlistServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2413">
+          <caret line="142" selection-start-line="142" selection-end-line="142" />
+          <folding>
+            <element signature="e#1132#1133#0" expanded="true" />
+            <element signature="e#1159#1160#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/TVController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-617">
+          <caret line="49" column="50" lean-forward="true" selection-start-line="49" selection-start-column="50" selection-end-line="49" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/WishlistController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="376">
+          <caret line="60" column="58" selection-start-line="60" selection-start-column="58" selection-end-line="60" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/paridiso/cinema/controller/WatchlistController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="355">
+          <caret line="46" column="46" selection-start-line="46" selection-start-column="34" selection-end-line="46" selection-end-column="46" />
         </state>
       </provider>
     </entry>

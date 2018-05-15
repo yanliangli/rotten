@@ -1,0 +1,33 @@
+<html>
+<body>
+<main>
+  <div class="more_container">
+    <section class="md_wrap">
+      <h2 class="md-title"><span>{{movie.title}} REVIEWS</span></h2>
+      <div class="container">
+        <div class="row">
+          <div class="col-testimonial testimonial" *ngFor="let reviews of movie.reviews" style="width: 100%;">
+            <div class="testimonial-content">
+              <div class="testimonial-icon">
+                <i class="fa fa-quote-left"></i>
+              </div>
+              <p class="t_description">
+                {{reviews.reviewContent}}
+              </p>
+            </div>
+            <!--<h3 class="title">{{reviews.author}}</h3>-->
+            <a routerLink="/userView/{{reviews.userId}}">{{reviews.author}}</a>
+            <div>
+              <span class="post">Posted on {{reviews.postedDate}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--</div>-->
+      <!--</div>-->
+
+    </section>
+  </div>
+</main>
+</body>
+</html>

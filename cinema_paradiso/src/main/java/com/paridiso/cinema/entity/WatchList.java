@@ -22,6 +22,14 @@ public class WatchList extends LinkedList {
     )
     private List<Movie> movies;
 
+    @ManyToMany(cascade = {CascadeType.MERGE},fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "WatchListsTvs",
+            joinColumns = {@JoinColumn(name = "watchListId")},
+            inverseJoinColumns = {@JoinColumn(name = "imdbId")}
+    )
+    private List<TV> tvs;
+
 
     public WatchList() {
         movies = new ArrayList<>();
@@ -41,6 +49,14 @@ public class WatchList extends LinkedList {
 
     public List<Movie> getMovies() {
         return movies;
+    }
+
+    public void setTvs(List<TV> tvs) {
+        this.tvs = tvs;
+    }
+
+    public List<TV> getTvs() {
+        return tvs;
     }
 
     public void setMovies(List<Movie> movies) {

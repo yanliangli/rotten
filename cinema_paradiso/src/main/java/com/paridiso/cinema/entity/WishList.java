@@ -25,8 +25,17 @@ public class WishList extends LinkedList {
     )
     private List<Movie> movies;
 
+    @ManyToMany(cascade = {CascadeType.ALL},fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "WishListsTvs",
+            joinColumns = {@JoinColumn(name = "wishListId")},
+            inverseJoinColumns = {@JoinColumn(name = "imdbId")}
+    )
+    private List<TV> tvs;
+
     public WishList() {
         movies = new ArrayList<>();
+        tvs = new ArrayList<>();
     }
 
     public Integer getSizeLimit() {
@@ -47,6 +56,14 @@ public class WishList extends LinkedList {
 
     public void setMovies(List<Movie> movies) {
         this.movies = movies;
+    }
+
+    public List<TV> getTvs() {
+        return tvs;
+    }
+
+    public void setTvs(List<TV> tvs) {
+        this.tvs = tvs;
     }
 
     public void addMovie(Movie movie) {

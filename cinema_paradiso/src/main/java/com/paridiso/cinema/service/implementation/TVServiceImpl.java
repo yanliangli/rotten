@@ -1,5 +1,6 @@
 package com.paridiso.cinema.service.implementation;
 
+import com.paridiso.cinema.entity.Film;
 import com.paridiso.cinema.entity.Movie;
 import com.paridiso.cinema.entity.TV;
 import com.paridiso.cinema.entity.Trailer;
@@ -25,6 +26,12 @@ import java.util.List;
 public class TVServiceImpl implements TVService {
     @Autowired
     TVRepository tvRepository;
+
+    @Transactional
+    @Override
+    public TV getTV(String filmId) {
+        return tvRepository.findTVByImdbId(filmId);
+    }
 
     @Transactional
     @Override

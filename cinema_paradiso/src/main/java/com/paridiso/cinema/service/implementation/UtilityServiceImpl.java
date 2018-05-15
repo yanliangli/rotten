@@ -2,7 +2,9 @@ package com.paridiso.cinema.service.implementation;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.paridiso.cinema.entity.Film;
 import com.paridiso.cinema.entity.Movie;
+import com.paridiso.cinema.entity.TV;
 import com.paridiso.cinema.entity.User;
 import com.paridiso.cinema.security.JwtTokenGenerator;
 import com.paridiso.cinema.security.JwtTokenValidator;
@@ -62,6 +64,16 @@ public class UtilityServiceImpl implements UtilityService {
         }
         return false;
     }
+
+    @Override
+    public boolean containsTv(List<TV> tvs, String filmImdbId) {
+        for (TV tv: tvs) {
+            if (tv.getImdbId().equals(filmImdbId))
+                return true;
+        }
+        return false;
+    }
+
 
 }
 
