@@ -37,7 +37,7 @@ public interface MovieRepository extends JpaRepository<Movie, String>{
 
 
     // get trending movies
-    List<Movie> findTop6ByOrderByNumberOfRatingsDesc();
+    Page<Movie> findTop100ByOrderByRatingDesc(Pageable pageable);
 
     // get top rating movies
     List<Movie> findTop6ByOrderByRatingDesc();
