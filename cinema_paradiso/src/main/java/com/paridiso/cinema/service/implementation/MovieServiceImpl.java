@@ -137,10 +137,9 @@ public class MovieServiceImpl implements FilmService {
         Date dateNow = new Date();
         Calendar cal = Calendar.getInstance();
         cal.setTime(dateNow);
-        cal.add(Calendar.DATE, -60);
+        cal.add(Calendar.DATE, -45);
         Date dateBefore = cal.getTime();
-        Long minBox = new Long(0);
-        Page<Movie> movies = movieRepository.findAllByReleaseDateBetweenAndBoxOfficeAfter(dateBefore, dateNow, minBox, pageable);
+        Page<Movie> movies = movieRepository.findAllByReleaseDateBetween(dateBefore, dateNow, pageable);
         return movies;
     }
 

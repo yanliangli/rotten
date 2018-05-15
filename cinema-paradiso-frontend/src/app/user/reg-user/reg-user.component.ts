@@ -8,7 +8,7 @@ import {ToastrService} from 'ngx-toastr';
 import {NgForm} from '@angular/forms';
 import {LoginService} from '../../global/login/login.service';
 
-import {Router} from '@angular/router';
+import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {Movie} from '../../global/models/movie.model';
 import {MovieService} from '../../global/movie/movie.service';
 import {Review} from '../../global/models/review.model';
@@ -33,6 +33,7 @@ class Profile {
   providers: [RegUserService, LoginService]
 })
 export class RegUserComponent implements OnInit {
+  tpRegisteredDate:string;
   currentIndex = 1;
   closeReason: string;
   profile = new Profile();
@@ -50,6 +51,7 @@ export class RegUserComponent implements OnInit {
   reviews: Review[];
   followerProfiles: UserFile[];
   followYouProfiles: UserFile[];
+  indexs: number;
   constructor(private router: Router,
               private movieService: MovieService,
               private loginService: LoginService,
@@ -66,6 +68,8 @@ export class RegUserComponent implements OnInit {
 
   ngOnInit() {
     this.loadPosters();
+    this.indexs = 0;
+
 
     if (this.loginStatusService.getTokenDetails() !== null) {
       this.loginStatusService.changeStatus(true);
@@ -115,10 +119,12 @@ export class RegUserComponent implements OnInit {
         data => {
           // refresh the list
           this.getReviews();
+          this.toastr.success('Success');
           return true;
         },
         error => {
           console.error('Error deleting review of ' + review.movieTitle);
+          this.toastr.error('Failed to delete review');
           return Observable.throw(error);
         }
       );
@@ -132,10 +138,12 @@ export class RegUserComponent implements OnInit {
         data => {
           // refresh the list
           this.getReviews();
+          this.toastr.success('Success');
           return true;
         },
         error => {
           console.error('Error edit review of ' + review.movieTitle);
+          this.toastr.error('Failed to edit review');
           return Observable.throw(error);
         }
       );
@@ -220,11 +228,14 @@ export class RegUserComponent implements OnInit {
       );
   }
   updateProfile() {
+    this.tpRegisteredDate = this.profile.registeredDate;
+    this.profile.registeredDate = null;
     this.regUserService.update(this.profile).subscribe(data => {
       this.toastr.success('Success');
     }, error => {
       this.toastr.error('Failed to update profile');
     });
+    this.profile.registeredDate = this.tpRegisteredDate;
   }
 
   open(content) {

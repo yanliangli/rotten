@@ -12,13 +12,13 @@
       <div class="col-right content-wrap">
         <!-- poster -->
         <div class="r_poster">
-          <img id="detail_poster" [src]="movie.poster" [alt]="movie.title" >
+          <img id="detail_poster" [src]="tv.poster" [alt]="tv.title" >
         </div>
 
         <h4 class="md-title"><span>RATING</span></h4>
         <div id="right_panel">
           <div id="rating_poster">
-            <img [src]="movie.poster" [alt]="movie.title" >
+            <img [src]="tv.poster" [alt]="tv.title" >
           </div>
           <div id="rating_panel">
             <!-- ratings -->
@@ -28,65 +28,65 @@
                   <div class="rating-inner">
                     <div class="rating">
                       <p class="ratings-header">CURRENT RATING</p>
-                      <span class="rating-num" *ngIf="movie.numberOfRatings!=0">{{movie.rating}}</span>
+                      <span class="rating-num" *ngIf="tv.numberOfRatings!=0">{{tv.rating}}</span>
                       <div class="flex">
-                        <div *ngIf="movie.rating==null || movie.numberOfRatings == 0">
+                        <div *ngIf="tv.rating==null || tv.numberOfRatings == 0">
                           <p class="no_rating" style="color: white">No Rating Yet</p>
                         </div>
 
-                        <div *ngIf="movie.rating>0&& movie.rating<1">
+                        <div *ngIf="tv.rating>0&& tv.rating<1">
                           <i class="fa fa-star-half-o" aria-hidden="true"></i>
                         </div>
 
-                        <div *ngIf="movie.rating==1">
+                        <div *ngIf="tv.rating==1">
                           <i class="fa fa-star" ></i>
                         </div>
 
-                        <div *ngIf="movie.rating>1&& movie.rating<2">
+                        <div *ngIf="tv.rating>1&& tv.rating<2">
                           <i class="fa fa-star" ></i>
                           <i class="fa fa-star-half-o" aria-hidden="true"></i>
                         </div>
 
-                        <div *ngIf="movie.rating==2">
+                        <div *ngIf="tv.rating==2">
                           <i class="fa fa-star" ></i>
                           <i class="fa fa-star"></i>
                         </div>
 
-                        <div *ngIf="movie.rating>2&& movie.rating<3">
+                        <div *ngIf="tv.rating>2&& tv.rating<3">
                           <i class="fa fa-star" ></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                        </div>
-
-                        <div *ngIf="movie.rating==3">
-                          <i class="fa fa-star" ></i>
-                          <i class="fa fa-star"></i>
-                          <i class="fa fa-star"></i>
-                        </div>
-
-                        <div *ngIf="movie.rating>3&& movie.rating<4">
-                          <i class="fa fa-star" ></i>
-                          <i class="fa fa-star"></i>
                           <i class="fa fa-star"></i>
                           <i class="fa fa-star-half-o" aria-hidden="true"></i>
                         </div>
 
-                        <div *ngIf="movie.rating==4">
+                        <div *ngIf="tv.rating==3">
                           <i class="fa fa-star" ></i>
-                          <i class="fa fa-star"></i>
                           <i class="fa fa-star"></i>
                           <i class="fa fa-star"></i>
                         </div>
 
-                        <div *ngIf="movie.rating>4&& movie.rating<5">
+                        <div *ngIf="tv.rating>3&& tv.rating<4">
                           <i class="fa fa-star" ></i>
-                          <i class="fa fa-star"></i>
                           <i class="fa fa-star"></i>
                           <i class="fa fa-star"></i>
                           <i class="fa fa-star-half-o" aria-hidden="true"></i>
                         </div>
 
-                        <div *ngIf="movie.rating==5">
+                        <div *ngIf="tv.rating==4">
+                          <i class="fa fa-star" ></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                        </div>
+
+                        <div *ngIf="tv.rating>4&& tv.rating<5">
+                          <i class="fa fa-star" ></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star"></i>
+                          <i class="fa fa-star-half-o" aria-hidden="true"></i>
+                        </div>
+
+                        <div *ngIf="tv.rating==5">
                           <i class="fa fa-star" ></i>
                           <i class="fa fa-star"></i>
                           <i class="fa fa-star"></i>
@@ -94,8 +94,8 @@
                           <i class="fa fa-star"></i>
                         </div>
                       </div>
-                      <div class="rating-users" *ngIf="movie.numberOfRatings > 0 && movie.rating!=null">
-                        <i class="icon-user"></i> {{numberInMillion(movie.numberOfRatings)}} Total
+                      <div class="rating-users" *ngIf="tv.numberOfRatings > 0 && tv.rating!=null">
+                        <i class="icon-user"></i> {{numberInMillion(tv.numberOfRatings)}} Total
                       </div>
                     </div>
                   </div>
@@ -163,49 +163,39 @@
         <div class="md_wrap">
           <h4 class="md-title"><span>TV INFO</span></h4>
           <div class="movie_info">
-            <p class="md-plot">{{movie.plot}}</p>
+            <p class="md-plot">{{tv.plot}}</p>
             <br>
             <p style="padding-left: 29.4%">
               Rating:&nbsp;&nbsp;&nbsp;&nbsp;
               <span>
-                {{movie.rated}}
+                {{tv.rated}}
               </span>
             </p>
             <p style="padding-left: 30%">
               Genre:&nbsp;&nbsp;&nbsp;&nbsp;
-              <span *ngFor="let genre of movie.genres">
+              <span *ngFor="let genre of tv.genres">
                 {{genre}},
               </span>
             </p>
-            <p style="padding-left: 24%">
-              Directed By:&nbsp;&nbsp;&nbsp;&nbsp;
-              <span *ngFor="let director of movie.director">
-                {{director}},
-              </span>
-            </p>
             <p style="padding-left: 27.6%">
-              Runtime:&nbsp;&nbsp;&nbsp;&nbsp;
+              Duration:&nbsp;&nbsp;&nbsp;&nbsp;
               <span >
-                {{movie.runTime}} minutes
+                {{tv.duration}} minutes
               </span>
             </p>
-            <p  style="padding-left: 24.6%">
-              In Theaters:&nbsp;&nbsp;&nbsp;&nbsp;
+            <p style="padding-left: 22%">
+              Total Seasons:&nbsp;&nbsp;&nbsp;&nbsp;
               <span >
-                {{movie.releaseDate}}
+                {{tv.totalSeasons}} Seasons
               </span>
             </p>
-            <p style="padding-left: 29.4%">
-              Studio:&nbsp;&nbsp;&nbsp;&nbsp;
-              <span *ngIf="movie.production != ''; else noProduction;">
-                {{movie.production}}
+            <p  style="padding-left: 24.2%">
+              On Showing:&nbsp;&nbsp;&nbsp;&nbsp;
+              <span >
+                {{tv.releaseDate}}
               </span>
-              <ng-template #noProduction>
-                <span >
-                  N/A
-                </span>
-              </ng-template>
             </p>
+
           </div>
         </div>
 
@@ -223,7 +213,7 @@
               <!--<object [data]="trailelURL(videos)"></object>-->
             </li>
           </ul>
-          <a class="md-more" href="" routerLink="../../tv/trailers/{{movie.imdbId}}">View All ({{myTrailers.length}})<i class="fa fa-angle-double-right"></i></a>
+          <a class="md-more" href="" routerLink="../../tv/trailers/{{tv.imdbId}}">View All ({{myTrailers.length}})<i class="fa fa-angle-double-right"></i></a>
         </section>
         <!-- 	end 1st section	 -->
 
@@ -234,12 +224,12 @@
           <ul class="container md-list__photos">
             <!--<li class="row md-list__item" *ngFor="let photo of movie.photos">-->
             <li class="row md-list__item" >
-              <a class="col-photos item__detail" href="" *ngFor="let photos of movie.photos | slice:0:4">
-                <img src="{{photos}}" [alt]="movie.title">
+              <a class="col-photos item__detail" href="" *ngFor="let photos of tv.photos | slice:0:4">
+                <img src="{{photos}}" [alt]="tv.title">
               </a>
             </li>
           </ul>
-          <a class="md-more" href="" routerLink="../../tv/photos/{{movie.imdbId}}">View All ({{movie.photos.length}})<i class="fa fa-angle-double-right"></i></a>
+          <a class="md-more" href="" routerLink="../../tv/photos/{{tv.imdbId}}">View All ({{tv.photos.length}})<i class="fa fa-angle-double-right"></i></a>
         </section>
         <!-- end 2nd section -->
 
@@ -272,7 +262,7 @@
             <div class="row">
               <!--<div class="col-md-12">-->
               <!--<div id="testimonial-slider" class="owl-carousel">-->
-              <div class="col-testimonial testimonial" *ngFor="let reviews of movie.reviews | slice:0:2">
+              <div class="col-testimonial testimonial" *ngFor="let reviews of tv.reviews | slice:0:2">
                 <div class="testimonial-content">
                   <div class="testimonial-icon">
                     <i class="fa fa-quote-left"></i>
@@ -289,7 +279,7 @@
               </div>
             </div>
           </div>
-          <a class="md-more" href="" routerLink="../../tv/reviews/{{movie.imdbId}}">View All ({{movie.reviews.length}})<i class="fa fa-angle-double-right"></i></a>
+          <a class="md-more" href="" routerLink="../../tv/reviews/{{tv.imdbId}}">View All ({{tv.reviews.length}})<i class="fa fa-angle-double-right"></i></a>
           <!--</div>-->
           <!--</div>-->
 

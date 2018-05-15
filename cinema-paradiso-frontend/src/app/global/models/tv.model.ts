@@ -11,9 +11,9 @@ export class TV {
   genres: string[];
   awards: string[];
   photos: string[];
-  director: Celebrity;
-  cast: Celebrity[];
-  trailers: Trailer[];
+  director: string[];
+  cast: string[];
+  trailers: string[];
   reviews: Review[];
   plot: string;
   language: string;
@@ -24,6 +24,7 @@ export class TV {
   website: string;
   numberOfRatings: number;
   duration: number;
+  totalSeasons: number;
   audienceRating: number;
 
   constructor(values: Object = {}) {

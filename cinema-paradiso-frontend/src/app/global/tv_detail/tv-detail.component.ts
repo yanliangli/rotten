@@ -13,6 +13,7 @@ import {Celebrity} from '../models/celebrity.model';
 import {post} from 'selenium-webdriver/http';
 import {Trailer} from '../models/trailer.model';
 import {DomSanitizer} from '@angular/platform-browser';
+import {TV} from '../models/tv.model';
 
 class Profile {
   name: string;
@@ -35,7 +36,7 @@ export class TvDetailComponent implements OnInit {
   inWishlist: boolean;
   inRatedMovieList: boolean;
   user: Token;
-  movie: Movie;
+  tv: TV;
   sub: any;
   selectedMovieId: string;
   selected = 0;
@@ -204,17 +205,17 @@ export class TvDetailComponent implements OnInit {
       .subscribe(
         data => {
           console.log(data);
-          this.movie = data as Movie;
-          this.getCast(this.movie);
-          this.getTrailerData(this.movie.trailers);
+          this.tv = data as TV;
+          this.getCast(this.tv);
+          this.getTrailerData(this.tv.trailers);
         },
         error => console.log('Failed to fetch movie with id')
       );
 
   }
 
-  getCast(movie:Movie):any{
-    this.tvDetailService.getCelebrityByName(movie.cast)
+  getCast(tv:TV):any{
+    this.tvDetailService.getCelebrityByName(tv.cast)
       .subscribe(
         data => {
           this.casts = data as Celebrity[];

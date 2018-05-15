@@ -53,7 +53,6 @@ export class RegUserService {
     return this.http.delete('http://localhost:8080/review/deleteReview/' + imbdId + '/' + reviewId);
   }
   editReview(imbdId: string, review: Review) {
-    alert('coming');
     return this.http.post('http://localhost:8080/review/updateReview/' + imbdId, review );
   }
   deleteUser() {

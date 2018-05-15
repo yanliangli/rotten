@@ -91,17 +91,17 @@
       <div class="w3-container w3-padding-large w3-black">
         <form target="_blank">
           <div class="w3-container w3-padding-large" style="margin-bottom:32px">
-            <h4><b>About Me</b></h4>
+            <h4><b>About User</b></h4>
             <p>{{profile.biography}}</p>
             <hr>
           </div>
         </form>
       </div>
       <section class="l-cards">
-        <h2 class="l-cards__title">User Want To See Movies</h2>
+        <h2 class="md-title"><span>User Want To See Movies</span></h2>
 
         <ul class="l-cards__list">
-          <li class="l-cards__item"*ngFor="let movie of whishlistMovies">
+          <li class="l-cards__item"*ngFor="let movie of whishlistMovies| slice:0:5">
             <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active" class="l-cards__image fill">
               <img [src]="movie.poster" [alt]="movie.title">
             </a>
@@ -114,10 +114,10 @@
       </section>
 
       <section class="l-cards">
-        <h2 class="l-cards__title">User Not Interest</h2>
+        <h2 class="md-title"><span>User Not Interest Movies</span></h2>
 
         <ul class="l-cards__list">
-          <li class="l-cards__item"*ngFor="let movie of watchlistMovies">
+          <li class="l-cards__item"*ngFor="let movie of watchlistMovies| slice:0:5">
             <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active" class="l-cards__image fill">
               <img [src]="movie.poster" [alt]="movie.title">
             </a>
@@ -130,9 +130,9 @@
       </section>
 
       <section class="l-cards">
-        <h2 class="l-cards__title">Rating History</h2>
+        <h2 class="md-title"><span>Rating History</span></h2>
         <ul class="l-cards__list">
-          <li class="l-cards__item"*ngFor="let movie of ratedMovieList">
+          <li class="l-cards__item"*ngFor="let movie of ratedMovieList| slice:0:5">
             <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active" class="l-cards__image fill">
               <img [src]="movie.poster" [alt]="movie.title">
             </a>
@@ -146,9 +146,35 @@
     </div>
     <div class="container Movie_Ratings_results" *ngIf="currentIndex === 2">
       <section class="l-cards">
-        <h2 class="l-cards__title">Rated Movies</h2>
+        <h2 class="md-title"><span>Rated Movies</span></h2>
         <ul class="l-cards__list">
-          <li class="l-cards__item"*ngFor="let movie of ratedMovieList">
+          <li class="l-cards__item"*ngFor="let movie of ratedMovieList| slice:0:5">
+            <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active" class="l-cards__image fill">
+              <img [src]="movie.poster" [alt]="movie.title">
+            </a>
+            <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active"  class="l-cards__text">
+              {{movie.title}}
+              <p>{{movie.rating}}/5.0</p>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section class="l-cards">
+        <ul class="l-cards__list">
+          <li class="l-cards__item"*ngFor="let movie of ratedMovieList| slice:5:10">
+            <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active" class="l-cards__image fill">
+              <img [src]="movie.poster" [alt]="movie.title">
+            </a>
+            <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active"  class="l-cards__text">
+              {{movie.title}}
+              <p>{{movie.rating}}/5.0</p>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section class="l-cards">
+        <ul class="l-cards__list">
+          <li class="l-cards__item"*ngFor="let movie of ratedMovieList| slice:10:15">
             <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active" class="l-cards__image fill">
               <img [src]="movie.poster" [alt]="movie.title">
             </a>
@@ -162,10 +188,35 @@
     </div>
     <div class="container Wish_List_results" *ngIf="currentIndex === 3">
       <section class="l-cards">
-        <h2 class="l-cards__title">User Want To See Movies </h2>
-
+        <h2 class="md-title"><span>My Want To See Movies</span></h2>
         <ul class="l-cards__list">
-          <li class="l-cards__item"*ngFor="let movie of whishlistMovies">
+          <li class="l-cards__item"*ngFor="let movie of whishlistMovies| slice:0:5">
+            <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active" class="l-cards__image fill">
+              <img [src]="movie.poster" [alt]="movie.title">
+            </a>
+            <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active"  class="l-cards__text">
+              {{movie.title}}
+              <p>{{movie.rating}}/5.0</p>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section class="l-cards">
+        <ul class="l-cards__list">
+          <li class="l-cards__item"*ngFor="let movie of whishlistMovies| slice:5:10">
+            <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active" class="l-cards__image fill">
+              <img [src]="movie.poster" [alt]="movie.title">
+            </a>
+            <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active"  class="l-cards__text">
+              {{movie.title}}
+              <p>{{movie.rating}}/5.0</p>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section class="l-cards">
+        <ul class="l-cards__list">
+          <li class="l-cards__item"*ngFor="let movie of whishlistMovies| slice:10:15">
             <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active" class="l-cards__image fill">
               <img [src]="movie.poster" [alt]="movie.title">
             </a>
@@ -178,10 +229,38 @@
       </section>
 
       <section class="l-cards">
-        <h2 class="l-cards__title">User Want To See Tvs </h2>
+        <h2 class="md-title"><span>My Want To See Tvs</span></h2>
 
         <ul class="l-cards__list">
-          <li class="l-cards__item"*ngFor="let movie of whishlistTvs">
+          <li class="l-cards__item"*ngFor="let movie of whishlistTvs| slice:0:5">
+            <a routerLink="/tv/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active" class="l-cards__image fill">
+              <img [src]="movie.poster" [alt]="movie.title">
+            </a>
+            <a routerLink="/tv/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active"  class="l-cards__text">
+              {{movie.title}}
+              <p>{{movie.rating}}/5.0</p>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section class="l-cards">
+
+        <ul class="l-cards__list">
+          <li class="l-cards__item"*ngFor="let movie of whishlistTvs| slice:5:10">
+            <a routerLink="/tv/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active" class="l-cards__image fill">
+              <img [src]="movie.poster" [alt]="movie.title">
+            </a>
+            <a routerLink="/tv/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active"  class="l-cards__text">
+              {{movie.title}}
+              <p>{{movie.rating}}/5.0</p>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section class="l-cards">
+
+        <ul class="l-cards__list">
+          <li class="l-cards__item"*ngFor="let movie of whishlistTvs| slice:10:15">
             <a routerLink="/tv/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active" class="l-cards__image fill">
               <img [src]="movie.poster" [alt]="movie.title">
             </a>
@@ -195,10 +274,38 @@
     </div>
     <div class="container Movie_List_results" *ngIf="currentIndex === 4">
       <section class="l-cards">
-        <h2 class="l-cards__title">User Not Interest</h2>
+        <h2 class="md-title"><span>My Not Interest Movies</span></h2>
 
         <ul class="l-cards__list">
-          <li class="l-cards__item"*ngFor="let movie of watchlistMovies">
+          <li class="l-cards__item"*ngFor="let movie of watchlistMovies| slice:0:5">
+            <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active" class="l-cards__image fill">
+              <img [src]="movie.poster" [alt]="movie.title">
+            </a>
+            <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active"  class="l-cards__text">
+              {{movie.title}}
+              <p>{{movie.rating}}/5.0</p>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section class="l-cards">
+
+        <ul class="l-cards__list">
+          <li class="l-cards__item"*ngFor="let movie of watchlistMovies| slice:5:10">
+            <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active" class="l-cards__image fill">
+              <img [src]="movie.poster" [alt]="movie.title">
+            </a>
+            <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active"  class="l-cards__text">
+              {{movie.title}}
+              <p>{{movie.rating}}/5.0</p>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section class="l-cards">
+
+        <ul class="l-cards__list">
+          <li class="l-cards__item"*ngFor="let movie of watchlistMovies| slice:10:15">
             <a routerLink="/movie/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active" class="l-cards__image fill">
               <img [src]="movie.poster" [alt]="movie.title">
             </a>
@@ -211,10 +318,38 @@
       </section>
 
       <section class="l-cards">
-        <h2 class="l-cards__title">User Not Interest</h2>
+        <h2 class="md-title"><span>My Not Interest Tvs</span></h2>
 
         <ul class="l-cards__list">
-          <li class="l-cards__item"*ngFor="let movie of watchlistTvs">
+          <li class="l-cards__item"*ngFor="let movie of watchlistTvs| slice:0:5">
+            <a routerLink="/tv/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active" class="l-cards__image fill">
+              <img [src]="movie.poster" [alt]="movie.title">
+            </a>
+            <a routerLink="/tv/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active"  class="l-cards__text">
+              {{movie.title}}
+              <p>{{movie.rating}}/5.0</p>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section class="l-cards">
+
+        <ul class="l-cards__list">
+          <li class="l-cards__item"*ngFor="let movie of watchlistTvs| slice:5:10">
+            <a routerLink="/tv/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active" class="l-cards__image fill">
+              <img [src]="movie.poster" [alt]="movie.title">
+            </a>
+            <a routerLink="/tv/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active"  class="l-cards__text">
+              {{movie.title}}
+              <p>{{movie.rating}}/5.0</p>
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section class="l-cards">
+
+        <ul class="l-cards__list">
+          <li class="l-cards__item"*ngFor="let movie of watchlistTvs| slice:10:15">
             <a routerLink="/tv/{{movie.imdbId}}" (click)="setImdbId(movie.imdbId)" routerLinkActive="active" class="l-cards__image fill">
               <img [src]="movie.poster" [alt]="movie.title">
             </a>
@@ -228,7 +363,7 @@
     </div>
     <div class="container My_Critics_results" *ngIf="currentIndex === 5">
       <div class="w3-container w3-padding-large w3-black">
-
+        <h2 class="md-title"><span>User Reviews</span></h2>
 
 
         <div class="testimonial" *ngFor="let review of reviews">
@@ -245,7 +380,6 @@
               </p>
             </div>
           </div>
-          <span class="post">Critics</span>
           <div class="show_more w3-margin-right">
           </div>
         </div>
@@ -253,10 +387,38 @@
     </div>
     <div class="container Movie_List_results" *ngIf="currentIndex === 6">
       <section class="l-cards">
-        <h2 class="l-cards__title">User Follow</h2>
+        <h2 class="md-title"><span>My Follow</span></h2>
 
         <ul class="l-cards__list">
-          <li class="l-cards__item"*ngFor="let follow of followerProfiles">
+          <li class="l-cards__item"*ngFor="let follow of followerProfiles| slice:0:5">
+            <a routerLink="/userView/{{follow.id}}">
+              <img src="{{profile_url}}"
+                   class="w3-round">
+            </a>
+            <a routerLink="/userView/{{follow.id}}">
+              {{follow.name}}
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section class="l-cards">
+
+        <ul class="l-cards__list">
+          <li class="l-cards__item"*ngFor="let follow of followerProfiles| slice:5:10">
+            <a routerLink="/userView/{{follow.id}}">
+              <img src="{{profile_url}}"
+                   class="w3-round">
+            </a>
+            <a routerLink="/userView/{{follow.id}}">
+              {{follow.name}}
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section class="l-cards">
+
+        <ul class="l-cards__list">
+          <li class="l-cards__item"*ngFor="let follow of followerProfiles| slice:10:15">
             <a routerLink="/userView/{{follow.id}}">
               <img src="{{profile_url}}"
                    class="w3-round">
@@ -269,10 +431,38 @@
       </section>
 
       <section class="l-cards">
-        <h2 class="l-cards__title">User Followers</h2>
+        <h2 class="md-title"><span>My Followers</span></h2>
 
         <ul class="l-cards__list">
-          <li class="l-cards__item"*ngFor="let follow of followYouProfiles">
+          <li class="l-cards__item"*ngFor="let follow of followYouProfiles| slice:0:5">
+            <a routerLink="/userView/{{follow.id}}">
+              <img src="{{profile_url}}"
+                   class="w3-round">
+            </a>
+            <a routerLink="/userView/{{follow.id}}">
+              {{follow.name}}
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section class="l-cards">
+
+        <ul class="l-cards__list">
+          <li class="l-cards__item"*ngFor="let follow of followYouProfiles| slice:5:10">
+            <a routerLink="/userView/{{follow.id}}">
+              <img src="{{profile_url}}"
+                   class="w3-round">
+            </a>
+            <a routerLink="/userView/{{follow.id}}">
+              {{follow.name}}
+            </a>
+          </li>
+        </ul>
+      </section>
+      <section class="l-cards">
+
+        <ul class="l-cards__list">
+          <li class="l-cards__item"*ngFor="let follow of followYouProfiles| slice:10:15">
             <a routerLink="/userView/{{follow.id}}">
               <img src="{{profile_url}}"
                    class="w3-round">

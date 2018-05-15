@@ -20,11 +20,11 @@ export class CertifiedFreshMovieComponent implements OnInit{
   constructor(private homeService: HomeService,private route: ActivatedRoute, private router: Router){}
   ngOnInit() {
     this.route.queryParamMap.subscribe((params: ParamMap)=> {
-      if(params.get('page')){
-        this.page= Number(params.get('page'));
-      }
-      this.sortBy = params.get('sortBy');
-      if(this.sortBy==null){
+        if(params.get('page')){
+          this.page= Number(params.get('page'));
+        }
+        this.sortBy = params.get('sortBy');
+        if(this.sortBy==null){
         this.sortBy="";
       }
       this.orderBy = params.get('order');

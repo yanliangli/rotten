@@ -166,3 +166,53 @@ p {
   top: 37px;
   left: -19px;
 }
+// movie title
+.md-title{
+  font-weight: inherit;
+  color: white;
+  font-size: 1.0em;
+  margin: 2.5em 0 1em;
+  width: 100%;
+  background-color: $color-red;
+  text-transform: uppercase;
+  span {
+    margin-left: 1em;
+    padding: 10px;
+    background-color: lighten(black, 7%);
+    font-weight: bold;
+  }
+}
+.my_items{
+  display: inline-block;
+  line-height: 80% !important;
+  float: left;
+  width: 22%;
+  height: 320px;
+  font-weight: 500;
+  a {
+    color: white;
+    //font-size: 0.7em;
+    // text-decoration: none;
+  }
+  // fix the height
+  img {
+    width: 145px;
+    height: 215px;
+  }
+  p {
+    //color: $color-red;
+    color: #999999;
+    font-size: 0.6em;
+  }
+  & + &{
+    margin-left: 0.25rem;
+  }
+}
+.my_items_text{
+  padding-bottom: 6px;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+.ngb_paginaton{
+  text-align: center;
+}
