@@ -14,6 +14,7 @@ import {post} from 'selenium-webdriver/http';
 import {Trailer} from '../models/trailer.model';
 import {DomSanitizer} from '@angular/platform-browser';
 import {TV} from '../models/tv.model';
+import {ToastrService} from 'ngx-toastr';
 
 class Profile {
   name: string;
@@ -55,7 +56,8 @@ export class TvDetailComponent implements OnInit {
               private loginStatusService: LoginStatusService,
               private regUserService: RegUserService,
               private route: ActivatedRoute,
-              private sanitizer: DomSanitizer) {
+              private sanitizer: DomSanitizer,
+              private toastr: ToastrService) {
     this.profile_url = 'http://localhost:8080/user/avatar/default.jpeg';
     this.loginStatusService.currentStatus.subscribe(state => {
       this.status = state;
@@ -113,6 +115,7 @@ export class TvDetailComponent implements OnInit {
     this.tvDetailService.addReview(this.selectedMovieId, this.review).subscribe(result => {
       console.log(result);
       location.reload(true);
+      this.toastr.success('Success');
     });
   }
   getReview() {
@@ -122,12 +125,14 @@ export class TvDetailComponent implements OnInit {
     this.tvDetailService.addToWishlist(this.selectedMovieId).subscribe(result => {
       console.log(result);
       location.reload(true);
+      this.toastr.success('Success');
     });
   }
   addWatchlist() {
     this.tvDetailService.addToWatchlist(this.selectedMovieId).subscribe(result => {
       console.log(result);
       location.reload(true);
+      this.toastr.success('Success');
     });
   }
 
@@ -135,6 +140,7 @@ export class TvDetailComponent implements OnInit {
     this.tvDetailService.removeFromWishList(this.selectedMovieId).subscribe(result => {
       console.log(result);
       location.reload(true);
+      this.toastr.success('Success');
     });
   }
 
@@ -142,6 +148,7 @@ export class TvDetailComponent implements OnInit {
     this.tvDetailService.removeFromWacthList(this.selectedMovieId).subscribe(result => {
       console.log(result);
       location.reload(true);
+      this.toastr.success('Success');
     });
   }
 
@@ -149,12 +156,14 @@ export class TvDetailComponent implements OnInit {
     this.tvDetailService.rateMovie(this.hovered, this.selectedMovieId).subscribe(result => {
       console.log(result);
       location.reload(true);
+      this.toastr.success('Success');
     });
   }
   deleteRating() {
     this.tvDetailService.deleteRating(this.selectedMovieId).subscribe(result => {
       console.log(result);
       location.reload(true);
+      this.toastr.success('Success');
     });
   }
   getRatedMovie(): any {
