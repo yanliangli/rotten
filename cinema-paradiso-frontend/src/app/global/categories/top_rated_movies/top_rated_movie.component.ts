@@ -11,31 +11,14 @@ import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 })
 export class TopRatedMovieComponent implements OnInit{
   topRatedMovie:Movie[];
-  movieCount: number = 100;
-  page:number = 1;
-  numberOfElements=20;
-  maxPageDisplay=7;
-  sortBy;
-  orderBy;
   constructor(private homeService: HomeService,private route: ActivatedRoute, private router: Router){}
   ngOnInit() {
     this.route.queryParamMap.subscribe((params: ParamMap)=> {
-      if(params.get('page')){
-        this.page= Number(params.get('page'));
-      }
-      this.sortBy = params.get('sortBy');
-      if(this.sortBy==null){
-        this.sortBy="";
-      }
-      this.orderBy = params.get('order');
-      if(!this.orderBy){
-        this.orderBy="";
-      }
-      this.getTopRating(this.sortBy, this.orderBy);
+      this.getTopRating();
     });
   }
-  getTopRating(sortBy, orderBy){
-    this.homeService.getTopRatedMovie(this.page,this.numberOfElements, sortBy, orderBy)
+  getTopRating(){
+    this.homeService.getTopRatedMovie(1,100, "", "")
       .subscribe(
         data => {
           this.topRatedMovie = (data as Page[])['content'];

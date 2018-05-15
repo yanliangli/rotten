@@ -11,21 +11,14 @@ import {TV} from '../../models/tv.model';
 })
 export class TopRatedTVComponent implements OnInit{
   topRatedTv:TV[];
-  tvCount: number=100;
-  page:number = 1;
-  numberOfElements=20;
-  maxPageDisplay=7;
   constructor(private homeService: HomeService,private route: ActivatedRoute, private router: Router){}
   ngOnInit() {
     this.route.queryParamMap.subscribe((params: ParamMap)=> {
-      if(params.get('page')){
-        this.page= Number(params.get('page'));
-      }
       this.getTopRatingTV();
     });
   }
   getTopRatingTV(){
-    this.homeService.getTopRatedTV(this.page,this.numberOfElements)
+    this.homeService.getTopRatedTV(1, 100)
       .subscribe(
         data => {
           this.topRatedTv = (data as Page[])['content'];

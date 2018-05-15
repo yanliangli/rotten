@@ -8,17 +8,7 @@
     </div> <!-- ./sidebar -->
 
     <div class="my_header">
-      <h4 class="l-cards__title">TOP RATED MOVIE</h4>
-      <div class="l_cards__filter">
-        <div ngbDropdown class="d-inline-block">
-          <button class="btn btn-outline-primary nav-link dropdown-toggle" id="dropdownBasic1" ngbDropdownToggle>Sort By</button>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownBasic1" ngbDropdownMenu >
-            <button class="dropdown-item" routerLink="/movies/top_rated_movie" [queryParams]="{page:page, itemPerPage: itemPerPage, sortBy:'releaseDate', order:'ASC'}">Released Date</button>
-            <button class="dropdown-item" routerLink="/movies/top_rated_movie" [queryParams]="{page:page, itemPerPage: itemPerPage, sortBy:'rating', order:'DESC'}">Rating</button>
-            <button class="dropdown-item" routerLink="/movies/top_rated_movie" [queryParams]="{page:page, itemPerPage: itemPerPage, sortBy:'numberOfRatings', order:'DESC'}">Popularity</button>
-          </div>
-        </div>
-      </div>
+      <h4 class="l-cards__title">TOP 100 RATED MOVIE</h4>
     </div>
     <!--  right panel -->
     <div class="content-wrap">
@@ -113,10 +103,10 @@
           <!--<p>Year {{(movie.year)}}</p>-->
         </li>
       </ul>
-      <div class="ngb_paginaton">
-        <!--   pagination   -->
-        <ngb-pagination [(page)]="page" [collectionSize]="movieCount" [pageSize]="numberOfElements" [maxSize]="maxPageDisplay"  [rotate]="true" [ellipses]="false" [boundaryLinks]="true" class="pagination" (pageChange)="onPageChange(page, numberOfElements, sortBy)"></ngb-pagination>
-      </div>
+      <!--<div class="ngb_paginaton">-->
+        <!--&lt;!&ndash;   pagination   &ndash;&gt;-->
+        <!--<ngb-pagination [(page)]="page" [collectionSize]="movieCount" [pageSize]="numberOfElements" [maxSize]="maxPageDisplay"  [rotate]="true" [ellipses]="false" [boundaryLinks]="true" class="pagination" (pageChange)="onPageChange(page, numberOfElements, sortBy)"></ngb-pagination>-->
+      <!--</div>-->
     </div> <!-- ./end right panel -->
   </div> <!-- ./container -->
 

@@ -564,3 +564,10 @@ button, html [type="button"], [type="reset"], [type="submit"] {
     color: #b7b7b7;
   }
 }
+
+.md-list__photos{
+  img{
+    height: 150px;
+    padding-right: 10px;
+  }
+}
