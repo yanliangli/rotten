@@ -142,7 +142,7 @@ public class MovieController {
     }
 
     @RequestMapping(value = "/top_rating", method = POST)
-    public ResponseEntity<Page> getTopRating(@RequestParam(value = "page", defaultValue = "0") Integer page,@RequestParam(value = "itemsPerPage", defaultValue = "6") Integer size, @RequestParam(value = "sortBy", defaultValue = "rating") String sortBy, @RequestParam(value = "order", defaultValue = "DESC") String order) {
+    public ResponseEntity<Page> getTopRating(@RequestParam(value = "page", defaultValue = "0") Integer page,@RequestParam(value = "itemsPerPage", defaultValue = "6") Integer size, @RequestParam(value = "sortBy", defaultValue = "numberOfRatings") String sortBy, @RequestParam(value = "order", defaultValue = "DESC") String order) {
         Sort sort = filmService.getSortParam(order, sortBy);
         Pageable pageable = new PageRequest(page, size, sort);
         return new ResponseEntity<>(filmService.getTopRating(pageable), HttpStatus.OK);

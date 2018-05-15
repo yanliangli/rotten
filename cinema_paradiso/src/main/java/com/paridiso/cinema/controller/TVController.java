@@ -49,13 +49,9 @@ public class TVController {
 
     @RequestMapping(value = "/{id}", method = GET)
     public ResponseEntity<TV> getTV(@PathVariable String id) {
-
-        System.out.println("mapping correct!");
         TV tv = tvService.getTV(id);
-        System.out.println("TV: " + tv.toString());
         if (tv != null)
             return new ResponseEntity<>(tv, HttpStatus.OK);
-
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
@@ -134,17 +130,16 @@ public class TVController {
     }
 
     @RequestMapping(value = "/top_rating", method = POST)
-    public ResponseEntity<Page> getTVsTopRatings(@RequestParam(value = "page", defaultValue = "0") Integer page,@RequestParam(value = "itemsPerPage", defaultValue = "6") Integer size, @RequestParam(value = "sortBy", defaultValue = "rating") String sortBy) {
+    public ResponseEntity<Page> getTVsTopRatings(@RequestParam(value = "page", defaultValue = "0") Integer page,@RequestParam(value = "itemsPerPage", defaultValue = "6") Integer size, @RequestParam(value = "sortBy", defaultValue = "numberOfRatings") String sortBy) {
         Sort sort = new Sort(Sort.Direction.DESC, sortBy);
         Pageable pageable = new PageRequest(page, size, sort);
         return new ResponseEntity<>(tvService.getTopRating(pageable), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/certified_fresh", method = POST)
-    public ResponseEntity<Page> getCertifiedFresh(@RequestParam(value = "page", defaultValue = "0") Integer page, @RequestParam(value = "itemsPerPage", defaultValue = "6") Integer size, @RequestParam(value = "sortBy", defaultValue = "numberOfRatings") String sortBy) {
+    public ResponseEntity<Page> getCertifiedFresh(@RequestParam(value = "page", defaultValue = "0") Integer page, @RequestParam(value = "itemsPerPage", defaultValue = "6") Integer size, @RequestParam(value = "sortBy", defaultValue = "releaseDate") String sortBy) {
         Sort sort = new Sort(Sort.Direction.DESC, sortBy);
         Pageable pageable = new PageRequest(page, size, sort);
         return new ResponseEntity<>(tvService.getCertifiedFresh(pageable), HttpStatus.OK);
     }
-
 }
