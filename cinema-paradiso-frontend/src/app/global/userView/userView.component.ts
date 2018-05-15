@@ -100,8 +100,12 @@ export class UserViewComponent implements OnInit {
   followUser() {
     this.userViewService.followUser(this.userId).subscribe(result => {
       console.log(result);
-      this.checkInFollower();
-      this.toastr.success('Success');
+      if(result != null){
+        this.checkInFollower();
+        this.toastr.success('Success');
+      } else {
+        this.toastr.error('You cannot follow yourself');
+      }
     });
   }
   deFollowUser() {

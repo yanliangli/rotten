@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="88d67834-73db-4f83-b126-1694d195863a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/src/app/global/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/global/login/login.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/global/userView/userView.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/global/userView/userView.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../cinema_paradiso/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema_paradiso/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../cinema_paradiso/src/main/java/com/paridiso/cinema/controller/RegUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema_paradiso/src/main/java/com/paridiso/cinema/controller/RegUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cinema_paradiso/src/main/java/com/paridiso/cinema/controller/FollowerContoller.java" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema_paradiso/src/main/java/com/paridiso/cinema/controller/FollowerContoller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../cinema_paradiso/target/classes/com/paridiso/cinema/controller/RegUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema_paradiso/target/classes/com/paridiso/cinema/controller/RegUserController.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/dist/" />
@@ -38,7 +39,7 @@
       <file leaf-file-name="reg-user.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/user/reg-user/reg-user.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="343">
+            <state relative-caret-position="280">
               <caret line="145" column="10" selection-start-line="145" selection-start-column="10" selection-end-line="145" selection-end-column="53" />
               <folding>
                 <element signature="e#0#48#0" expanded="true" />
@@ -68,11 +69,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.component.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="login.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/global/login/login.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="132" column="54" selection-start-line="132" selection-start-column="54" selection-end-line="132" selection-end-column="54" />
+            <state relative-caret-position="861">
+              <caret line="121" column="13" selection-start-line="121" selection-start-column="13" selection-end-line="121" selection-end-column="13" />
               <folding>
                 <element signature="e#0#48#0" expanded="true" />
               </folding>
@@ -80,24 +81,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="userView.component.ts" pinned="false" current-in-tab="false">
+      <file leaf-file-name="userView.component.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app/global/userView/userView.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2029">
-              <caret line="110" column="37" selection-start-line="110" selection-start-column="37" selection-end-line="110" selection-end-column="37" />
+            <state relative-caret-position="370">
+              <caret line="106" column="53" selection-start-line="106" selection-start-column="53" selection-end-line="106" selection-end-column="53" />
               <folding>
                 <element signature="e#0#48#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="reg-user.component.spec.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/user/reg-user/reg-user.component.spec.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="e#0#73#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -127,6 +117,15 @@
       <file leaf-file-name="movie.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/global/movie/movie.component.html">
           <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="userView.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/global/userView/userView.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="184">
+              <caret line="93" column="24" selection-start-line="93" selection-start-column="19" selection-end-line="93" selection-end-column="24" />
+            </state>
+          </provider>
         </entry>
       </file>
       <file leaf-file-name="tv-detail.component.html" pinned="false" current-in-tab="false">
@@ -239,10 +238,10 @@
         <option value="$PROJECT_DIR$/src/app/user/reg-user/reg-user.component.html" />
         <option value="$PROJECT_DIR$/src/app/user/reg-user/reg-user.service.ts" />
         <option value="$PROJECT_DIR$/src/app/user/reg-user/reg-user.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/global/userView/userView.component.ts" />
         <option value="$PROJECT_DIR$/src/app/global/movie-detail/movie-detail.component.ts" />
         <option value="$PROJECT_DIR$/src/app/global/tv_detail/tv-detail.component.ts" />
         <option value="$PROJECT_DIR$/src/app/global/login/login.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/global/userView/userView.component.ts" />
       </list>
     </option>
   </component>
@@ -673,7 +672,7 @@
       <workItem from="1526228487702" duration="1810000" />
       <workItem from="1526253429320" duration="2254000" />
       <workItem from="1526353451851" duration="9347000" />
-      <workItem from="1526394327614" duration="9994000" />
+      <workItem from="1526394327614" duration="10500000" />
     </task>
     <task id="LOCAL-00001" summary="userPage, adminPage and so on router fixed">
       <created>1523570324883</created>
@@ -707,7 +706,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="171613000" />
+    <option name="totallyTimeSpent" value="172119000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -720,7 +719,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3293348" />
@@ -1049,13 +1047,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/global/userView/userView.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="93" column="24" selection-start-line="93" selection-start-column="19" selection-end-line="93" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/user/reg-user/reg-user.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="163">
@@ -1072,16 +1063,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/user/reg-user/reg-user.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="145" column="10" selection-start-line="145" selection-start-column="10" selection-end-line="145" selection-end-column="53" />
-          <folding>
-            <element signature="e#0#48#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/global/tv_detail/tv-detail.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="562">
@@ -1089,16 +1070,6 @@
           <folding>
             <element signature="n#style#0;n#p#4;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#5;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/global/userView/userView.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2029">
-          <caret line="110" column="37" selection-start-line="110" selection-start-column="37" selection-end-line="110" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#48#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1142,8 +1113,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/global/login/login.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="132" column="54" selection-start-line="132" selection-start-column="54" selection-end-line="132" selection-end-column="54" />
+        <state relative-caret-position="861">
+          <caret line="121" column="13" selection-start-line="121" selection-start-column="13" selection-end-line="121" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/global/userView/userView.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="93" column="24" selection-start-line="93" selection-start-column="19" selection-end-line="93" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/user/reg-user/reg-user.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="145" column="10" selection-start-line="145" selection-start-column="10" selection-end-line="145" selection-end-column="53" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/global/userView/userView.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="370">
+          <caret line="106" column="53" selection-start-line="106" selection-start-column="53" selection-end-line="106" selection-end-column="53" />
           <folding>
             <element signature="e#0#48#0" expanded="true" />
           </folding>

@@ -46,7 +46,9 @@ public class FollowerContoller {
     @RequestMapping(value = "/addFollowList/{followPersonId}", method = POST)
     public ResponseEntity<Boolean> addFollowList(@RequestHeader(value = "Authorization") String jwtToken,
                                                  @PathVariable Integer followPersonId) {
-        System.out.println("Coming addFollowList");
+        if(jwtTokenService.getUserIdFromToken(jwtToken) == followPersonId){
+            return ResponseEntity.ok(null);
+        }
         return ResponseEntity.ok(followerImpl.addFollower(jwtTokenService.getUserIdFromToken(jwtToken), followPersonId));
     }
     @RequestMapping(value = "/removeFromFollowList/{followPersonId}", method = DELETE)
