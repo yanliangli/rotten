@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="88d67834-73db-4f83-b126-1694d195863a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/global/movie-detail/movie-detail.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/global/movie-detail/movie-detail.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/global/tv_detail/tv-detail.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/global/tv_detail/tv-detail.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/global/userView/userView.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/global/userView/userView.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cinema_paradiso/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../cinema_paradiso/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/dist/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -47,11 +46,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tv-detail.component.ts" pinned="false" current-in-tab="false">
+      <file leaf-file-name="tv-detail.component.ts" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app/global/tv_detail/tv-detail.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="116" column="6" lean-forward="true" selection-start-line="116" selection-start-column="6" selection-end-line="116" selection-end-column="37" />
+            <state relative-caret-position="2085">
+              <caret line="146" column="27" selection-start-line="146" selection-start-column="27" selection-end-line="146" selection-end-column="27" />
               <folding>
                 <element signature="e#0#55#0" expanded="true" />
               </folding>
@@ -62,20 +61,11 @@
       <file leaf-file-name="userView.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/global/userView/userView.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="102" column="6" lean-forward="true" selection-start-line="102" selection-start-column="6" selection-end-line="102" selection-end-column="37" />
+            <state relative-caret-position="2029">
+              <caret line="110" column="37" selection-start-line="110" selection-start-column="37" selection-end-line="110" selection-end-column="37" />
               <folding>
                 <element signature="e#0#48#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="reg-user.service.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/user/reg-user/reg-user.service.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="91">
-              <caret line="40" column="74" selection-start-line="40" selection-start-column="74" selection-end-line="40" selection-end-column="74" />
             </state>
           </provider>
         </entry>
@@ -94,22 +84,27 @@
       <file leaf-file-name="movie-detail.component.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/global/movie-detail/movie-detail.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
+            <state relative-caret-position="-147">
               <caret line="20" column="59" lean-forward="true" selection-start-line="20" selection-start-column="59" selection-end-line="20" selection-end-column="59" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="movie-detail.component.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="movie-detail.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/global/movie-detail/movie-detail.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3423">
-              <caret line="163" column="37" selection-start-line="163" selection-start-column="37" selection-end-line="163" selection-end-column="37" />
+            <state relative-caret-position="129">
+              <caret line="167" column="2" selection-start-line="167" selection-start-column="2" selection-end-line="190" selection-end-column="3" />
               <folding>
                 <element signature="e#0#55#0" expanded="true" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="movie.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/global/movie/movie.component.html">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file leaf-file-name="userView.component.html" pinned="false" current-in-tab="false">
@@ -242,8 +237,8 @@
         <option value="$PROJECT_DIR$/src/app/user/reg-user/reg-user.service.ts" />
         <option value="$PROJECT_DIR$/src/app/user/reg-user/reg-user.component.ts" />
         <option value="$PROJECT_DIR$/src/app/global/userView/userView.component.ts" />
-        <option value="$PROJECT_DIR$/src/app/global/tv_detail/tv-detail.component.ts" />
         <option value="$PROJECT_DIR$/src/app/global/movie-detail/movie-detail.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/global/tv_detail/tv-detail.component.ts" />
       </list>
     </option>
   </component>
@@ -674,7 +669,7 @@
       <workItem from="1526228487702" duration="1810000" />
       <workItem from="1526253429320" duration="2254000" />
       <workItem from="1526353451851" duration="9347000" />
-      <workItem from="1526394327614" duration="8248000" />
+      <workItem from="1526394327614" duration="9059000" />
     </task>
     <task id="LOCAL-00001" summary="userPage, adminPage and so on router fixed">
       <created>1523570324883</created>
@@ -697,11 +692,18 @@
       <option name="project" value="LOCAL" />
       <updated>1526402326434</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="moviePage/TvPage function success notice add">
+      <created>1526402733026</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1526402733026</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="169867000" />
+    <option name="totallyTimeSpent" value="170678000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -756,19 +758,10 @@
     <MESSAGE value="userPage, adminPage and so on router fixed" />
     <MESSAGE value="rating system done" />
     <MESSAGE value="personal page GUI update" />
-    <option name="LAST_COMMIT_MESSAGE" value="personal page GUI update" />
+    <MESSAGE value="moviePage/TvPage function success notice add" />
+    <option name="LAST_COMMIT_MESSAGE" value="moviePage/TvPage function success notice add" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/app/global/movie-detail/photos/movie-photos.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="12" lean-forward="true" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#48#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/global/movie-detail/reviews/movie-reviews.component.html">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1112,8 +1105,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/global/userView/userView.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="102" column="6" lean-forward="true" selection-start-line="102" selection-start-column="6" selection-end-line="102" selection-end-column="37" />
+        <state relative-caret-position="2029">
+          <caret line="110" column="37" selection-start-line="110" selection-start-column="37" selection-end-line="110" selection-end-column="37" />
           <folding>
             <element signature="e#0#48#0" expanded="true" />
           </folding>
@@ -1122,25 +1115,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/global/movie-detail/movie-detail.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
+        <state relative-caret-position="-147">
           <caret line="20" column="59" lean-forward="true" selection-start-line="20" selection-start-column="59" selection-end-line="20" selection-end-column="59" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/global/tv_detail/tv-detail.component.ts">
+    <entry file="file://$PROJECT_DIR$/src/app/global/movie/movie.component.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/global/movie-detail/movie-detail.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="116" column="6" lean-forward="true" selection-start-line="116" selection-start-column="6" selection-end-line="116" selection-end-column="37" />
+        <state relative-caret-position="129">
+          <caret line="167" column="2" selection-start-line="167" selection-start-column="2" selection-end-line="190" selection-end-column="3" />
           <folding>
             <element signature="e#0#55#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/global/movie-detail/movie-detail.component.ts">
+    <entry file="file://$PROJECT_DIR$/src/app/global/tv_detail/tv-detail.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3423">
-          <caret line="163" column="37" selection-start-line="163" selection-start-column="37" selection-end-line="163" selection-end-column="37" />
+        <state relative-caret-position="2085">
+          <caret line="146" column="27" selection-start-line="146" selection-start-column="27" selection-end-line="146" selection-end-column="27" />
           <folding>
             <element signature="e#0#55#0" expanded="true" />
           </folding>

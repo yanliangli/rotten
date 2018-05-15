@@ -68,26 +68,8 @@ export class TvDetailComponent implements OnInit {
         $('.modal-wrapper').hide();
         $('.page-wrapper').hide();
         this.user = this.loginStatusService.getTokenDetails() as Token;
-        tvDetailService.checkInWatchlist(this.selectedMovieId).then(result => {
-            if (result === true) {
-              this.inWatchlist = true;
-              console.log(this.inWatchlist);
-            } else {
-              this.inWatchlist = false;
-              console.log(this.inWatchlist);
-            }
-          }
-        );
-        tvDetailService.checkInWishlist(this.selectedMovieId).then(result => {
-            if (result === true) {
-              this.inWishlist = true;
-              console.log(this.inWishlist);
-            } else {
-              this.inWishlist = false;
-              console.log(this.inWishlist);
-            }
-          }
-        );
+        this.checkInWatchlist();
+        this.checkInWishlist();
         this.getRatedMovie();
       }
       this.regUserService.getProfile().subscribe(profileDetails => {
@@ -114,7 +96,7 @@ export class TvDetailComponent implements OnInit {
   addReview() {
     this.tvDetailService.addReview(this.selectedMovieId, this.review).subscribe(result => {
       console.log(result);
-      location.reload(true);
+      this.getMovie(this.selectedMovieId);
       this.toastr.success('Success');
     });
   }
@@ -124,14 +106,14 @@ export class TvDetailComponent implements OnInit {
   addWishlist() {
     this.tvDetailService.addToWishlist(this.selectedMovieId).subscribe(result => {
       console.log(result);
-      location.reload(true);
+      this.checkInWishlist();
       this.toastr.success('Success');
     });
   }
   addWatchlist() {
     this.tvDetailService.addToWatchlist(this.selectedMovieId).subscribe(result => {
       console.log(result);
-      location.reload(true);
+      this.checkInWatchlist();
       this.toastr.success('Success');
     });
   }
@@ -139,7 +121,7 @@ export class TvDetailComponent implements OnInit {
   removeFromWishList() {
     this.tvDetailService.removeFromWishList(this.selectedMovieId).subscribe(result => {
       console.log(result);
-      location.reload(true);
+      this.checkInWishlist();
       this.toastr.success('Success');
     });
   }
@@ -147,7 +129,7 @@ export class TvDetailComponent implements OnInit {
   removeFromWacthList() {
     this.tvDetailService.removeFromWacthList(this.selectedMovieId).subscribe(result => {
       console.log(result);
-      location.reload(true);
+      this.checkInWatchlist();
       this.toastr.success('Success');
     });
   }
@@ -155,14 +137,14 @@ export class TvDetailComponent implements OnInit {
   rateMovie() {
     this.tvDetailService.rateMovie(this.hovered, this.selectedMovieId).subscribe(result => {
       console.log(result);
-      location.reload(true);
+      this.getRatedMovie();
       this.toastr.success('Success');
     });
   }
   deleteRating() {
     this.tvDetailService.deleteRating(this.selectedMovieId).subscribe(result => {
       console.log(result);
-      location.reload(true);
+      this.getRatedMovie();
       this.toastr.success('Success');
     });
   }
@@ -183,6 +165,30 @@ export class TvDetailComponent implements OnInit {
         },
         error => console.log('Failed to fetch carousel data')
       );
+  }
+  checkInWishlist():any{
+    this.tvDetailService.checkInWishlist(this.selectedMovieId).then(result => {
+        if (result === true) {
+          this.inWishlist = true;
+          console.log(this.inWishlist);
+        } else {
+          this.inWishlist = false;
+          console.log(this.inWishlist);
+        }
+      }
+    );
+  }
+  checkInWatchlist():any{
+    this.tvDetailService.checkInWatchlist(this.selectedMovieId).then(result => {
+        if (result === true) {
+          this.inWatchlist = true;
+          console.log(this.inWatchlist);
+        } else {
+          this.inWatchlist = false;
+          console.log(this.inWatchlist);
+        }
+      }
+    );
   }
   notice() {
     alert('Please Log in/Sign up first!');

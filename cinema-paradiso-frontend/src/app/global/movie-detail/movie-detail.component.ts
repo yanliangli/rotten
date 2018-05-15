@@ -67,26 +67,8 @@ export class MovieDetailComponent implements OnInit {
         $('.modal-wrapper').hide();
         $('.page-wrapper').hide();
         this.user = this.loginStatusService.getTokenDetails() as Token;
-        movieDetailService.checkInWatchlist(this.selectedMovieId).then(result => {
-            if (result === true) {
-              this.inWatchlist = true;
-              console.log(this.inWatchlist);
-            } else {
-              this.inWatchlist = false;
-              console.log(this.inWatchlist);
-            }
-          }
-        );
-        movieDetailService.checkInWishlist(this.selectedMovieId).then(result => {
-            if (result === true) {
-              this.inWishlist = true;
-              console.log(this.inWishlist);
-            } else {
-              this.inWishlist = false;
-              console.log(this.inWishlist);
-            }
-          }
-        );
+        this.checkInWatchlist();
+        this.checkInWishlist();
         this.getRatedMovie();
       }
       this.regUserService.getProfile().subscribe(profileDetails => {
@@ -113,7 +95,7 @@ export class MovieDetailComponent implements OnInit {
   addReview() {
     this.movieDetailService.addReview(this.selectedMovieId, this.review).subscribe(result => {
       console.log(result);
-      location.reload(true);
+      this.getMovie(this.selectedMovieId);
       this.toastr.success('Success');
     });
   }
@@ -123,14 +105,14 @@ export class MovieDetailComponent implements OnInit {
   addWishlist() {
     this.movieDetailService.addToWishlist(this.selectedMovieId).subscribe(result => {
       console.log(result);
-      location.reload(true);
+      this.checkInWishlist();
       this.toastr.success('Success');
     });
   }
   addWatchlist() {
     this.movieDetailService.addToWatchlist(this.selectedMovieId).subscribe(result => {
       console.log(result);
-      location.reload(true);
+      this.checkInWatchlist();
       this.toastr.success('Success');
     });
   }
@@ -138,7 +120,7 @@ export class MovieDetailComponent implements OnInit {
   removeFromWishList() {
     this.movieDetailService.removeFromWishList(this.selectedMovieId).subscribe(result => {
       console.log(result);
-      location.reload(true);
+      this.checkInWishlist();
       this.toastr.success('Success');
     });
   }
@@ -146,7 +128,7 @@ export class MovieDetailComponent implements OnInit {
   removeFromWacthList() {
     this.movieDetailService.removeFromWacthList(this.selectedMovieId).subscribe(result => {
       console.log(result);
-      location.reload(true);
+      this.checkInWatchlist();
       this.toastr.success('Success');
     });
   }
@@ -154,14 +136,14 @@ export class MovieDetailComponent implements OnInit {
   rateMovie() {
     this.movieDetailService.rateMovie(this.hovered, this.selectedMovieId).subscribe(result => {
       console.log(result);
-      location.reload(true);
+      this.getRatedMovie();
       this.toastr.success('Success');
     });
   }
   deleteRating() {
     this.movieDetailService.deleteRating(this.selectedMovieId).subscribe(result => {
       console.log(result);
-      location.reload(true);
+      this.getRatedMovie();
       this.toastr.success('Success');
     });
   }
@@ -182,6 +164,30 @@ export class MovieDetailComponent implements OnInit {
         },
         error => console.log('Failed to fetch carousel data')
       );
+  }
+  checkInWishlist():any{
+    this.movieDetailService.checkInWishlist(this.selectedMovieId).then(result => {
+        if (result === true) {
+          this.inWishlist = true;
+          console.log(this.inWishlist);
+        } else {
+          this.inWishlist = false;
+          console.log(this.inWishlist);
+        }
+      }
+    );
+  }
+  checkInWatchlist():any{
+    this.movieDetailService.checkInWatchlist(this.selectedMovieId).then(result => {
+        if (result === true) {
+          this.inWatchlist = true;
+          console.log(this.inWatchlist);
+        } else {
+          this.inWatchlist = false;
+          console.log(this.inWatchlist);
+        }
+      }
+    );
   }
   notice() {
     alert('Please Log in/Sign up first!');
