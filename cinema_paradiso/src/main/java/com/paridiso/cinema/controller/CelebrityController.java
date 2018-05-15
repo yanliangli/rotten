@@ -1,6 +1,8 @@
 package com.paridiso.cinema.controller;
 
 import com.paridiso.cinema.entity.Celebrity;
+import com.paridiso.cinema.entity.Movie;
+import com.paridiso.cinema.entity.TV;
 import com.paridiso.cinema.service.implementation.CelebrityServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -75,5 +77,17 @@ public class CelebrityController {
 //                                                     @RequestBody final Celebrity celebrity) {
 //        return null;
 //    }
+
+    @RequestMapping(value = "/in_movie", method = POST)
+    public ResponseEntity<List<Movie>> getAllMoviesIn(@RequestBody final Celebrity celebrity) {
+        List<Movie> moviesIn = celebrityService.getAllMoviesIn(celebrity);
+        return ResponseEntity.ok(moviesIn);
+    }
+
+    @RequestMapping(value = "/in_tv", method = POST)
+    public ResponseEntity<List<TV>> getAllTvIn(@RequestBody final Celebrity celebrity) {
+        List<TV> tvIn = celebrityService.getAllTvIn(celebrity);
+        return ResponseEntity.ok(tvIn);
+    }
 
 }
