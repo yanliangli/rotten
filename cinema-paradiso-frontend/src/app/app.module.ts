@@ -23,9 +23,9 @@ import {MovieDetailService} from './global/movie-detail/movie-detail.service';
 import {MovieService} from './global/movie/movie.service';
 import {ToastrModule} from 'ngx-toastr';
 import {StarsComponent} from './global/stars/stars.component';
-import {AboutComponent} from './global/general/about.component';
-import {ContactComponent} from './global/general/contact.component';
-import {PolicyComponent} from './global/general/policy.component';
+import {AboutComponent} from './global/general/about/about.component';
+import {ContactComponent} from './global/general/contact/contact.component';
+import {PolicyComponent} from './global/general/policy/policy.component';
 import {SidebarComponent} from './global/categories/sidebar/sidebar.component';
 import {OpeningThisWeekComponent} from './global/categories/opening_this_week/opening_this_week.component';
 import {ComingSoonComponent} from './global/categories/coming_soon/coming_soon.component';
@@ -44,6 +44,8 @@ import {SearchTVTabComponent} from './global/search/tv-tab/tv-tab.component';
 import {SearchPeopleTabComponent} from './global/search/people-tab/people-tab.component';
 import {SearchService} from './global/search/search.service';
 import {UserViewComponent} from './global/userView/userView.component';
+import {CriticApplicationComponent} from './global/general/critic-applicaition/critic.component';
+import {CareerComponent} from './global/general/career/career.component';
 
 @NgModule({
   // entryComponents: [MessageComponent],
@@ -78,6 +80,8 @@ import {UserViewComponent} from './global/userView/userView.component';
     TopRatedTVComponent,
     TopRatedMovieComponent,
     AcademyAwardComponent,
+    CriticApplicationComponent,
+    CareerComponent,
   ],
   imports: [
     BrowserModule,

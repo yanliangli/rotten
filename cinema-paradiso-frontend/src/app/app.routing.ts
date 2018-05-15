@@ -7,8 +7,8 @@ import {RegUserComponent} from './user/reg-user/reg-user.component';
 import {SearchComponent} from './global/search/search.component';
 import {AdminComponent} from './user/admin/admin.component';
 import {StarsComponent} from './global/stars/stars.component';
-import {ContactComponent} from './global/general/contact.component';
-import {AboutComponent} from './global/general/about.component';
+import {ContactComponent} from './global/general/contact/contact.component';
+import {AboutComponent} from './global/general/about/about.component';
 import {OpeningThisWeekComponent} from './global/categories/opening_this_week/opening_this_week.component';
 import {ComingSoonComponent} from './global/categories/coming_soon/coming_soon.component';
 import {TopBoxOfficeComponent} from './global/categories/top_box_office/top_box_office.component';
@@ -23,6 +23,9 @@ import {SearchMovieTabComponent} from './global/search/movie-tab/movie-tab.compo
 import {SearchTVTabComponent} from './global/search/tv-tab/tv-tab.component';
 import {SearchPeopleTabComponent} from './global/search/people-tab/people-tab.component';
 import {UserViewComponent} from './global/userView/userView.component';
+import {CriticApplicationComponent} from './global/general/critic-applicaition/critic.component';
+import {PolicyComponent} from './global/general/policy/policy.component';
+import {CareerComponent} from './global/general/career/career.component';
 
 const appRoutes: Routes = [
   //{path: '', pathMatch: 'full', redirectTo: 'home'},
@@ -47,10 +50,13 @@ const appRoutes: Routes = [
   {path: 'star', component: StarsComponent},
   {path: 'movie/:id', component: MovieDetailComponent},
   {path: 'user/:id', component: RegUserComponent},
-  {path: 'userView/:id', component: UserViewComponent},
+  {path: 'userView:id', component: UserViewComponent},
   {path: 'home/:id', component: MovieDetailComponent},
   {path: 'about', component: AboutComponent},
   {path: 'contact', component: ContactComponent},
+  {path: 'policy', component: PolicyComponent},
+  {path: 'critics', component: CriticApplicationComponent},
+  {path: 'career', component: CareerComponent},
 ];
 
 @NgModule({
