@@ -1,6 +1,8 @@
 package com.paridiso.cinema.service;
 
 import com.paridiso.cinema.entity.Celebrity;
+import com.paridiso.cinema.entity.Movie;
+import com.paridiso.cinema.entity.TV;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,4 +20,8 @@ public interface CelebrityService {
     Optional<Celebrity> updateCelebrity(Celebrity celebrity);
 
     Optional<Celebrity> addCelebrity(Celebrity celebrity);
+
+    List<Movie> getAllMoviesIn(Celebrity celebrity);
+
+    List<TV> getAllTvIn(Celebrity celebrity);
 }

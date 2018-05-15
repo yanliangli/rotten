@@ -1,0 +1,21 @@
+<html>
+<body>
+<main>
+  <div class="celebrity_container">
+    <!-- 	2nd section	photos -->
+    <section class="md_wrap">
+      <h2 class="md-title"><span>{{celebrity.name}} PHOTOS</span></h2>
+      <ul class="container md-list__photos">
+        <li class="row md-list__item" >
+          <div class="col-photos item__detail" href="" *ngFor="let photos of celebrity.photos" style="width: 200px;height: 200px;">
+            <a href="{{photos}}">
+              <img src="{{photos}}" [alt]="celebrity.name">
+            </a>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </div>
+</main>
+</body>
+</html>

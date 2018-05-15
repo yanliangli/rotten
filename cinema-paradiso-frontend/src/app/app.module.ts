@@ -55,6 +55,8 @@ import {TvReviewsComponent} from './global/tv_detail/reviews/tv-reviews.componen
 import {TvTrailersComponent} from './global/tv_detail/trailers/tv-trailers.component';
 import {TvPhotosComponent} from './global/tv_detail/photos/tv-photos.component';
 import {TvDetailService} from './global/tv_detail/tv-detail.service';
+import {CelebrityService} from './global/celebrity/celebrity.service';
+import {CelebrityPhotosComponent} from './global/celebrity/celebrity-photos/celebrity-photos.component';
 
 @NgModule({
   // entryComponents: [MessageComponent],
@@ -98,6 +100,7 @@ import {TvDetailService} from './global/tv_detail/tv-detail.service';
     TvReviewsComponent,
     TvTrailersComponent,
     TvPhotosComponent,
+    CelebrityPhotosComponent,
   ],
   imports: [
     BrowserModule,
@@ -118,6 +121,7 @@ import {TvDetailService} from './global/tv_detail/tv-detail.service';
     TvDetailService,
     RegUserService,
     SearchService,
+    CelebrityService,
     {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,

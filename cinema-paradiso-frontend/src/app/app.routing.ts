@@ -33,6 +33,7 @@ import {TvDetailComponent} from './global/tv_detail/tv-detail.component';
 import {TvPhotosComponent} from './global/tv_detail/photos/tv-photos.component';
 import {TvTrailersComponent} from './global/tv_detail/trailers/tv-trailers.component';
 import {TvReviewsComponent} from './global/tv_detail/reviews/tv-reviews.component';
+import {CelebrityPhotosComponent} from './global/celebrity/celebrity-photos/celebrity-photos.component';
 
 const appRoutes: Routes = [
   //{path: '', pathMatch: 'full', redirectTo: 'home'},
@@ -49,6 +50,7 @@ const appRoutes: Routes = [
   {path: 'movies/top_rated_movie',component: TopRatedMovieComponent},
   {path: 'movies/top_rated_tv',component: TopRatedTVComponent},
   {path: 'celebrity/:id', component: CelebrityComponent},
+  {path: 'celebrity/photos/:id', component: CelebrityPhotosComponent},
   {path: 'search', component: SearchComponent},
   {path: 'search/movie', component: SearchMovieTabComponent},
   {path: 'search/tv', component: SearchTVTabComponent},
