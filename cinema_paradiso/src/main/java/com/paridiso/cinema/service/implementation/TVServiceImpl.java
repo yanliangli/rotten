@@ -1,6 +1,5 @@
 package com.paridiso.cinema.service.implementation;
 
-import com.paridiso.cinema.entity.Film;
 import com.paridiso.cinema.entity.Movie;
 import com.paridiso.cinema.entity.TV;
 import com.paridiso.cinema.entity.Trailer;
@@ -54,13 +53,13 @@ public class TVServiceImpl implements TVService {
 
     @Override
     public Page<TV> getTopRating(Pageable pageable){
-        return tvRepository.findAll(pageable);
+        return tvRepository.findTop100ByOrderByRatingDesc(pageable);
     }
 
     @Override
     public Page<TV> getCertifiedFresh(Pageable pageable){
         Double ratingFilter = 3.49;
-        Integer numberFilter = 25;
+        Integer numberFilter = 250;
         String ending = "2018";
         Page<TV> freshTv = tvRepository.findAllByYearEndsWithAndRatingAfterAndNumberOfRatingsAfter(ending, ratingFilter, numberFilter, pageable);
         return freshTv;

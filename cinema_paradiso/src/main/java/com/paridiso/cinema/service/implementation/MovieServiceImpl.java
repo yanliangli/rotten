@@ -157,9 +157,7 @@ public class MovieServiceImpl implements FilmService {
 
     @Override
     public Page<Movie> getTopRating(Pageable pageable) {
-        Double ratingFilter = 3.49;
-        Integer numberFilter = 80;
-        return movieRepository.findAllByRatingAfterAndNumberOfRatingsAfter(ratingFilter, numberFilter, pageable);
+        return movieRepository.findTop100ByOrderByRatingDesc(pageable);
     }
 
     @Override
@@ -180,7 +178,7 @@ public class MovieServiceImpl implements FilmService {
         cal.add(Calendar.DATE, -60);
         Date dateBefore = cal.getTime();
         Double ratingFilter = 3.49;
-        Integer numberFilter = 80;
+        Integer numberFilter = 800;
         Page<Movie> movies = movieRepository.findAllByReleaseDateBetweenAndRatingAfterAndNumberOfRatingsAfter(dateBefore, dateNow, ratingFilter, numberFilter,pageable);
         return movies;
     }
