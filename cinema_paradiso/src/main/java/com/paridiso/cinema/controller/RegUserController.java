@@ -147,7 +147,6 @@ public class RegUserController {
     @PostMapping(value = "/signup")
     public ResponseEntity<JwtUser> userSignup(@RequestBody User user,
                                               WebRequest webRequest) {
-
         User optionalUser = userService.signup(user).orElseThrow(() ->
                 new ResponseStatusException(BAD_REQUEST, "USER ALREADY EXISTS"));
         System.out.println(optionalUser.getUserID());

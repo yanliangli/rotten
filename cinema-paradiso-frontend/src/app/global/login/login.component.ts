@@ -3,6 +3,8 @@ import * as $ from 'jquery';
 import {User} from '../../user/user/user.model';
 import {LoginService} from './login.service';
 import {LoginStatusService} from './login.status.service';
+import {ToastrService} from 'ngx-toastr';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +14,7 @@ import {LoginStatusService} from './login.status.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private loginService: LoginService, private loginStatusService: LoginStatusService) {
+  constructor(private loginService: LoginService, private loginStatusService: LoginStatusService, private toastr: ToastrService) {
   }
 
   user = new User();
@@ -51,31 +53,54 @@ export class LoginComponent implements OnInit {
 
   signup() {
     // check password is the same
-    if (!this.emailTaken && !this.userNameTaken && this.user !== undefined) {
-      if(this.user.email.includes("admin")){
-        this.loginService.adminSingup(this.user).subscribe(data => {
-          localStorage.setItem('credential', JSON.stringify(data));
-          localStorage.setItem('token', JSON.stringify(data['token']));
+    if(this.user.email == null){
+      this.toastr.error('Please enter email');
+    }
+    if(this.user.username == null){
+      this.toastr.error('Please enter username');
+    }
+    if(this.user.password == null){
+      this.toastr.error('please enter password');
+    }
+    if(!this.isSamePassword){
+      this.toastr.error('You entered two different password');
+    }
+    if (!this.emailTaken ) {
+      if (!this.userNameTaken && this.user !== undefined){
+        if (this.user.email.includes("admin")){
+          this.loginService.adminSingup(this.user).subscribe(data => {
+            localStorage.setItem('credential', JSON.stringify(data));
+            localStorage.setItem('token', JSON.stringify(data['token']));
 
-          // Set user loggedIn status to global. So header can subscribe to the event.
-          this.loginStatusService.changeStatus(true);
-        });
-      } else {
-        this.loginService.singup(this.user).subscribe(data => {
-          // localStorage.setItem('credential', JSON.stringify(data));
-          // localStorage.setItem('token', JSON.stringify(data['token']));
+            // Set user loggedIn status to global. So header can subscribe to the event.
+            this.loginStatusService.changeStatus(true);
+          });
+        } else {
+          this.loginService.singup(this.user).subscribe(data => {
+              // localStorage.setItem('credential', JSON.stringify(data));
+              // localStorage.setItem('token', JSON.stringify(data['token']));
 
-          // Set user loggedIn status to global. So header can subscribe to the event.
-          // this.loginStatusService.changeStatus(true);
-          if(data !== null){
-            alert('One last step: Please activate your account by Email\nThe link will be Invalid in TEN minutes');
-            location.reload(true);
-          } else {
-            alert('Invalid email address, please resignUp with an valid one');
-            location.reload(true);
-          }
-        });
+              // Set user loggedIn status to global. So header can subscribe to the event.
+              // this.loginStatusService.changeStatus(true);
+              if(data !== null){
+                alert('One last step: Please activate your account by Email\nThe link will be Invalid in TEN minutes');
+                location.reload(true);
+              } else {
+                alert('Invalid email address, please resignUp with an valid one');
+                location.reload(true);
+              }
+            },
+            error => {
+              console.error('Error SignUp');
+              this.toastr.error('Email address exist');
+              return Observable.throw(error);
+            });
+        }
+      }else{
+        this.toastr.error('User name exist');
       }
+    }else {
+      this.toastr.error('Email address exist');
     }
   }
 
@@ -131,8 +156,15 @@ export class LoginComponent implements OnInit {
             alert('We detect your account is not activated\nWe resend you a verify email to your registration email, please check\n' +
               'The link will be Invalid in TEN minutes ');
           }
-        });
+        },
+          error => {
+            console.error('Error Login');
+            this.toastr.error('Wrong Email address or password');
+            return Observable.throw(error);
+          });
       }
+    }else{
+      this.toastr.error('Please enter your Email address and password');
     }
   }
   forgotPassword() {
@@ -142,9 +174,9 @@ export class LoginComponent implements OnInit {
           alert('A reset password email has been sent to your account email box, please check.\nThe link will be Invalid in TEN minutes');
           }
         });
-      } else {
-        alert('Please enter your account email address!');
-      }
+      }else {
+      this.toastr.error('Please enter your Email address');
+    }
     }
 
 }

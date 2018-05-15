@@ -78,6 +78,7 @@ public class RegUserServiceImpl extends UserService {
 
     @Transactional
     public Optional<User> signup(User user) {
+
         user.setEnabled(false);
         user.setRole(Role.ROLE_USER);
         user.setAccountSuspended(false);
