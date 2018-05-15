@@ -46,6 +46,10 @@ import {SearchService} from './global/search/search.service';
 import {UserViewComponent} from './global/userView/userView.component';
 import {CriticApplicationComponent} from './global/general/critic-applicaition/critic.component';
 import {CareerComponent} from './global/general/career/career.component';
+import {RegUserService} from './user/reg-user/reg-user.service';
+import {MoviePhotosComponent} from './global/movie-detail/photos/movie-photos.component';
+import {MovieReviewsComponent} from './global/movie-detail/reviews/movie-reviews.component';
+import {MovieTrailersComponent} from './global/movie-detail/trailers/movie-trailers.component';
 
 @NgModule({
   // entryComponents: [MessageComponent],
@@ -82,6 +86,9 @@ import {CareerComponent} from './global/general/career/career.component';
     AcademyAwardComponent,
     CriticApplicationComponent,
     CareerComponent,
+    MoviePhotosComponent,
+    MovieReviewsComponent,
+    MovieTrailersComponent,
   ],
   imports: [
     BrowserModule,
@@ -99,6 +106,7 @@ import {CareerComponent} from './global/general/career/career.component';
     HomeService,
     MovieService,
     MovieDetailService,
+    RegUserService,
     SearchService,
     {
     provide: HTTP_INTERCEPTORS,

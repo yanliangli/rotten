@@ -26,6 +26,9 @@ import {UserViewComponent} from './global/userView/userView.component';
 import {CriticApplicationComponent} from './global/general/critic-applicaition/critic.component';
 import {PolicyComponent} from './global/general/policy/policy.component';
 import {CareerComponent} from './global/general/career/career.component';
+import {MoviePhotosComponent} from './global/movie-detail/photos/movie-photos.component';
+import {MovieTrailersComponent} from './global/movie-detail/trailers/movie-trailers.component';
+import {MovieReviewsComponent} from './global/movie-detail/reviews/movie-reviews.component';
 
 const appRoutes: Routes = [
   //{path: '', pathMatch: 'full', redirectTo: 'home'},
@@ -49,6 +52,9 @@ const appRoutes: Routes = [
   {path: 'admin', component: AdminComponent},
   {path: 'star', component: StarsComponent},
   {path: 'movie/:id', component: MovieDetailComponent},
+  {path: 'movie/photos/:id', component: MoviePhotosComponent},
+  {path: 'movie/trailers/:id', component: MovieTrailersComponent},
+  {path: 'movie/reviews/:id', component: MovieReviewsComponent},
   {path: 'user/:id', component: RegUserComponent},
   {path: 'userView:id', component: UserViewComponent},
   {path: 'home/:id', component: MovieDetailComponent},
