@@ -9,7 +9,7 @@ Cinema Paradiso is a online movie rating application that allows users to obtain
 **Developers:** [YanLiang Li](https://github.com/yanliangli), [Nan Jiang](https://github.com/BoofOfFools)
 
 ## How to run the project <a id="how-to-run-the-project"></a>
->>This project requires [Node.js](https://nodejs.org/) v6+ and [Angular CLI](https://cli.angular.io) v1.7.4+ to run the frontend, and [python](https://www.python.org/download/releases/3.0/) v3.0 to set up the database.
+>>This project requires [Node.js](https://nodejs.org/) v6+ and [Angular CLI](https://cli.angular.io) v1.7.4+ to run the frontend.
 
 To set up the backend environment, open ``./cinema-paradiso-backend/pom.xml`` as project in IntelliJ. Run ``CinemaParadisoApplication.java``.
 
