@@ -13,20 +13,13 @@ Cinema Paradiso is a online movie rating application that allows users to obtain
 
 To set up the backend environment, open ``./cinema-paradiso-backend/pom.xml`` as project in IntelliJ. Run ``CinemaParadisoApplication.java``.
 
-To set up the database, create a database called ``cinema-paradiso`` in MySQL, and enter your database username and password in backend's configuration file ``application.yml`` line 5 and 6. Then, run the following command to import the data (make sure your backend is running). This process will take approximately 5 minutes. 
-```sh
-$ python3 database/add_movie_json.py
-```
-
 To set up the frontend environment, install the following dependencies.
 
-```sh
 $ cd cinema-paradiso-frontend
 $ npm install
 $ npm install -g @angular/cli
 ```
 then, run
-```sh
 $ ng serve
 ```
 
