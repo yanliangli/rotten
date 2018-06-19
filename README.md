@@ -31,10 +31,3 @@ $ ng serve
 ```
 
 Finally, open up your favorate browser, and go to http://localhost:4200/
-
-## Updates <a id="updates"></a>
-
-## To do list <a id="to-do-list"></a>
-See our [use case list](https://github.com/captain-melanie/rottentomatoes/blob/master/use-case-list.md) and feel free to contribute! 
-
-
